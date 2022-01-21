@@ -1,0 +1,51 @@
+
+rm(list = ls())
+
+## Packages
+
+library(gdata) ## upperTriangle function
+library(Matrix) ## bdiag function
+library(metaSEM) ## vec2symMat function
+library(geoR)    ## matern function
+library(mvnfast)
+library(sp)
+data(meuse)
+data(meuse.grid)
+
+## Extra functions
+source("https://angelicamariatortola.github.io/academic/funcoes1.txt")
+
+##  Loading data
+
+dados <- meuse[, 1:8]
+dados <- transform(dados,
+                   x = x/1000,
+                   y = y/1000,
+                   cadmium = resid(lm(log(cadmium)~sqrt(dist), data = dados)),
+                   copper = resid(lm(log(copper)~sqrt(dist), data = dados)),
+                   lead = resid(lm(log(lead)~sqrt(dist), data = dados)),
+                   zinc = resid(lm(log(zinc)~sqrt(dist), data = dados)))
+
+## Distance Matrix
+U <- as.matrix(dist(as.matrix(dados[, 1:2]))) 
+U_vec <- upperTriangle(U, byrow = T)
+
+
+### 4-variate Matérn simpler model: 
+## Inicial values
+s4 <- as.numeric(apply(dados[,3:6], 2, sd))
+rho4 <- upperTriangle(cor(dados[,3:6]))
+phi_ini <- c(0.9,0.6,0.5,0.4)
+nu_ini  <- c(0.1,0.2,0.1,0.2) 
+ini_MatSimp <- c(phi_ini, nu_ini, s4, rho4)
+y <- as.numeric(as.matrix(dados[3:6]))
+
+nvar = 4
+time_smc <- system.time(
+   yest_smc <- estima_MatSimpler(ini_pars = c(log(ini_MatSimp[1:(3*nvar)]), 
+                                 atanh(ini_MatSimp[(3*nvar+1):length(ini_MatSimp)])),
+                                 U_vec = U_vec, y = y, nvar = nvar, method = "Nelder-Mead",
+                                 hessian = T, logpars = T, maxit = 2000))
+round(yest_smc$est_param, 4)
+round(yest_smc$info_crite, 4)
+round(yest_smc$time, 4)
