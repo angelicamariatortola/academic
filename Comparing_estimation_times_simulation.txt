@@ -12,7 +12,7 @@ library(geoR)    ## matern function
 library(mvnfast)
 library(GeoModels)
 
-# Extra functions
+## Extra functions
 source("https://angelicamariatortola.github.io/academic/funcoes1.txt")
 
 ########## Simulation #####################
