@@ -1,0 +1,43 @@
+
+#################### Figure 3 #######################################
+
+## Reading results
+nome_time <- paste("https://angelicamariatortola.github.io/academic/Figure3_results",
+                   ".txt", sep = "")
+simu_data <- read.table(nome_time, header = T)
+
+library(reshape2)
+df <- melt(simu_data, id.vars=1)
+colnames(df) <- c("size", "model", "time")
+df$size <- df$size^2
+df$time <- df$time/3600 #(in hour)
+
+library(ggplot2)
+library("colorspace") ## cores da paleta
+
+ggp <- ggplot(data = df, mapping = aes(y = time, x = size,
+                                       group = model, colour= model)) +
+  scale_color_manual(labels = c(bquote("MatSimpler" ~ "(p=7)"),
+                                bquote("MatConstr" ~ "(p=7)"),
+                                bquote("MatSep" ~ "(p=5)"),
+                                bquote("LMC" ~ "(p=6)")),  
+                     values = qualitative_hcl(5, rev = F, palette = "Dark 3")) +
+  scale_x_continuous(breaks = unique(df$size)) + 
+  geom_line(size=1.1) +
+  geom_point(size=3) +
+  labs(y = "Estimation time (hour)", x = "Sample size", color = "Model\n") +
+  theme_bw() +
+  guides(col = guide_legend(reverse = F)) +
+  theme(legend.text.align = 0,
+        title = element_text(size = 14),
+        axis.text.x = element_text(hjust = 1, size = 14, vjust=1, colour = 'black'),
+        axis.text.y = element_text(hjust = 1, size = 14, vjust=1, colour = 'black'),
+        axis.title = element_text(hjust = 0.5, size = 14, vjust=0.5,
+                                  margin = margin(t=0, r=0,b=0, l=0)),
+        axis.ticks.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.border = element_blank(),
+        plot.background = element_rect(fill = 'white'))
+ggp
+
+

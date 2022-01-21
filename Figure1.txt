@@ -1,0 +1,80 @@
+
+rm(list = ls())
+
+## Packages
+
+library(gdata) ## upperTriangle function
+library(Matrix) ## bdiag function
+library(fields) ## image.plot function
+library(metaSEM) ## vec2symMat function
+library(geoR)    ## matern function
+library(mvnfast)
+
+source("https://angelicamariatortola.github.io/academic/functions.txt")
+
+#################### Figure 1 #######################################
+
+## Simulating a MatSimpler model
+# Generating the coordinates
+coordX <- coordY <- seq(0, 1, l = 50) 
+coords <- as.matrix(expand.grid(coordX, coordY))
+
+# Building distance matrix
+U <- as.matrix(dist(coords, diag = TRUE, upper = TRUE))
+U_vec <- upperTriangle(U, byrow = T)
+
+# Fixed values for parameters
+s1 <- 0.5; s2 <- 1.0; v1 <- 0.5; v2 = 0.8
+phi1 <- 0.1; phi2 <- 0.2; rho <- 0.7
+par1 <- c(phi1, phi2, v1, v2, s1, s2, rho)
+par2 <- c(phi1, phi2, v1, v2, s1, s2, -rho)
+n = nrow(U)
+
+## Simulated data
+set.seed(1234) 
+n <- 2*nrow(coords)
+Sig1 <- sig_SimpMatN(par = par1, U_vec = U_vec, nvar = 2)
+Sig2 <- sig_SimpMatN(par = par2, U_vec = U_vec, nvar = 2)
+
+y_sig1 <- as.numeric(rmvn(1, mu = rep(0, n), sigma = Sig1))
+y_sig2 <- as.numeric(rmvn(1, mu = rep(0, n), sigma = Sig2))
+
+## Covariance struture Sig1, rho = 0.7
+y_ro1 <- matrix(y_sig1, ncol = 2, byrow = F)
+z1.1 <- matrix(y_ro1[,1], nc = length(coordX))
+z2.1 <- matrix(y_ro1[,2], nc = length(coordX))
+
+## Covariance struture Sig2, rho = -0.7
+y_ro2 <- matrix(y_sig2, ncol = 2, byrow = F)    
+z1.2 <- matrix(y_ro2[,1], nc = length(coordX))
+z2.2 <- matrix(y_ro2[,2], nc = length(coordX))
+
+par(mfrow = c(1,2))
+par(mai = c(0.5, 0.2, 0.1, 0.2))
+image.plot(x = coordX, y = coordY, cex.axis = 0.8, main = "", xlab = "", ylab = "",
+           z = z1.1, col = viridis(nrow(coords)), 
+           xaxt = "n", yaxt="n", horizontal = T)
+axis(2, cex.axis = 0.8, pos = 0.02, lwd = 0, lty = 1)
+axis(1, cex.axis = 0.8, pos = 0.0, lwd = 0, lty = 1)
+par(mai = c(0.5, 0.2, 0.1, 0.2))
+image.plot(x = coordX, y = coordY, cex.axis = 0.8, main = "", xlab = "", ylab = "",
+           z = z2.1, col = viridis(nrow(coords)),
+           xaxt = "n", yaxt = 'n', horizontal = T)
+axis(2, cex.axis = 0.8, pos = 0.01, lwd = 0, lty = 1)
+axis(1, cex.axis = 0.8, pos = 0.03, lwd = 0, lty = 1)
+
+
+par(mfrow = c(1,2))
+par(mai = c(0.5, 0.2, 0.1, 0.2))
+image.plot(x = coordX, y = coordY, cex.axis = 0.8, main = "", xlab = "", ylab = "",
+           z = z1.2, col = viridis(nrow(coords)),
+           xaxt = "n", yaxt="n", horizontal = T)
+axis(2, cex.axis = 0.8, pos = 0.01, lwd = 0, lty = 1)
+axis(1, cex.axis = 0.8, pos = 0.03, lwd = 0, lty = 1)
+par(mai = c(0.5, 0.2, 0.1, 0.2))
+image.plot(x = coordX, y = coordY, cex.axis = 0.8, main = "", xlab = "", ylab = "",
+           z = z2.2, col = viridis(nrow(coords)),
+           xaxt = "n", yaxt = 'n', horizontal = T)
+axis(2, cex.axis = 0.8, pos = 0.01, lwd = 0, lty = 1)
+axis(1, cex.axis = 0.8, pos = 0.03, lwd = 0, lty = 1)
+
