@@ -56,6 +56,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -80,6 +81,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -232,7 +236,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -245,7 +249,7 @@ $(document).ready(function () {
   <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Research
      
     <span class="caret"></span>
@@ -283,15 +287,8 @@ $(document).ready(function () {
 <div id="r-codes" class="section level3">
 <h3>R codes</h3>
 <ul>
-<li><a href="functions.txt">Basic functions</a></li>
-<li><a href="Figure1.txt">Figure 1 - plot</a></li>
-<li><a href="Figure2_simulation.txt">Figure 2 - simulation</a></li>
-<li><a href="Figure2_results.txt">Figure 2 - data</a></li>
-<li><a href="Figure2_plot.txt">Figure 2 - plot</a></li>
-<li><a href="Figure3_simulation.txt">Figure 3 - simulation</a></li>
-<li><a href="Figure3_results.txt">Figure 3 - data</a></li>
-<li><a href="Figure3_plot.txt">Figure 3 - plot</a></li>
-<li><a href="Soil_data_analysis.txt">Soil data analysis</a></li>
+<li><a href="Figure7_results.txt">Figure 7 - data</a> <!-- - [Figure 7 - plot](Figure7_plot.txt) --></li>
+<li><a href="Figure8_results.txt">Figure 8 - data</a> <!-- - [Figure 8 - plot](Figure8_plot.txt) --> <!-- - [Soil data analysis](Soil_data_analysis.txt) --></li>
 </ul>
 </div>
 
