@@ -1,0 +1,29 @@
+Passos para fazer commit no github - novo repositório:
+
+1 - Criar Repositório no git (Repositories -> New -> Repository name -> Public or Private -> Create Repository (outras opções não marquei))
+2 - Criar uma pasta no computador (não necessariamente com o mesmo nome)
+3 - Colocar todos os arquivos de interesse nesta pasta (a serem enviados para o github)
+4 - acessar esta pasta pelo terminal (ls.. cd ...)
+5 - em seguida: 
+	$ git init (para inicializar o repositório)
+	   (só na primeira utilização) $ git remote add origin https://github.com/angelicamariatortola/GeoSimpler.git ("endereço da pasta no github", para "emparelhar as pastas")
+
+6 - Adicionando arquivos ao repositório:
+	$ git add . (para adicionar ao repositório)
+	$ git commit -m "nome-da-alteracao" (para comitar e comentar as mudanças)
+	$ git push origin master (copia toda a pasta no github)
+
+Username for 'https://github.com': angelicamariatortola
+Password for 'https://angelicamariatortola@github.com': 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
+
+Para novos arquivos repetir o passo 6.
+
+Para deletar o repositório:
+1 - Acessar o repositório pelo git
+2 - Ir em "Settings"
+3 - Rolar até o final da página em "Danger Zone"
+4 - "Delete this Repository"
+
+
+## Clonar o reposiório do github para o computador:
+https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository

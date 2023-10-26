@@ -11,9 +11,9 @@
 
 
 
-<title>classes.knit</title>
+<title>Probabilidade e Estatística</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -32,6 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -142,11 +144,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -175,8 +181,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -184,16 +190,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -247,7 +246,11 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -264,11 +267,36 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
-<li>
-  <a href="classes.html">Classes</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Classes
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="classes.html">Probabilidade e Estatística</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Extension
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="curso_latex.html">Minicurso de Latex</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="contact.html">Contact</a>
+  <a href="contact.html">
+    <span class="fa fa-envelope-o"></span>
+     
+    Contact
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -283,21 +311,68 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore"><span
-style="font-size:75%; font-weight:80"></span></h1>
+style="font-size:75%; font-weight:80">Probabilidade e
+Estatística</span></h1>
 
 </div>
 
 
 <p><br></p>
-<div id="ma70h" class="section level3">
-<h3>MA70H</h3>
+<ul>
+<li>Aulas Gravadas <br>
+<ul>
+<li><a href="https://youtu.be/9LaKYCVGPeM">Aula 1: Estatística
+Descritiva - Conceitos Básicos</a></li>
+<li><a href="https://youtu.be/gfjuB44McJw">Aula 2: Estatística
+Descritiva - Conceitos Básicos</a></li>
+<li><a href="https://youtu.be/vs1cgWS0KA0">Aula 3: Tabelas
+Estatísticas</a></li>
+<li><a href="https://youtu.be/N3ehFU-wj-k">Aula 4: Gráficos
+Estatísticos</a></li>
+<li><a href="https://youtu.be/w4M9xBGBQPc">Aula 5: Medidas de
+Posição</a></li>
+<li><a href="https://youtu.be/-GdOyy1vSw8">Aula 6: Medidas de
+Dispersão</a></li>
+<li><a href="https://youtu.be/vxZwSYRUW_E">Aula 7: Quantis</a></li>
+<li><a href="https://youtu.be/GidGy2FcdCM">Aula 8: Medidas de Assimetria
+e Curtose</a></li>
+<li><a href="https://youtu.be/CBhH8tnJ_tE">Aula 9: Conceitos básicos de
+Probabilidade</a></li>
+<li><a href="https://youtu.be/kpTBvFzSXTY">Aula 10: Definições e
+Propriedades de Probabilidade</a></li>
+<li><a href="https://youtu.be/GlAvW77zmiU">Aula 11: Probabilidade
+Condicional, independência e Teorema de Bayes</a></li>
+<li><a href="https://youtu.be/MiBIkG_pVOo">Aula 12: Variáveis Aleatórias
+- Conceitos Básicos</a></li>
+<li><a href="https://youtu.be/3SSZTVs-HCw">Aula 13: Variáveis Aleatórias
+Discretas</a></li>
+<li><a href="https://youtu.be/MoNFWNOZLpI">Aula 14: Modelos
+Probabilísticos Discretos</a></li>
+<li><a href="https://youtu.be/2wYXYz3BJWo">Aula 15: Variáveis Aleatórias
+Contínuas</a></li>
+<li><a href="https://youtu.be/joA4rFoEihI">Aula 16: Modelos
+Probabilísticos Contínuos</a></li>
+<li><a href="https://youtu.be/Hb4F8LOPhjY">Aula 17: Conceitos básicos de
+Inferência Estatística</a></li>
+<li><a href="https://youtu.be/7XqR9cZ5VEU">Aula 18: Distribuições
+Amostrais</a></li>
+<li><a href="https://youtu.be/F-Vb82pKTLs">Aula 19: Estimação por
+Intervalo</a></li>
+<li><a href="https://youtu.be/UMU5S2sziYY">Aula 20: Testes de
+Hipóteses</a></li>
+<li><a href="https://youtu.be/ENYAfNeW-vM">Aula 21: Análise de Variância
+(ANOVA)</a></li>
+<li><a href="https://youtu.be/cuzMbRG9pn8">Aula 22: Análise de
+Regressão</a></li>
+</ul></li>
+</ul>
+<p><br></p>
 <ul>
 <li>Análise de Regressão
 <ul>
 <li><a href="dados_regressao_exemplo.txt">Dados - Exemplo 1</a></li>
 </ul></li>
 </ul>
-</div>
 
 
 
