@@ -6,7 +6,7 @@ Passos para fazer commit no github - novo repositório:
 4 - acessar esta pasta pelo terminal (ls.. cd ...)
 5 - em seguida: 
 	$ git init (para inicializar o repositório)
-	   (só na primeira utilização) $ git remote add origin https://github.com/angelicamariatortola/GeoSimpler.git ("endereço da pasta no github", para "emparelhar as pastas")
+	   (só na primeira utilização) $ git remote add origin https://github.com/angelicamariatortola/academic.git ("endereço da pasta no github", para "emparelhar as pastas")
 
 6 - Adicionando arquivos ao repositório:
 	$ git add . (para adicionar ao repositório)
