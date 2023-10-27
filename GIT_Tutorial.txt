@@ -97,7 +97,7 @@ $ git branch -d testes
 
 Para "Sincronizar" um repositorio local com um já existente do GitHub (ao escolher caminho HTTPS colocar
 aspas "" no nome:
-$ git remote add origin git@github.com:gabsferreira/postsdoblog.git 
+$ git remote add origin https://github.com/angelicamariatortola/academic.git
 
 Mandar os arquivos para o "servidor" (passe tudo do master(atual) para o origin(internet))
 $ git push origin master

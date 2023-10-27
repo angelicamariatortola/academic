@@ -6,8 +6,7 @@ Passos para fazer commit no github - novo repositório:
 4 - acessar esta pasta pelo terminal (ls.. cd ...)
 5 - em seguida: 
 	$ git init (para inicializar o repositório)
-	   (só na primeira utilização) $ git remote add origin https://github.com/angelicamariatortola/academic.git ("endereço da pasta no github", 
-para "emparelhar as pastas")
+	   (só na primeira utilização) $ git remote add origin https://github.com/angelicamariatortola/academic.git ("endereço da pasta no github", para "emparelhar as pastas")
 
 6 - Adicionando arquivos ao repositório:
 	$ git add . (para adicionar ao repositório)
@@ -40,6 +39,9 @@ core.logallrefupdates=true
 remote.origin.url=https://github.com/angelicamariatortola/academic.git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
 
-The key fingerprint is:
-SHA256:pSlIT1vhXXWC2AjOq7V9wXAeromzKfJM5dpea7y6O94 angelica.tortola@hotmail.com
+
+Chave SSH:
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHlUy8jGEpnVW5KG31f6nevevmUYwkwObARd8LnR7D4k4SI/EVBibqhQqKk2aQ/aS2Ra0euHZRdkJ1VxqaleAs291c+/XBGRWOOW9HGgXiZfndjVYRzOlb2N9IJTNcY13ikeralIJPjdsDDmkMJcXjjXjKnHsoEFi73V1nKwohS+a7PDjRtCM5W5oGFgGpCTr59Y+q5HGPdlOtS6zI9mYMTwqvnbzgYq0F8AKRPtzr1SByS7PdnOdZBzKEwGuhKuuDf4/14vAghsPJw3kKaLYEs4qoLJs53XZSVuAZWvpScA/5Bdhay161lXuBmf5h099jv6837R2hoJALWgWn55WKYcnm0JuwgSCXCB7xtrrlnYi9osrGSY1b+eXrPrqu917BlxwzFKVifpExAvbQPZIAXDOS7MnU3vOROF0rqwkDZTCvewgKK8qa1amzJCnXjvOe8HlZisrX0cM1bVUrI6JU4XnwN6T+ic/8zpp91t21tBGr57Nc0eVGCE9WPRzTOEE/UTOYYXLyKvqditEM0kpXf8XKkgJKHYoZGfmbQj+YnfZ9FinvEnjeYbK9eIogZOkG+p2E3Cma7HAAeBRFRuZNX0t1F2NR+FewFTVsSw8VyCx9B2HZ4pyFcMchWB5qod55jHPaiXdBEB4VWL0FYmLyarfjHBut5kH6bErDSlUm/w== angelica.tortola@hotmail.com
+
 
