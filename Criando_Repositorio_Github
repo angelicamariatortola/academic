@@ -27,3 +27,15 @@ Para deletar o repositório:
 
 ## Clonar o reposiório do github para o computador:
 https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository
+
+
+user.email=angelica.tortola@hotmail.com
+user.name=angelicamariatortola
+credential.helper=osxkeychain
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/angelicamariatortola/academic.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
