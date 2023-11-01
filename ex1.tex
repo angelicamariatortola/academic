@@ -1,0 +1,34 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{xcolor} % possibilita adicionar cores no texto
+\usepackage[utf8]{inputenc} % esse pacote corrige a acentuação 
+\usepackage[brazil]{babel} % corrige outras regras tipográficas e de hifenização
+
+\title{Meu Primeiro Artigo} 
+\author{Meu Nome}           
+\date{}
+
+\begin{document}
+	\maketitle              
+	
+	\section{Primeira Seção}
+	
+	\subsection{Subseção 1}
+	\begin{itemize} % enumera os itens
+		\item Esse é o \textcolor{blue}{primeiro} item.
+		\item Esse é o \textcolor{red}{segundo} item.
+	\end{itemize}
+	
+	\section{Segunda Seção}
+	\label{sec2}
+
+	\subsection{Subseção 1}
+	\begin{enumerate} % enumera os itens
+		\item \textcolor{orange}{Esse} é o item de número 1.
+		\item Esse é o \textcolor{orange}{item} de número 2.
+		\item Esse é o item de \textcolor{orange}{número} 3.
+	\end{enumerate}
+
+	\subsection{Subseção 2}
+	Essa é uma segunda subseção.
+	
+\end{document} 
