@@ -32,18 +32,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="site_libs/datatables-binding-0.30/datatables.js"></script>
-<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
-<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
-<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -335,220 +323,157 @@ style="font-size:75%; font-weight:80">Produções</span></h1>
 <p>Abaixo segue uma lista com as minhas produções acadêmicas (incluindo
 tese e dissertação).</p>
 <p><br></p>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-color:black;border-spacing:0;}
-.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
-  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
-  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-ev0v{background-color:#dae8fc;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
+<style>
+        table {
+            border-collapse: collapse; width: 100%;
+            border: 1px solid black;border-color:black; border-spacing:0;
+        }
+        th, td {
+        border: 2px solid black; padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #B0C4DE; <!-- muda a cor do cabeçalho -->
+            border: 2px solid black;
+            color: black; border-color:black;
+            border-spacing:0;
+        }
+         a:link {
+            color: #191970; /* Define a cor do link como azul escuro */
+            text-decoration: none;
+        }
+        a:visited {
+            color: #191970; /* Define a cor do link visitado como azul escuro */
+            text-decoration: none;
+        }
+        a:hover {
+            color:  #4682B4; /* Define a cor do link ao passar o mouse como um tom mais claro */
+            text-decoration: underline;
+        }
+        a:active {
+            color:  #4682B4; /* Define a cor do link ao ser clicado como azul escuro */
+            text-decoration: none;
+        }
+    </style>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
 </head>
 <body>
-<table class="tg">
+<table id="tabela" class="display">
 <thead>
 <tr>
-<th class="tg-ev0v">
+<th>
 Tipo de documento
 </th>
-<th class="tg-ev0v">
+<th>
 Título
 </th>
-<th class="tg-ev0v">
+<th>
 Ano
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tg-0pky">
+<td>
 Artigo
 </td>
-<td class="tg-0pky">
+<td>
 <a href="https://link.springer.com/article/10.1007/s00477-022-02252-9" target="_blank" rel="noopener noreferrer">A
 Kronecker-based covariance specification for spatially continuous
 multivariate data</a>
 </td>
-<td class="tg-0pky">
+<td>
 2022
 </td>
 </tr>
 <tr>
-<td class="tg-0pky">
+<td>
 Artigo
 </td>
-<td class="tg-0pky">
+<td>
 <a href="http://biometria.ufla.br/index.php/BBJ/article/view/558" target="_blank" rel="noopener noreferrer">Comparison
 of exponential covariance functions for bivariate geostatistical
 data</a>
 </td>
-<td class="tg-0pky">
+<td>
 2021
 </td>
 </tr>
 <tr>
-<td class="tg-0pky">
+<td>
 Artigo
 </td>
-<td class="tg-0pky">
-<a href="https://www.sciencedirect.com/science/article/pii/S0969806X18313045" target="_blank" rel="noopener noreferrer"><span
-style="font-weight:400;font-style:normal;text-decoration:none">Effects
+<td>
+<a href="https://www.sciencedirect.com/science/article/pii/S0969806X18313045" target="_blank" rel="noopener noreferrer">Effects
 of dose rate absorption in extracellular potassium concentration of red
-cells concentrates</span></a>
+cells concentrates</a>
 </td>
-<td class="tg-0pky">
+<td>
 2020
 </td>
 </tr>
 <tr>
-<td class="tg-0pky">
+<td>
 Artigo
 </td>
-<td class="tg-0pky">
+<td>
 <a href="https://www.ajs.or.at/index.php/ajs/article/view/590" target="_blank" rel="noopener noreferrer">On
 Zero-Modified Poisson-Sujatha Distribution to Model Overdispersed Count
 Data</a>
 </td>
-<td class="tg-0pky">
+<td>
 2018
 </td>
 </tr>
 <tr>
-<td class="tg-0pky">
-Tese (Doutorado)
+<td>
+Tese
 </td>
-<td class="tg-0pky">
+<td>
 <a href="https://acervodigital.ufpr.br/handle/1884/75018" target="_blank" rel="noopener noreferrer">A
 Kronecker-based model for multivariate spatial data</a>
 </td>
-<td class="tg-0pky">
+<td>
 2022
 </td>
 </tr>
 <tr>
-<td class="tg-0pky">
-Dissertação (Mestrado)
+<td>
+Dissertação
 </td>
-<td class="tg-0pky">
-<a href="https://repositorio.ufscar.br/handle/ufscar/4559" target="_blank" rel="noopener noreferrer"><span
-style="font-weight:400;font-style:normal;text-decoration:underline">Distribuição
+<td>
+<a href="https://repositorio.ufscar.br/handle/ufscar/4559" target="_blank" rel="noopener noreferrer">Distribuição
 COM-Poisson na análise de dados de experimentos de quimioprevenção do
-câncer em animais</span></a>
+câncer em animais</a>
 </td>
-<td class="tg-0pky">
+<td>
 2012
 </td>
 </tr>
 </tbody>
 </table>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;}
-.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
-  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
-  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-ev0v{background-color:#dae8fc;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-<tr>
-<th class="tg-ev0v">
-Tipo de documento
-</th>
-<th class="tg-ev0v">
-Título
-</th>
-<th class="tg-ev0v">
-Ano
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tg-0pky">
-Artigo
-</td>
-<td class="tg-0pky">
-<a href="https://link.springer.com/article/10.1007/s00477-022-02252-9" target="_blank" rel="noopener noreferrer">A
-Kronecker-based covariance specification for spatially continuous
-multivariate data</a>
-</td>
-<td class="tg-0pky">
-2022
-</td>
-</tr>
-<tr>
-<td class="tg-0pky">
-Artigo
-</td>
-<td class="tg-0pky">
-<a href="http://biometria.ufla.br/index.php/BBJ/article/view/558" target="_blank" rel="noopener noreferrer">Comparison
-of exponential covariance functions for bivariate geostatistical
-data</a>
-</td>
-<td class="tg-0pky">
-2021
-</td>
-</tr>
-<tr>
-<td class="tg-0pky">
-Artigo
-</td>
-<td class="tg-0pky">
-<a href="https://www.sciencedirect.com/science/article/pii/S0969806X18313045" target="_blank" rel="noopener noreferrer"><span
-style="font-weight:400;font-style:normal;text-decoration:none">Effects
-of dose rate absorption in extracellular potassium concentration of red
-cells concentrates</span></a>
-</td>
-<td class="tg-0pky">
-2020
-</td>
-</tr>
-<tr>
-<td class="tg-0pky">
-Artigo
-</td>
-<td class="tg-0pky">
-<a href="https://www.ajs.or.at/index.php/ajs/article/view/590" target="_blank" rel="noopener noreferrer">On
-Zero-Modified Poisson-Sujatha Distribution to Model Overdispersed Count
-Data</a>
-</td>
-<td class="tg-0pky">
-2018
-</td>
-</tr>
-<tr>
-<td class="tg-0pky">
-Tese (Doutorado)
-</td>
-<td class="tg-0pky">
-<a href="https://acervodigital.ufpr.br/handle/1884/75018" target="_blank" rel="noopener noreferrer">A
-Kronecker-based model for multivariate spatial data</a>
-</td>
-<td class="tg-0pky">
-2022
-</td>
-</tr>
-<tr>
-<td class="tg-0pky">
-Dissertação (Mestrado)
-</td>
-<td class="tg-0pky">
-<a href="https://repositorio.ufscar.br/handle/ufscar/4559" target="_blank" rel="noopener noreferrer"><span
-style="font-weight:400;font-style:normal;text-decoration:underline">Distribuição
-COM-Poisson na análise de dados de experimentos de quimioprevenção do
-câncer em animais</span></a>
-</td>
-<td class="tg-0pky">
-2012
-</td>
-</tr>
-</tbody>
-</table>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f0fc0dc5e97fd241d7df" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f0fc0dc5e97fd241d7df">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"2012\" data-max=\"2022\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["1","2","3","4","5","6"],["Artigo","Artigo","Artigo","Artigo","Dissertação","Tese"],["A Kronecker-based covariance specification for spatially continuous multivariate data","Comparison of exponential covariance functions for bivariate geostatistical data","Effects of dose rate absorption in extracellular potassium concentration of red cells concentrates","On Zero-Modified Poisson-Sujatha Distribution to Model Overdispersed Count Data","Distribuição COM-Poisson na análise de dados de experimentos de quimioprevenção do câncer em animais","A Kronecker-based model for multivariate spatial data"],[2022,2021,2020,2020,2012,2022]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>tipo<\/th>\n      <th>titulo<\/th>\n      <th>ano<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#tabela').DataTable();
+    } );
+</script>
+</body>
+</html>
+<p><br> <br></p>
+<!-- ```{r, echo=FALSE} -->
+<!-- library(DT) -->
+<!-- # Exemplo de dados -->
+<!-- dados <- data.frame( -->
+<!-- tipo = c(rep("Artigo", 4), "Dissertação", "Tese"), -->
+<!-- titulo = c("A Kronecker-based covariance specification for spatially continuous multivariate data", "Comparison of exponential covariance functions for bivariate geostatistical data", "Effects of dose rate absorption in extracellular potassium concentration of red cells concentrates", "On Zero-Modified Poisson-Sujatha Distribution to Model Overdispersed Count Data", "Distribuição COM-Poisson na análise de dados de experimentos de quimioprevenção do câncer em animais", "A Kronecker-based model for multivariate spatial data"), -->
+<!-- ano = c(2022, 2021, 2020, 2018, 2012, 2022) -->
+<!-- ) -->
+<!-- # Renderização da tabela interativa -->
+<!-- datatable(dados, filter = 'top') -->
+<!-- ``` -->
 
 
 
