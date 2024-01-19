@@ -6,6 +6,7 @@ output:
   pdf_document: default
   html_document:
     df_print: paged
+  word_document: default
 documentclass: book
 bibliography:
 - book.bib
