@@ -29,7 +29,7 @@ is_html = knitr::is_html_output()
 ## Sobre o R e RStudio
 <!-- - O R é um software voltado para análises estatísticas e de dados -->
 <!-- - É de código aberto, sendo gratuito e de livre distribuição. -->
-- Muitos materiais estão disponíveis na internet, dentre os quais podemos citar: [@debastiani2020]
+<!-- - Muitos materiais estão disponíveis na internet, dentre os quais podemos citar: [@debastiani2020] -->
 ## Instalação
 <!-- Pacotes, manual e demonstrações -->
 ## Estrutura básica do R e RStudio
