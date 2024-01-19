@@ -14,13 +14,6 @@ link-citations: yes
 suppress-bibliography: true
 ---
 
-```{r index-1, echo=FALSE}
-is_on_ghactions = identical(Sys.getenv("GITHUB_ACTIONS"), "true")
-is_online = curl::has_internet()
-is_html = knitr::is_html_output()
-```
-
-
 
 <!-- **** Capítulo 1 -->
 # Introdução 
