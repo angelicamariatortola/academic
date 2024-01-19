@@ -11,14 +11,17 @@ documentclass: book
 bibliography:
 - book.bib
 - packages.bib
-description: |
-  This is a minimal example of using the bookdown package to write a book.
-  set in the _output.yml file.
-  The HTML output format for this example is bookdown::gitbook,
 link-citations: yes
-github-repo: "rstudio/bookdown-demo"
-site: bookdown::bookdown_site
+suppress-bibliography: true
 ---
+
+```{r index-1, echo=FALSE}
+is_on_ghactions = identical(Sys.getenv("GITHUB_ACTIONS"), "true")
+is_online = curl::has_internet()
+is_html = knitr::is_html_output()
+```
+
+
 
 <!-- **** Capítulo 1 -->
 # Introdução 
@@ -26,7 +29,7 @@ site: bookdown::bookdown_site
 ## Sobre o R e RStudio
 <!-- - O R é um software voltado para análises estatísticas e de dados -->
 <!-- - É de código aberto, sendo gratuito e de livre distribuição. -->
-<!-- - Muitos materiais estão disponíveis na internet, dentre os quais podemos citar: [@debastiani2020] -->
+- Muitos materiais estão disponíveis na internet, dentre os quais podemos citar: [@debastiani2020]
 ## Instalação
 <!-- Pacotes, manual e demonstrações -->
 ## Estrutura básica do R e RStudio
@@ -82,8 +85,6 @@ objetos (atribuições para algum objeto/variável), tipos de objetos (numerico,
 
 
 
-
-`r if (knitr::is_html_output()) '
 # References {-}
 '`
 

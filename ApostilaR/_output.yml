@@ -1,13 +1,20 @@
 bookdown::gitbook:
   css: style.css
+  includes:
+    in_header: [ga_script.html]
   config:
     toc:
+      collapse: section
       before: |
         <li><a href="./">Introdução ao R</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/angelicamariatortola/academic/tree/master/ApostilaR/%s
+    edit: https://github.com/angelicamariatortola/academic/ApostilaR/edit/main/%s
     download: ["pdf", "epub"]
+    sharing:
+      facebook: no
+      twitter: no
+      github: yes
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
