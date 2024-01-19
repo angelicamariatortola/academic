@@ -1,0 +1,96 @@
+--- 
+title: "Apostila de Introdução ao R"
+author: "Profª. Angélica Maria T. Ribeiro"
+date: ''
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+  word_document: default
+documentclass: book
+bibliography:
+- book.bib
+- packages.bib
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  set in the _output.yml file.
+  The HTML output format for this example is bookdown::gitbook,
+link-citations: yes
+github-repo: "rstudio/bookdown-demo"
+site: bookdown::bookdown_site
+---
+
+<!-- **** Capítulo 1 -->
+# Introdução 
+
+## Sobre o R e RStudio
+<!-- - O R é um software voltado para análises estatísticas e de dados -->
+<!-- - É de código aberto, sendo gratuito e de livre distribuição. -->
+<!-- - Muitos materiais estão disponíveis na internet, dentre os quais podemos citar: [@debastiani2020] -->
+## Instalação
+<!-- Pacotes, manual e demonstrações -->
+## Estrutura básica do R e RStudio
+<!-- interface, personalização, etc -->
+## Introdução à linguagem R
+<!-- operadores básicos (soma, sub, multi, log, etc), 
+objetos (atribuições para algum objeto/variável), tipos de objetos (numerico, caracteres, logicos)  -->
+
+
+<!-- **** Capítulo 2 -->
+# Estruturas de Dados
+
+## Vetores e fatores
+## Matrizes e data frames.
+## Operações com vetores e matrizes
+## Listas 
+## Importação e Manipulação de dados 
+<!-- importação, manipulação 
+(usando pacote dplyr?) -->
+
+
+<!-- <!-- **** Capítulo 3 (opcional??? )-->  
+<!-- # Funções e Estruturas de controle -->
+<!-- ## Construção de funções -->
+<!-- ## Loops e condições -->
+<!-- <!-- if, else, for, while. --> 
+<!-- ## Funções apply, lapply, etc -->
+
+
+<!-- <!-- **** Capítulo 4 --> 
+<!-- # Gráficos -->
+
+<!-- ## Gráficos básicos -->
+<!-- ## O pacote ggplot2 -->
+<!-- <!-- ## Personalização de gráficos: cores, etiquetas e temas. --> 
+
+
+<!-- <!-- **** Capítulo 5 --> 
+<!-- # Análises estatísticas básicas -->
+<!-- ## Medidas descritivas -->
+<!-- <!-- média, mediana, desvio padrão. --> 
+<!-- ## Testes de hipóteses -->
+<!-- ## Análise de Regressão -->
+<!-- ## Planejamento de Experimentos -->
+
+
+<!-- <!-- **** Capítulo 6 --> 
+<!-- # Projeto Final -->
+
+<!-- ## Desenvolvimento de um projeto prático usando R. -->
+<!-- ## Apresentação dos resultados e discussão. -->
+
+
+
+
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
