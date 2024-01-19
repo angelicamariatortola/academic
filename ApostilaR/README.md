@@ -1,4 +1,4 @@
-### Apostila Introdução ao R {-}
+### Apostila Introdução ao R 
 
 Este é um material de apoio para a disciplina de Introdução ao R.
 A apostila completa está disponível em:
