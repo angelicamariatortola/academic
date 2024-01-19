@@ -1,7 +1,5 @@
 bookdown::gitbook:
   css: style.css
-  includes:
-    in_header: [ga_script.html]
   config:
     toc:
       collapse: section
@@ -22,3 +20,4 @@ bookdown::pdf_book:
   citation_package: natbib
   keep_tex: yes
 bookdown::epub_book: default
+

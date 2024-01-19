@@ -1,13 +1,14 @@
-Welcome! 
+### Apostila Introdução ao R {-}
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+Este é um material de apoio para a disciplina de Introdução ao R.
+A apostila completa está disponível em:
 
-This template provides a skeleton file structure that you can edit to create your book. 
+https://angelicamariatortola.github.io/academic/introR.html
 
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
+Este material foi elaborado usando o pacote **bookdown** do R.
 
-Additional resources:
+Informações adicionais:
 
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
+O livro do **bookdown**: https://bookdown.org/yihui/bookdown/
 
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
+O site do pacote **bookdown**: https://pkgs.rstudio.com/bookdown

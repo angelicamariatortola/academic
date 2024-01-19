@@ -10,7 +10,6 @@ output:
 documentclass: book
 bibliography:
 - book.bib
-- packages.bib
 link-citations: yes
 suppress-bibliography: true
 ---
