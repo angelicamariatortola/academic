@@ -1,0 +1,11 @@
+introdução
+sobre-o-r-e-rstudio
+instalação
+estrutura-básica-do-r-e-rstudio
+introdução-à-linguagem-r
+estruturas-de-dados
+vetores-e-fatores
+matrizes-e-data-frames.
+operações-com-vetores-e-matrizes
+listas
+importação-e-manipulação-de-dados
