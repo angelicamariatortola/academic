@@ -2,7 +2,7 @@
 
 Este é um material de apoio para a disciplina de **Introdução ao R**. A apostila completa está disponível em:
 
-https://angelicamariatortola.github.io/academic/introR.html
+https://angelicamariatortola.github.io/academic/CursoR.html
 
 Este material foi elaborado usando o pacote bookdown do R.
 
