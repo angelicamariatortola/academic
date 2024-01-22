@@ -1,16 +1,29 @@
-.Rproj.user
+# History files
 .Rhistory
+.Rapp.history
+
+# Session Data files
 .RData
-_publish.R
-_book
-rsconnect
-_download_cache
-shiny-book.rds
-*_cache
-*_files
-shiny-book.*
-README.html
-cran-logs
-shiny_bookmarks
-scaling-testing
-ApostilaR.Rproj
+
+# User-specific files
+.Ruserdata
+
+# Output files from R CMD build
+/*.tar.gz
+
+# Output files from R CMD check
+/*.Rcheck/
+
+# RStudio files
+.Rproj.user/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+# R Environment Variables
+.Renviron
