@@ -1,48 +1,6 @@
 {
     "sources": [
         {
-            "URL": "http://yihui.org/knitr/",
-            "author": [
-                {
-                    "family": "Xie",
-                    "given": "Yihui"
-                }
-            ],
-            "edition": "2nd",
-            "id": "xie2015",
-            "issued": {
-                "date-parts": [
-                    [
-                        2015
-                    ]
-                ]
-            },
-            "note": "ISBN 978-1498716963",
-            "publisher": "Chapman; Hall/CRC",
-            "publisher-place": "Boca Raton, Florida",
-            "title": "Dynamic Documents with R and knitr",
-            "type": "book"
-        },
-        {
-            "URL": "https://vanderleidebastiani.github.io/tutoriais/Introducao_ao_R.html#introdução",
-            "author": [
-                {
-                    "family": "Debastiani",
-                    "given": "Vanderlei Júlio"
-                }
-            ],
-            "id": "debastiani2020",
-            "issued": {
-                "date-parts": [
-                    [
-                        2020
-                    ]
-                ]
-            },
-            "title": "Introdução ao R",
-            "type": "book"
-        },
-        {
             "URL": "https://www.R-project.org/",
             "author": [
                 {
@@ -100,7 +58,7 @@
                     ]
                 ]
             },
-            "note": "R package version 1.44",
+            "note": "R package version 1.45",
             "title": "knitr: A General-Purpose Package for Dynamic Report Generation in R",
             "title-short": "knitr",
             "type": "book"
@@ -157,11 +115,11 @@
             "issued": {
                 "date-parts": [
                     [
-                        2023
+                        2024
                     ]
                 ]
             },
-            "note": "R package version 2.25",
+            "note": "R package version 2.25.3",
             "title": "rmarkdown: Dynamic Documents for R",
             "title-short": "rmarkdown",
             "type": "book"
@@ -311,7 +269,6 @@
         }
     ],
     "project_biblios": [
-        "book.bib",
-        "packages.bib"
+        "book.bib"
     ]
 }

@@ -2,7 +2,6 @@ bookdown::gitbook:
   css: style.css
   config:
     toc:
-      collapse: section
       before: |
         <li><a href="./">Introdução ao R</a></li>
       after: |
@@ -15,4 +14,3 @@ bookdown::pdf_book:
   citation_package: natbib
   keep_tex: yes
 bookdown::epub_book: default
-

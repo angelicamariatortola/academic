@@ -1,6 +1,4 @@
 delete_merged_file: true
-rmd_files: 
-    - "index.Rmd"
-language: 
+language:
   ui:
     chapter_name: "Capítulo "

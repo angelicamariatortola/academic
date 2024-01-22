@@ -1,21 +1,20 @@
 --- 
 title: "Apostila de Introdução ao R"
 author: "Profª. Angélica Maria T. Ribeiro"
-date: ''
+date: "`r Sys.Date()`"
 output:
   pdf_document: default
   html_document:
     df_print: paged
-  word_document: default
 documentclass: book
 bibliography:
 - book.bib
 link-citations: yes
-suppress-bibliography: true
+github-repo: "rstudio/bookdown-demo"
+site: bookdown::bookdown_site
 ---
 
 
-<!-- **** Capítulo 1 -->
 # Introdução 
 
 ## Sobre o R e RStudio
@@ -75,10 +74,10 @@ objetos (atribuições para algum objeto/variável), tipos de objetos (numerico,
 <!-- ## Apresentação dos resultados e discussão. -->
 
 
+<!-- `r if (knitr::is_html_output()) ' -->
+<!-- # References {-} -->
+<!-- '` -->
 
-
-# References {-}
-'`
 
 
 ```{r include=FALSE}
@@ -87,3 +86,11 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
+
+
+<!-- Para compilar o livro em pdf, fazer no console do R: -->
+<!-- bookdown::render_book('index.Rmd', 'bookdown::pdf_book') -->
+<!-- ou em html: -->
+<!-- bookdown::render_book('index.Rmd', 'bookdown::html_book') -->
+<!-- Obs: estava dando erro, pois eu estava colocando uma frase comentada antes de introdução -->
