@@ -1,7 +1,7 @@
 --- 
 title: "Apostila de Introdução ao R"
 author: "Profª. Angélica Maria T. Ribeiro"
-date: "2024-01-22"
+date: "2024-01-23"
 output:
   pdf_document: default
   html_document:
