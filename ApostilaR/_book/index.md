@@ -1,7 +1,7 @@
 --- 
 title: "Apostila de Introdução ao R"
 author: "Profª. Angélica Maria T. Ribeiro"
-date: "`r Sys.Date()`"
+date: "2024-01-22"
 output:
   pdf_document: default
   html_document:
@@ -72,18 +72,13 @@ objetos (atribuições para algum objeto/variável), tipos de objetos (numerico,
 <!-- ## Apresentação dos resultados e discussão. -->
 
 
-<!-- `r if (knitr::is_html_output()) ' -->
+<!--  -->
 <!-- # References {-} -->
-<!-- '` -->
+<!--  -->
 
 
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'book.bib')
-```
+
 
 
 
