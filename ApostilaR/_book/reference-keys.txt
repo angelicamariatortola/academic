@@ -9,3 +9,11 @@ matrizes-e-data-frames.
 operações-com-vetores-e-matrizes
 listas
 importação-e-manipulação-de-dados
+referênciasfontes-de-ajuda
+livros
+apostilas
+matyeriais-online
+materiais-online
+instalação-do-r
+instalação-do-rstudio
+estrutura-básica

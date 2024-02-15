@@ -1,7 +1,12 @@
 h1:introdução Introdução
 h2:sobre-o-r-e-rstudio Sobre o R e RStudio
-h2:instalação Instalação
-h2:estrutura-básica-do-r-e-rstudio Estrutura básica do R e RStudio
+h2:referênciasfontes-de-ajuda Referências/Fontes de ajuda
+h4:livros Livros
+h4:materiais-em-português Materiais em português
+h4:páginas-de-ajuda Páginas de ajuda
+h2:instalação-do-r Instalação do R
+h2:instalação-do-rstudio Instalação do RStudio
+h2:estrutura-básica Estrutura básica
 h2:introdução-à-linguagem-r Introdução à linguagem R
 h1:estruturas-de-dados Estruturas de Dados
 h2:vetores-e-fatores Vetores e fatores

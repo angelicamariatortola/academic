@@ -266,6 +266,133 @@
             "publisher-place": "Boca Raton, Florida",
             "title": "R Markdown Cookbook",
             "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Teetor",
+                    "given": "Paul"
+                }
+            ],
+            "edition": "1st ed.",
+            "id": "Teetor2011",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011
+                    ]
+                ]
+            },
+            "number-of-pages": "1413",
+            "publisher": "O’Reilly",
+            "title": "R cookbook",
+            "type": "book"
+        },
+        {
+            "ISBN": "9781491910368",
+            "author": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                }
+            ],
+            "editor": [
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "id": "Wickham2017",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "note": "Gesehen am 02.08.2019",
+            "number-of-pages": "1494",
+            "publisher": "O’Reilly Media, Inc.",
+            "publisher-place": "Sebastopol, CA",
+            "title": "R for data science: Import, tidy, transform, visualize, and model data",
+            "title-short": "R for data science",
+            "type": "book"
+        },
+        {
+            "ISBN": "9781593277796",
+            "author": [
+                {
+                    "family": "Davies",
+                    "given": "Tilman M."
+                }
+            ],
+            "id": "Davies2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "note": "Description based on publisher supplied metadata and other sources.",
+            "number-of-pages": "1801",
+            "publisher": "No Starch Press",
+            "publisher-place": "San Francisco",
+            "title": "The Book of R: A first course in programming and statistics",
+            "title-short": "The Book of R",
+            "type": "book"
+        },
+        {
+            "ISBN": "9781449359010",
+            "author": [
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "collection-title": "Data analysis/statistical software",
+            "edition": "First edition, second release",
+            "editor": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                }
+            ],
+            "id": "Grolemund2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "number-of-pages": "232",
+            "publisher": "O’Reilly",
+            "publisher-place": "Beijing",
+            "title": "Hands-on programming with R",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Cotton",
+                    "given": "Richard"
+                }
+            ],
+            "id": "Cotton2013",
+            "issued": {
+                "date-parts": [
+                    [
+                        2013
+                    ]
+                ]
+            },
+            "note": "Includes bibliographical references and index. - Description based on print version record",
+            "number-of-pages": "11",
+            "publisher": "O’Reilly",
+            "publisher-place": "Sebastopol, Calif.",
+            "title": "Learning R",
+            "type": "book"
         }
     ],
     "project_biblios": [
