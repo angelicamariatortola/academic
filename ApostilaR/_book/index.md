@@ -1,7 +1,7 @@
 --- 
-title: "Apostila de Introdução ao R"
+title: "Introdução ao R e RMarkdown"
 author: "Profª. Angélica Maria T. Ribeiro"
-date: "2024-01-30"
+date: "2024-03-22"
 output:
   pdf_document: default
   html_document:
@@ -74,23 +74,25 @@ Outros materiais podem ser encontrados em: [R Contributed Documentation](https:/
 </div>
 
 ## Introdução à linguagem R
-<!-- operadores básicos (soma, sub, multi, log, etc), 
-objetos (atribuições para algum objeto/variável), tipos de objetos (numerico, caracteres, logicos)  -->
 
+<!-- R como calculadora. Operadores básicos (soma, sub, multi, log, etc). -->
+<!-- Operadores lógicos. -->
 
 <!-- **** Capítulo 2 -->
 # Estruturas de Dados
 
-## Vetores e fatores
-## Matrizes e data frames.
+## Vetores 
+## Matrizes e data frames
 ## Operações com vetores e matrizes
 ## Listas 
-## Importação e Manipulação de dados 
-<!-- importação, manipulação 
-(usando pacote dplyr?) -->
+
+<!-- **** Capítulo 3 -->
+# Importação e Manipulação de dados 
 
 
-<!-- <!-- **** Capítulo 3 (opcional??? )-->  
+
+
+<!-- <!-- **** Capítulo 4 (opcional??? )-->  
 <!-- # Funções e Estruturas de controle -->
 <!-- ## Construção de funções -->
 <!-- ## Loops e condições -->
@@ -98,33 +100,9 @@ objetos (atribuições para algum objeto/variável), tipos de objetos (numerico,
 <!-- ## Funções apply, lapply, etc -->
 
 
-<!-- <!-- **** Capítulo 4 --> 
-<!-- # Gráficos -->
-
-<!-- ## Gráficos básicos -->
-<!-- ## O pacote ggplot2 -->
-<!-- <!-- ## Personalização de gráficos: cores, etiquetas e temas. --> 
-
-
-<!-- <!-- **** Capítulo 5 --> 
-<!-- # Análises estatísticas básicas -->
-<!-- ## Medidas descritivas -->
-<!-- <!-- média, mediana, desvio padrão. --> 
-<!-- ## Testes de hipóteses -->
-<!-- ## Análise de Regressão -->
-<!-- ## Planejamento de Experimentos -->
-
-
-<!-- <!-- **** Capítulo 6 --> 
-<!-- # Projeto Final -->
-
-<!-- ## Desenvolvimento de um projeto prático usando R. -->
-<!-- ## Apresentação dos resultados e discussão. -->
-
 
 
 # References {-}
-
 
 
 

@@ -17,3 +17,5 @@ materiais-online
 instalação-do-r
 instalação-do-rstudio
 estrutura-básica
+vetores
+matrizes-e-data-frames
