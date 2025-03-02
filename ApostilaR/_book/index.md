@@ -1,7 +1,7 @@
 --- 
 title: "Introdução ao R e RMarkdown"
 author: "Profª. Angélica Maria T. Ribeiro"
-date: "2024-04-09"
+date: "2025-01-05"
 output:
   pdf_document: default
   html_document:
@@ -122,7 +122,7 @@ Para instalar um pacote é necessário utilizar o comando ``library(nome do paco
 Para executar operações aritméticas básicas basta utilizar os operadores: (+) soma, (-) subtração, (*) multiplicação, (/) divisão e (%%) resto da divisão. Isso permite que o R se comporte como uma calculadora, por exemplo a expressão a seguir  
 
 
-```r
+``` r
 3*9+4/2-58%%4
 ```
 
