@@ -1,0 +1,147 @@
+# Comando básicos de estatística 
+
+Para entender melhor o comportamento de um conjunto de dados algumas informações podem ser úteis. A fequência que uma informação aparece, a média, moda e mediana dos dados, seus quadrantes e os valores de máximo e mínimo, todas essas informações revelam caracteristicas diferentes do conjunto de dados sendo estudado. O R é equipado com diversos comantos que possibilitam realizar todos os calculos básicos de estatística de uma maneira simples. 
+
+ 
+
+## Comandos 'summary' e 'table'
+
+Os comandos ``mean(x)``, ``median(x)``, ``sd(x)`` e ``var(x)`` calculam a média, mediana, desvio padrão e a variança respectivamente do vetor ``x``. 
+
+```{r}
+x <- c(5,7,2,6,6,5,6,6,5,6,5,7,4,7,4,1,7,3,6,2,6,6,3,3,5)
+
+mean(x)
+median(x)
+sd(x)
+var(x)
+```
+
+Caso o vetor ``x`` tenha algum valor ``NA`` então o resultado dessas funções irá retornar ``NA``. Para contornar esse caso basta inserir o parâmetro ``mean(x,na.rm = TRUE)`` que a função ignora os valores ``NA``.
+
+Caso os dados estejam organizados no formato de data frame é possivel aplicar essas funções em cada coluna de um data set utilizando o comando ``map_dbl(...)``. Por exemplo, o comando ``map_dbl(cars, mean)`` calcula a média para os valores das duas colunas do data frame ``cars``. Para utilizar o comando ``map_dbl(...)`` é necessário instalar o pacote ``purrr``. 
+
+```
+cars %>% map_dbl(mean)
+```
+
+O operador pipe ``%>%`` também pode ser utilizado e produz o mesmo resultado que o comando ``map_dbl(cars, mean)``.
+
+Caso se deseje uma analise rápida dos dados o comando ``summary(x)`` retorna informações estatísticas relevante sobre o vetor ``x``.
+
+```{r}
+W <- c(6,8,2,8,4,2,3,5,7,3,7,9,6,8,1,6,7,4,1,4,4,5,7,8,10)
+
+summary(W)
+```
+
+O comando irá retornar o valor mínimo, máximo, os quartis e a média dos dados. 
+
+Antes de comentar sobre o cálculo de frequência de uma base de dados vamos falar sobre o comando ``cumsum(x)``. Esse comando soma sucessivamente os valores do vetor ``x`` retornanto uma soma acumulada. 
+
+```{r}
+vetor <- c(1, 2, 3, 4, 5)
+soma_cumulativa <- cumsum(vetor)
+print(soma_cumulativa)
+
+```
+
+Esse comando será util para calcular as frequências acumuladas. 
+
+A frequência de um valor é definida pela quantidade de vezes que ele se repete na base de dados. O comando ``table(x)`` retorna uma tabela da quantidade de vezes que determinado dado apareceu. 
+
+```{r}
+V <- c("c","a","d","a","b","a","b","c","c")
+
+table(V)
+```
+
+Neste exemplo o vetor ``V`` é formado por letras e o comando retorna a frequência absoluta com que cada letra aparece. 
+
+Para a frequência relativa é utilizado o comando ``prop.table(table(x))``. O comando ``table(x)`` vimos que retorna a frequência relativa, o comando ``prop.table(...)`` transforma essas frequências absolutas em uma proporção em relação ao total de observações. 
+
+```{r}
+V <- c("c","a","d","a","b","a","b","c","c")
+
+prop.table(table(V))
+```
+
+Para o cálculo da frequência acumulada passamos o comando ``table(x)`` como parâmetro do comando ``cumsum(...)``.
+
+```{r}
+W <- c(6,8,2,8,4,2,3,5,7,3,7,9,6,8,1,6,7,4,1,4,4,5,7,8,10)
+
+table(W)
+
+cumsum(table(W))
+```
+
+O mesmo processo pode ser utilizado para calular a frequência relativa acumulada, utilizando o comando ``cumsum`` e ``prop.table``.
+
+## Comandos 'apply', 'sapply' e 'lapply'
+
+Vimos que o comando ``map_dbl`` pode ser utilizado para aplicar um comando a coluna de um data frame, semelhante a isso temos o comando ``apply``, que recebe como argumento um vetor ou uma matriz, se a função será aplicada nas linhas ou colunas e qual função irá aplicar. 
+
+```{r}
+W <- c(6,8,2,8,4,2,3,5,7,3,7,9,6,8,1,6,7,4,1,4,4,5,7,8,10)
+
+M <- matrix(W,5,5)
+
+apply(M,1,mean)
+
+apply(M,2,mean)
+```
+
+O comando ``apply(M,1,mean)`` calcula o valor médio de cada linha ``(1)`` da matriz ``M``, o comando ``apply(M,2,mean)`` calcula o valor médio de cada coluna ``(2)``. Para aplicar a função nas linhas e colunas utilizar o comando ``apply(X,c(1,2),função)``. 
+
+Os comando ``sapply`` e ``lapply``funcionam de maneira semelhante, porém recebem como parâmetro uma lista de vetores e aplica a função desejada em cada um desses vetores.
+
+```{r}
+Lista  = list(c(1,2,3),c(4,5,6))
+
+sapply(Lista,mean)
+
+lapply(Lista,mean)
+```
+
+Em resumo, enquanto ``apply`` é utilizado principalmente para operações em matrizes, ``lapply`` e ``sapply`` são mais comumente usados com listas. A principal diferente também está em como cada comando retorna o resultado. 
+
+## Declaração de função
+
+Caso precise realizar um cálculo específico diversas vezes é útil definir uma função. Isso simplifica os cálculos pois ela pode ser utilizada em qualquer momento durante o código. 
+
+```
+nome_da_funcao <- function(argumentos) {
+  # aqui vai os comandos da função
+  return(resultado)  
+}
+
+```
+Por exemplo, podemos podemos definir uma função que calcula o valor da metade do quadrado da soma desses dois numeros.
+
+```{r}
+f <- function(x,y){
+    resultado <- ((x+y)^2)/2
+    return(resultado)
+}
+
+f(1,2)
+```
+
+A função pode ser adaptada para receber um vetor como parâmetro. 
+
+```{r}
+f2 <- function(x){
+    resultado <- ((x[1]+x[2])^2)/2
+    return(resultado)
+}
+
+v1 = c(1,2)
+v2 = c(2,3)
+
+f2(v1)
+f2(v2)
+```
+
+Para essa função também aceita o uso do operador pipe ``%>%``. O comando ``v1 %>% f2()`` retorna o mesmo resultado que ``f2(v1)``.  
+
