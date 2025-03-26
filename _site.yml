@@ -1,4 +1,5 @@
 name: "Angélica Maria Tortola Ribeiro"
+output_dir: "docs"
 exclude: ["README.md", "\\.sh", "cache"]
 navbar:
   title: <font size="5.8">Angélica Maria Tortola Ribeiro  </font>
