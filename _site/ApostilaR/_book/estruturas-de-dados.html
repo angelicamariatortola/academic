@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Estruturas de Dados | Estatística Computacional com o R</title>
+  <meta name="description" content="Capítulo 2 Estruturas de Dados | Estatística Computacional com o R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Estruturas de Dados | Estatística Computacional com o R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Estruturas de Dados | Estatística Computacional com o R" />
+  
+  
+  
+
+<meta name="author" content="Profª. Angélica Maria T. Ribeiro" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="conceitos-básicos.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estatística Computacional com o R</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html"><i class="fa fa-check"></i><b>1</b> Conceitos Básicos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#sobre-o-r-e-rstudio"><i class="fa fa-check"></i><b>1.1</b> Sobre o R e RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#algumas-aplicações-de-r"><i class="fa fa-check"></i>Algumas aplicações de R:</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#referênciasfontes-de-ajuda"><i class="fa fa-check"></i>Referências/Fontes de ajuda</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#instalação-do-r-e-do-rstudio"><i class="fa fa-check"></i><b>1.2</b> Instalação do R e do RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#estrutura-do-rstudio"><i class="fa fa-check"></i><b>1.3</b> Estrutura do RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#exercícios-da-sessão"><i class="fa fa-check"></i>1.3 Exercícios da Sessão</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-básicas-em-r"><i class="fa fa-check"></i><b>1.4</b> Operações Básicas em R</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-aritméticas"><i class="fa fa-check"></i><b>1.4.1</b> Operações Aritméticas</a></li>
+<li class="chapter" data-level="1.4.2" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#criando-variáveis-objetos"><i class="fa fa-check"></i><b>1.4.2</b> Criando Variáveis (objetos)</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="1.4.3" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-lógicas-e-comparações"><i class="fa fa-check"></i><b>1.4.3</b> Operações Lógicas e Comparações</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas-1"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#exercícios-da-sessão-1"><i class="fa fa-check"></i>1.4 Exercícios da Sessão</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas-2"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>2</b> Estruturas de Dados</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetores"><i class="fa fa-check"></i><b>2.1</b> Vetores</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-3"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-4"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#fatores"><i class="fa fa-check"></i><b>2.2</b> Fatores</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-5"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#matrizes"><i class="fa fa-check"></i><b>2.3</b> Matrizes</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-6"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#listas"><i class="fa fa-check"></i><b>2.4</b> Listas</a></li>
+<li class="chapter" data-level="2.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#data-frames"><i class="fa fa-check"></i><b>2.5</b> Data Frames</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estatística Computacional com o R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estruturas-de-dados" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Estruturas de Dados<a href="estruturas-de-dados.html#estruturas-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>No R, as principais estruturas de dados são:</p>
+<ul>
+<li><strong>Vetores</strong></li>
+<li><strong>Fatores</strong></li>
+<li><strong>Matrizes</strong></li>
+<li><strong>Listas</strong></li>
+<li><strong>Data frames</strong></li>
+</ul>
+<div id="vetores" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Vetores<a href="estruturas-de-dados.html#vetores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vetores são a estrutura de dados mais básica do R. Um vetor é uma sequência de elementos do mesmo tipo, podendo ser numérico, caracter ou lógico. Pode ser definido como um conjunto de valores: <span class="math inline">\(V=(v_1,v_2,...,v_n)\)</span>.</p>
+<p><strong>Principais Características dos Vetores</strong></p>
+<ol style="list-style-type: decimal">
+<li><strong>Homogeneidade</strong>: Todos os elementos devem ser do mesmo tipo (numérico, lógico ou caractere).</li>
+<li><strong>Indexação Baseada em 1</strong>: O acesso aos elementos é feito por índices que começam em 1 (diferente de outras linguagens como Python e C, que começam em 0).</li>
+<li><strong>Operações Vetorizadas</strong>: Permite a realização de operações matemáticas diretamente sobre o vetor.</li>
+<li><strong>Tamanho Dinâmico</strong>: Podem ser expandidos automaticamente conforme necessário.</li>
+<li><strong>Reciclagem de Vetores</strong>: Quando os vetores têm tamanhos diferentes, o vetor menor é reciclado para igualar o comprimento do maior.</li>
+</ol>
+<div id="criando-um-vetor" class="section level4 unnumbered hasAnchor">
+<h4>Criando um vetor<a href="estruturas-de-dados.html#criando-um-vetor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="criando-um-vetor-com-c" class="section level5 unnumbered hasAnchor">
+<h5>Criando um vetor com <code>c()</code><a href="estruturas-de-dados.html#criando-um-vetor-com-c" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="estruturas-de-dados.html#cb1-1" tabindex="-1"></a><span class="co"># Vetor numérico</span></span>
+<span id="cb1-2"><a href="estruturas-de-dados.html#cb1-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb1-3"><a href="estruturas-de-dados.html#cb1-3" tabindex="-1"></a><span class="co"># Vetor de caracteres</span></span>
+<span id="cb1-4"><a href="estruturas-de-dados.html#cb1-4" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)</span>
+<span id="cb1-5"><a href="estruturas-de-dados.html#cb1-5" tabindex="-1"></a><span class="co"># Vetor lógico</span></span>
+<span id="cb1-6"><a href="estruturas-de-dados.html#cb1-6" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb1-7"><a href="estruturas-de-dados.html#cb1-7" tabindex="-1"></a><span class="co"># Vetor misto (convertido para caractere)</span></span>
+<span id="cb1-8"><a href="estruturas-de-dados.html#cb1-8" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="st">&quot;teste&quot;</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb1-9"><a href="estruturas-de-dados.html#cb1-9" tabindex="-1"></a><span class="co"># Exibindo os vetores</span></span>
+<span id="cb1-10"><a href="estruturas-de-dados.html#cb1-10" tabindex="-1"></a><span class="fu">print</span>(a)</span>
+<span id="cb1-11"><a href="estruturas-de-dados.html#cb1-11" tabindex="-1"></a><span class="fu">print</span>(b)</span>
+<span id="cb1-12"><a href="estruturas-de-dados.html#cb1-12" tabindex="-1"></a><span class="fu">print</span>(c)</span>
+<span id="cb1-13"><a href="estruturas-de-dados.html#cb1-13" tabindex="-1"></a><span class="fu">print</span>(d)</span></code></pre></div>
+</div>
+<div id="criando-um-vetor-com-seq" class="section level5 unnumbered hasAnchor">
+<h5>Criando um vetor com <code>seq()</code><a href="estruturas-de-dados.html#criando-um-vetor-com-seq" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Usar <span class="math inline">\(a:b\)</span> cria uma sequência de a a b, ou seja, <span class="math inline">\(a, a+1, a+2, ..., b\)</span></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="estruturas-de-dados.html#cb2-1" tabindex="-1"></a><span class="do">## Criando uma sequencia de 1 a 6</span></span>
+<span id="cb2-2"><a href="estruturas-de-dados.html#cb2-2" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb2-3"><a href="estruturas-de-dados.html#cb2-3" tabindex="-1"></a><span class="do">## Criando uma sequencia de 5 a 10</span></span>
+<span id="cb2-4"><a href="estruturas-de-dados.html#cb2-4" tabindex="-1"></a><span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb2-5"><a href="estruturas-de-dados.html#cb2-5" tabindex="-1"></a><span class="do">## Criando uma sequencia decrescente de 10 a 1</span></span>
+<span id="cb2-6"><a href="estruturas-de-dados.html#cb2-6" tabindex="-1"></a><span class="dv">10</span><span class="sc">:</span><span class="dv">1</span></span></code></pre></div>
+<p>Também podemos usar a função <code>seq()</code> para criar sequências:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="estruturas-de-dados.html#cb3-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>) </span>
+<span id="cb3-2"><a href="estruturas-de-dados.html#cb3-2" tabindex="-1"></a><span class="co"># gera sequencias de numeros </span></span>
+<span id="cb3-3"><a href="estruturas-de-dados.html#cb3-3" tabindex="-1"></a><span class="co"># from: valor inicial, to: valor final, </span></span>
+<span id="cb3-4"><a href="estruturas-de-dados.html#cb3-4" tabindex="-1"></a><span class="co"># by (opcional): Incremento, </span></span>
+<span id="cb3-5"><a href="estruturas-de-dados.html#cb3-5" tabindex="-1"></a><span class="co"># length.out (opcional): Número total de elementos </span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="estruturas-de-dados.html#cb4-1" tabindex="-1"></a><span class="do">## Criando uma sequencia de 1 a 6</span></span>
+<span id="cb4-2"><a href="estruturas-de-dados.html#cb4-2" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">6</span>, <span class="at">by =</span> <span class="dv">1</span>) <span class="co">#equivalente a 1:6</span></span>
+<span id="cb4-3"><a href="estruturas-de-dados.html#cb4-3" tabindex="-1"></a><span class="do">## Criando uma sequencia de 1 a 10, com 5 elementos</span></span>
+<span id="cb4-4"><a href="estruturas-de-dados.html#cb4-4" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">5</span>)  </span></code></pre></div>
+<p>Criando um vetor com a função <code>seq()</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="estruturas-de-dados.html#cb5-1" tabindex="-1"></a>seq1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">5</span>) </span></code></pre></div>
+</div>
+<div id="criando-um-vetor-com-rep" class="section level5 unnumbered hasAnchor">
+<h5>Criando um vetor com <code>rep()</code><a href="estruturas-de-dados.html#criando-um-vetor-com-rep" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="estruturas-de-dados.html#cb6-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">2</span>, <span class="at">times =</span> <span class="dv">3</span>)</span>
+<span id="cb6-2"><a href="estruturas-de-dados.html#cb6-2" tabindex="-1"></a><span class="co"># repete números ou vetores</span></span>
+<span id="cb6-3"><a href="estruturas-de-dados.html#cb6-3" tabindex="-1"></a><span class="co"># x: O valor ou vetor a ser repetido.</span></span>
+<span id="cb6-4"><a href="estruturas-de-dados.html#cb6-4" tabindex="-1"></a><span class="co"># times: Número total de repetições do vetor completo.</span></span>
+<span id="cb6-5"><a href="estruturas-de-dados.html#cb6-5" tabindex="-1"></a><span class="co"># length.out: Define o comprimento final do vetor gerado.</span></span>
+<span id="cb6-6"><a href="estruturas-de-dados.html#cb6-6" tabindex="-1"></a><span class="co"># each: Número de repetições de cada elemento individualmente.</span></span>
+<span id="cb6-7"><a href="estruturas-de-dados.html#cb6-7" tabindex="-1"></a><span class="co"># times ou length.out devem ser usados.</span></span>
+<span id="cb6-8"><a href="estruturas-de-dados.html#cb6-8" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="estruturas-de-dados.html#cb6-9" tabindex="-1"></a><span class="do">## Repete o valor 5, até completar 2 elementos</span></span>
+<span id="cb6-10"><a href="estruturas-de-dados.html#cb6-10" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">5</span>, <span class="at">length.out =</span> <span class="dv">2</span>) </span>
+<span id="cb6-11"><a href="estruturas-de-dados.html#cb6-11" tabindex="-1"></a><span class="do">## Repete o vetor c(2,3) até completar 5 elementos</span></span>
+<span id="cb6-12"><a href="estruturas-de-dados.html#cb6-12" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">length.out =</span> <span class="dv">5</span>) </span>
+<span id="cb6-13"><a href="estruturas-de-dados.html#cb6-13" tabindex="-1"></a><span class="do">## Repete o vetor c(2,3) até 5 vezes</span></span>
+<span id="cb6-14"><a href="estruturas-de-dados.html#cb6-14" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">times =</span> <span class="dv">5</span>)</span>
+<span id="cb6-15"><a href="estruturas-de-dados.html#cb6-15" tabindex="-1"></a><span class="do">## Repete cada elemento do vetor c(2,3), 3 vezes</span></span>
+<span id="cb6-16"><a href="estruturas-de-dados.html#cb6-16" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">each =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p>Criando um vetor com a função <code>rep()</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="estruturas-de-dados.html#cb7-1" tabindex="-1"></a>rep1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">each =</span> <span class="dv">3</span>)</span></code></pre></div>
+</div>
+<div id="criando-um-vetor-com-scan" class="section level5 unnumbered hasAnchor">
+<h5>Criando um vetor com <code>scan()</code><a href="estruturas-de-dados.html#criando-um-vetor-com-scan" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>A função <code>scan()</code> é utilizada para ler dados de entrada e criar vetores. Ela é muito útil para ler dados de um arquivo ou diretamente do console.</p>
+<p><strong>Exemplo - Vetor numérico:</strong> Considere os valores <code>10  20  30  40  60</code>. Para ler no R, fazemos:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="estruturas-de-dados.html#cb8-1" tabindex="-1"></a><span class="co"># Copie os dados acima. </span></span>
+<span id="cb8-2"><a href="estruturas-de-dados.html#cb8-2" tabindex="-1"></a><span class="co"># Digite o código abaixo no Console do R:</span></span>
+<span id="cb8-3"><a href="estruturas-de-dados.html#cb8-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">scan</span>()</span>
+<span id="cb8-4"><a href="estruturas-de-dados.html#cb8-4" tabindex="-1"></a><span class="co"># Pressione Enter. </span></span>
+<span id="cb8-5"><a href="estruturas-de-dados.html#cb8-5" tabindex="-1"></a><span class="co"># Cole os valores no Console.</span></span>
+<span id="cb8-6"><a href="estruturas-de-dados.html#cb8-6" tabindex="-1"></a><span class="co"># Para finalizar, pressione Enter 2 vezes.</span></span>
+<span id="cb8-7"><a href="estruturas-de-dados.html#cb8-7" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div>
+<p><strong>Exemplo - Vetor de caracteres:</strong> Considere os valores <code>Ana Mateus Carlos Tati</code>. Para ler no R, fazemos:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="estruturas-de-dados.html#cb9-1" tabindex="-1"></a><span class="co"># Copie os dados acima. </span></span>
+<span id="cb9-2"><a href="estruturas-de-dados.html#cb9-2" tabindex="-1"></a><span class="co"># Digite o código abaixo no Console do R:</span></span>
+<span id="cb9-3"><a href="estruturas-de-dados.html#cb9-3" tabindex="-1"></a>nomes <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="at">what =</span> <span class="fu">character</span>())</span>
+<span id="cb9-4"><a href="estruturas-de-dados.html#cb9-4" tabindex="-1"></a><span class="co"># Pressione Enter. </span></span>
+<span id="cb9-5"><a href="estruturas-de-dados.html#cb9-5" tabindex="-1"></a><span class="co"># Cole os valores no Console.</span></span>
+<span id="cb9-6"><a href="estruturas-de-dados.html#cb9-6" tabindex="-1"></a><span class="co"># Para finalizar, pressione Enter 2 vezes.</span></span>
+<span id="cb9-7"><a href="estruturas-de-dados.html#cb9-7" tabindex="-1"></a><span class="fu">print</span>(nomes)</span></code></pre></div>
+<p><strong>Exemplo - Separador diferente:</strong> Considere os valores <code>1,2,3,4,5</code>. Para ler no R, fazemos:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="estruturas-de-dados.html#cb10-1" tabindex="-1"></a><span class="co"># Copie os dados acima. </span></span>
+<span id="cb10-2"><a href="estruturas-de-dados.html#cb10-2" tabindex="-1"></a><span class="co"># Digite o código abaixo no Console do R:</span></span>
+<span id="cb10-3"><a href="estruturas-de-dados.html#cb10-3" tabindex="-1"></a>valores <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb10-4"><a href="estruturas-de-dados.html#cb10-4" tabindex="-1"></a><span class="co"># Pressione Enter. </span></span>
+<span id="cb10-5"><a href="estruturas-de-dados.html#cb10-5" tabindex="-1"></a><span class="co"># Cole os valores no Console.</span></span>
+<span id="cb10-6"><a href="estruturas-de-dados.html#cb10-6" tabindex="-1"></a><span class="co"># Para finalizar, pressione Enter 2 vezes.</span></span>
+<span id="cb10-7"><a href="estruturas-de-dados.html#cb10-7" tabindex="-1"></a><span class="fu">print</span>(valores)</span></code></pre></div>
+</div>
+</div>
+<div id="manipulação-e-características-de-vetores" class="section level4 unnumbered hasAnchor">
+<h4>Manipulação e características de vetores<a href="estruturas-de-dados.html#manipulação-e-características-de-vetores" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="estruturas-de-dados.html#cb11-1" tabindex="-1"></a><span class="co"># Criando um vetor:</span></span>
+<span id="cb11-2"><a href="estruturas-de-dados.html#cb11-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">10</span>)</span>
+<span id="cb11-3"><a href="estruturas-de-dados.html#cb11-3" tabindex="-1"></a><span class="co"># Primeiro elemento de a</span></span>
+<span id="cb11-4"><a href="estruturas-de-dados.html#cb11-4" tabindex="-1"></a>a[<span class="dv">1</span>]</span>
+<span id="cb11-5"><a href="estruturas-de-dados.html#cb11-5" tabindex="-1"></a><span class="co"># Último elemento</span></span>
+<span id="cb11-6"><a href="estruturas-de-dados.html#cb11-6" tabindex="-1"></a>a[<span class="dv">6</span>]</span>
+<span id="cb11-7"><a href="estruturas-de-dados.html#cb11-7" tabindex="-1"></a><span class="co"># Subconjunto de elementos</span></span>
+<span id="cb11-8"><a href="estruturas-de-dados.html#cb11-8" tabindex="-1"></a>a[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb11-9"><a href="estruturas-de-dados.html#cb11-9" tabindex="-1"></a><span class="co"># Elementos específicos</span></span>
+<span id="cb11-10"><a href="estruturas-de-dados.html#cb11-10" tabindex="-1"></a>a[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span></code></pre></div>
+<p>Modificando valores do vetor <span class="math inline">\(a\)</span>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="estruturas-de-dados.html#cb12-1" tabindex="-1"></a><span class="co"># Substituindo um elemento</span></span>
+<span id="cb12-2"><a href="estruturas-de-dados.html#cb12-2" tabindex="-1"></a>a[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">99</span></span>
+<span id="cb12-3"><a href="estruturas-de-dados.html#cb12-3" tabindex="-1"></a><span class="fu">print</span>(a)</span>
+<span id="cb12-4"><a href="estruturas-de-dados.html#cb12-4" tabindex="-1"></a><span class="co"># Adicionando novos elementos</span></span>
+<span id="cb12-5"><a href="estruturas-de-dados.html#cb12-5" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(a, <span class="dv">200</span>)</span>
+<span id="cb12-6"><a href="estruturas-de-dados.html#cb12-6" tabindex="-1"></a><span class="fu">print</span>(a)</span>
+<span id="cb12-7"><a href="estruturas-de-dados.html#cb12-7" tabindex="-1"></a><span class="co"># ou usando a função append():</span></span>
+<span id="cb12-8"><a href="estruturas-de-dados.html#cb12-8" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">append</span>(a, <span class="dv">300</span>)</span>
+<span id="cb12-9"><a href="estruturas-de-dados.html#cb12-9" tabindex="-1"></a><span class="co"># Removendo alguma posição do vetor:</span></span>
+<span id="cb12-10"><a href="estruturas-de-dados.html#cb12-10" tabindex="-1"></a>a <span class="ot">&lt;-</span> a[<span class="sc">-</span><span class="dv">2</span>]</span>
+<span id="cb12-11"><a href="estruturas-de-dados.html#cb12-11" tabindex="-1"></a><span class="co"># Removendo mais de uma posição do vetor:</span></span>
+<span id="cb12-12"><a href="estruturas-de-dados.html#cb12-12" tabindex="-1"></a>a <span class="ot">&lt;-</span> a[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</span></code></pre></div>
+<p>Nomeando os Elementos do Vetor</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="estruturas-de-dados.html#cb13-1" tabindex="-1"></a><span class="co"># Nomes do vetor a:</span></span>
+<span id="cb13-2"><a href="estruturas-de-dados.html#cb13-2" tabindex="-1"></a><span class="fu">names</span>(a)</span>
+<span id="cb13-3"><a href="estruturas-de-dados.html#cb13-3" tabindex="-1"></a><span class="co"># Atribuindo nomes para o vetor a:</span></span>
+<span id="cb13-4"><a href="estruturas-de-dados.html#cb13-4" tabindex="-1"></a><span class="fu">names</span>(a) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;x4&quot;</span>, <span class="st">&quot;x5&quot;</span>)</span>
+<span id="cb13-5"><a href="estruturas-de-dados.html#cb13-5" tabindex="-1"></a>a[<span class="st">&quot;x1&quot;</span>]  <span class="co"># Retorna 3 (elemento nomeado &quot;a&quot;)</span></span></code></pre></div>
+<p>Algumas características sobre o vetor:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="estruturas-de-dados.html#cb14-1" tabindex="-1"></a><span class="co"># Seja o vetor numérico:</span></span>
+<span id="cb14-2"><a href="estruturas-de-dados.html#cb14-2" tabindex="-1"></a>vec_num <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb14-3"><a href="estruturas-de-dados.html#cb14-3" tabindex="-1"></a><span class="co"># Seja o vetor de caracteres:</span></span>
+<span id="cb14-4"><a href="estruturas-de-dados.html#cb14-4" tabindex="-1"></a>vec_carac <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>)</span>
+<span id="cb14-5"><a href="estruturas-de-dados.html#cb14-5" tabindex="-1"></a><span class="co"># Seja o vetor de valores lógicos:</span></span>
+<span id="cb14-6"><a href="estruturas-de-dados.html#cb14-6" tabindex="-1"></a>vec_logi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="estruturas-de-dados.html#cb15-1" tabindex="-1"></a><span class="co"># (1) Tamanho (número de elementos):</span></span>
+<span id="cb15-2"><a href="estruturas-de-dados.html#cb15-2" tabindex="-1"></a><span class="fu">length</span>(vec_num)</span>
+<span id="cb15-3"><a href="estruturas-de-dados.html#cb15-3" tabindex="-1"></a><span class="fu">length</span>(vec_carac)</span>
+<span id="cb15-4"><a href="estruturas-de-dados.html#cb15-4" tabindex="-1"></a><span class="fu">length</span>(vec_logi)</span>
+<span id="cb15-5"><a href="estruturas-de-dados.html#cb15-5" tabindex="-1"></a><span class="co"># (2) estrutura:</span></span>
+<span id="cb15-6"><a href="estruturas-de-dados.html#cb15-6" tabindex="-1"></a><span class="fu">str</span>(vec_num)</span>
+<span id="cb15-7"><a href="estruturas-de-dados.html#cb15-7" tabindex="-1"></a><span class="fu">str</span>(vec_carac)</span>
+<span id="cb15-8"><a href="estruturas-de-dados.html#cb15-8" tabindex="-1"></a><span class="fu">str</span>(vec_logi)</span></code></pre></div>
+<p>Perguntando sobre o tipo do vetor:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="estruturas-de-dados.html#cb16-1" tabindex="-1"></a><span class="co"># is.vector -&gt; identifica qualquer tipo de vetor</span></span>
+<span id="cb16-2"><a href="estruturas-de-dados.html#cb16-2" tabindex="-1"></a><span class="fu">is.vector</span>(vec_num)</span>
+<span id="cb16-3"><a href="estruturas-de-dados.html#cb16-3" tabindex="-1"></a><span class="fu">is.vector</span>(vec_carac)</span>
+<span id="cb16-4"><a href="estruturas-de-dados.html#cb16-4" tabindex="-1"></a><span class="fu">is.vector</span>(vec_logi)</span>
+<span id="cb16-5"><a href="estruturas-de-dados.html#cb16-5" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="estruturas-de-dados.html#cb16-6" tabindex="-1"></a><span class="co"># is.character -&gt; identifica vetores de caracteres</span></span>
+<span id="cb16-7"><a href="estruturas-de-dados.html#cb16-7" tabindex="-1"></a><span class="fu">is.character</span>(vec_num)</span>
+<span id="cb16-8"><a href="estruturas-de-dados.html#cb16-8" tabindex="-1"></a><span class="fu">is.character</span>(vec_carac)</span>
+<span id="cb16-9"><a href="estruturas-de-dados.html#cb16-9" tabindex="-1"></a><span class="fu">is.character</span>(vec_logi)</span>
+<span id="cb16-10"><a href="estruturas-de-dados.html#cb16-10" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="estruturas-de-dados.html#cb16-11" tabindex="-1"></a><span class="co"># is.logical -&gt; identifica vetores de valores logicos</span></span>
+<span id="cb16-12"><a href="estruturas-de-dados.html#cb16-12" tabindex="-1"></a><span class="fu">is.logical</span>(vec_num)</span>
+<span id="cb16-13"><a href="estruturas-de-dados.html#cb16-13" tabindex="-1"></a><span class="fu">is.logical</span>(vec_carac)</span>
+<span id="cb16-14"><a href="estruturas-de-dados.html#cb16-14" tabindex="-1"></a><span class="fu">is.logical</span>(vec_logi)</span></code></pre></div>
+<p>Para converter vetores de um tipo para outro tipo, funções <code>as.vector</code>, <code>as.character</code>, <code>as.logical</code>:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="estruturas-de-dados.html#cb17-1" tabindex="-1"></a><span class="co"># as.character -&gt; Transforma em vetor de caracteres</span></span>
+<span id="cb17-2"><a href="estruturas-de-dados.html#cb17-2" tabindex="-1"></a>vec_num_carac <span class="ot">&lt;-</span> <span class="fu">as.character</span>(vec_num)</span>
+<span id="cb17-3"><a href="estruturas-de-dados.html#cb17-3" tabindex="-1"></a><span class="fu">str</span>(vec_num_carac)</span>
+<span id="cb17-4"><a href="estruturas-de-dados.html#cb17-4" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="estruturas-de-dados.html#cb17-5" tabindex="-1"></a>vec_logi_carac <span class="ot">&lt;-</span> <span class="fu">as.character</span>(vec_logi)</span>
+<span id="cb17-6"><a href="estruturas-de-dados.html#cb17-6" tabindex="-1"></a><span class="fu">str</span>(vec_logi_carac)</span>
+<span id="cb17-7"><a href="estruturas-de-dados.html#cb17-7" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="estruturas-de-dados.html#cb17-8" tabindex="-1"></a><span class="co"># as.logical -&gt; Transforma em vetor de valores lógicos</span></span>
+<span id="cb17-9"><a href="estruturas-de-dados.html#cb17-9" tabindex="-1"></a>vec_num_logi <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb17-10"><a href="estruturas-de-dados.html#cb17-10" tabindex="-1"></a><span class="fu">str</span>(vec_num_logi)</span></code></pre></div>
+</div>
+<div id="exercícios-2" class="section level4 unnumbered hasAnchor">
+<h4>Exercícios<a href="estruturas-de-dados.html#exercícios-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Gere o seguinte vetor usando <code>rep()</code>: <code>5 5 5 5 5 10 10 10 10 10</code>.</p>
+<!-- **2.** Crie um vetor que contenha a sequência 1, 2, 3 repetindo cada número 4 vezes consecutivamente. -->
+<p><strong>2.</strong> Use rep() para gerar um vetor que repita c(“A”, “B”, “C”) até atingir o tamanho exato de 8 elementos.</p>
+<p><strong>3.</strong> Use seq() para gerar uma sequência de números de 1 a 20, pulando de 2 em 2.</p>
+<!-- **4.** Gere uma sequência de 10 a 0, com passo de -2. -->
+<p><strong>4.</strong> Crie uma sequência de 5 números entre 0 e 1, com espaçamento igual entre eles.</p>
+<p><strong>5.</strong> A partir do vetor <code>v &lt;- c(5, 10, 15, 20, 25, 30)</code>, extraia os elementos da posição 2 até a 5.</p>
+<p><strong>6.</strong> Dado <code>v &lt;- c(3, 7, 12, 18, 25)</code>, obtenha apenas os valores maiores que 10.</p>
+<p><strong>7.</strong> Dado <code>v &lt;- c(10, 20, 30, 40, 50)</code>, substitua os elementos das posições 2 e 4 por 999.</p>
+<p><strong>8.</strong> Dado <code>v &lt;- c(2, 4, 6, 8, 10)</code>, remova o número que está na posição 4.</p>
+<p><strong>9.</strong> Dado <code>v &lt;- c("1", "2", "3", "4")</code>, converta-o para numérico.</p>
+<p><strong>10.</strong> Dado <code>v &lt;- c(100, 200, 300)</code>, converta-o para caractere.</p>
+<p><strong>11.</strong> Leia os valores: <code>3.5 7.2 9.8 5.1 6.3</code>, usando a função <code>scan()</code>. Conte o número de elementos do vetor.</p>
+<p><strong>12.</strong> Leia os valores: <code>10;20;30;40;50</code>, usando a função <code>scan()</code>.</p>
+<p><strong>13.</strong> Leia os nomes: <code>Maria Isabel,Aurora,Teresa,Luis,Antonio</code>, usando a função <code>scan()</code>. Identifique a estrutura do vetor.</p>
+<!-- **5.** Combine seq() e rep() para gerar o seguinte vetor: `1 1 2 2 3 3 4 4 5 5` -->
+<!-- Desafio Extra: Usando seq() e rep(), crie um vetor  -->
+<!-- que contenha a sequência de anos de 2000 a 2024,  -->
+<!-- repetindo cada ano 3 vezes antes de passar para o próximo. -->
+<!-- ## Desafio Extra -->
+<!-- # ```{r} -->
+<!-- # # Anos de 2000 a 2024 repetindo cada ano 3 vezes -->
+<!-- # rep(seq(2000, 2024), each = 3) -->
+<!-- # ``` -->
+</div>
+<div id="protectedContent1" style="display:none;">
+<div id="respostas-3" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="estruturas-de-dados.html#respostas-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="estruturas-de-dados.html#cb18-1" tabindex="-1"></a><span class="co"># 1. </span></span>
+<span id="cb18-2"><a href="estruturas-de-dados.html#cb18-2" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">each =</span> <span class="dv">5</span>)</span>
+<span id="cb18-3"><a href="estruturas-de-dados.html#cb18-3" tabindex="-1"></a><span class="co"># 2. </span></span>
+<span id="cb18-4"><a href="estruturas-de-dados.html#cb18-4" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="at">length.out =</span> <span class="dv">8</span>)</span>
+<span id="cb18-5"><a href="estruturas-de-dados.html#cb18-5" tabindex="-1"></a><span class="co"># 3. </span></span>
+<span id="cb18-6"><a href="estruturas-de-dados.html#cb18-6" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb18-7"><a href="estruturas-de-dados.html#cb18-7" tabindex="-1"></a><span class="co"># 4. </span></span>
+<span id="cb18-8"><a href="estruturas-de-dados.html#cb18-8" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">5</span>)</span>
+<span id="cb18-9"><a href="estruturas-de-dados.html#cb18-9" tabindex="-1"></a><span class="co"># 5. </span></span>
+<span id="cb18-10"><a href="estruturas-de-dados.html#cb18-10" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</span>
+<span id="cb18-11"><a href="estruturas-de-dados.html#cb18-11" tabindex="-1"></a>v[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]  <span class="co"># Elementos da posição 2 até 5</span></span>
+<span id="cb18-12"><a href="estruturas-de-dados.html#cb18-12" tabindex="-1"></a><span class="co"># 6. </span></span>
+<span id="cb18-13"><a href="estruturas-de-dados.html#cb18-13" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">25</span>)</span>
+<span id="cb18-14"><a href="estruturas-de-dados.html#cb18-14" tabindex="-1"></a>v[v <span class="sc">&gt;</span> <span class="dv">10</span>]  <span class="co"># Retorna valores maiores que 10</span></span>
+<span id="cb18-15"><a href="estruturas-de-dados.html#cb18-15" tabindex="-1"></a><span class="co"># 7. </span></span>
+<span id="cb18-16"><a href="estruturas-de-dados.html#cb18-16" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb18-17"><a href="estruturas-de-dados.html#cb18-17" tabindex="-1"></a>v[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)] <span class="ot">&lt;-</span> <span class="dv">999</span>  <span class="co"># Modifica as posições 2 e 4</span></span>
+<span id="cb18-18"><a href="estruturas-de-dados.html#cb18-18" tabindex="-1"></a><span class="co"># 8. </span></span>
+<span id="cb18-19"><a href="estruturas-de-dados.html#cb18-19" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb18-20"><a href="estruturas-de-dados.html#cb18-20" tabindex="-1"></a>v <span class="ot">&lt;-</span> v[<span class="sc">-</span><span class="dv">4</span>]  <span class="co"># Remove o quarto elemento</span></span>
+<span id="cb18-21"><a href="estruturas-de-dados.html#cb18-21" tabindex="-1"></a>v</span>
+<span id="cb18-22"><a href="estruturas-de-dados.html#cb18-22" tabindex="-1"></a><span class="co"># 9. </span></span>
+<span id="cb18-23"><a href="estruturas-de-dados.html#cb18-23" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>)</span>
+<span id="cb18-24"><a href="estruturas-de-dados.html#cb18-24" tabindex="-1"></a>v_numeric <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(v)</span>
+<span id="cb18-25"><a href="estruturas-de-dados.html#cb18-25" tabindex="-1"></a>v_numeric</span>
+<span id="cb18-26"><a href="estruturas-de-dados.html#cb18-26" tabindex="-1"></a><span class="co"># 10. </span></span>
+<span id="cb18-27"><a href="estruturas-de-dados.html#cb18-27" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
+<span id="cb18-28"><a href="estruturas-de-dados.html#cb18-28" tabindex="-1"></a>v_char <span class="ot">&lt;-</span> <span class="fu">as.character</span>(v)</span>
+<span id="cb18-29"><a href="estruturas-de-dados.html#cb18-29" tabindex="-1"></a>v_char</span>
+<span id="cb18-30"><a href="estruturas-de-dados.html#cb18-30" tabindex="-1"></a><span class="co"># 11. </span></span>
+<span id="cb18-31"><a href="estruturas-de-dados.html#cb18-31" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">scan</span>()</span>
+<span id="cb18-32"><a href="estruturas-de-dados.html#cb18-32" tabindex="-1"></a><span class="co"># 12. </span></span>
+<span id="cb18-33"><a href="estruturas-de-dados.html#cb18-33" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb18-34"><a href="estruturas-de-dados.html#cb18-34" tabindex="-1"></a><span class="co"># 13.</span></span>
+<span id="cb18-35"><a href="estruturas-de-dados.html#cb18-35" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="at">what =</span> <span class="fu">character</span>(), <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput1" placeholder="Digite a senha">
+<button id="submitButton1">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton1").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput1").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent1").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+<p><br></p>
+<div id="operações-com-vetores" class="section level4 unnumbered hasAnchor">
+<h4>Operações com vetores<a href="estruturas-de-dados.html#operações-com-vetores" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>Operações Aritméticas (elemento a elemento)</strong></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="estruturas-de-dados.html#cb19-1" tabindex="-1"></a><span class="co"># Considere os valores:</span></span>
+<span id="cb19-2"><a href="estruturas-de-dados.html#cb19-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb19-3"><a href="estruturas-de-dados.html#cb19-3" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb19-4"><a href="estruturas-de-dados.html#cb19-4" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb19-5"><a href="estruturas-de-dados.html#cb19-5" tabindex="-1"></a><span class="do">## Soma</span></span>
+<span id="cb19-6"><a href="estruturas-de-dados.html#cb19-6" tabindex="-1"></a><span class="co"># Soma de vetores:</span></span>
+<span id="cb19-7"><a href="estruturas-de-dados.html#cb19-7" tabindex="-1"></a>v1<span class="sc">+</span>v2</span>
+<span id="cb19-8"><a href="estruturas-de-dados.html#cb19-8" tabindex="-1"></a><span class="co"># Soma de vetor com escalar:</span></span>
+<span id="cb19-9"><a href="estruturas-de-dados.html#cb19-9" tabindex="-1"></a>v1<span class="sc">+</span>a</span>
+<span id="cb19-10"><a href="estruturas-de-dados.html#cb19-10" tabindex="-1"></a><span class="do">## Subtração</span></span>
+<span id="cb19-11"><a href="estruturas-de-dados.html#cb19-11" tabindex="-1"></a><span class="co"># Subtração de vetores:</span></span>
+<span id="cb19-12"><a href="estruturas-de-dados.html#cb19-12" tabindex="-1"></a>v1<span class="sc">-</span>v2</span>
+<span id="cb19-13"><a href="estruturas-de-dados.html#cb19-13" tabindex="-1"></a><span class="co"># Subtração de vetor com escalar:</span></span>
+<span id="cb19-14"><a href="estruturas-de-dados.html#cb19-14" tabindex="-1"></a>v1<span class="sc">-</span>a</span>
+<span id="cb19-15"><a href="estruturas-de-dados.html#cb19-15" tabindex="-1"></a><span class="do">## Multiplicação</span></span>
+<span id="cb19-16"><a href="estruturas-de-dados.html#cb19-16" tabindex="-1"></a><span class="co"># Multiplicação de vetores</span></span>
+<span id="cb19-17"><a href="estruturas-de-dados.html#cb19-17" tabindex="-1"></a>v1<span class="sc">*</span>v2</span>
+<span id="cb19-18"><a href="estruturas-de-dados.html#cb19-18" tabindex="-1"></a><span class="co"># Multiplicação de vetor com escalar:</span></span>
+<span id="cb19-19"><a href="estruturas-de-dados.html#cb19-19" tabindex="-1"></a>v1<span class="sc">*</span>a</span>
+<span id="cb19-20"><a href="estruturas-de-dados.html#cb19-20" tabindex="-1"></a><span class="do">## Divisão</span></span>
+<span id="cb19-21"><a href="estruturas-de-dados.html#cb19-21" tabindex="-1"></a><span class="co"># Divisão de vetores</span></span>
+<span id="cb19-22"><a href="estruturas-de-dados.html#cb19-22" tabindex="-1"></a>v1<span class="sc">/</span>v2</span>
+<span id="cb19-23"><a href="estruturas-de-dados.html#cb19-23" tabindex="-1"></a><span class="co"># Resto da divisão</span></span>
+<span id="cb19-24"><a href="estruturas-de-dados.html#cb19-24" tabindex="-1"></a>v2<span class="sc">%%</span>v1</span>
+<span id="cb19-25"><a href="estruturas-de-dados.html#cb19-25" tabindex="-1"></a><span class="co"># Parte inteira da divisão</span></span>
+<span id="cb19-26"><a href="estruturas-de-dados.html#cb19-26" tabindex="-1"></a>v2<span class="sc">%/%</span>v1</span>
+<span id="cb19-27"><a href="estruturas-de-dados.html#cb19-27" tabindex="-1"></a><span class="co"># Divisão de vetor por escalar:</span></span>
+<span id="cb19-28"><a href="estruturas-de-dados.html#cb19-28" tabindex="-1"></a>v1<span class="sc">/</span>a</span>
+<span id="cb19-29"><a href="estruturas-de-dados.html#cb19-29" tabindex="-1"></a><span class="do">## Potenciação</span></span>
+<span id="cb19-30"><a href="estruturas-de-dados.html#cb19-30" tabindex="-1"></a><span class="co"># Potenciação de vetores</span></span>
+<span id="cb19-31"><a href="estruturas-de-dados.html#cb19-31" tabindex="-1"></a>v1<span class="sc">^</span>v2</span>
+<span id="cb19-32"><a href="estruturas-de-dados.html#cb19-32" tabindex="-1"></a><span class="co"># Potenciação de vetor por escalar:</span></span>
+<span id="cb19-33"><a href="estruturas-de-dados.html#cb19-33" tabindex="-1"></a>v1<span class="sc">^</span>a</span>
+<span id="cb19-34"><a href="estruturas-de-dados.html#cb19-34" tabindex="-1"></a><span class="do">## Produto Escalar</span></span>
+<span id="cb19-35"><a href="estruturas-de-dados.html#cb19-35" tabindex="-1"></a>v1<span class="sc">%*%</span>v2</span>
+<span id="cb19-36"><a href="estruturas-de-dados.html#cb19-36" tabindex="-1"></a><span class="co"># equivalente a:</span></span>
+<span id="cb19-37"><a href="estruturas-de-dados.html#cb19-37" tabindex="-1"></a><span class="fu">sum</span>(v1<span class="sc">*</span>v2)</span></code></pre></div>
+<p><strong>Reciclagem de Vetores</strong></p>
+<p>Quando os vetores têm tamanhos diferentes, o vetor menor é reciclado para igualar o comprimento do maior.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="estruturas-de-dados.html#cb20-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb20-2"><a href="estruturas-de-dados.html#cb20-2" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span>
+<span id="cb20-3"><a href="estruturas-de-dados.html#cb20-3" tabindex="-1"></a>v1 <span class="sc">+</span> v2  </span></code></pre></div>
+<pre><code>## [1] 11 22 13 24</code></pre>
+<p><strong>Operações Lógicas e de Comparação</strong></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="estruturas-de-dados.html#cb22-1" tabindex="-1"></a>v1 <span class="sc">&gt;</span> v2  </span>
+<span id="cb22-2"><a href="estruturas-de-dados.html#cb22-2" tabindex="-1"></a>v1 <span class="sc">&lt;</span> v2 </span>
+<span id="cb22-3"><a href="estruturas-de-dados.html#cb22-3" tabindex="-1"></a>v1 <span class="sc">==</span> v2 </span>
+<span id="cb22-4"><a href="estruturas-de-dados.html#cb22-4" tabindex="-1"></a>v1 <span class="sc">!=</span> v2  </span>
+<span id="cb22-5"><a href="estruturas-de-dados.html#cb22-5" tabindex="-1"></a><span class="co"># Considere os valores:</span></span>
+<span id="cb22-6"><a href="estruturas-de-dados.html#cb22-6" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb22-7"><a href="estruturas-de-dados.html#cb22-7" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb22-8"><a href="estruturas-de-dados.html#cb22-8" tabindex="-1"></a>x1 <span class="sc">&amp;</span> x2</span>
+<span id="cb22-9"><a href="estruturas-de-dados.html#cb22-9" tabindex="-1"></a>x1 <span class="sc">|</span> x1  </span>
+<span id="cb22-10"><a href="estruturas-de-dados.html#cb22-10" tabindex="-1"></a><span class="sc">!</span>x1      </span></code></pre></div>
+</div>
+<div id="exercícios-3" class="section level4 unnumbered hasAnchor">
+<h4>Exercícios<a href="estruturas-de-dados.html#exercícios-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Calcule o cubo dos números inteiros de 1 a 100, ou seja, <span class="math inline">\(1^3, 2^3, ..., 100^3\)</span>.</p>
+<p><strong>2.</strong> Sejam <code>v1 &lt;- c(3, 6, 9, 12)</code> e <code>v2 &lt;- c(2, 4, 6, 8)</code>.</p>
+<ul>
+<li>Calcule v1 + v2, v1 - v2, v1 * v2 e v1 / v2.</li>
+<li>Eleve cada elemento de v1 ao quadrado.</li>
+<li>Calcule a raiz quadrada de cada elemento de v2.</li>
+<li>Calcule o produto escalar entre os vetores.</li>
+</ul>
+<p><strong>3.</strong> Considere <code>v3 &lt;- c(10, 20, 30)</code> e <code>v4 &lt;- c(5, 15)</code>.</p>
+<ul>
+<li>Some v3 + v4. O que aconteceu?</li>
+<li>Multiplique v3 * v4. O que aconteceu?</li>
+<li>Explique o conceito de reciclagem de vetores com base no resultado.</li>
+</ul>
+<p><strong>4.</strong> Considere <code>v6 &lt;- c(10, 15, 20, 25)</code> e <code>v7 &lt;- c(12, 15, 18, 28)</code>.</p>
+<ul>
+<li>Compare v6 e v7 usando &gt;, &lt;, ==, !=.</li>
+<li>Quais valores de v6 são maiores que 15?</li>
+<li>Quais valores de v7 são menores ou iguais a 20?</li>
+</ul>
+</div>
+<div id="protectedContent2" style="display:none;">
+<div id="respostas-4" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="estruturas-de-dados.html#respostas-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="estruturas-de-dados.html#cb23-1" tabindex="-1"></a><span class="co"># 1. </span></span>
+<span id="cb23-2"><a href="estruturas-de-dados.html#cb23-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb23-3"><a href="estruturas-de-dados.html#cb23-3" tabindex="-1"></a>x<span class="sc">^</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>##   [1]       1       8      27      64     125     216     343     512     729
+##  [10]    1000    1331    1728    2197    2744    3375    4096    4913    5832
+##  [19]    6859    8000    9261   10648   12167   13824   15625   17576   19683
+##  [28]   21952   24389   27000   29791   32768   35937   39304   42875   46656
+##  [37]   50653   54872   59319   64000   68921   74088   79507   85184   91125
+##  [46]   97336  103823  110592  117649  125000  132651  140608  148877  157464
+##  [55]  166375  175616  185193  195112  205379  216000  226981  238328  250047
+##  [64]  262144  274625  287496  300763  314432  328509  343000  357911  373248
+##  [73]  389017  405224  421875  438976  456533  474552  493039  512000  531441
+##  [82]  551368  571787  592704  614125  636056  658503  681472  704969  729000
+##  [91]  753571  778688  804357  830584  857375  884736  912673  941192  970299
+## [100] 1000000</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="estruturas-de-dados.html#cb25-1" tabindex="-1"></a><span class="co"># 2. </span></span>
+<span id="cb25-2"><a href="estruturas-de-dados.html#cb25-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">12</span>)</span>
+<span id="cb25-3"><a href="estruturas-de-dados.html#cb25-3" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb25-4"><a href="estruturas-de-dados.html#cb25-4" tabindex="-1"></a>v1 <span class="sc">+</span> v2</span></code></pre></div>
+<pre><code>## [1]  5 10 15 20</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="estruturas-de-dados.html#cb27-1" tabindex="-1"></a>v1 <span class="sc">-</span> v2</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="estruturas-de-dados.html#cb29-1" tabindex="-1"></a>v1 <span class="sc">*</span> v2</span></code></pre></div>
+<pre><code>## [1]  6 24 54 96</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="estruturas-de-dados.html#cb31-1" tabindex="-1"></a>v1 <span class="sc">/</span> v2</span></code></pre></div>
+<pre><code>## [1] 1.5 1.5 1.5 1.5</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="estruturas-de-dados.html#cb33-1" tabindex="-1"></a>v1<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1]   9  36  81 144</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="estruturas-de-dados.html#cb35-1" tabindex="-1"></a><span class="fu">sqrt</span>(v2)</span></code></pre></div>
+<pre><code>## [1] 1.414214 2.000000 2.449490 2.828427</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="estruturas-de-dados.html#cb37-1" tabindex="-1"></a>v1<span class="sc">%*%</span>v2</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]  180</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="estruturas-de-dados.html#cb39-1" tabindex="-1"></a><span class="co"># 3. </span></span>
+<span id="cb39-2"><a href="estruturas-de-dados.html#cb39-2" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>) </span>
+<span id="cb39-3"><a href="estruturas-de-dados.html#cb39-3" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">15</span>)</span>
+<span id="cb39-4"><a href="estruturas-de-dados.html#cb39-4" tabindex="-1"></a>v3<span class="sc">+</span>v4</span></code></pre></div>
+<pre><code>## Warning in v3 + v4: longer object length is not a multiple of shorter object
+## length</code></pre>
+<pre><code>## [1] 15 35 35</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="estruturas-de-dados.html#cb42-1" tabindex="-1"></a>v3<span class="sc">*</span>v4</span></code></pre></div>
+<pre><code>## Warning in v3 * v4: longer object length is not a multiple of shorter object
+## length</code></pre>
+<pre><code>## [1]  50 300 150</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="estruturas-de-dados.html#cb45-1" tabindex="-1"></a><span class="co"># 4. </span></span>
+<span id="cb45-2"><a href="estruturas-de-dados.html#cb45-2" tabindex="-1"></a>v6 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>) </span>
+<span id="cb45-3"><a href="estruturas-de-dados.html#cb45-3" tabindex="-1"></a>v7 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">28</span>)</span>
+<span id="cb45-4"><a href="estruturas-de-dados.html#cb45-4" tabindex="-1"></a>v6<span class="sc">&gt;</span>v7</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="estruturas-de-dados.html#cb47-1" tabindex="-1"></a>v6<span class="sc">&lt;</span>v7</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="estruturas-de-dados.html#cb49-1" tabindex="-1"></a>v6<span class="sc">==</span>v7</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="estruturas-de-dados.html#cb51-1" tabindex="-1"></a>v6<span class="sc">!=</span>v7</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="estruturas-de-dados.html#cb53-1" tabindex="-1"></a>v6[v6<span class="sc">&gt;</span><span class="dv">15</span>]</span></code></pre></div>
+<pre><code>## [1] 20 25</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="estruturas-de-dados.html#cb55-1" tabindex="-1"></a>v7[v7 <span class="sc">&lt;=</span> <span class="dv">20</span>]</span></code></pre></div>
+<pre><code>## [1] 12 15 18</code></pre>
+</div>
+</div>
+<p><input type="password" id="passwordInput2" placeholder="Digite a senha">
+<button id="submitButton2">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton2").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput2").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent2").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+<p><br></p>
+<div id="funções-úteis-para-vetores" class="section level4 unnumbered hasAnchor">
+<h4>Funções úteis para vetores<a href="estruturas-de-dados.html#funções-úteis-para-vetores" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong><code>sum()</code> - Soma dos elementos do vetor</strong></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="estruturas-de-dados.html#cb57-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">15</span>)</span>
+<span id="cb57-2"><a href="estruturas-de-dados.html#cb57-2" tabindex="-1"></a><span class="fu">sum</span>(x)  </span></code></pre></div>
+<p><strong><code>length()</code> - Tamanho do vetor</strong></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="estruturas-de-dados.html#cb58-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb58-2"><a href="estruturas-de-dados.html#cb58-2" tabindex="-1"></a><span class="fu">length</span>(x)  </span></code></pre></div>
+<p><strong><code>sort()</code> - Ordenar um vetor</strong></p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="estruturas-de-dados.html#cb59-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb59-2"><a href="estruturas-de-dados.html#cb59-2" tabindex="-1"></a><span class="fu">sort</span>(x)  <span class="co"># Ordenação crescente</span></span>
+<span id="cb59-3"><a href="estruturas-de-dados.html#cb59-3" tabindex="-1"></a><span class="fu">sort</span>(x, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)  <span class="co"># Ordenação decrescente</span></span></code></pre></div>
+<p><strong><code>which()</code> - Índices que satisfazem uma condição</strong></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="estruturas-de-dados.html#cb60-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb60-2"><a href="estruturas-de-dados.html#cb60-2" tabindex="-1"></a><span class="fu">which</span>(x <span class="sc">&gt;</span> <span class="dv">25</span>)  <span class="co"># Retorna os índices dos elementos maiores que 25</span></span></code></pre></div>
+<p><strong><code>unique()</code> - Elementos únicos</strong></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="estruturas-de-dados.html#cb61-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb61-2"><a href="estruturas-de-dados.html#cb61-2" tabindex="-1"></a><span class="fu">unique</span>(x)  <span class="co"># Retorna os valores únicos</span></span></code></pre></div>
+<p><strong><code>table()</code> - Frequência dos elementos</strong></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="estruturas-de-dados.html#cb62-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>)</span>
+<span id="cb62-2"><a href="estruturas-de-dados.html#cb62-2" tabindex="-1"></a><span class="fu">table</span>(x)  <span class="co"># Conta quantas vezes cada letra aparece</span></span></code></pre></div>
+<p><strong><code>%in%</code> - Operador de Pertinência</strong></p>
+<p>Verifica se os elementos de um vetor estão presentes em outro.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="estruturas-de-dados.html#cb63-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb63-2"><a href="estruturas-de-dados.html#cb63-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb63-3"><a href="estruturas-de-dados.html#cb63-3" tabindex="-1"></a>x <span class="sc">%in%</span> y  <span class="co"># Verifica quais elementos de x estão em y</span></span>
+<span id="cb63-4"><a href="estruturas-de-dados.html#cb63-4" tabindex="-1"></a><span class="co"># Terá o tamanho de x</span></span>
+<span id="cb63-5"><a href="estruturas-de-dados.html#cb63-5" tabindex="-1"></a><span class="co"># Se quisermos filtrar os valores de x que estão em y:</span></span>
+<span id="cb63-6"><a href="estruturas-de-dados.html#cb63-6" tabindex="-1"></a>x[x <span class="sc">%in%</span> y]  <span class="co"># Retorna apenas os elementos de x que também estão em y</span></span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-12">Table 2.1: </span>Resumo das Funções para Vetores no R</caption>
+<colgroup>
+<col width="8%" />
+<col width="50%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Funcao</th>
+<th align="center">Descricao</th>
+<th align="center">Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">sum()</td>
+<td align="center">Soma dos elementos do vetor</td>
+<td align="center">sum(c(1, 4, 2)) → 7</td>
+</tr>
+<tr class="even">
+<td align="center">length()</td>
+<td align="center">Número de elementos do vetor</td>
+<td align="center">length(c(1, 2, 3)) → 3</td>
+</tr>
+<tr class="odd">
+<td align="center">sort()</td>
+<td align="center">Ordena os elementos do vetor</td>
+<td align="center">sort(c(5, 1, 3)) → 1 3 5</td>
+</tr>
+<tr class="even">
+<td align="center">which()</td>
+<td align="center">Indices dos elementos que atendem a uma condição</td>
+<td align="center">which(c(2, 5, 8) &gt; 4) → 2 3</td>
+</tr>
+<tr class="odd">
+<td align="center">unique()</td>
+<td align="center">Valores únicos de um vetor</td>
+<td align="center">unique(c(1, 1, 2, 3, 3)) → 1 2 3</td>
+</tr>
+<tr class="even">
+<td align="center">table()</td>
+<td align="center">Frequência de cada elemento do vetor</td>
+<td align="center">table(c(‘A’, ‘B’, ‘A’)) → A:2 B:1</td>
+</tr>
+<tr class="odd">
+<td align="center">%in%</td>
+<td align="center">Verifica se os elementos de um vetor pertencem a outro</td>
+<td align="center">c(2, 3, 4) %in% c(3, 4, 5) → FALSE TRUE TRUE</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</div>
+<div id="valores-perdidos-e-especiais" class="section level4 unnumbered hasAnchor">
+<h4>Valores perdidos e especiais<a href="estruturas-de-dados.html#valores-perdidos-e-especiais" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Valores perdidos devem ser definidos como <code>NA</code> (not available):</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="estruturas-de-dados.html#cb64-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">2</span>)</span>
+<span id="cb64-2"><a href="estruturas-de-dados.html#cb64-2" tabindex="-1"></a>x</span></code></pre></div>
+<p>Outros valores especiais são <code>NaN</code> (not a number),<code>-Inf</code> (menos infinito) e <code>Inf</code> (mais infinito):</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="estruturas-de-dados.html#cb65-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">/</span><span class="dv">0</span></span>
+<span id="cb65-2"><a href="estruturas-de-dados.html#cb65-2" tabindex="-1"></a><span class="fu">print</span>(y)</span>
+<span id="cb65-3"><a href="estruturas-de-dados.html#cb65-3" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">0</span></span>
+<span id="cb65-4"><a href="estruturas-de-dados.html#cb65-4" tabindex="-1"></a><span class="fu">print</span>(z)</span></code></pre></div>
+<p>Podemos testar a presença de valores especiais:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="estruturas-de-dados.html#cb66-1" tabindex="-1"></a><span class="co"># Testando presença de NA ou NaN:</span></span>
+<span id="cb66-2"><a href="estruturas-de-dados.html#cb66-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">2</span>)</span>
+<span id="cb66-3"><a href="estruturas-de-dados.html#cb66-3" tabindex="-1"></a><span class="fu">is.na</span>(x)</span>
+<span id="cb66-4"><a href="estruturas-de-dados.html#cb66-4" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb66-5"><a href="estruturas-de-dados.html#cb66-5" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(x))</span>
+<span id="cb66-6"><a href="estruturas-de-dados.html#cb66-6" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="estruturas-de-dados.html#cb66-7" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">/</span><span class="dv">0</span></span>
+<span id="cb66-8"><a href="estruturas-de-dados.html#cb66-8" tabindex="-1"></a><span class="fu">is.na</span>(y)</span>
+<span id="cb66-9"><a href="estruturas-de-dados.html#cb66-9" tabindex="-1"></a></span>
+<span id="cb66-10"><a href="estruturas-de-dados.html#cb66-10" tabindex="-1"></a><span class="co"># Testando presença de -Inf ou Inf:</span></span>
+<span id="cb66-11"><a href="estruturas-de-dados.html#cb66-11" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">0</span></span>
+<span id="cb66-12"><a href="estruturas-de-dados.html#cb66-12" tabindex="-1"></a><span class="fu">is.infinite</span>(z)</span></code></pre></div>
+</div>
+</div>
+<div id="fatores" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Fatores<a href="estruturas-de-dados.html#fatores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Os fatores no R são similares aos vetores de caracteres. No entanto, o fator contém categorias (niveis), armazenando valores que pertencem a estes níveis. Para criar fatores, usa-se a função <code>factor()</code>.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="estruturas-de-dados.html#cb67-1" tabindex="-1"></a><span class="co"># Vetor de caracteres</span></span>
+<span id="cb67-2"><a href="estruturas-de-dados.html#cb67-2" tabindex="-1"></a>cores_char <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;azul&quot;</span>, <span class="st">&quot;vermelho&quot;</span>, <span class="st">&quot;verde&quot;</span>, <span class="st">&quot;azul&quot;</span>)</span>
+<span id="cb67-3"><a href="estruturas-de-dados.html#cb67-3" tabindex="-1"></a><span class="fu">print</span>(cores_char) <span class="co"># O vetor de caracteres apenas contém texto.</span></span></code></pre></div>
+<pre><code>## [1] &quot;azul&quot;     &quot;vermelho&quot; &quot;verde&quot;    &quot;azul&quot;</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="estruturas-de-dados.html#cb69-1" tabindex="-1"></a><span class="co"># Fator</span></span>
+<span id="cb69-2"><a href="estruturas-de-dados.html#cb69-2" tabindex="-1"></a>cores_fac <span class="ot">&lt;-</span> <span class="fu">factor</span>(cores_char)</span>
+<span id="cb69-3"><a href="estruturas-de-dados.html#cb69-3" tabindex="-1"></a><span class="fu">print</span>(cores_fac) <span class="co"># O fator atribui níveis aos valores.</span></span></code></pre></div>
+<pre><code>## [1] azul     vermelho verde    azul    
+## Levels: azul verde vermelho</code></pre>
+<p>Conversão de fator e vetor de caracteres:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="estruturas-de-dados.html#cb71-1" tabindex="-1"></a><span class="co"># Conversão de fator para vetor de caracteres </span></span>
+<span id="cb71-2"><a href="estruturas-de-dados.html#cb71-2" tabindex="-1"></a><span class="fu">as.character</span>(cores_fac)</span></code></pre></div>
+<pre><code>## [1] &quot;azul&quot;     &quot;vermelho&quot; &quot;verde&quot;    &quot;azul&quot;</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="estruturas-de-dados.html#cb73-1" tabindex="-1"></a><span class="co"># Conversão de vetor de caracteres para fator </span></span>
+<span id="cb73-2"><a href="estruturas-de-dados.html#cb73-2" tabindex="-1"></a><span class="fu">factor</span>(cores_char)</span></code></pre></div>
+<pre><code>## [1] azul     vermelho verde    azul    
+## Levels: azul verde vermelho</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="estruturas-de-dados.html#cb75-1" tabindex="-1"></a><span class="co"># ou usando as.factor():</span></span>
+<span id="cb75-2"><a href="estruturas-de-dados.html#cb75-2" tabindex="-1"></a><span class="fu">as.factor</span>(cores_char)</span></code></pre></div>
+<pre><code>## [1] azul     vermelho verde    azul    
+## Levels: azul verde vermelho</code></pre>
+<div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
+<details open>
+<summary>
+<strong> 📌 Quando Usar Cada Um? </strong>
+</summary>
+<p>✔ <em>Caracteres (character)</em>: se os dados forem simplesmente rótulos sem necessidade de categorias ordenadas ou níveis fixos.</p>
+<p>✔ <em>Fatores (factor)</em>: se os dados representam categorias que serão usadas em análises estatísticas ou visualizações gráficas.</p>
+</div>
+</p>
+</details>
+<p>A ordem dos níveis dos fatores pode também ser modificada através do argumento <code>levels</code>:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="estruturas-de-dados.html#cb77-1" tabindex="-1"></a>cores_levels <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;azul&quot;</span>, <span class="st">&quot;vermelho&quot;</span>, <span class="st">&quot;verde&quot;</span>, <span class="st">&quot;azul&quot;</span>),</span>
+<span id="cb77-2"><a href="estruturas-de-dados.html#cb77-2" tabindex="-1"></a>                <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;verde&quot;</span>,<span class="st">&quot;azul&quot;</span>,<span class="st">&quot;vermelho&quot;</span>))</span>
+<span id="cb77-3"><a href="estruturas-de-dados.html#cb77-3" tabindex="-1"></a>cores_levels</span></code></pre></div>
+<pre><code>## [1] azul     vermelho verde    azul    
+## Levels: verde azul vermelho</code></pre>
+<p>Além disso, os níveis dos fatores podem também ser explicitamente definidos como <em>ordenados</em>, com o argumento <code>ordered = TRUE</code>:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="estruturas-de-dados.html#cb79-1" tabindex="-1"></a>satisfacao <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;Ruim&quot;</span>, <span class="st">&quot;Bom&quot;</span>, <span class="st">&quot;Excelente&quot;</span>, <span class="st">&quot;Bom&quot;</span>, <span class="st">&quot;Ruim&quot;</span>),</span>
+<span id="cb79-2"><a href="estruturas-de-dados.html#cb79-2" tabindex="-1"></a>              <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Ruim&quot;</span>, <span class="st">&quot;Bom&quot;</span>, <span class="st">&quot;Excelente&quot;</span>), </span>
+<span id="cb79-3"><a href="estruturas-de-dados.html#cb79-3" tabindex="-1"></a>              <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb79-4"><a href="estruturas-de-dados.html#cb79-4" tabindex="-1"></a>satisfacao</span></code></pre></div>
+<pre><code>## [1] Ruim      Bom       Excelente Bom       Ruim     
+## Levels: Ruim &lt; Bom &lt; Excelente</code></pre>
+<div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
+<details open>
+<summary>
+<strong> Comparação entre ordered = TRUE e ordered = FALSE </strong>
+</summary>
+<ul>
+<li><code>ordered = TRUE</code>: implica que o R respeita a ordem entre os níveis, permitindo comparações e análises baseadas nessa ordem (variáveis ordinais).</li>
+<li><code>ordered = FALSE</code>: significa que os níveis são apenas categorias e não são comparáveis em termos de hierarquia ou ordem (variáveis nominais).</li>
+</ul>
+</div>
+</p>
+</details>
+<p>Outras funções úteis para fatores:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="estruturas-de-dados.html#cb81-1" tabindex="-1"></a><span class="co"># Níveis do fator</span></span>
+<span id="cb81-2"><a href="estruturas-de-dados.html#cb81-2" tabindex="-1"></a><span class="fu">levels</span>(cores_levels)</span>
+<span id="cb81-3"><a href="estruturas-de-dados.html#cb81-3" tabindex="-1"></a><span class="co"># Número de níveis do fator</span></span>
+<span id="cb81-4"><a href="estruturas-de-dados.html#cb81-4" tabindex="-1"></a><span class="fu">nlevels</span>(cores_levels)</span></code></pre></div>
+<div id="exercícios-4" class="section level4 unnumbered hasAnchor">
+<h4>Exercícios<a href="estruturas-de-dados.html#exercícios-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Dado o vetor:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="estruturas-de-dados.html#cb82-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span></code></pre></div>
+<p>Use funções do R para:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Contar o número total de elementos do vetor.</li>
+<li>Encontrar os elementos únicos do vetor.</li>
+<li>Ordenar os valores do vetor em ordem decrescente.</li>
+</ol>
+<p><strong>2.</strong> Dado o vetor de fatores:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="estruturas-de-dados.html#cb83-1" tabindex="-1"></a>fatores <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>))</span></code></pre></div>
+<p>Use funções do R para:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Contar quantas vezes cada nível aparece.</li>
+<li>Listar os níveis únicos do fator.</li>
+</ol>
+<p><strong>3.</strong> Dados os vetores:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="estruturas-de-dados.html#cb84-1" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>)</span>
+<span id="cb84-2"><a href="estruturas-de-dados.html#cb84-2" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>Verifique quais elementos de v2 estão presentes em v3 usando <code>%in%</code>.</li>
+<li>Use a função <code>which()</code> para encontrar as posições dos valores de v2 que estão presentes em v3.</li>
+</ol>
+<p><strong>4.</strong> Dado o vetor: <code>v4 &lt;- c(10, NA, 30, 50, NA, NaN, 20)</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calcule a soma de todos os elementos, ignorando os valores ausentes (NA e NaN).</p></li>
+<li><p>Calcule o número de elementos não ausentes no vetor.</p></li>
+<li><p>Ordene o vetor em ordem crescente, colocando os valores ausentes por último.</p></li>
+<li><p>Use a função <code>which()</code> para encontrar a posição dos valores ausentes no vetor.</p></li>
+</ol>
+<p><strong>5.</strong> Dado o vetor de fatores:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="estruturas-de-dados.html#cb85-1" tabindex="-1"></a>categorias <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>))</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>Use <code>table()</code> para contar as frequências de cada nível.</li>
+<li>Altere o nível “B” para “X” e recalcule as frequências.</li>
+<li>Ordene os niveis em ordem alfabética usando <code>sort()</code> e recalcule as frequências.</li>
+</ol>
+</div>
+<div id="protectedContent3" style="display:none;">
+<div id="respostas-5" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="estruturas-de-dados.html#respostas-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="estruturas-de-dados.html#cb86-1" tabindex="-1"></a><span class="co"># 1. </span></span>
+<span id="cb86-2"><a href="estruturas-de-dados.html#cb86-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb86-3"><a href="estruturas-de-dados.html#cb86-3" tabindex="-1"></a><span class="fu">length</span>(v1)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="estruturas-de-dados.html#cb88-1" tabindex="-1"></a><span class="fu">unique</span>(v1)</span></code></pre></div>
+<pre><code>## [1]  2  4  6  8 10</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="estruturas-de-dados.html#cb90-1" tabindex="-1"></a><span class="fu">sort</span>(v1, <span class="at">decreasing =</span> T)</span></code></pre></div>
+<pre><code>##  [1] 10  8  6  6  6  4  4  2  2  2</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="estruturas-de-dados.html#cb92-1" tabindex="-1"></a><span class="co"># 2. </span></span>
+<span id="cb92-2"><a href="estruturas-de-dados.html#cb92-2" tabindex="-1"></a>fatores <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>))</span>
+<span id="cb92-3"><a href="estruturas-de-dados.html#cb92-3" tabindex="-1"></a><span class="fu">table</span>(fatores)</span></code></pre></div>
+<pre><code>## fatores
+## A B C 
+## 4 3 3</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="estruturas-de-dados.html#cb94-1" tabindex="-1"></a><span class="fu">unique</span>(fatores) <span class="co">#ou</span></span></code></pre></div>
+<pre><code>## [1] A B C
+## Levels: A B C</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="estruturas-de-dados.html#cb96-1" tabindex="-1"></a><span class="fu">levels</span>(fatores)</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="estruturas-de-dados.html#cb98-1" tabindex="-1"></a><span class="co"># 3. </span></span>
+<span id="cb98-2"><a href="estruturas-de-dados.html#cb98-2" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>)</span>
+<span id="cb98-3"><a href="estruturas-de-dados.html#cb98-3" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
+<span id="cb98-4"><a href="estruturas-de-dados.html#cb98-4" tabindex="-1"></a><span class="co"># Verificando presença de elementos</span></span>
+<span id="cb98-5"><a href="estruturas-de-dados.html#cb98-5" tabindex="-1"></a>v2 <span class="sc">%in%</span> v3  <span class="co"># -&gt; elementos 10 e 20</span></span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="estruturas-de-dados.html#cb100-1" tabindex="-1"></a><span class="co"># Posições dos valores de v2 que estão em v3</span></span>
+<span id="cb100-2"><a href="estruturas-de-dados.html#cb100-2" tabindex="-1"></a><span class="fu">which</span>(v2 <span class="sc">%in%</span> v3) <span class="co"># -&gt; posições 2 e 4</span></span></code></pre></div>
+<pre><code>## [1] 2 4</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="estruturas-de-dados.html#cb102-1" tabindex="-1"></a><span class="co"># 4. </span></span>
+<span id="cb102-2"><a href="estruturas-de-dados.html#cb102-2" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="cn">NA</span>, <span class="dv">30</span>, <span class="dv">50</span>, <span class="cn">NA</span>, <span class="cn">NaN</span>, <span class="dv">20</span>)</span>
+<span id="cb102-3"><a href="estruturas-de-dados.html#cb102-3" tabindex="-1"></a><span class="fu">sum</span>(v4, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  </span></code></pre></div>
+<pre><code>## [1] 110</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="estruturas-de-dados.html#cb104-1" tabindex="-1"></a><span class="fu">length</span>(v4[<span class="sc">!</span><span class="fu">is.na</span>(v4)])  </span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="estruturas-de-dados.html#cb106-1" tabindex="-1"></a><span class="fu">sort</span>(v4, <span class="at">na.last =</span> <span class="cn">TRUE</span>)  </span></code></pre></div>
+<pre><code>## [1]  10  20  30  50  NA  NA NaN</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="estruturas-de-dados.html#cb108-1" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(v4))</span></code></pre></div>
+<pre><code>## [1] 2 5 6</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="estruturas-de-dados.html#cb110-1" tabindex="-1"></a><span class="co"># 5. </span></span>
+<span id="cb110-2"><a href="estruturas-de-dados.html#cb110-2" tabindex="-1"></a>categorias <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>))</span>
+<span id="cb110-3"><a href="estruturas-de-dados.html#cb110-3" tabindex="-1"></a><span class="fu">table</span>(categorias)</span></code></pre></div>
+<pre><code>## categorias
+## A B C 
+## 5 3 2</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="estruturas-de-dados.html#cb112-1" tabindex="-1"></a><span class="fu">levels</span>(categorias)[<span class="fu">levels</span>(categorias) <span class="sc">==</span> <span class="st">&quot;B&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;X&quot;</span>; <span class="fu">table</span>(categorias)</span></code></pre></div>
+<pre><code>## categorias
+## A X C 
+## 5 3 2</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="estruturas-de-dados.html#cb114-1" tabindex="-1"></a>categ_ord <span class="ot">&lt;-</span> <span class="fu">factor</span>(categorias, <span class="at">levels =</span> <span class="fu">sort</span>(<span class="fu">levels</span>(categorias))); <span class="fu">table</span>(categ_ord)</span></code></pre></div>
+<pre><code>## categ_ord
+## A C X 
+## 5 2 3</code></pre>
+</div>
+</div>
+<p><input type="password" id="passwordInput3" placeholder="Digite a senha">
+<button id="submitButton3">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton3").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput3").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent3").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+</div>
+<div id="matrizes" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Matrizes<a href="estruturas-de-dados.html#matrizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Matrizes são estruturas bidimensionais de dados, onde todos os elementos devem ser do mesmo tipo. Uma matriz pode ser definida como:
+<span class="math display">\[
+M = \begin{bmatrix}
+m_{11} &amp; m_{12} &amp; \dots &amp; m_{1n} \\
+m_{21} &amp; m_{22} &amp; \dots &amp; m_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+m_{m1} &amp; m_{m2} &amp; \dots &amp; m_{mn}
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>onde <span class="math inline">\(m\)</span> é o número de linhas e <span class="math inline">\(n\)</span> é o número de colunas da matriz. Neste caso, diz-se que a matriz tem dimensão <span class="math inline">\(m\times n\)</span>.</li>
+<li><span class="math inline">\(m_{ij}\)</span> representa o elemento na linha <span class="math inline">\(i\)</span> e coluna <span class="math inline">\(j\)</span>.</li>
+</ul>
+<p>Em <strong>programação</strong>, matrizes são usadas para armazenar dados de forma estruturada e realizar operações como multiplicação e transposição de maneira eficiente.</p>
+<p>No <strong>R</strong>, matrizes podem ser criadas com a função <code>matrix()</code> e podem ser manipuladas com operações matemáticas vetorizadas.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="estruturas-de-dados.html#cb116-1" tabindex="-1"></a><span class="co"># Exemplo de matriz 2x3 </span></span>
+<span id="cb116-2"><a href="estruturas-de-dados.html#cb116-2" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb116-3"><a href="estruturas-de-dados.html#cb116-3" tabindex="-1"></a>matriz</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="estruturas-de-dados.html#cb118-1" tabindex="-1"></a><span class="co"># Alterando o preenchimento da matriz por linhas:</span></span>
+<span id="cb118-2"><a href="estruturas-de-dados.html#cb118-2" tabindex="-1"></a>matriz_linhas <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> T)</span>
+<span id="cb118-3"><a href="estruturas-de-dados.html#cb118-3" tabindex="-1"></a>matriz_linhas</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6</code></pre>
+<p>Para verificar a dimensão da matriz:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="estruturas-de-dados.html#cb120-1" tabindex="-1"></a><span class="fu">dim</span>(matriz)</span></code></pre></div>
+<pre><code>## [1] 2 3</code></pre>
+<p>Adicionando colunas com <code>cbind()</code>:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="estruturas-de-dados.html#cb122-1" tabindex="-1"></a>matriz_mais_colunas <span class="ot">&lt;-</span> <span class="fu">cbind</span>(matriz, <span class="fu">rep</span>(<span class="dv">99</span>, <span class="dv">2</span>))</span></code></pre></div>
+<p>Adicionando linhas com <code>rbind()</code>:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="estruturas-de-dados.html#cb123-1" tabindex="-1"></a>matriz_mais_linhas <span class="ot">&lt;-</span> <span class="fu">rbind</span>(matriz, <span class="fu">rep</span>(<span class="dv">99</span>, <span class="dv">3</span>))</span></code></pre></div>
+<p>Renomeando linhas e colunas de uma matriz:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="estruturas-de-dados.html#cb124-1" tabindex="-1"></a><span class="fu">colnames</span>(matriz) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;c3&quot;</span>)</span>
+<span id="cb124-2"><a href="estruturas-de-dados.html#cb124-2" tabindex="-1"></a><span class="fu">rownames</span>(matriz) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;l1&quot;</span>,<span class="st">&quot;l2&quot;</span>)</span>
+<span id="cb124-3"><a href="estruturas-de-dados.html#cb124-3" tabindex="-1"></a>matriz</span></code></pre></div>
+<pre><code>##    c1 c2 c3
+## l1  1  3  5
+## l2  2  4  6</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="estruturas-de-dados.html#cb126-1" tabindex="-1"></a><span class="co"># ou podemos fazer:</span></span>
+<span id="cb126-2"><a href="estruturas-de-dados.html#cb126-2" tabindex="-1"></a>matriz2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, </span>
+<span id="cb126-3"><a href="estruturas-de-dados.html#cb126-3" tabindex="-1"></a>               <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>),</span>
+<span id="cb126-4"><a href="estruturas-de-dados.html#cb126-4" tabindex="-1"></a>                               <span class="fu">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>, <span class="st">&quot;c3&quot;</span>)))</span>
+<span id="cb126-5"><a href="estruturas-de-dados.html#cb126-5" tabindex="-1"></a>matriz2</span></code></pre></div>
+<pre><code>##    c1 c2 c3
+## l1  1  3  5
+## l2  2  4  6</code></pre>
+<p>Acessando Elementos de Matrizes</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="estruturas-de-dados.html#cb128-1" tabindex="-1"></a><span class="co"># Criando uma matriz 3x3</span></span>
+<span id="cb128-2"><a href="estruturas-de-dados.html#cb128-2" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb128-3"><a href="estruturas-de-dados.html#cb128-3" tabindex="-1"></a>matriz</span>
+<span id="cb128-4"><a href="estruturas-de-dados.html#cb128-4" tabindex="-1"></a><span class="co"># Para acessar o elemento da linha 2, coluna 3:</span></span>
+<span id="cb128-5"><a href="estruturas-de-dados.html#cb128-5" tabindex="-1"></a>matriz[<span class="dv">2</span>, <span class="dv">3</span>]  </span>
+<span id="cb128-6"><a href="estruturas-de-dados.html#cb128-6" tabindex="-1"></a><span class="co"># Acessando a segunda linha</span></span>
+<span id="cb128-7"><a href="estruturas-de-dados.html#cb128-7" tabindex="-1"></a>matriz[<span class="dv">2</span>, ]  </span>
+<span id="cb128-8"><a href="estruturas-de-dados.html#cb128-8" tabindex="-1"></a><span class="co"># Acessando a terceira coluna</span></span>
+<span id="cb128-9"><a href="estruturas-de-dados.html#cb128-9" tabindex="-1"></a>matriz[, <span class="dv">3</span>]  </span>
+<span id="cb128-10"><a href="estruturas-de-dados.html#cb128-10" tabindex="-1"></a><span class="co"># Se a matriz tiver nomes nas linhas ou colunas:</span></span>
+<span id="cb128-11"><a href="estruturas-de-dados.html#cb128-11" tabindex="-1"></a><span class="fu">colnames</span>(matriz) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;c3&quot;</span>)</span>
+<span id="cb128-12"><a href="estruturas-de-dados.html#cb128-12" tabindex="-1"></a><span class="fu">rownames</span>(matriz) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;l1&quot;</span>,<span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l3&quot;</span>)</span>
+<span id="cb128-13"><a href="estruturas-de-dados.html#cb128-13" tabindex="-1"></a>matriz[<span class="st">&quot;l1&quot;</span>,] <span class="co"># -&gt; linha 1</span></span>
+<span id="cb128-14"><a href="estruturas-de-dados.html#cb128-14" tabindex="-1"></a>matriz[,<span class="st">&quot;c1&quot;</span>] <span class="co"># -&gt; coluna 1</span></span></code></pre></div>
+<p>Também podemos modificar valores diretamente:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="estruturas-de-dados.html#cb129-1" tabindex="-1"></a>matriz[<span class="dv">1</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">10</span>  <span class="co"># Muda o valor da posição (1,2) para 10</span></span>
+<span id="cb129-2"><a href="estruturas-de-dados.html#cb129-2" tabindex="-1"></a><span class="fu">print</span>(matriz)</span></code></pre></div>
+<pre><code>##    c1 c2 c3
+## l1  1 10  5
+## l2  2  4  6</code></pre>
+<p><strong>Operações Básicas com Matrizes:</strong></p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="estruturas-de-dados.html#cb131-1" tabindex="-1"></a><span class="do">## Soma de matrizes</span></span>
+<span id="cb131-2"><a href="estruturas-de-dados.html#cb131-2" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb131-3"><a href="estruturas-de-dados.html#cb131-3" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb131-4"><a href="estruturas-de-dados.html#cb131-4" tabindex="-1"></a><span class="fu">nrow</span>(A) <span class="co"># Número de linhas</span></span>
+<span id="cb131-5"><a href="estruturas-de-dados.html#cb131-5" tabindex="-1"></a><span class="fu">ncol</span>(A) <span class="co"># Número de colunas</span></span>
+<span id="cb131-6"><a href="estruturas-de-dados.html#cb131-6" tabindex="-1"></a><span class="fu">dim</span>(A) <span class="co"># dimensão da matriz: número de linhas e número de colunas</span></span>
+<span id="cb131-7"><a href="estruturas-de-dados.html#cb131-7" tabindex="-1"></a></span>
+<span id="cb131-8"><a href="estruturas-de-dados.html#cb131-8" tabindex="-1"></a>A <span class="sc">+</span> B  <span class="co"># Soma elemento a elemento</span></span>
+<span id="cb131-9"><a href="estruturas-de-dados.html#cb131-9" tabindex="-1"></a></span>
+<span id="cb131-10"><a href="estruturas-de-dados.html#cb131-10" tabindex="-1"></a><span class="do">## Multiplicação elemento a elemento</span></span>
+<span id="cb131-11"><a href="estruturas-de-dados.html#cb131-11" tabindex="-1"></a>A <span class="sc">*</span> B  </span>
+<span id="cb131-12"><a href="estruturas-de-dados.html#cb131-12" tabindex="-1"></a></span>
+<span id="cb131-13"><a href="estruturas-de-dados.html#cb131-13" tabindex="-1"></a><span class="do">## Multiplicação de matrizes (produto matricial)</span></span>
+<span id="cb131-14"><a href="estruturas-de-dados.html#cb131-14" tabindex="-1"></a>A <span class="sc">%*%</span> B  </span>
+<span id="cb131-15"><a href="estruturas-de-dados.html#cb131-15" tabindex="-1"></a></span>
+<span id="cb131-16"><a href="estruturas-de-dados.html#cb131-16" tabindex="-1"></a><span class="do">## Transposta de uma matriz</span></span>
+<span id="cb131-17"><a href="estruturas-de-dados.html#cb131-17" tabindex="-1"></a><span class="fu">t</span>(A)</span>
+<span id="cb131-18"><a href="estruturas-de-dados.html#cb131-18" tabindex="-1"></a></span>
+<span id="cb131-19"><a href="estruturas-de-dados.html#cb131-19" tabindex="-1"></a><span class="do">## Diagonal de uma matriz</span></span>
+<span id="cb131-20"><a href="estruturas-de-dados.html#cb131-20" tabindex="-1"></a><span class="fu">diag</span>(A)</span>
+<span id="cb131-21"><a href="estruturas-de-dados.html#cb131-21" tabindex="-1"></a></span>
+<span id="cb131-22"><a href="estruturas-de-dados.html#cb131-22" tabindex="-1"></a><span class="do">## Determinante de uma matriz</span></span>
+<span id="cb131-23"><a href="estruturas-de-dados.html#cb131-23" tabindex="-1"></a><span class="fu">det</span>(A)</span>
+<span id="cb131-24"><a href="estruturas-de-dados.html#cb131-24" tabindex="-1"></a></span>
+<span id="cb131-25"><a href="estruturas-de-dados.html#cb131-25" tabindex="-1"></a><span class="do">## Inversão de uma matriz </span></span>
+<span id="cb131-26"><a href="estruturas-de-dados.html#cb131-26" tabindex="-1"></a><span class="fu">solve</span>(A)</span>
+<span id="cb131-27"><a href="estruturas-de-dados.html#cb131-27" tabindex="-1"></a></span>
+<span id="cb131-28"><a href="estruturas-de-dados.html#cb131-28" tabindex="-1"></a><span class="do">## Função solve para resolver sistemas de equações. Seja Ax=b, com</span></span>
+<span id="cb131-29"><a href="estruturas-de-dados.html#cb131-29" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>)</span>
+<span id="cb131-30"><a href="estruturas-de-dados.html#cb131-30" tabindex="-1"></a><span class="co"># então a solução x do sistema é:</span></span>
+<span id="cb131-31"><a href="estruturas-de-dados.html#cb131-31" tabindex="-1"></a><span class="fu">solve</span>(A, b)</span>
+<span id="cb131-32"><a href="estruturas-de-dados.html#cb131-32" tabindex="-1"></a><span class="co"># para a inversão da matriz apenas, b = I não precisa ser declarado.</span></span></code></pre></div>
+<div id="exercícios-5" class="section level4 unnumbered hasAnchor">
+<h4>Exercícios<a href="estruturas-de-dados.html#exercícios-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Crie uma matriz de dimensão 4x3 contendo os números de 1 a 12 preenchidos por linha. Em seguida, realize as seguintes operações:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Acesse o elemento da terceira linha e segunda coluna.</li>
+<li>Extraia a segunda linha da matriz.</li>
+<li>Substitua o elemento da quarta linha e terceira coluna por 99.</li>
+</ol>
+<p><strong>2.</strong> Crie uma matriz M de dimensão 3×5 contendo os números de 1 a 15 preenchidos por coluna.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Exiba a matriz M.</li>
+<li>Descubra o número de linhas e colunas usando nrow() e ncol().</li>
+<li>Exiba a matriz preenchida por linha em vez de coluna.</li>
+<li>Extraia o elemento na segunda linha e quarta coluna.</li>
+<li>Modifique o elemento da terceira linha e quinta coluna para 100.</li>
+<li>Substitua todos os valores da primeira coluna por 0.</li>
+</ol>
+<p><strong>3.</strong> Crie duas matrizes A e B, ambas 3x3, contendo valores de 1 a 9 e de 10 a 18, respectivamente.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Realize a soma e a subtração entre A e B.</li>
+<li>Multiplique elemento a elemento.</li>
+<li>Faça o produto matricial entre A e B.</li>
+</ol>
+<p><strong>4.</strong> Crie as matrizes:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Uma matriz identidade 4×4</li>
+<li>Uma matriz diagonal com os números 2, 4, 6 e 8 na diagonal principal.</li>
+</ol>
+</div>
+<div id="protectedContent4" style="display:none;">
+<div id="respostas-6" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="estruturas-de-dados.html#respostas-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="estruturas-de-dados.html#cb132-1" tabindex="-1"></a><span class="co"># 1. </span></span>
+<span id="cb132-2"><a href="estruturas-de-dados.html#cb132-2" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> T)</span>
+<span id="cb132-3"><a href="estruturas-de-dados.html#cb132-3" tabindex="-1"></a>mat[<span class="dv">3</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="estruturas-de-dados.html#cb134-1" tabindex="-1"></a>mat[<span class="dv">2</span>,]</span></code></pre></div>
+<pre><code>## [1] 4 5 6</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="estruturas-de-dados.html#cb136-1" tabindex="-1"></a>mat[<span class="dv">4</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="dv">99</span></span>
+<span id="cb136-2"><a href="estruturas-de-dados.html#cb136-2" tabindex="-1"></a></span>
+<span id="cb136-3"><a href="estruturas-de-dados.html#cb136-3" tabindex="-1"></a><span class="co"># 2. </span></span>
+<span id="cb136-4"><a href="estruturas-de-dados.html#cb136-4" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb136-5"><a href="estruturas-de-dados.html#cb136-5" tabindex="-1"></a>M</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    4    7   10   13
+## [2,]    2    5    8   11   14
+## [3,]    3    6    9   12   15</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="estruturas-de-dados.html#cb138-1" tabindex="-1"></a><span class="fu">nrow</span>(M); <span class="fu">ncol</span>(M)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="estruturas-de-dados.html#cb141-1" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> T)</span>
+<span id="cb141-2"><a href="estruturas-de-dados.html#cb141-2" tabindex="-1"></a>M[<span class="dv">2</span>,<span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="estruturas-de-dados.html#cb143-1" tabindex="-1"></a>M[<span class="dv">3</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb143-2"><a href="estruturas-de-dados.html#cb143-2" tabindex="-1"></a>M[,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb143-3"><a href="estruturas-de-dados.html#cb143-3" tabindex="-1"></a></span>
+<span id="cb143-4"><a href="estruturas-de-dados.html#cb143-4" tabindex="-1"></a><span class="co"># 3. </span></span>
+<span id="cb143-5"><a href="estruturas-de-dados.html#cb143-5" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb143-6"><a href="estruturas-de-dados.html#cb143-6" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">18</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb143-7"><a href="estruturas-de-dados.html#cb143-7" tabindex="-1"></a>A; B</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   10   13   16
+## [2,]   11   14   17
+## [3,]   12   15   18</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="estruturas-de-dados.html#cb146-1" tabindex="-1"></a>A <span class="sc">+</span> B</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   11   17   23
+## [2,]   13   19   25
+## [3,]   15   21   27</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="estruturas-de-dados.html#cb148-1" tabindex="-1"></a>A <span class="sc">-</span> B</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   -9   -9   -9
+## [2,]   -9   -9   -9
+## [3,]   -9   -9   -9</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="estruturas-de-dados.html#cb150-1" tabindex="-1"></a>A<span class="sc">*</span>B</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   10   52  112
+## [2,]   22   70  136
+## [3,]   36   90  162</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="estruturas-de-dados.html#cb152-1" tabindex="-1"></a>A<span class="sc">%*%</span>B</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]  138  174  210
+## [2,]  171  216  261
+## [3,]  204  258  312</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="estruturas-de-dados.html#cb154-1" tabindex="-1"></a><span class="co"># 4. </span></span>
+<span id="cb154-2"><a href="estruturas-de-dados.html#cb154-2" tabindex="-1"></a>I <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">4</span>)</span>
+<span id="cb154-3"><a href="estruturas-de-dados.html#cb154-3" tabindex="-1"></a>matriz_diag <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>))</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput4" placeholder="Digite a senha">
+<button id="submitButton4">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton4").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput4").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent4").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+</div>
+<div id="listas" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Listas<a href="estruturas-de-dados.html#listas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Listas podem armazenar diferentes tipos de objetos, como vetores, matrizes, etc. Pode ser criada, fazendo: <code>list(valor1, valor2, valor3)</code>.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="estruturas-de-dados.html#cb155-1" tabindex="-1"></a><span class="co"># Criando uma lista</span></span>
+<span id="cb155-2"><a href="estruturas-de-dados.html#cb155-2" tabindex="-1"></a>minha_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;Ana&quot;</span>, <span class="dv">25</span>, <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>), </span>
+<span id="cb155-3"><a href="estruturas-de-dados.html#cb155-3" tabindex="-1"></a>                    <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">2</span>))</span>
+<span id="cb155-4"><a href="estruturas-de-dados.html#cb155-4" tabindex="-1"></a>minha_lista</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;Ana&quot;
+## 
+## [[2]]
+## [1] 25
+## 
+## [[3]]
+## [1]  8  9 10
+## 
+## [[4]]
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<p>Acessando elementos da lista:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="estruturas-de-dados.html#cb157-1" tabindex="-1"></a><span class="do">## Retorna uma lista com o primeiro elemento</span></span>
+<span id="cb157-2"><a href="estruturas-de-dados.html#cb157-2" tabindex="-1"></a>minha_lista[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;Ana&quot;</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="estruturas-de-dados.html#cb159-1" tabindex="-1"></a><span class="fu">str</span>(minha_lista[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## List of 1
+##  $ : chr &quot;Ana&quot;</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="estruturas-de-dados.html#cb161-1" tabindex="-1"></a><span class="do">## Retorna apenas o primeiro elemento da lista</span></span>
+<span id="cb161-2"><a href="estruturas-de-dados.html#cb161-2" tabindex="-1"></a><span class="co"># Acessando o primeiro elemento</span></span>
+<span id="cb161-3"><a href="estruturas-de-dados.html#cb161-3" tabindex="-1"></a>minha_lista[[<span class="dv">1</span>]] </span></code></pre></div>
+<pre><code>## [1] &quot;Ana&quot;</code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="estruturas-de-dados.html#cb163-1" tabindex="-1"></a><span class="fu">str</span>(minha_lista[[<span class="dv">1</span>]])</span></code></pre></div>
+<pre><code>##  chr &quot;Ana&quot;</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="estruturas-de-dados.html#cb165-1" tabindex="-1"></a><span class="co"># Acessando o quarto elemento</span></span>
+<span id="cb165-2"><a href="estruturas-de-dados.html#cb165-2" tabindex="-1"></a>minha_lista[[<span class="dv">4</span>]]  </span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<p>Visualizando a estrutura da lista:</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="estruturas-de-dados.html#cb167-1" tabindex="-1"></a><span class="fu">str</span>(minha_lista)</span></code></pre></div>
+<pre><code>## List of 4
+##  $ : chr &quot;Ana&quot;
+##  $ : num 25
+##  $ : num [1:3] 8 9 10
+##  $ : int [1:2, 1:2] 1 2 3 4</code></pre>
+<p>Observe que é uma estrutura unidimensional:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="estruturas-de-dados.html#cb169-1" tabindex="-1"></a><span class="fu">length</span>(minha_lista)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Renomeando os elementos da lista:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="estruturas-de-dados.html#cb171-1" tabindex="-1"></a><span class="fu">names</span>(minha_lista) </span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="estruturas-de-dados.html#cb173-1" tabindex="-1"></a><span class="fu">names</span>(minha_lista) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;nome&quot;</span>, <span class="st">&quot;idade&quot;</span>, <span class="st">&quot;notas&quot;</span>, <span class="st">&quot;matriz&quot;</span>)</span>
+<span id="cb173-2"><a href="estruturas-de-dados.html#cb173-2" tabindex="-1"></a>minha_lista</span></code></pre></div>
+<pre><code>## $nome
+## [1] &quot;Ana&quot;
+## 
+## $idade
+## [1] 25
+## 
+## $notas
+## [1]  8  9 10
+## 
+## $matriz
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="estruturas-de-dados.html#cb175-1" tabindex="-1"></a><span class="co"># ou já poderiamos ter criado com os nomes:</span></span>
+<span id="cb175-2"><a href="estruturas-de-dados.html#cb175-2" tabindex="-1"></a>minha_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">nome =</span> <span class="st">&quot;Ana&quot;</span>, <span class="at">idade =</span> <span class="dv">25</span>, <span class="at">notas =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>),</span>
+<span id="cb175-3"><a href="estruturas-de-dados.html#cb175-3" tabindex="-1"></a>                    <span class="at">matriz =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">2</span>))</span></code></pre></div>
+<p>Para acessar os elementos da lista pelo nome, podemos usar o operador <code>$</code>:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="estruturas-de-dados.html#cb176-1" tabindex="-1"></a>minha_lista<span class="sc">$</span>nome <span class="co"># equivalente a minha_lista[[1]]</span></span></code></pre></div>
+<pre><code>## [1] &quot;Ana&quot;</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="estruturas-de-dados.html#cb178-1" tabindex="-1"></a>minha_lista<span class="sc">$</span>matriz <span class="co"># equivalente a minha_lista[[4]]</span></span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<!-- # Acessando o elemento "nome" usando o operador $ -->
+<!-- minha_lista$nome  # Retorna "João" -->
+<!-- # Acessando o elemento "notas" usando [[ ]] -->
+<!-- minha_lista[["notas"]]  # Retorna c(8, 9, 10) -->
+<!-- # Acessando o segundo valor do vetor "notas" -->
+<!-- minha_lista$notas[2]  # Retorna 9 -->
+<p><br></p>
+</div>
+<div id="data-frames" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Data Frames<a href="estruturas-de-dados.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Os data.frames são estruturas de dados que armazenam colunas de diferentes tipos (numéricas, categóricas, lógicas).</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="estruturas-de-dados.html#cb180-1" tabindex="-1"></a><span class="do">## Criando um data frame</span></span>
+<span id="cb180-2"><a href="estruturas-de-dados.html#cb180-2" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb180-3"><a href="estruturas-de-dados.html#cb180-3" tabindex="-1"></a>  <span class="at">Nome =</span> <span class="fu">c</span>(<span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Bruno&quot;</span>, <span class="st">&quot;Carlos&quot;</span>, <span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Jose&quot;</span>, <span class="st">&quot;Tata&quot;</span>, <span class="st">&quot;Mia&quot;</span>),</span>
+<span id="cb180-4"><a href="estruturas-de-dados.html#cb180-4" tabindex="-1"></a>  <span class="at">Nivel_escolaridade =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;S&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;F&quot;</span>),</span>
+<span id="cb180-5"><a href="estruturas-de-dados.html#cb180-5" tabindex="-1"></a>  <span class="at">Idade =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">24</span>),</span>
+<span id="cb180-6"><a href="estruturas-de-dados.html#cb180-6" tabindex="-1"></a>  <span class="at">Nota =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">9</span>),</span>
+<span id="cb180-7"><a href="estruturas-de-dados.html#cb180-7" tabindex="-1"></a>  <span class="at">Aprovado =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb180-8"><a href="estruturas-de-dados.html#cb180-8" tabindex="-1"></a>)</span>
+<span id="cb180-9"><a href="estruturas-de-dados.html#cb180-9" tabindex="-1"></a></span>
+<span id="cb180-10"><a href="estruturas-de-dados.html#cb180-10" tabindex="-1"></a><span class="do">## Algumas operações em data frames:</span></span>
+<span id="cb180-11"><a href="estruturas-de-dados.html#cb180-11" tabindex="-1"></a></span>
+<span id="cb180-12"><a href="estruturas-de-dados.html#cb180-12" tabindex="-1"></a><span class="co"># Selecionando a segunda coluna</span></span>
+<span id="cb180-13"><a href="estruturas-de-dados.html#cb180-13" tabindex="-1"></a>dados[, <span class="dv">2</span>]</span>
+<span id="cb180-14"><a href="estruturas-de-dados.html#cb180-14" tabindex="-1"></a></span>
+<span id="cb180-15"><a href="estruturas-de-dados.html#cb180-15" tabindex="-1"></a><span class="co"># Selecionando linhas com idade maior que 25</span></span>
+<span id="cb180-16"><a href="estruturas-de-dados.html#cb180-16" tabindex="-1"></a>dados[dados<span class="sc">$</span>Idade <span class="sc">&gt;</span> <span class="dv">25</span>, ]</span>
+<span id="cb180-17"><a href="estruturas-de-dados.html#cb180-17" tabindex="-1"></a></span>
+<span id="cb180-18"><a href="estruturas-de-dados.html#cb180-18" tabindex="-1"></a><span class="co"># Selecionando apenas a coluna &quot;Nome&quot;</span></span>
+<span id="cb180-19"><a href="estruturas-de-dados.html#cb180-19" tabindex="-1"></a>dados<span class="sc">$</span>Nome</span>
+<span id="cb180-20"><a href="estruturas-de-dados.html#cb180-20" tabindex="-1"></a></span>
+<span id="cb180-21"><a href="estruturas-de-dados.html#cb180-21" tabindex="-1"></a><span class="co"># Usando subset para filtrar dados</span></span>
+<span id="cb180-22"><a href="estruturas-de-dados.html#cb180-22" tabindex="-1"></a><span class="fu">subset</span>(dados, Idade <span class="sc">&gt;</span> <span class="dv">25</span>)</span>
+<span id="cb180-23"><a href="estruturas-de-dados.html#cb180-23" tabindex="-1"></a></span>
+<span id="cb180-24"><a href="estruturas-de-dados.html#cb180-24" tabindex="-1"></a><span class="co"># Selecionando apenas a coluna &quot;Nome&quot; onde a idade é maior que 25</span></span>
+<span id="cb180-25"><a href="estruturas-de-dados.html#cb180-25" tabindex="-1"></a><span class="fu">subset</span>(dados, Idade <span class="sc">&gt;</span> <span class="dv">25</span>, <span class="at">select =</span> Nome)</span>
+<span id="cb180-26"><a href="estruturas-de-dados.html#cb180-26" tabindex="-1"></a></span>
+<span id="cb180-27"><a href="estruturas-de-dados.html#cb180-27" tabindex="-1"></a><span class="co"># Ordenando o data frame por idade</span></span>
+<span id="cb180-28"><a href="estruturas-de-dados.html#cb180-28" tabindex="-1"></a>dados[<span class="fu">order</span>(dados<span class="sc">$</span>Idade), ]</span>
+<span id="cb180-29"><a href="estruturas-de-dados.html#cb180-29" tabindex="-1"></a></span>
+<span id="cb180-30"><a href="estruturas-de-dados.html#cb180-30" tabindex="-1"></a><span class="co"># Ordenando por idade em ordem decrescente</span></span>
+<span id="cb180-31"><a href="estruturas-de-dados.html#cb180-31" tabindex="-1"></a>dados[<span class="fu">order</span>(dados<span class="sc">$</span>Idade, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb180-32"><a href="estruturas-de-dados.html#cb180-32" tabindex="-1"></a></span>
+<span id="cb180-33"><a href="estruturas-de-dados.html#cb180-33" tabindex="-1"></a><span class="co"># Adicionando uma nova coluna</span></span>
+<span id="cb180-34"><a href="estruturas-de-dados.html#cb180-34" tabindex="-1"></a>dados<span class="sc">$</span>Status <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Aprovado&quot;</span>, <span class="st">&quot;Aprovado&quot;</span>, <span class="st">&quot;Reprovado&quot;</span>, <span class="st">&quot;Aprovado&quot;</span>)</span>
+<span id="cb180-35"><a href="estruturas-de-dados.html#cb180-35" tabindex="-1"></a></span>
+<span id="cb180-36"><a href="estruturas-de-dados.html#cb180-36" tabindex="-1"></a><span class="co"># Removendo uma coluna</span></span>
+<span id="cb180-37"><a href="estruturas-de-dados.html#cb180-37" tabindex="-1"></a>dados<span class="sc">$</span>Status <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb180-38"><a href="estruturas-de-dados.html#cb180-38" tabindex="-1"></a></span>
+<span id="cb180-39"><a href="estruturas-de-dados.html#cb180-39" tabindex="-1"></a><span class="co"># Renomeando colunas</span></span>
+<span id="cb180-40"><a href="estruturas-de-dados.html#cb180-40" tabindex="-1"></a><span class="fu">colnames</span>(dados) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Nome_Aluno&quot;</span>, <span class="st">&quot;Idade_Aluno&quot;</span>, <span class="st">&quot;Nota_Final&quot;</span>)</span>
+<span id="cb180-41"><a href="estruturas-de-dados.html#cb180-41" tabindex="-1"></a>dados</span></code></pre></div>
+<p><br></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conceitos-básicos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

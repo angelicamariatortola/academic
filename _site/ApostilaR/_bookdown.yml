@@ -1,0 +1,17 @@
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Capítulo "
+new_session: yes
+new_subsession: yes
+rmd_files:
+  - index.Rmd
+  - 01-intro.Rmd
+  - 02-estru.Rmd
+  # - 03-importa.Rmd
+  # - 04-comandos.Rmd
+  # - 05-graficos.Rmd
+  # - 06-prob.Rmd
+  # - 07-inferencia.Rmd
+  # - 08-mark.Rmd
+  # - 09-ref.Rmd

@@ -1,0 +1,107 @@
+# Gráficos e visualização de dados 
+
+A visualização de dados é fundamental na análise estatística, permite visualizar relações e padrões que podem ser relevantes para o conjunto de dados. Diferentes tipos de visualizações permitem enfatizar diferentes caracteristicas do conjunto de dados. O objetivo desse capítulo é apresentar comando que permitam visualizar dados estatisticos de diferentes formas.    
+
+## Gráficos Básicos
+
+Um primeiro exemplo de gráfico é o gráfico de dispersão (scatter plot), que é criado utilizando o comando ``plot(x,y)``. O comando cria um gráfico de disperção onde os pontos são da forma ``(x[i],y[i])``, por esse motivo os vetores ``x`` e ``y`` devem possuir o mesmo comprimento.
+
+```{r}
+x = c(1,2,3,4,5)
+y = c(1,4,9,16,25)
+
+plot(x,y)
+
+plot(x,x^2, main = "Gráfico de disperção", type = "l", col = "blue" )
+```
+
+Neste exemplo as entradas de ``y`` são iguais ao quadrado das entradas de ``x``. Perceba que o mesmo resultado pode ser obtido utilizando o comando ``plot(x,x^2)``, o comando ``plot`` operações de vetores dentro dos seus parâmetros. Os parâmetros ``main``, ``type`` e ``col`` servem para alteral o título, o tipo da linha e as cores dos pontos respctivamente.   
+
+Para a criação de um histogramas podemos utilizar o comando ``hist(x,breaks)``, esse tipo de gráfico é util para visualizar a distribuição de frequência de um conjunto de dados. O parâmetro ``breaks`` da função são os intervalos em que os gráficos serão divididos. 
+
+```{r}
+W <- c(6,8,2,8,4,2,3,5,7,3,7,9,6,8,1,6,7,4,1,4,4,5,7,8,10)
+
+hist(W)
+
+hist(W,10)
+```
+
+Percebe que o comando ``hist(W)`` divide o conjunto de dados em cinco classes, enquanto que no comando ``hist(W,10)`` foi pedido que o conjunto de dados seja dividido em dez classes.  
+
+Similar ao histograma temos o gráfico de barras, que é criado utilizando o comando ``barplot(x)`` onde cada entrada de ``x`` é representada por uma barra cuja a altura é o valor dessa entrada. 
+
+```{r}
+W <- c(6,8,2,8,4,2,3,5,7,3,7,9,6,8,1,6,7,4,1,4,4,5,7,8,10)
+
+barplot(W)
+
+barplot(sort(W))
+```
+
+O comando ``barplot(W)`` apresenta o gráfico de barras para os dados do vetor ``W``. Já o comando ``barplot(sort(W))`` primeiro organiza as informações em ordem crescente (``sort(W)``) e depois cria o gráfico de barras, então é possivel dentro do comando de plotagem realizar operações com os vetores.
+
+O gráfico de barras pode ser utilizado em uma matriz também. Nessa caso cada barra terá a altura igual a soma dos valores daquela coluna e cada valor será um "pedaço" dessa barra. Caso deseje deixar os dados dividos em barras uma do lado da outra pode ser utilizado o parâmetro ``beside = TRUE``. 
+
+```{r}
+W <- c(6,8,2,8,4,2,3,5,7,3,7,9,6,8,1,6,7,4,1,4,4,5,7,8,10)
+
+barplot(matrix(W,5,5), names.arg = c("1","2","3","4","5"), xlab = "colunas",ylab = "valores")
+
+barplot(matrix(W,5,5),beside = TRUE, names.arg = c("1","2","3","4","5"), xlab = "colunas",ylab = "valores")
+```
+
+Os dois gráficos são referentes a mesma matriz, a diferença é a organização dos valores. O parâmetro ``name.arg`` nomea cada uma das barras, os parâmetros ``xlab`` e ``ylab`` representam as legendas dos eixos x e y respectivamente. 
+
+Por ultimo, o gráfico de setores (gráfico de pizza) pode ser utilizado quando temos um conjunto pequeno de dados e queremos visualizar o contraste entre cada um dos valores. O comando ``pie(x)`` é utilizado para a criação de gráfico de setores.
+
+```{r}
+pie(c(2,2,4,4),labels = c("setor 1","setor 2","setor 3","setor 4"), main = "Gráfico de setores")
+```
+
+O parâmetro ``labels`` representa as legendas de cada setor. As cores podem ser alteradas utilizando o parâmetro ``col`` e atribuindo um vetor com as cores desejadas para cada setor. 
+
+## Pacote 'ggplot2'
+
+A criação de gráfico pode não ser trivial dependendo do conjunto e de como se deseja personalizar o gráfico. Os gráficos apresentados possuem persolanizações básicas como titulos, legendas dos eixos, cores e outras modificações na sua aparência, para modificações mais complexas pode ser utilizado o pacote 'ggplot2'. Esse pacote disponibiliza uma diversidade de parâmetros que podem ser alterados de maneira simples e intuitiva.  
+
+```
+install.packages("ggplot2")
+library(ggplot2)
+
+dados <- data.frame(x = rnorm(100), y = rnorm(100))
+
+
+ggplot(dados, aes(x = x, y = y)) +  
+  geom_point() +                    
+  ggtitle("Gráfico de Dispersão") + 
+  xlab("Eixo X") +                  
+  ylab("Eixo Y")                    
+
+```
+Esse exemplo mostra como criar um gráfico de dispersão utilizando o comando ``ggplot``. Perceba que os parametros são adiconados utilizando o comando ``+``. A variável ``dados`` foi criada utilizando o comando ``rnorm`` que gerá números aleatórios com distribuição normal. 
+
+Podemos resumir que os principais parâmetros do comando ``ggplot`` são a variável ``dados`` que representa os dados que serão utilizados. O mapeamento estético, dado pelo comando ``aes`` que defini quais variáveis terão sua aparência alaterada. O tipo de gráfico que será criado, neste exemplo é um gráfico de dispersão (``geom_point()``), mas pode ser um gráfico de linha (``geom_line``) ou de barras (``geom_bar``). As facetas ou subgráficos que são criados utilizando o comando ``facet_wrap(~ var)`` onde a variável ``var`` separa os dados em diferentes categorias. 
+
+```
+dados <- data.frame(
+  x = rnorm(100),
+  y = rnorm(100),
+  categoria = sample(c("A", "B"), 100, replace = TRUE)
+)
+
+ggplot(dados, aes(x = x, y = y, color = categoria)) + 
+  geom_point() + 
+  facet_wrap(~ categoria) + 
+  scale_color_manual(values = c("A" = "blue", "B" = "red")) + 
+  ggtitle("Gráfico de Dispersão com Facetas") + 
+  xlab("Eixo X") + 
+  ylab("Eixo Y") + 
+  theme_minimal()
+
+```
+Neste exemplo os dados estão armazenados em data frame que possuiu três colunas, a primeira e segunda coluna representam as coordenadas de cada ponto e a terceira coluna classifica esses pontos em duas categorias "A" ou "B". Então o comando ``ggplot`` irá usar essas duas categorias para separar em dois gráficos utilizando o comando ``facet_wrap(~ categoria)``. 
+
+O pacote ``ggplot2`` é extenso e possuiu exemplos de gráficos que podem ser utilizados nas mais diversas aplicações, para mais informações utilize o comando ``?ggplot2`` e explore o site oficial e a biblioteca do pacote.
+
+
