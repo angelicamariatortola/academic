@@ -1,0 +1,103 @@
+
+
+rm(list = ls())
+
+## Packages
+library(Matrix)  ## bdiag function
+library(gdata)   ## upperTriangle function
+library(metaSEM) ## vec2symMat function
+library(geoR)    ## matern function
+library(mvnfast)
+library(GeoModels)
+
+source("https://angelicamariatortola.github.io/academic/functions.txt")
+
+########## Simulation #####################
+
+nvar <- 2
+ncord <- c(10, 15, 20, 25, 30, 35)
+time_all <- c()
+  
+# Inicial values
+phi_i <- rep(0.2, nvar)
+v_i <- rep(0.5, nvar)
+s_i <- rep(0.3, nvar)
+rhoij <- 0.8
+
+ini_MatSimpler <-  c(phi_i, v_i, s_i, rhoij)
+ini_MatContr = c((s_i)^2, phi_i, v_i, rhoij)
+ini_MatSep = c((s_i)^2, phi_i[1], v_i[2], rhoij)
+ini_LMC = c((s_i[1])^2, 0, 0, (s_i[2])^2, phi_i)
+ini_MatContr_list <- list(mean_1 = 0, mean_2 = 0, nugget_1 = 0, nugget_2 = 0, 
+                          scale_1 = phi_i[1], scale_2 = phi_i[2], 
+                          smooth_1 = v_i[1], smooth_2 = v_i[2],
+                          sill_1 = (s_i[1])^2, sill_2 = (s_i[2])^2,
+                          pcol = rhoij)
+est1 <- est2 <- est3 <- est4 <- c()
+
+for (i in 1:length(ncord))
+  {
+    time_i <- NA
+    print(ncord[i])
+    
+    # Coordinates
+    x1 <- seq(0,1, l = ncord[i])
+    x2 <- seq(0,1, l = ncord[i])
+    coord <- expand.grid(x1,x2)
+
+    # Distance matrix
+    U <- as.matrix(dist(coord, diag = TRUE, upper = TRUE))
+    U_vec <- upperTriangle(U, byrow = T)
+
+    # Covariance matrix - Constrained Matérn model
+    Sigma_nvar <- GeoCovmatrix(coordx = coord, corrmodel="Bi_Matern_contr",
+                 param=ini_MatContr_list)$covmatrix
+
+    # Simulating data - Constrained Matérn model
+    set.seed(1234)
+    y <- as.numeric(rmvn(n = 1, mu = rep(0, nvar*(ncord[i]^2)),
+                                sigma = Sigma_nvar))
+    y_mat <- matrix(y, nc = nvar)
+    dados <- cbind(coord, y_mat)
+    colnames(dados) <- c("x", "y", "var1", "var2")
+      
+    # Estimating MatSimpler model
+    est_MatSimpler <- estima_MatSimpler(ini_pars = ini_MatSimpler, U_vec = U_vec, 
+                      y = y, method="Nelder-Mead", nvar = nvar, logpars = F, maxit = 2000)
+    print(est_MatSimpler$convergence)
+    est1 <- rbind(est1, est_MatSimpler$est_param)
+    
+    # Estimating Constrained Matérn model
+    est_MatContr <- estima_Bi_MatGneiContr(dados = dados, 
+                    ini_pars = ini_MatContr, method="Nelder-Mead")
+    print(est_MatContr$convergence)
+    est2 <- rbind(est2, est_MatContr$est_param)
+    
+    # Estimating Separable Matérn model
+    est_MatSep <- estima_Bi_MatGneiSep(dados = dados, 
+                  ini_pars = ini_MatSep, method="Nelder-Mead")
+    print(est_MatSep$convergence)
+    est3 <- rbind(est3, est_MatSep$est_param)
+    
+    # Estimating LMC
+    est_LMC <- estima_Bi_LMC(dados = dados, 
+               ini_pars = ini_LMC, method="Nelder-Mead")
+    print(est_LMC$convergence)
+    est4 <- rbind(est4, est_LMC$est_param)
+    
+    est_all <- list(MatSimpler = est1, MatContr = est2, 
+                    MatSep = est3, LMC = est4)
+    
+    time_i <- c(ncord[i], 
+                as.numeric(est_MatSimpler$time[3]),
+                as.numeric(est_MatContr$time[3]), 
+                as.numeric(est_MatSep$time[3]),
+                as.numeric(est_LMC$time[3]))
+
+    time_all <- rbind(time_all, time_i)
+    print(time_all)
+}
+
+row.names(time_all) <- NULL
+colnames(time_all) <- c("size", "MatSimpler", "MatConstr", "MatSep", "LMC")
+

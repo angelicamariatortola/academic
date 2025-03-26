@@ -1,0 +1,40 @@
+name: "Angélica Maria Tortola Ribeiro"
+output_dir: "docs"
+exclude: ["README.md", "\\.sh", "cache"]
+navbar:
+  title: <font size="5.8">Angélica Maria Tortola Ribeiro  </font>
+  left:
+    - text: "Início"
+      href: index.html
+      icon: fa-home
+    - text: "Aulas"
+      menu:
+        - text: "Probabilidade e Estatística"
+          href: classes.html
+        - text: "Estatistica Computacional com R"
+          href: CursoR.html
+    - text: "Pesquisa"      
+      menu:
+      - text: "MatSimpler 2021"
+        href: MatSimpler2021.html
+      - text: "Doutorado"
+        href: thesis.html
+      - text: "Produções"
+        href: producoes.html
+    - text: "Extensão"
+      menu:
+        - text: "Minicurso de Latex"
+          href: curso_latex.html
+        - text: "Projeto Licenciando - 2024"
+          href: projeto_licenciando_2024.html
+        - text: "Projeto Licenciando - 2025"
+          href: projeto_licenciando_2025.html
+    - text: "Contato"
+      href: contact.html
+      icon: fa-envelope-o
+
+output:
+  html_document:
+    theme: flatly
+    css: style.css
+    runtime: shiny

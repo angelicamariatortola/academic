@@ -1,0 +1,53 @@
+---
+title: <span style='font-size:85%; font-weight:80'>Probabilidade e Estatística</span>
+---
+
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+```
+
+<br>
+
+  - [Aulas Gravadas (Canal do Youtube)](https://www.youtube.com/@angelicamariatortolaribeir1673/videos){target="_blank"}
+  - **Análise de Regressão**
+    - [Dados - Exemplo 1](figs/dados_regressao_exemplo.txt)
+    - [Ex. Dados Adler csv](dados_adler.csv){target="_blank"}
+    - [Ex. Dados Adler txt](dados_adler.txt){target="_blank"}
+
+<style>
+    body {
+      font-size: 20px; /* Tamanho padrão para todo o corpo do documento */
+    }
+    p {
+      font-size: 23px; /* Tamanho para parágrafos */
+    }
+    li {
+      font-size: 23px; /* Tamanho para tópicos */
+    }
+     a:link {
+        color: #00008B; /* Define a cor do link */
+        text-decoration: none;
+    }
+    a:visited {
+        color: #191970; /* Define a cor do link */
+        text-decoration: none;
+    }
+    a:hover {
+        color: 	#4682B4; /* Define a cor do link ao passar o mouse */
+        text-decoration: underline;
+    }
+    a:active {
+        color: #8B008B; /* Define a cor do link ao ser clicado */
+        text-decoration: none;
+    }
+</style>
+
+
+
+
+

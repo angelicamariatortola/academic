@@ -1,0 +1,123 @@
+
+##  Funções básicas no R: {-}
+
+```{r ex10, eval=FALSE}
+variavel <- c(-20, -10, 40, 30, -10, 50, 30)  # Vetor de números
+
+## Funções Estatísticas e Matemáticas
+length(variavel)  # Número de elementos -> 7
+sum(variavel)     # Soma -> 110
+min(variavel)     # Mínimo -> -20
+max(variavel)     # Máximo -> 50
+abs(variavel)      # Valor absoluto -> 20 10 40 30 10 50 30
+
+mean(variavel)    # Média -> 15.71
+median(variavel)  # Mediana -> 30
+sd(variavel)      # Desvio padrão -> 28.19
+var(variavel)     # Variância -> 795.2381
+summary(variavel) # Resumo de estatísticas básicas
+sample(variavel, size = 2, replace = F) 
+# seleciona uma amostra aleatória de size=2, sem reposição
+
+## Outras funções
+
+sort(variavel)   # Ordena os elementos do vetor 
+rev(variavel)    # Inverte a ordem dos elementos
+unique(variavel) 
+# Retorna valores únicos (sem elementos duplicados) de um vetor
+```
+
+**3.** Crie um vetor `z <- c(2, 5, 3, 7, 1)` e utilize os operadores de comparação para verificar:
+  
+  - Se os valores de z são maiores que 3.
+- Se os valores de z são menores ou iguais a 5.
+- Se os valores de z são diferentes de 7.
+
+**4.** Crie um vetor `a <- c(1, 2, 3, 4, 5)` e verifique se os valores 3 e 6 estão presentes nele usando o operador de pertinência `%in%`. O que o operador `%in%` retorna?
+  
+  **5.** Considere o vetor: `b <- c(80,10,3,1,-5,1,-18,3)`. Usando as funções básicas do R:
+  
+  - Ordene os valores do vetor em ordem crescente
+- Encontre o seu vetor de valores absolutos 
+- Encontre os valores únicos (sem elementos duplicados) do vetor
+
+**6.** Crie um vetor `v <- c(7, 2, 9, 5, 3, 6)` e calcule o desvio padrão e a média desse vetor utilizando as funções `sd()` e `mean()`.
+
+**7.** Use a função summary() para obter um resumo estatístico do vetor `v_2 <- c(7, 2, 9, 5, 3, 6)`.
+
+
+
+
+
+
+# Inferência 
+
+A estatística inferencial é fundamental para a análise de dados, pois permite afirmar hipoteses sobre uma população partindo de uma amostra. Em vez de avaliar cada indivíduo em uma população, o que é muitas vezes impraticável ou impossível, podemos utilizar métodos como intervalos de confiança, testes de hipóteses e modelos de regressão para fazer previsões e determinar a significância de resultados observados. Em R alguns comando já prontos podem auxiliar neste processo.   
+
+## Teste t-student
+
+O teste t de Student é realizado utilizando a função ``t.test()``. Esta função pode ser utilizada para realizar tanto o teste t para uma amostra como o teste t para duas amostras (independentes ou pareadas).
+
+Por padrão o teste t-student em R considera um intervalo de confiança de 95%, sendo esse intervalo bicaudal. O comando irá retornar o intervalo de confiança para a média e o valor de p que representa a probabilidade da média estar fora do intervalo de confiança. 
+
+```{r}
+x <- c(9.73, 9.87, 9.75, 9.82, 9.84, 9.86, 9.82, 9.82, 9.80, 9.82, 9.81, 9.78, 9.75, 9.82, 9.77, 9.83, 9.84, 9.82,9.80, 9.70, 9.85, 9.83, 9.73, 9.77)
+
+y <- x[5:15]
+
+mean(x)
+
+t.test(y)
+```
+
+No exemplo pegamos uma amostra ``y`` da população ``x`` e podemos conferir que a média populacional estará dentro do intervalo de confiança. 
+
+```{r}
+A = c(79.8, 82.1, 80.9, 78.8, 92.1, 87.1)
+B = c(68.5, 70.1, 88.9, 61.2, 94.2, 72.9)
+
+t.test(A,B)
+```
+
+Para duas amostrar o processo é similhar. Por padrão o R considera as amostrar como independentes, caso as amostras sejam pareadas adicionar o parâmetro ``paired = TRUE`` ao comando.
+
+## Regressão Linear 
+
+Uma regressão linear aproxima o conjunto de dados por uma reta $y=ax+b$, esse reta deve minimizar as distâncias entre ela e os pontos do conjunto. O objetivo dessa regressão é obter informação sobre dependência e previsibilidade do conjunto de dado.  
+
+O R calcula a regressão entre ``x`` e ```y`` utilizando o comando ``lm(x ~ y)``, o comando retorna a os coeficientes da regressão, os erros residuais e os teste de significancia para o modelo. 
+
+```{r}
+x <- rnorm(100, mean = 50, sd = 10)
+y <- 3 * x + rnorm(100, mean = 0, sd = 20)
+
+regressao <- lm(x ~ y)
+
+summary(regressao)
+
+b = regressao$coefficients[1]
+a = regressao$coefficients[2]
+
+par(mfrow = c(1, 2))
+plot(x,y,ylab = "Distribuição inicial")
+plot(x,a^(-1)*x+b,ylab = "Regressão",type = "l",col="red")
+  
+```
+
+O comando ``summary`` pode ser utilizado para visualizar as principais informações sobre a regressão. No exemplo, é possível observar que a distribuição dos dados possuem uma relação de proporção direta, ou seja a medida que ``x`` aumenta ``y`` tende a aumentar. 
+
+## ANOVA 
+
+A análise de variância (ANOVA) é uma técnica estatística usada para comparar as médias de dois ou mais grupos para ver a relação de depencia entre eles. Em R, a função ``aov()`` é usada para realizar ANOVA.
+
+```{r}
+X = c(0.2, 0.6, 0.5, 0.4, 0.28)
+Y = c(0.1, 0.5, 0.9, 0.5, 0.5)
+
+ModeloANOVA = aov(X ~ Y)
+
+summary(ModeloANOVA)
+```
+
+Neste caso o coamando ``summary`` retorna informações relevantes como: graus de liberdade, soma dos quadrados média dos quadrados e o valor da estatística F que pode ser usada para o teste de hipótese da correlação. 
+

@@ -1,0 +1,38 @@
+
+#################### Figure 2 #######################################
+
+## Reading results
+nome_time <- paste("https://angelicamariatortola.github.io/academic/Figure2_results",
+                   ".txt", sep = "")
+simu_nvar_data <- read.table(nome_time, header = T)
+
+df <- data.frame(
+  var = as.factor(simu_nvar_data$nvar), 
+  size = (simu_nvar_data$size)^2, 
+  tempo = simu_nvar_data$elapsed/3600) # (in hour)
+names(df) <- c("N. variables", "Size", "Tempo")
+
+library(ggplot2)
+library("colorspace") 
+ggp <- ggplot(data = df, mapping = aes(y = Tempo, x = Size,
+                                       group = `N. variables`, colour=`N. variables`)) +
+  scale_color_manual(labels = c("p=2","p=3","p=4","p=5","p=6"),
+                     values = qualitative_hcl(5, rev = T, palette = "Dark 3")) +
+  scale_y_continuous(breaks = c(1,2,3,4,5,6)) + 
+  scale_x_continuous(breaks = unique(df$Size)) + 
+  geom_line(size=1.2) +
+  geom_point(size=3) +
+  labs(y = "Estimation time (hour)", x = "Sample size") +
+  theme_bw() +
+  theme(title = element_text(size = 14),
+        axis.text.x = element_text(hjust = 1, size = 14, vjust=1, colour = 'black'),
+        axis.text.y = element_text(hjust = 1, size = 14, vjust=1, colour = 'black'),
+        axis.title = element_text(hjust = 0.5, size = 14, vjust=0.5,
+                                  margin = margin(t=0, r=0,b=0, l=0)),
+        axis.ticks.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.border = element_blank(),
+        plot.background = element_rect(fill = 'white'))
+ggp
+
+

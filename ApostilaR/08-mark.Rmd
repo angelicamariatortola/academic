@@ -1,0 +1,32 @@
+# Conceitos Básicos de RMarkdown 
+
+RMarkdown é uma ferramenta útil para a criação de documentos dinâmicos que combinam texto, código R e resultados de análises de dados. Ele permite gerar relatórios, apresentações, blogs e livros a partir de um único documento fonte. 
+
+Para instalar o pacote ``rmarkdown`` pode ser utilizando o comando ``install.packages("rmarkdown")``. Após a instalação um novo arquivo pode ser criado indo em *File* -> *New File* -> *R Markdown*.   
+
+<div style="display: flex; justify-content: center; align-items: center;">
+<img src="figs/LocRmark.png" alt="Página do RStudio" width="600">
+</div>
+
+Deve ser informado o tipo do arquivo se será PDF, HTML ou Work. 
+
+Para criar seção e subseções no documento podem ser utilizados o símbolo ``#`` (``# título`` ou  ``##subtítulo) ``). Pode se escrever em negrito ou itálico utilizando o simbolo ``*`` (``**negrito**`` ou ``*itálico*``).
+
+No janela do documento há alguns atalhos que podem ser útil. Por exemplo, para inserir blocos de códigos o documento possuiu o seguinte atalho:     
+
+<div style="display: flex; justify-content: center; align-items: center;">
+<img src="figs/Chunks.png" alt="Página do RStudio" width="600">
+</div>
+
+Note que é possível adcionar blocos de códigos de diversas linguagens de programação. 
+
+Outro atalho serve para compilar o documento clicando no botão *Knit*. Ao lado desse botão estão as configuração, e caso queira visualizar o documento antes de compilar pode ser habilitada a opção *Preview in Viewer Plane*.
+
+<div style="display: flex; justify-content: center; align-items: center;">
+<img src="figs/Knit.png" alt="Página do RStudio" width="400">
+</div>
+
+O pacote ``bookdown`` é uma extensão do ``rmarkdown`` que permite criar livros, relatórios técnicos, dissertações e outros documentos longos em R. Ele oferece uma série de funcionalidades adicionais para organizar o conteúdo em capítulos, gerar referências cruzadas, criar índices, entre outros recursos. Após a instalação desse pacote (``install.packages("bookdown")
+``) um novo documento pode ser criado indo *File* -> *New Project* -> *New Directory* -> *Book Project using bookdown*. 
+
+`r if (knitr::is_html_output()) '
