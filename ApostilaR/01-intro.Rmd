@@ -112,7 +112,7 @@ O Rstudio é dividido em quatro janelas principais:
 knitr::include_graphics("figs/console.png")
 ```
 
-📌 Dicas:
+Dicas:
 
 - Para rodar um código, digite e pressione **Enter**.
 - Use as setas ↑ e ↓ para acessar comandos anteriores.
@@ -136,7 +136,7 @@ print(y) # pressione Enter
 knitr::include_graphics("figs/editor.png")
 ```
 
-📌 Dicas:
+Dicas:
 
 - **Ctrl + Enter** → Executa a linha atual.
 - **Ctrl + Shift + Enter** ou **Ctrl + A** e **Ctrl + Enter** → Executa o script inteiro.
@@ -162,7 +162,7 @@ b
 knitr::include_graphics("figs/ambiente.png")
 ```
 
-📌 Dicas:
+Dicas:
 
 - Use `ls()` no console para listar os objetos carregados.
 - Para limpar o ambiente:  `rm(list = ls())`
@@ -184,7 +184,7 @@ knitr::include_graphics("figs/ambiente.png")
 knitr::include_graphics("figs/arquivos.png")
 ```
 
-📌 Dicas:
+Dicas:
 
 - Instalar um pacote: `install.packages("nome_do_pacote")` ou clicar no botão `Install` na aba *Packages*.
 - Carregar um pacote: `library("nome_do_pacote")` ou "marcar" o pacote na aba *Packages*.
@@ -277,21 +277,21 @@ R funciona como uma calculadora, permitindo operações básicas com números e 
 
 ```{r, eval=FALSE}
 # Soma
-2 + 3  # Resultado: 5
+2 + 3  
 # Subtração
-10 - 4  # Resultado: 6
+10 - 4  
 # Multiplicação
-5 * 2  # Resultado: 10
+5 * 2  
 # Divisão
-9 / 3  # Resultado: 3
+9 / 3  
 # Exponenciação
-2^3  # Resultado: 8
+2^3  
 # Raiz quadrada
-sqrt(16)  # Resultado: 4
+sqrt(16)
 # Resto da divisão 
-10 %% 3  # Resultado: 1
+10 %% 3 
 # Parte inteira da divisão
-10 %/% 3  # Resultado: 3
+10 %/% 3  
 ```
 
 <!-- Para estilizar caixas de texto: -->
@@ -307,12 +307,12 @@ sqrt(16)  # Resultado: 4
 
 **Exemplo**
 ```{r ex7.1, eval=FALSE}
-2 + 3 * 4    # Multiplicação ocorre primeiro -> 14
-(2 + 3) * 4  # Parênteses ocorre primeiro -> 20
-2 * 5 ^ 2    # Exponenciação ocorre primeiro -> 25
-(2 * 5) ^ 2  # Parênteses ocorre primeiro -> 100
-5 * 3 / 2    # Ordem indiferente
-5 + 3 - 2    # Ordem indiferente
+2 + 3 * 4    
+(2 + 3) * 4  
+2 * 5 ^ 2    
+(2 * 5) ^ 2  
+5 * 3 / 2    
+5 + 3 - 2    
 ```
 
 ### Criando Variáveis (objetos) 
@@ -337,7 +337,7 @@ x/y # quociente
 
 <div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
 <details>
-  <summary><strong> 📌 Restrições nos nomes das variáveis (objetos) </strong></summary>
+  <summary><strong> Restrições nos nomes das variáveis (objetos) </strong></summary>
   
 **1. Começo do Nome:** Não pode começar com número ou caracteres especiais. Deve começar com uma letra (A-Z ou a-z).
     
@@ -382,7 +382,7 @@ mean(mean)
 
 <div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
 <details open>
-  <summary><strong> 📌 Dicas para os nomes das variáveis (objetos) </strong></summary>
+  <summary><strong> Dicas para os nomes das variáveis (objetos) </strong></summary>
 
 - A convenção em R é usar underline (_) para nomes de objetos (exceto no inicio).
 - Evitar nomes ambíguos e usar nomes descritivos que deixem claro o que o objeto representa.
@@ -435,12 +435,12 @@ x_y <- 5
 
 **3.**
 ```{r ex16.2, eval=FALSE}
-1numero <- 100   # ❌ Inválido: não pode começar com número
-meu_numero <- 25 # ✅ Válido
-data <- "2025-03-15" # ⚠️ Válido, mas desaconselhado (conflito com função data())
-for <- "teste"  # ❌ Inválido: "for" é palavra reservada
-x@y <- 50  # ❌ Inválido:  caractere inválido (@)
-x_y <- 5  # ✅ Válido
+1numero <- 100   # Inválido: não pode começar com número
+meu_numero <- 25 # Válido
+data <- "2025-03-15" #  Válido, mas desaconselhado (conflito com função data())
+for <- "teste"  # Inválido: "for" é palavra reservada
+x@y <- 50  # Inválido:  caractere inválido (@)
+x_y <- 5  # Válido
 ```
 
 </div>

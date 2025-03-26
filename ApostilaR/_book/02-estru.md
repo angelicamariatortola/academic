@@ -8,7 +8,6 @@ No R, as principais estruturas de dados são:
 - **Listas**
 - **Data frames**
 
-
 ## Vetores 
 
 Vetores são a estrutura de dados mais básica do R. Um vetor é uma sequência de elementos do mesmo tipo, podendo ser numérico, caracter ou lógico. Pode ser definido como um conjunto de valores: $V=(v_1,v_2,...,v_n)$.
@@ -47,7 +46,7 @@ print(d)
 Usar $a:b$ cria uma sequência de a a b, ou seja, $a, a+1, a+2, ..., b$
   
 
-```r
+``` r
 ## Criando uma sequencia de 1 a 6
 1:6
 ## Criando uma sequencia de 5 a 10
@@ -59,13 +58,15 @@ Usar $a:b$ cria uma sequência de a a b, ou seja, $a, a+1, a+2, ..., b$
 Também podemos usar a função `seq()` para criar sequências:
   
 
-```r
+``` r
 seq(from = 1, to = 10, by = 2) 
 # gera sequencias de numeros 
 # from: valor inicial, to: valor final, 
 # by (opcional): Incremento, 
 # length.out (opcional): Número total de elementos 
+```
 
+``` r
 ## Criando uma sequencia de 1 a 6
 seq(from = 1, to = 6, by = 1) #equivalente a 1:6
 ## Criando uma sequencia de 1 a 10, com 5 elementos
@@ -74,14 +75,14 @@ seq(1, 10, length.out = 5)
 
 Criando um vetor com a função `seq()`
 
-```r
+``` r
 seq1 <- seq(1, 10, length.out = 5) 
 ```
 
 
 ##### Criando um vetor com `rep()` {-}
 
-```r
+``` r
 rep(2, times = 3)
 # repete números ou vetores
 # x: O valor ou vetor a ser repetido.
@@ -103,27 +104,58 @@ rep(c(2,3), each = 3)
 Criando um vetor com a função `rep()`
   
 
-```r
+``` r
 rep1 <- rep(c(1,2), each = 3)
 ```
 
 ##### Criando um vetor com `scan()` {-}
+
+A função `scan()`  é utilizada para ler dados de entrada e criar vetores. Ela é muito útil para ler dados de um arquivo ou diretamente do console.
+
+**Exemplo - Vetor numérico:** Considere os valores `10  20  30  40  60`. Para ler no R, fazemos:
+```r
+# Copie os dados acima. 
+# Digite o código abaixo no Console do R:
+x <- scan()
+# Pressione Enter. 
+# Cole os valores no Console.
+# Para finalizar, pressione Enter 2 vezes.
+print(x)
+```
+
+**Exemplo - Vetor de caracteres:** Considere os valores `Ana Mateus Carlos Tati`. Para ler no R, fazemos:
+```r
+# Copie os dados acima. 
+# Digite o código abaixo no Console do R:
+nomes <- scan(what = character())
+# Pressione Enter. 
+# Cole os valores no Console.
+# Para finalizar, pressione Enter 2 vezes.
+print(nomes)
+```
+
+**Exemplo - Separador diferente:** Considere os valores `1,2,3,4,5`. Para ler no R, fazemos:
+```r
+# Copie os dados acima. 
+# Digite o código abaixo no Console do R:
+valores <- scan(sep = ",")
+# Pressione Enter. 
+# Cole os valores no Console.
+# Para finalizar, pressione Enter 2 vezes.
+print(valores)
+```
 
 #### Manipulação e características de vetores {-}
 
 ```r
 # Criando um vetor:
 a <- c(1,2,5,7,8,10)
-
 # Primeiro elemento de a
 a[1]
-
 # Último elemento
 a[6]
-
 # Subconjunto de elementos
 a[2:4]
-
 # Elementos específicos
 a[c(1, 3, 5)]
 ```
@@ -133,17 +165,13 @@ Modificando valores do vetor $a$:
 # Substituindo um elemento
 a[2] <- 99
 print(a)
-
 # Adicionando novos elementos
 a <- c(a, 200)
 print(a)
-
 # ou usando a função append():
 a <- append(a, 300)
-
 # Removendo alguma posição do vetor:
 a <- a[-2]
-
 # Removendo mais de uma posição do vetor:
 a <- a[-c(2,3)]
 ```
@@ -152,185 +180,63 @@ Nomeando os Elementos do Vetor
 ```r
 # Nomes do vetor a:
 names(a)
-
 # Atribuindo nomes para o vetor a:
 names(a) <- c("x1", "x2", "x3", "x4", "x5")
-
 a["x1"]  # Retorna 3 (elemento nomeado "a")
 ```
 
 Algumas características sobre o vetor: 
 
-```r
+``` r
 # Seja o vetor numérico:
 vec_num <- c(3,6,7,9)
-
-# (1) Tamanho (número de elementos):
-length(vec_num)
-```
-
-```
-## [1] 4
-```
-
-```r
-# (2) estrutura:
-str(vec_num)
-```
-
-```
-##  num [1:4] 3 6 7 9
-```
-
-```r
 # Seja o vetor de caracteres:
 vec_carac <- c("A","B","C")
-
-# (1) Tamanho (número de elementos):
-length(vec_carac)
-```
-
-```
-## [1] 3
-```
-
-```r
-# (2) estrutura:
-str(vec_carac)
-```
-
-```
-##  chr [1:3] "A" "B" "C"
-```
-
-```r
 # Seja o vetor de valores lógicos:
 vec_logi <- c(TRUE, TRUE, FALSE)
-
-# (1) Tamanho (número de elementos):
-length(vec_logi)
-```
-
-```
-## [1] 3
 ```
 
 ```r
+# (1) Tamanho (número de elementos):
+length(vec_num)
+length(vec_carac)
+length(vec_logi)
 # (2) estrutura:
+str(vec_num)
+str(vec_carac)
 str(vec_logi)
 ```
 
-```
-##  logi [1:3] TRUE TRUE FALSE
-```
-
-
 Perguntando sobre o tipo do vetor:
-
 ```r
 # is.vector -> identifica qualquer tipo de vetor
 is.vector(vec_num)
-```
-
-```
-## [1] TRUE
-```
-
-```r
 is.vector(vec_carac)
-```
-
-```
-## [1] TRUE
-```
-
-```r
 is.vector(vec_logi)
-```
 
-```
-## [1] TRUE
-```
-
-```r
 # is.character -> identifica vetores de caracteres
 is.character(vec_num)
-```
-
-```
-## [1] FALSE
-```
-
-```r
 is.character(vec_carac)
-```
-
-```
-## [1] TRUE
-```
-
-```r
 is.character(vec_logi)
-```
 
-```
-## [1] FALSE
-```
-
-```r
 # is.logical -> identifica vetores de valores logicos
 is.logical(vec_num)
-```
-
-```
-## [1] FALSE
-```
-
-```r
 is.logical(vec_carac)
-```
-
-```
-## [1] FALSE
-```
-
-```r
 is.logical(vec_logi)
 ```
 
-```
-## [1] TRUE
-```
-
 Para converter vetores de um tipo para outro tipo, funções `as.vector`, `as.character`, `as.logical`:
-
 ```r
 # as.character -> Transforma em vetor de caracteres
 vec_num_carac <- as.character(vec_num)
 str(vec_num_carac)
-```
 
-```
-##  chr [1:4] "3" "6" "7" "9"
-```
-
-```r
 vec_logi_carac <- as.character(vec_logi)
 str(vec_logi_carac)
-```
 
-```
-##  chr [1:3] "TRUE" "TRUE" "FALSE"
-```
-
-```r
 # as.logical -> Transforma em vetor de valores lógicos
 vec_num_logi <- as.logical(c(0,1,1,0))
 str(vec_num_logi)
-```
-
-```
-##  logi [1:4] FALSE TRUE TRUE FALSE
 ```
 
 
@@ -360,6 +266,11 @@ str(vec_num_logi)
 
 **10.** Dado `v <- c(100, 200, 300)`, converta-o para caractere.
 
+**11.** Leia os valores: `3.5 7.2 9.8 5.1 6.3`, usando a função `scan()`. Conte o número de elementos do vetor.
+
+**12.** Leia os valores: `10;20;30;40;50`, usando a função `scan()`.
+
+**13.** Leia os nomes: `Maria Isabel,Aurora,Teresa,Luis,Antonio`, usando a função `scan()`. Identifique a estrutura do vetor.
 
 <!-- **5.** Combine seq() e rep() para gerar o seguinte vetor: `1 1 2 2 3 3 4 4 5 5` -->
 
@@ -378,130 +289,42 @@ str(vec_num_logi)
 <div id="protectedContent1" style="display:none;">
   
 ### Respostas {-}
-
 ```r
 # 1. 
 rep(c(5, 10), each = 5)
-```
-
-```
-##  [1]  5  5  5  5  5 10 10 10 10 10
-```
-
-<!-- ```{r} -->
-<!-- # 2. Repetindo elementos individualmente -->
-<!-- rep(1:3, each = 4) -->
-<!-- ``` -->
-
-
-```r
 # 2. 
 rep(c("A", "B", "C"), length.out = 8)
-```
-
-```
-## [1] "A" "B" "C" "A" "B" "C" "A" "B"
-```
-
-<!-- ```{r} -->
-<!-- # 4. Padrão alternado -->
-<!-- rep(c(1, 2), times = 4) -->
-<!-- ``` -->
-
-
-```r
 # 3. 
 seq(1, 20, by = 2)
-```
-
-```
-##  [1]  1  3  5  7  9 11 13 15 17 19
-```
-
-<!-- ```{r} -->
-<!-- # 6. Sequência decrescente -->
-<!-- seq(10, 0, by = -2) -->
-<!-- ``` -->
-
-
-```r
 # 4. 
 seq(0, 1, length.out = 5)
-```
-
-```
-## [1] 0.00 0.25 0.50 0.75 1.00
-```
-
-<!-- ```{r} -->
-<!-- # 5. -->
-<!-- rep(seq(1, 5), each = 2) -->
-<!-- ``` -->
-
-
-```r
 # 5. 
 v <- c(5, 10, 15, 20, 25, 30)
 v[2:5]  # Elementos da posição 2 até 5
-```
-
-```
-## [1] 10 15 20 25
-```
-
-
-```r
 # 6. 
 v <- c(3, 7, 12, 18, 25)
 v[v > 10]  # Retorna valores maiores que 10
-```
-
-```
-## [1] 12 18 25
-```
-
-
-
-```r
 # 7. 
 v <- c(10, 20, 30, 40, 50)
 v[c(2, 4)] <- 999  # Modifica as posições 2 e 4
-```
-
-
-```r
 # 8. 
 v <- c(2, 4, 6, 8, 10)
 v <- v[-4]  # Remove o quarto elemento
 v
-```
-
-```
-## [1]  2  4  6 10
-```
-
-
-```r
 # 9. 
 v <- c("1", "2", "3", "4")
 v_numeric <- as.numeric(v)
 v_numeric
-```
-
-```
-## [1] 1 2 3 4
-```
-
-
-```r
 # 10. 
 v <- c(100, 200, 300)
 v_char <- as.character(v)
 v_char
-```
-
-```
-## [1] "100" "200" "300"
+# 11. 
+x <- scan()
+# 12. 
+x <- scan(sep = ";")
+# 13.
+x <- scan(what = character(), sep = ",")
 ```
 
 </div>
@@ -533,160 +356,51 @@ document.getElementById("submitButton1").addEventListener("click", function()
 #### Operações com vetores {-}
 
 **Operações Aritméticas (elemento a elemento)**
-
 ```r
 # Considere os valores:
 a <- 2
 v1 <- c(1, 2, 3)
 v2 <- c(4, 5, 6)
-
 ## Soma
 # Soma de vetores:
 v1+v2
-```
-
-```
-## [1] 5 7 9
-```
-
-```r
 # Soma de vetor com escalar:
 v1+a
-```
-
-```
-## [1] 3 4 5
-```
-
-```r
 ## Subtração
 # Subtração de vetores:
 v1-v2
-```
-
-```
-## [1] -3 -3 -3
-```
-
-```r
 # Subtração de vetor com escalar:
 v1-a
-```
-
-```
-## [1] -1  0  1
-```
-
-```r
 ## Multiplicação
 # Multiplicação de vetores
 v1*v2
-```
-
-```
-## [1]  4 10 18
-```
-
-```r
 # Multiplicação de vetor com escalar:
 v1*a
-```
-
-```
-## [1] 2 4 6
-```
-
-```r
 ## Divisão
 # Divisão de vetores
 v1/v2
-```
-
-```
-## [1] 0.25 0.40 0.50
-```
-
-```r
 # Resto da divisão
 v2%%v1
-```
-
-```
-## [1] 0 1 0
-```
-
-```r
 # Parte inteira da divisão
 v2%/%v1
-```
-
-```
-## [1] 4 2 2
-```
-
-```r
 # Divisão de vetor por escalar:
 v1/a
-```
-
-```
-## [1] 0.5 1.0 1.5
-```
-
-```r
 ## Potenciação
 # Potenciação de vetores
 v1^v2
-```
-
-```
-## [1]   1  32 729
-```
-
-```r
 # Potenciação de vetor por escalar:
 v1^a
-```
-
-```
-## [1] 1 4 9
-```
-
-```r
 ## Produto Escalar
-
 v1%*%v2
-```
-
-```
-##      [,1]
-## [1,]   32
-```
-
-```r
-# equivalente a:
-crossprod(v1,v2)
-```
-
-```
-##      [,1]
-## [1,]   32
-```
-
-```r
 # equivalente a:
 sum(v1*v2)
-```
-
-```
-## [1] 32
 ```
 
 **Reciclagem de Vetores**
 
 Quando os vetores têm tamanhos diferentes, o vetor menor é reciclado para igualar o comprimento do maior.
 
-```r
+``` r
 v1 <- c(1, 2, 3, 4)
 v2 <- c(10, 20)
 v1 + v2  
@@ -698,65 +412,17 @@ v1 + v2
 
 
 **Operações Lógicas e de Comparação**
-
 ```r
 v1 > v2  
-```
-
-```
-## [1] FALSE FALSE FALSE FALSE
-```
-
-```r
 v1 < v2 
-```
-
-```
-## [1] TRUE TRUE TRUE TRUE
-```
-
-```r
 v1 == v2 
-```
-
-```
-## [1] FALSE FALSE FALSE FALSE
-```
-
-```r
 v1 != v2  
-```
-
-```
-## [1] TRUE TRUE TRUE TRUE
-```
-
-```r
 # Considere os valores:
 x1 <- c(TRUE, FALSE, TRUE)
 x2 <- c(FALSE, FALSE, TRUE)
-
 x1 & x2
-```
-
-```
-## [1] FALSE FALSE  TRUE
-```
-
-```r
 x1 | x1  
-```
-
-```
-## [1]  TRUE FALSE  TRUE
-```
-
-```r
 !x1      
-```
-
-```
-## [1] FALSE  TRUE FALSE
 ```
 
 
@@ -788,7 +454,7 @@ x1 | x1
   
 ### Respostas {-}
 
-```r
+``` r
 # 1. 
 x <- 1:100
 x^3
@@ -809,12 +475,10 @@ x^3
 ## [100] 1000000
 ```
 
-
-```r
+``` r
 # 2. 
 v1 <- c(3, 6, 9, 12)
 v2 <- c(2, 4, 6, 8)
-
 v1 + v2
 ```
 
@@ -822,7 +486,7 @@ v1 + v2
 ## [1]  5 10 15 20
 ```
 
-```r
+``` r
 v1 - v2
 ```
 
@@ -830,7 +494,7 @@ v1 - v2
 ## [1] 1 2 3 4
 ```
 
-```r
+``` r
 v1 * v2
 ```
 
@@ -838,7 +502,7 @@ v1 * v2
 ## [1]  6 24 54 96
 ```
 
-```r
+``` r
 v1 / v2
 ```
 
@@ -846,7 +510,7 @@ v1 / v2
 ## [1] 1.5 1.5 1.5 1.5
 ```
 
-```r
+``` r
 v1^2
 ```
 
@@ -854,7 +518,7 @@ v1^2
 ## [1]   9  36  81 144
 ```
 
-```r
+``` r
 sqrt(v2)
 ```
 
@@ -862,7 +526,7 @@ sqrt(v2)
 ## [1] 1.414214 2.000000 2.449490 2.828427
 ```
 
-```r
+``` r
 v1%*%v2
 ```
 
@@ -871,43 +535,39 @@ v1%*%v2
 ## [1,]  180
 ```
 
-
-```r
+``` r
 # 3. 
 v3 <- c(10, 20, 30) 
 v4 <- c(5, 15)
-
 v3+v4
 ```
 
 ```
-## Warning in v3 + v4: comprimento do objeto maior não é múltiplo do comprimento
-## do objeto menor
+## Warning in v3 + v4: longer object length is not a multiple of shorter object
+## length
 ```
 
 ```
 ## [1] 15 35 35
 ```
 
-```r
+``` r
 v3*v4
 ```
 
 ```
-## Warning in v3 * v4: comprimento do objeto maior não é múltiplo do comprimento
-## do objeto menor
+## Warning in v3 * v4: longer object length is not a multiple of shorter object
+## length
 ```
 
 ```
 ## [1]  50 300 150
 ```
 
-
-```r
+``` r
 # 4. 
 v6 <- c(10, 15, 20, 25) 
 v7 <- c(12, 15, 18, 28)
-
 v6>v7
 ```
 
@@ -915,7 +575,7 @@ v6>v7
 ## [1] FALSE FALSE  TRUE FALSE
 ```
 
-```r
+``` r
 v6<v7
 ```
 
@@ -923,7 +583,7 @@ v6<v7
 ## [1]  TRUE FALSE FALSE  TRUE
 ```
 
-```r
+``` r
 v6==v7
 ```
 
@@ -931,7 +591,7 @@ v6==v7
 ## [1] FALSE  TRUE FALSE FALSE
 ```
 
-```r
+``` r
 v6!=v7
 ```
 
@@ -939,7 +599,7 @@ v6!=v7
 ## [1]  TRUE FALSE  TRUE  TRUE
 ```
 
-```r
+``` r
 v6[v6>15]
 ```
 
@@ -947,7 +607,7 @@ v6[v6>15]
 ## [1] 20 25
 ```
 
-```r
+``` r
 v7[v7 <= 20]
 ```
 
@@ -985,112 +645,58 @@ document.getElementById("submitButton2").addEventListener("click", function()
 #### Funções úteis para vetores {-}
 
 **`sum()` - Soma dos elementos do vetor**
-
 ```r
 x <- c(1, 3, 7, 8, 15)
 sum(x)  
 ```
 
-```
-## [1] 34
-```
-
 **`length()` - Tamanho do vetor**
-
 ```r
 x <- c(2, 4, 6, 8, 10)
 length(x)  
 ```
 
-```
-## [1] 5
-```
-
 **`sort()` - Ordenar um vetor**
-
 ```r
 x <- c(10, 5, 8, 3, 1)
 sort(x)  # Ordenação crescente
-```
-
-```
-## [1]  1  3  5  8 10
-```
-
-```r
 sort(x, decreasing = TRUE)  # Ordenação decrescente
 ```
 
-```
-## [1] 10  8  5  3  1
-```
-
 **`which()` - Índices que satisfazem uma condição**
-
 ```r
 x <- c(10, 20, 30, 40, 50)
 which(x > 25)  # Retorna os índices dos elementos maiores que 25
 ```
 
-```
-## [1] 3 4 5
-```
-
 **`unique()` - Elementos únicos**
-
 ```r
 x <- c(1, 2, 2, 3, 3, 3, 4, 4, 4, 4)
 unique(x)  # Retorna os valores únicos
 ```
 
-```
-## [1] 1 2 3 4
-```
-
 **`table()` - Frequência dos elementos**
-
 ```r
 x <- c("A", "B", "A", "C", "B", "B", "A")
 table(x)  # Conta quantas vezes cada letra aparece
-```
-
-```
-## x
-## A B C 
-## 3 3 1
 ```
 
 **`%in%` - Operador de Pertinência**
 
 Verifica se os elementos de um vetor estão presentes em outro.
 
-
-
 ```r
 x <- c(1, 2, 3, 4, 5)
 y <- c(2, 4, 6)
-
 x %in% y  # Verifica quais elementos de x estão em y
-```
-
-```
-## [1] FALSE  TRUE FALSE  TRUE FALSE
-```
-
-```r
 # Terá o tamanho de x
-
 # Se quisermos filtrar os valores de x que estão em y:
 x[x %in% y]  # Retorna apenas os elementos de x que também estão em y
 ```
 
-```
-## [1] 2 4
-```
 
 
-
-Table: (\#tab:unnamed-chunk-35)Resumo das Funções para Vetores no R
+Table: (\#tab:unnamed-chunk-12)Resumo das Funções para Vetores no R
 
 |  Funcao  |                       Descricao                        |                   Exemplo                    |
 |:--------:|:------------------------------------------------------:|:--------------------------------------------:|
@@ -1108,74 +714,33 @@ Table: (\#tab:unnamed-chunk-35)Resumo das Funções para Vetores no R
 #### Valores perdidos e especiais {-}
 
 Valores perdidos devem ser definidos como `NA` (not available):
-
 ```r
 x <- c(1, 3, NA, 2)
 x
 ```
 
-```
-## [1]  1  3 NA  2
-```
-
 Outros valores especiais são `NaN` (not a number),`-Inf` (menos infinito) e `Inf` (mais infinito):
-
 ```r
 y <- 0/0
 print(y)
-```
-
-```
-## [1] NaN
-```
-
-```r
 z <- 1/0
 print(z)
 ```
 
-```
-## [1] Inf
-```
-
 Podemos testar a presença de valores especiais:
-
 ```r
 # Testando presença de NA ou NaN:
 x <- c(1, 3, NA, 2)
 is.na(x)
-```
-
-```
-## [1] FALSE FALSE  TRUE FALSE
-```
-
-```r
 # ou
 any(is.na(x))
-```
 
-```
-## [1] TRUE
-```
-
-```r
 y <- 0/0
 is.na(y)
-```
 
-```
-## [1] TRUE
-```
-
-```r
 # Testando presença de -Inf ou Inf:
 z <- 1/0
 is.infinite(z)
-```
-
-```
-## [1] TRUE
 ```
 
 ## Fatores
@@ -1183,22 +748,20 @@ is.infinite(z)
 Os fatores no R são similares aos vetores de caracteres. No entanto, o fator contém categorias (niveis), armazenando valores que pertencem a estes níveis. Para criar fatores, usa-se a função `factor()`.
 
 
-```r
+``` r
 # Vetor de caracteres
 cores_char <- c("azul", "vermelho", "verde", "azul")
-print(cores_char)
+print(cores_char) # O vetor de caracteres apenas contém texto.
 ```
 
 ```
 ## [1] "azul"     "vermelho" "verde"    "azul"
 ```
 
-```r
-# O vetor de caracteres apenas contém texto.
-
+``` r
 # Fator
 cores_fac <- factor(cores_char)
-print(cores_fac)
+print(cores_fac) # O fator atribui níveis aos valores.
 ```
 
 ```
@@ -1206,13 +769,9 @@ print(cores_fac)
 ## Levels: azul verde vermelho
 ```
 
-```r
-# O fator atribui níveis e os valores são referências a esses níveis.
-```
-
 Conversão de fator e vetor de caracteres:
 
-```r
+``` r
 # Conversão de fator para vetor de caracteres 
 as.character(cores_fac)
 ```
@@ -1221,7 +780,7 @@ as.character(cores_fac)
 ## [1] "azul"     "vermelho" "verde"    "azul"
 ```
 
-```r
+``` r
 # Conversão de vetor de caracteres para fator 
 factor(cores_char)
 ```
@@ -1231,7 +790,7 @@ factor(cores_char)
 ## Levels: azul verde vermelho
 ```
 
-```r
+``` r
 # ou usando as.factor():
 as.factor(cores_char)
 ```
@@ -1253,12 +812,10 @@ as.factor(cores_char)
 </p>
 </details>
 
-<br>
-
 A ordem dos níveis dos fatores pode também ser modificada através do argumento `levels`:
 
 
-```r
+``` r
 cores_levels <- factor(c("azul", "vermelho", "verde", "azul"),
                 levels = c("verde","azul","vermelho"))
 cores_levels
@@ -1271,7 +828,7 @@ cores_levels
 
 Além disso, os níveis dos fatores podem também ser explicitamente definidos como *ordenados*, com o argumento `ordered = TRUE`:
 
-```r
+``` r
 satisfacao <- factor(c("Ruim", "Bom", "Excelente", "Bom", "Ruim"),
               levels = c("Ruim", "Bom", "Excelente"), 
               ordered = TRUE)
@@ -1294,28 +851,14 @@ satisfacao
 </p>
 </details>
 
-<br>
 
 Outras funções úteis para fatores:
-
 ```r
 # Níveis do fator
 levels(cores_levels)
-```
-
-```
-## [1] "verde"    "azul"     "vermelho"
-```
-
-```r
 # Número de níveis do fator
 nlevels(cores_levels)
 ```
-
-```
-## [1] 3
-```
-
 
 #### Exercícios {-}
 
@@ -1374,7 +917,7 @@ c. Ordene os niveis em ordem alfabética usando `sort()` e recalcule as frequên
 ### Respostas {-}
 
 
-```r
+``` r
 # 1. 
 v1 <- c(2, 4, 6, 2, 8, 6, 10, 2, 4, 6)
 length(v1)
@@ -1384,7 +927,7 @@ length(v1)
 ## [1] 10
 ```
 
-```r
+``` r
 unique(v1)
 ```
 
@@ -1392,7 +935,7 @@ unique(v1)
 ## [1]  2  4  6  8 10
 ```
 
-```r
+``` r
 sort(v1, decreasing = T)
 ```
 
@@ -1400,8 +943,7 @@ sort(v1, decreasing = T)
 ##  [1] 10  8  6  6  6  4  4  2  2  2
 ```
 
-
-```r
+``` r
 # 2. 
 fatores <- factor(c("A", "B", "A", "C", "B", "A", "C", "B", "C", "A"))
 table(fatores)
@@ -1413,7 +955,7 @@ table(fatores)
 ## 4 3 3
 ```
 
-```r
+``` r
 unique(fatores) #ou
 ```
 
@@ -1422,7 +964,7 @@ unique(fatores) #ou
 ## Levels: A B C
 ```
 
-```r
+``` r
 levels(fatores)
 ```
 
@@ -1430,12 +972,10 @@ levels(fatores)
 ## [1] "A" "B" "C"
 ```
 
-
-```r
+``` r
 # 3. 
 v2 <- c(5, 10, 15, 20, 25)
 v3 <- c(10, 20, 30)
-
 # Verificando presença de elementos
 v2 %in% v3  # -> elementos 10 e 20
 ```
@@ -1444,7 +984,7 @@ v2 %in% v3  # -> elementos 10 e 20
 ## [1] FALSE  TRUE FALSE  TRUE FALSE
 ```
 
-```r
+``` r
 # Posições dos valores de v2 que estão em v3
 which(v2 %in% v3) # -> posições 2 e 4
 ```
@@ -1453,8 +993,7 @@ which(v2 %in% v3) # -> posições 2 e 4
 ## [1] 2 4
 ```
 
-
-```r
+``` r
 # 4. 
 v4 <- c(10, NA, 30, 50, NA, NaN, 20)
 sum(v4, na.rm = TRUE)  
@@ -1464,7 +1003,7 @@ sum(v4, na.rm = TRUE)
 ## [1] 110
 ```
 
-```r
+``` r
 length(v4[!is.na(v4)])  
 ```
 
@@ -1472,7 +1011,7 @@ length(v4[!is.na(v4)])
 ## [1] 4
 ```
 
-```r
+``` r
 sort(v4, na.last = TRUE)  
 ```
 
@@ -1480,7 +1019,7 @@ sort(v4, na.last = TRUE)
 ## [1]  10  20  30  50  NA  NA NaN
 ```
 
-```r
+``` r
 which(is.na(v4))
 ```
 
@@ -1488,8 +1027,7 @@ which(is.na(v4))
 ## [1] 2 5 6
 ```
 
-
-```r
+``` r
 # 5. 
 categorias <- factor(c("A", "B", "A", "A", "B", "A", "B", "C", "A", "C"))
 table(categorias)
@@ -1501,7 +1039,7 @@ table(categorias)
 ## 5 3 2
 ```
 
-```r
+``` r
 levels(categorias)[levels(categorias) == "B"] <- "X"; table(categorias)
 ```
 
@@ -1511,7 +1049,7 @@ levels(categorias)[levels(categorias) == "B"] <- "X"; table(categorias)
 ## 5 3 2
 ```
 
-```r
+``` r
 categ_ord <- factor(categorias, levels = sort(levels(categorias))); table(categ_ord)
 ```
 
@@ -1564,7 +1102,7 @@ Em **programação**, matrizes são usadas para armazenar dados de forma estrutu
 No **R**, matrizes podem ser criadas com a função `matrix()` e podem ser manipuladas com operações matemáticas vetorizadas.
 
 
-```r
+``` r
 # Exemplo de matriz 2x3 
 matriz <- matrix(1:6, nrow = 2, ncol = 3)
 matriz
@@ -1576,7 +1114,7 @@ matriz
 ## [2,]    2    4    6
 ```
 
-```r
+``` r
 # Alterando o preenchimento da matriz por linhas:
 matriz_linhas <- matrix(1:6, nrow = 2, ncol = 3, byrow = T)
 matriz_linhas
@@ -1591,7 +1129,7 @@ matriz_linhas
 Para verificar a dimensão da matriz:
 
 
-```r
+``` r
 dim(matriz)
 ```
 
@@ -1601,20 +1139,20 @@ dim(matriz)
 
 Adicionando colunas com `cbind()`:
 
-```r
+``` r
 matriz_mais_colunas <- cbind(matriz, rep(99, 2))
 ```
 
 Adicionando linhas com `rbind()`:
 
-```r
+``` r
 matriz_mais_linhas <- rbind(matriz, rep(99, 3))
 ```
 
 
 Renomeando linhas e colunas de uma matriz:
 
-```r
+``` r
 colnames(matriz) <- c("c1","c2","c3")
 rownames(matriz) <- c("l1","l2")
 matriz
@@ -1626,7 +1164,7 @@ matriz
 ## l2  2  4  6
 ```
 
-```r
+``` r
 # ou podemos fazer:
 matriz2 <- matrix(1:6, nrow = 2, 
                dimnames = list(c("l1", "l2"),
@@ -1644,215 +1182,72 @@ matriz2
 Acessando Elementos de Matrizes
 
 
-
 ```r
 # Criando uma matriz 3x3
 matriz <- matrix(1:9, nrow = 3)
 matriz
-```
-
-```
-##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9
-```
-
-```r
 # Para acessar o elemento da linha 2, coluna 3:
-matriz[2, 3]  # Retorna 6
-```
-
-```
-## [1] 8
-```
-
-```r
-# Para acessar todos os elementos de uma linha ou coluna:
+matriz[2, 3]  
 # Acessando a segunda linha
-matriz[2, ]  # Retorna a linha: 4, 5, 6
-```
-
-```
-## [1] 2 5 8
-```
-
-```r
+matriz[2, ]  
 # Acessando a terceira coluna
-matriz[, 3]  # Retorna a coluna: 3, 6, 9
-```
-
-```
-## [1] 7 8 9
-```
-
-```r
+matriz[, 3]  
 # Se a matriz tiver nomes nas linhas ou colunas:
 colnames(matriz) <- c("c1","c2","c3")
 rownames(matriz) <- c("l1","l2", "l3")
 matriz["l1",] # -> linha 1
-```
-
-```
-## c1 c2 c3 
-##  1  4  7
-```
-
-```r
 matriz[,"c1"] # -> coluna 1
-```
-
-```
-## l1 l2 l3 
-##  1  2  3
 ```
 
 Também podemos modificar valores diretamente:
 
 
-```r
+``` r
 matriz[1,2] <- 10  # Muda o valor da posição (1,2) para 10
 print(matriz)
 ```
 
 ```
 ##    c1 c2 c3
-## l1  1 10  7
-## l2  2  5  8
-## l3  3  6  9
+## l1  1 10  5
+## l2  2  4  6
 ```
 
 
 **Operações Básicas com Matrizes:**
 
-
 ```r
 ## Soma de matrizes
 A <- matrix(1:4, nrow = 2)
 B <- matrix(5:8, nrow = 2)
-A; B
-```
-
-```
-##      [,1] [,2]
-## [1,]    1    3
-## [2,]    2    4
-```
-
-```
-##      [,1] [,2]
-## [1,]    5    7
-## [2,]    6    8
-```
-
-```r
 nrow(A) # Número de linhas
-```
-
-```
-## [1] 2
-```
-
-```r
 ncol(A) # Número de colunas
-```
-
-```
-## [1] 2
-```
-
-```r
 dim(A) # dimensão da matriz: número de linhas e número de colunas
-```
 
-```
-## [1] 2 2
-```
-
-```r
 A + B  # Soma elemento a elemento
-```
 
-```
-##      [,1] [,2]
-## [1,]    6   10
-## [2,]    8   12
-```
-
-```r
 ## Multiplicação elemento a elemento
 A * B  
-```
 
-```
-##      [,1] [,2]
-## [1,]    5   21
-## [2,]   12   32
-```
-
-```r
 ## Multiplicação de matrizes (produto matricial)
 A %*% B  
-```
 
-```
-##      [,1] [,2]
-## [1,]   23   31
-## [2,]   34   46
-```
-
-```r
 ## Transposta de uma matriz
 t(A)
-```
 
-```
-##      [,1] [,2]
-## [1,]    1    2
-## [2,]    3    4
-```
-
-```r
 ## Diagonal de uma matriz
 diag(A)
-```
 
-```
-## [1] 1 4
-```
-
-```r
 ## Determinante de uma matriz
 det(A)
-```
 
-```
-## [1] -2
-```
-
-```r
 ## Inversão de uma matriz 
 solve(A)
-```
 
-```
-##      [,1] [,2]
-## [1,]   -2  1.5
-## [2,]    1 -0.5
-```
-
-```r
 ## Função solve para resolver sistemas de equações. Seja Ax=b, com
 b <- c(2,5)
 # então a solução x do sistema é:
 solve(A, b)
-```
-
-```
-## [1]  3.5 -0.5
-```
-
-```r
 # para a inversão da matriz apenas, b = I não precisa ser declarado.
 ```
 
@@ -1890,7 +1285,7 @@ b. Uma matriz diagonal com os números 2, 4, 6 e 8 na diagonal principal.
 ### Respostas {-}
 
 
-```r
+``` r
 # 1. 
 mat <- matrix(1:12, ncol = 3, byrow = T)
 mat[3,2]
@@ -1900,7 +1295,7 @@ mat[3,2]
 ## [1] 8
 ```
 
-```r
+``` r
 mat[2,]
 ```
 
@@ -1908,12 +1303,9 @@ mat[2,]
 ## [1] 4 5 6
 ```
 
-```r
+``` r
 mat[4,3] <- 99
-```
 
-
-```r
 # 2. 
 M <- matrix(1:15, ncol = 5)
 M
@@ -1926,7 +1318,7 @@ M
 ## [3,]    3    6    9   12   15
 ```
 
-```r
+``` r
 nrow(M); ncol(M)
 ```
 
@@ -1938,7 +1330,7 @@ nrow(M); ncol(M)
 ## [1] 5
 ```
 
-```r
+``` r
 M <- matrix(1:15, ncol = 5, byrow = T)
 M[2,4]
 ```
@@ -1947,13 +1339,10 @@ M[2,4]
 ## [1] 9
 ```
 
-```r
+``` r
 M[3,5] <- 100
 M[,1] <- 0
-```
 
-
-```r
 # 3. 
 A <- matrix(1:9, ncol = 3)
 B <- matrix(10:18, ncol = 3)
@@ -1974,7 +1363,7 @@ A; B
 ## [3,]   12   15   18
 ```
 
-```r
+``` r
 A + B
 ```
 
@@ -1985,7 +1374,7 @@ A + B
 ## [3,]   15   21   27
 ```
 
-```r
+``` r
 A - B
 ```
 
@@ -1996,7 +1385,7 @@ A - B
 ## [3,]   -9   -9   -9
 ```
 
-```r
+``` r
 A*B
 ```
 
@@ -2007,7 +1396,7 @@ A*B
 ## [3,]   36   90  162
 ```
 
-```r
+``` r
 A%*%B
 ```
 
@@ -2018,8 +1407,7 @@ A%*%B
 ## [3,]  204  258  312
 ```
 
-
-```r
+``` r
 # 4. 
 I <- diag(4)
 matriz_diag <- diag(c(2,4,6,8))
@@ -2048,18 +1436,15 @@ document.getElementById("submitButton4").addEventListener("click", function()
 });
 </script>
 
-<br>
-
-
 
 
 ## Listas
-Listas podem armazenar diferentes tipos de objetos, como vetores, matrizes, etc. Tem uma estrutura “unidimensional”: apenas o número de elementos na lista é contado.
+Listas podem armazenar diferentes tipos de objetos, como vetores, matrizes, etc. Pode ser criada, fazendo: `list(valor1, valor2, valor3)`.
 
-
-```r
+``` r
 # Criando uma lista
-minha_lista <- list("Ana", 25, c(8, 9, 10), matrix(1:4, ncol = 2))
+minha_lista <- list("Ana", 25, c(8, 9, 10), 
+                    matrix(1:4, ncol = 2))
 minha_lista
 ```
 
@@ -2082,7 +1467,27 @@ minha_lista
 Acessando elementos da lista:
 
 
-```r
+``` r
+## Retorna uma lista com o primeiro elemento
+minha_lista[1]
+```
+
+```
+## [[1]]
+## [1] "Ana"
+```
+
+``` r
+str(minha_lista[1])
+```
+
+```
+## List of 1
+##  $ : chr "Ana"
+```
+
+``` r
+## Retorna apenas o primeiro elemento da lista
 # Acessando o primeiro elemento
 minha_lista[[1]] 
 ```
@@ -2091,7 +1496,15 @@ minha_lista[[1]]
 ## [1] "Ana"
 ```
 
-```r
+``` r
+str(minha_lista[[1]])
+```
+
+```
+##  chr "Ana"
+```
+
+``` r
 # Acessando o quarto elemento
 minha_lista[[4]]  
 ```
@@ -2104,7 +1517,7 @@ minha_lista[[4]]
 
 Visualizando a estrutura da lista:
 
-```r
+``` r
 str(minha_lista)
 ```
 
@@ -2118,7 +1531,7 @@ str(minha_lista)
 
 Observe que é uma estrutura unidimensional:
 
-```r
+``` r
 length(minha_lista)
 ```
 
@@ -2129,7 +1542,7 @@ length(minha_lista)
 Renomeando os elementos da lista:
 
 
-```r
+``` r
 names(minha_lista) 
 ```
 
@@ -2137,7 +1550,7 @@ names(minha_lista)
 ## NULL
 ```
 
-```r
+``` r
 names(minha_lista) <- c("nome", "idade", "notas", "matriz")
 minha_lista
 ```
@@ -2157,29 +1570,31 @@ minha_lista
 ## [1,]    1    3
 ## [2,]    2    4
 ```
-
 ```r
 # ou já poderiamos ter criado com os nomes:
-minha_lista <- list(nome = "Ana", idade = 25, notas = c(8, 9, 10), matriz = matrix(1:4, ncol = 2))
-minha_lista
+minha_lista <- list(nome = "Ana", idade = 25, notas = c(8, 9, 10),
+                    matriz = matrix(1:4, ncol = 2))
+```
+
+Para acessar os elementos da lista pelo nome, podemos usar o operador `$`:
+
+``` r
+minha_lista$nome # equivalente a minha_lista[[1]]
 ```
 
 ```
-## $nome
 ## [1] "Ana"
-## 
-## $idade
-## [1] 25
-## 
-## $notas
-## [1]  8  9 10
-## 
-## $matriz
+```
+
+``` r
+minha_lista$matriz # equivalente a minha_lista[[4]]
+```
+
+```
 ##      [,1] [,2]
 ## [1,]    1    3
 ## [2,]    2    4
 ```
-
 
 
 
@@ -2197,7 +1612,7 @@ minha_lista
 ## Data Frames
 Os data.frames são estruturas de dados que armazenam colunas de diferentes tipos (numéricas, categóricas, lógicas).
 
-```r
+``` r
 ## Criando um data frame
 dados <- data.frame(
   Nome = c("Ana", "Bruno", "Carlos", "Maria", "Jose", "Tata", "Mia"),

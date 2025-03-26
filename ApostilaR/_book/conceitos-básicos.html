@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 1 Conceitos Básicos | Estatística Computacional com o R</title>
   <meta name="description" content="Capítulo 1 Conceitos Básicos | Estatística Computacional com o R" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 1 Conceitos Básicos | Estatística Computacional com o R" />
   <meta property="og:type" content="book" />
@@ -156,8 +156,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-aritméticas"><i class="fa fa-check"></i><b>1.4.1</b> Operações Aritméticas</a></li>
 <li class="chapter" data-level="1.4.2" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#criando-variáveis-objetos"><i class="fa fa-check"></i><b>1.4.2</b> Criando Variáveis (objetos)</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas"><i class="fa fa-check"></i>Respostas</a></li>
 <li class="chapter" data-level="1.4.3" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-lógicas-e-comparações"><i class="fa fa-check"></i><b>1.4.3</b> Operações Lógicas e Comparações</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas-1"><i class="fa fa-check"></i>Respostas</a></li>
 <li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#exercícios-da-sessão-1"><i class="fa fa-check"></i>1.4 Exercícios da Sessão</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas-2"><i class="fa fa-check"></i>Respostas</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>2</b> Estruturas de Dados</a>
@@ -302,24 +305,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Exibe resultados e mensagens (saídas de funções, erros, avisos).</li>
 </ul>
 <p><img src="figs/console.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>📌 Dicas:</p>
+<p>Dicas:</p>
 <ul>
 <li>Para rodar um código, digite e pressione <strong>Enter</strong>.</li>
 <li>Use as setas ↑ e ↓ para acessar comandos anteriores.</li>
 <li>O atalho <strong>Ctrl + L</strong> (Windows/Linux) ou <strong>Cmd + L</strong> (Mac) limpa o console.</li>
 </ul>
 <p><strong>Exemplo</strong> Digite os códigos abaixo no <em>Console</em>. Use as setas ↑ e ↓ para acessar comandos anteriores. Limpe o console.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="conceitos-básicos.html#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># pressione Enter</span></span>
-<span id="cb1-2"><a href="conceitos-básicos.html#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># pressione Enter</span></span>
-<span id="cb1-3"><a href="conceitos-básicos.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x) <span class="co"># pressione Enter</span></span>
-<span id="cb1-4"><a href="conceitos-básicos.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y) <span class="co"># pressione Enter</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="conceitos-básicos.html#cb1-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># pressione Enter</span></span>
+<span id="cb1-2"><a href="conceitos-básicos.html#cb1-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># pressione Enter</span></span>
+<span id="cb1-3"><a href="conceitos-básicos.html#cb1-3" tabindex="-1"></a><span class="fu">print</span>(x) <span class="co"># pressione Enter</span></span>
+<span id="cb1-4"><a href="conceitos-básicos.html#cb1-4" tabindex="-1"></a><span class="fu">print</span>(y) <span class="co"># pressione Enter</span></span></code></pre></div>
 <p><strong>2. Editor de Scripts</strong> (Janela Superior Esquerda):</p>
 <ul>
 <li>Editor de arquivos R (.R), RMarkdown (.Rmd), Shiny Apps, entre outros.</li>
 <li>Permite escrever e salvar códigos para execução posterior.</li>
 </ul>
 <p><img src="figs/editor.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>📌 Dicas:</p>
+<p>Dicas:</p>
 <ul>
 <li><strong>Ctrl + Enter</strong> → Executa a linha atual.</li>
 <li><strong>Ctrl + Shift + Enter</strong> ou <strong>Ctrl + A</strong> e <strong>Ctrl + Enter</strong> → Executa o script inteiro.</li>
@@ -327,10 +330,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Para criar um novo script: <strong>File → New File → R Script</strong>.</li>
 </ul>
 <p><strong>Exemplo</strong> Digite os códigos abaixo no <em>Editor de Scripts</em>. Utilize <strong>Ctrl + Enter</strong> para compilar cada linha separadamente. Utilize <strong>Ctrl + Shift + Enter</strong> (ou <strong>Ctrl + A</strong> e <strong>Ctrl + Enter</strong>) para compilar todo o script. Salve o arquivo em algum repositório.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="conceitos-básicos.html#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb2-2"><a href="conceitos-básicos.html#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">5</span> </span>
-<span id="cb2-3"><a href="conceitos-básicos.html#cb2-3" aria-hidden="true" tabindex="-1"></a>a </span>
-<span id="cb2-4"><a href="conceitos-básicos.html#cb2-4" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="conceitos-básicos.html#cb2-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb2-2"><a href="conceitos-básicos.html#cb2-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">5</span> </span>
+<span id="cb2-3"><a href="conceitos-básicos.html#cb2-3" tabindex="-1"></a>a </span>
+<span id="cb2-4"><a href="conceitos-básicos.html#cb2-4" tabindex="-1"></a>b</span></code></pre></div>
 <p><strong>3. Ambiente e Histórico</strong> (Janela Superior Direita):</p>
 <ul>
 <li><strong>Environment:</strong> Mostra objetos carregados na sessão (data frames, variáveis, funções).</li>
@@ -338,7 +341,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Connections:</strong> Permite conectar-se a bancos de dados.</li>
 </ul>
 <p><img src="figs/ambiente.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>📌 Dicas:</p>
+<p>Dicas:</p>
 <ul>
 <li>Use <code>ls()</code> no console para listar os objetos carregados.</li>
 <li>Para limpar o ambiente: <code>rm(list = ls())</code></li>
@@ -354,7 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Presentation:</strong> Permite criar apresentações de slides (RMarkdown).</li>
 </ul>
 <p><img src="figs/arquivos.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>📌 Dicas:</p>
+<p>Dicas:</p>
 <ul>
 <li>Instalar um pacote: <code>install.packages("nome_do_pacote")</code> ou clicar no botão <code>Install</code> na aba <em>Packages</em>.</li>
 <li>Carregar um pacote: <code>library("nome_do_pacote")</code> ou “marcar” o pacote na aba <em>Packages</em>.</li>
@@ -372,19 +375,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercícios-da-sessão" class="section level3 unnumbered hasAnchor">
 <h3>1.3 Exercícios da Sessão<a href="conceitos-básicos.html#exercícios-da-sessão" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>1.</strong> No <strong>Console</strong>, execute os seguintes comandos e observe os resultados:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="conceitos-básicos.html#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb3-2"><a href="conceitos-básicos.html#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb3-3"><a href="conceitos-básicos.html#cb3-3" aria-hidden="true" tabindex="-1"></a>soma <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb3-4"><a href="conceitos-básicos.html#cb3-4" aria-hidden="true" tabindex="-1"></a>soma</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="conceitos-básicos.html#cb3-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb3-2"><a href="conceitos-básicos.html#cb3-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-3"><a href="conceitos-básicos.html#cb3-3" tabindex="-1"></a>soma <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb3-4"><a href="conceitos-básicos.html#cb3-4" tabindex="-1"></a>soma</span></code></pre></div>
 <p>Qual foi o valor impresso no console? Use o comando <code>ls()</code> no console, o que ele faz?
 <!-- Objetivo: Aprender a rodar comandos e visualizar resultados no console. --></p>
 <p><strong>2.</strong> No <strong>Editor de Scripts</strong>, crie um novo arquivo R: <code>File → New File → R Script</code>. Copie e cole o seguinte código no script:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="conceitos-básicos.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando um vetor</span></span>
-<span id="cb4-2"><a href="conceitos-básicos.html#cb4-2" aria-hidden="true" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb4-3"><a href="conceitos-básicos.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculando a média</span></span>
-<span id="cb4-4"><a href="conceitos-básicos.html#cb4-4" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(numeros)</span>
-<span id="cb4-5"><a href="conceitos-básicos.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrando o resultado</span></span>
-<span id="cb4-6"><a href="conceitos-básicos.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(media)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="conceitos-básicos.html#cb4-1" tabindex="-1"></a><span class="co"># Criando um vetor</span></span>
+<span id="cb4-2"><a href="conceitos-básicos.html#cb4-2" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb4-3"><a href="conceitos-básicos.html#cb4-3" tabindex="-1"></a><span class="co"># Calculando a média</span></span>
+<span id="cb4-4"><a href="conceitos-básicos.html#cb4-4" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(numeros)</span>
+<span id="cb4-5"><a href="conceitos-básicos.html#cb4-5" tabindex="-1"></a><span class="co"># Mostrando o resultado</span></span>
+<span id="cb4-6"><a href="conceitos-básicos.html#cb4-6" tabindex="-1"></a><span class="fu">print</span>(media)</span></code></pre></div>
 <ul>
 <li>Salve o script como meuscript.R</li>
 <li>Execute o script inteiro usando <strong>Ctrl + A</strong> e <strong>Ctrl + Enter</strong>.</li>
@@ -392,9 +395,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <!-- Objetivo: Praticar a criação e execução de scripts no RStudio. -->
 <p><strong>3.</strong> No <strong>Editor de Scripts</strong> cole este código e execute:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="conceitos-básicos.html#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
-<span id="cb5-2"><a href="conceitos-básicos.html#cb5-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
-<span id="cb5-3"><a href="conceitos-básicos.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Gráfico de Seno&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="conceitos-básicos.html#cb5-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
+<span id="cb5-2"><a href="conceitos-básicos.html#cb5-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
+<span id="cb5-3"><a href="conceitos-básicos.html#cb5-3" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Gráfico de Seno&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Vá até a aba Plots e veja o gráfico gerado.</li>
 <li>Clique em <code>Export</code> para salvar o gráfico.</li>
@@ -402,11 +405,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- Objetivo: Gerar gráficos e explorar a aba de Plots. -->
 <p><strong>4.</strong> Na aba <em>Packages</em>, instale e carregue o pacote de manipulação de dados <code>dplyr</code>. Encontre a documentação do pacote no <em>Cran</em> do R.</p>
 <p><strong>5.</strong> No <em>Console</em> do RStudio, consulte a documentação das seguintes funções:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="conceitos-básicos.html#cb6-1" aria-hidden="true" tabindex="-1"></a>?mean</span>
-<span id="cb6-2"><a href="conceitos-básicos.html#cb6-2" aria-hidden="true" tabindex="-1"></a>?sd</span>
-<span id="cb6-3"><a href="conceitos-básicos.html#cb6-3" aria-hidden="true" tabindex="-1"></a>?sum</span>
-<span id="cb6-4"><a href="conceitos-básicos.html#cb6-4" aria-hidden="true" tabindex="-1"></a>?seq</span>
-<span id="cb6-5"><a href="conceitos-básicos.html#cb6-5" aria-hidden="true" tabindex="-1"></a>?sample</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="conceitos-básicos.html#cb6-1" tabindex="-1"></a>?mean</span>
+<span id="cb6-2"><a href="conceitos-básicos.html#cb6-2" tabindex="-1"></a>?sd</span>
+<span id="cb6-3"><a href="conceitos-básicos.html#cb6-3" tabindex="-1"></a>?sum</span>
+<span id="cb6-4"><a href="conceitos-básicos.html#cb6-4" tabindex="-1"></a>?seq</span>
+<span id="cb6-5"><a href="conceitos-básicos.html#cb6-5" tabindex="-1"></a>?sample</span></code></pre></div>
 <ul>
 <li>Descreva resumidamente o que faz cada função.</li>
 <li>Anote os principais <strong>argumentos</strong> de cada função.</li>
@@ -422,22 +425,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.4.1</span> Operações Aritméticas<a href="conceitos-básicos.html#operações-aritméticas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R funciona como uma calculadora, permitindo operações básicas com números e variáveis.</p>
 <p><strong>Exemplo</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="conceitos-básicos.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Soma</span></span>
-<span id="cb7-2"><a href="conceitos-básicos.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>  <span class="co"># Resultado: 5</span></span>
-<span id="cb7-3"><a href="conceitos-básicos.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtração</span></span>
-<span id="cb7-4"><a href="conceitos-básicos.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">-</span> <span class="dv">4</span>  <span class="co"># Resultado: 6</span></span>
-<span id="cb7-5"><a href="conceitos-básicos.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplicação</span></span>
-<span id="cb7-6"><a href="conceitos-básicos.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">2</span>  <span class="co"># Resultado: 10</span></span>
-<span id="cb7-7"><a href="conceitos-básicos.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Divisão</span></span>
-<span id="cb7-8"><a href="conceitos-básicos.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span> <span class="sc">/</span> <span class="dv">3</span>  <span class="co"># Resultado: 3</span></span>
-<span id="cb7-9"><a href="conceitos-básicos.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Exponenciação</span></span>
-<span id="cb7-10"><a href="conceitos-básicos.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span>  <span class="co"># Resultado: 8</span></span>
-<span id="cb7-11"><a href="conceitos-básicos.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Raiz quadrada</span></span>
-<span id="cb7-12"><a href="conceitos-básicos.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">16</span>)  <span class="co"># Resultado: 4</span></span>
-<span id="cb7-13"><a href="conceitos-básicos.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Resto da divisão </span></span>
-<span id="cb7-14"><a href="conceitos-básicos.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%%</span> <span class="dv">3</span>  <span class="co"># Resultado: 1</span></span>
-<span id="cb7-15"><a href="conceitos-básicos.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Parte inteira da divisão</span></span>
-<span id="cb7-16"><a href="conceitos-básicos.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%/%</span> <span class="dv">3</span>  <span class="co"># Resultado: 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="conceitos-básicos.html#cb7-1" tabindex="-1"></a><span class="co"># Soma</span></span>
+<span id="cb7-2"><a href="conceitos-básicos.html#cb7-2" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>  </span>
+<span id="cb7-3"><a href="conceitos-básicos.html#cb7-3" tabindex="-1"></a><span class="co"># Subtração</span></span>
+<span id="cb7-4"><a href="conceitos-básicos.html#cb7-4" tabindex="-1"></a><span class="dv">10</span> <span class="sc">-</span> <span class="dv">4</span>  </span>
+<span id="cb7-5"><a href="conceitos-básicos.html#cb7-5" tabindex="-1"></a><span class="co"># Multiplicação</span></span>
+<span id="cb7-6"><a href="conceitos-básicos.html#cb7-6" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">2</span>  </span>
+<span id="cb7-7"><a href="conceitos-básicos.html#cb7-7" tabindex="-1"></a><span class="co"># Divisão</span></span>
+<span id="cb7-8"><a href="conceitos-básicos.html#cb7-8" tabindex="-1"></a><span class="dv">9</span> <span class="sc">/</span> <span class="dv">3</span>  </span>
+<span id="cb7-9"><a href="conceitos-básicos.html#cb7-9" tabindex="-1"></a><span class="co"># Exponenciação</span></span>
+<span id="cb7-10"><a href="conceitos-básicos.html#cb7-10" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span>  </span>
+<span id="cb7-11"><a href="conceitos-básicos.html#cb7-11" tabindex="-1"></a><span class="co"># Raiz quadrada</span></span>
+<span id="cb7-12"><a href="conceitos-básicos.html#cb7-12" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">16</span>)</span>
+<span id="cb7-13"><a href="conceitos-básicos.html#cb7-13" tabindex="-1"></a><span class="co"># Resto da divisão </span></span>
+<span id="cb7-14"><a href="conceitos-básicos.html#cb7-14" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%%</span> <span class="dv">3</span> </span>
+<span id="cb7-15"><a href="conceitos-básicos.html#cb7-15" tabindex="-1"></a><span class="co"># Parte inteira da divisão</span></span>
+<span id="cb7-16"><a href="conceitos-básicos.html#cb7-16" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%/%</span> <span class="dv">3</span>  </span></code></pre></div>
 <!-- Para estilizar caixas de texto: -->
 <div id="ordem-de-prioridade-dos-operadores-aritméticos" class="section level5 unnumbered hasAnchor" style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 10px;">
 <h5>Ordem de Prioridade dos Operadores Aritméticos<a href="conceitos-básicos.html#ordem-de-prioridade-dos-operadores-aritméticos" class="anchor-section" aria-label="Anchor link to header"></a></h5>
@@ -449,67 +452,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <p><strong>Exemplo</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="conceitos-básicos.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span>    <span class="co"># Multiplicação ocorre primeiro -&gt; 14</span></span>
-<span id="cb8-2"><a href="conceitos-básicos.html#cb8-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">4</span>  <span class="co"># Parênteses ocorre primeiro -&gt; 20</span></span>
-<span id="cb8-3"><a href="conceitos-básicos.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span>    <span class="co"># Exponenciação ocorre primeiro -&gt; 25</span></span>
-<span id="cb8-4"><a href="conceitos-básicos.html#cb8-4" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">5</span>) <span class="sc">^</span> <span class="dv">2</span>  <span class="co"># Parênteses ocorre primeiro -&gt; 100</span></span>
-<span id="cb8-5"><a href="conceitos-básicos.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">/</span> <span class="dv">2</span>    <span class="co"># Ordem indiferente</span></span>
-<span id="cb8-6"><a href="conceitos-básicos.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span>    <span class="co"># Ordem indiferente</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="conceitos-básicos.html#cb8-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span>    </span>
+<span id="cb8-2"><a href="conceitos-básicos.html#cb8-2" tabindex="-1"></a>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">4</span>  </span>
+<span id="cb8-3"><a href="conceitos-básicos.html#cb8-3" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span>    </span>
+<span id="cb8-4"><a href="conceitos-básicos.html#cb8-4" tabindex="-1"></a>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">5</span>) <span class="sc">^</span> <span class="dv">2</span>  </span>
+<span id="cb8-5"><a href="conceitos-básicos.html#cb8-5" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">/</span> <span class="dv">2</span>    </span>
+<span id="cb8-6"><a href="conceitos-básicos.html#cb8-6" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span>    </span></code></pre></div>
 </div>
 <div id="criando-variáveis-objetos" class="section level3 hasAnchor" number="1.4.2">
 <h3><span class="header-section-number">1.4.2</span> Criando Variáveis (objetos)<a href="conceitos-básicos.html#criando-variáveis-objetos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para criar uma variável ou objeto, usamos o simbolo de atribuição <code>&lt;-</code></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="conceitos-básicos.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Atribuindo um número a um objeto:</span></span>
-<span id="cb9-2"><a href="conceitos-básicos.html#cb9-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span>; y <span class="ot">&lt;-</span> <span class="dv">3</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="conceitos-básicos.html#cb9-1" tabindex="-1"></a><span class="do">## Atribuindo um número a um objeto:</span></span>
+<span id="cb9-2"><a href="conceitos-básicos.html#cb9-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span>; y <span class="ot">&lt;-</span> <span class="dv">3</span>  </span></code></pre></div>
 <p>Operações entre objetos numéricos:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="conceitos-básicos.html#cb10-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">+</span>y <span class="co"># soma</span></span>
-<span id="cb10-2"><a href="conceitos-básicos.html#cb10-2" aria-hidden="true" tabindex="-1"></a>x<span class="sc">-</span>y <span class="co"># subtração</span></span>
-<span id="cb10-3"><a href="conceitos-básicos.html#cb10-3" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span>y <span class="co"># produto</span></span>
-<span id="cb10-4"><a href="conceitos-básicos.html#cb10-4" aria-hidden="true" tabindex="-1"></a>x<span class="sc">/</span>y <span class="co"># quociente</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="conceitos-básicos.html#cb10-1" tabindex="-1"></a>x<span class="sc">+</span>y <span class="co"># soma</span></span>
+<span id="cb10-2"><a href="conceitos-básicos.html#cb10-2" tabindex="-1"></a>x<span class="sc">-</span>y <span class="co"># subtração</span></span>
+<span id="cb10-3"><a href="conceitos-básicos.html#cb10-3" tabindex="-1"></a>x<span class="sc">*</span>y <span class="co"># produto</span></span>
+<span id="cb10-4"><a href="conceitos-básicos.html#cb10-4" tabindex="-1"></a>x<span class="sc">/</span>y <span class="co"># quociente</span></span></code></pre></div>
 <div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
 <details>
 <summary>
-<strong> 📌 Restrições nos nomes das variáveis (objetos) </strong>
+<strong> Restrições nos nomes das variáveis (objetos) </strong>
 </summary>
 <p><strong>1. Começo do Nome:</strong> Não pode começar com número ou caracteres especiais. Deve começar com uma letra (A-Z ou a-z).</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="conceitos-básicos.html#cb11-1" aria-hidden="true" tabindex="-1"></a>nome_valido <span class="ot">&lt;-</span> <span class="dv">5</span>  <span class="co"># Correto</span></span>
-<span id="cb11-2"><a href="conceitos-básicos.html#cb11-2" aria-hidden="true" tabindex="-1"></a>1nome_invalido <span class="ot">&lt;-</span> <span class="dv">15</span>  <span class="co"># Erro: nome não pode começar com número</span></span>
-<span id="cb11-3"><a href="conceitos-básicos.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>nome_invalido <span class="ot">&lt;-</span> <span class="dv">15</span>  <span class="co"># Erro: nome não pode começar com caracteres especiais</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="conceitos-básicos.html#cb11-1" tabindex="-1"></a>nome_valido <span class="ot">&lt;-</span> <span class="dv">5</span>  <span class="co"># Correto</span></span>
+<span id="cb11-2"><a href="conceitos-básicos.html#cb11-2" tabindex="-1"></a>1nome_invalido <span class="ot">&lt;-</span> <span class="dv">15</span>  <span class="co"># Erro: nome não pode começar com número</span></span>
+<span id="cb11-3"><a href="conceitos-básicos.html#cb11-3" tabindex="-1"></a><span class="sc">@</span>nome_invalido <span class="ot">&lt;-</span> <span class="dv">15</span>  <span class="co"># Erro: nome não pode começar com caracteres especiais</span></span></code></pre></div>
 <p><strong>2. Espaços e Caracteres:</strong> O nome não deve conter espaços nem caracteres especiais como @, #, -, $, etc. O underline (_) é um caractere permitido no meio do nome.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="conceitos-básicos.html#cb12-1" aria-hidden="true" tabindex="-1"></a>variavel_valida_1 <span class="ot">&lt;-</span> <span class="dv">20</span>  <span class="co"># Correto</span></span>
-<span id="cb12-2"><a href="conceitos-básicos.html#cb12-2" aria-hidden="true" tabindex="-1"></a>variavel<span class="co">#invalida &lt;- 40  # Erro: caractere inválido (#)</span></span>
-<span id="cb12-3"><a href="conceitos-básicos.html#cb12-3" aria-hidden="true" tabindex="-1"></a>variavel<span class="sc">@</span>invalida <span class="ot">&lt;-</span> <span class="dv">40</span>  <span class="co"># Erro: caractere inválido (@)</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="conceitos-básicos.html#cb12-1" tabindex="-1"></a>variavel_valida_1 <span class="ot">&lt;-</span> <span class="dv">20</span>  <span class="co"># Correto</span></span>
+<span id="cb12-2"><a href="conceitos-básicos.html#cb12-2" tabindex="-1"></a>variavel<span class="co">#invalida &lt;- 40  # Erro: caractere inválido (#)</span></span>
+<span id="cb12-3"><a href="conceitos-básicos.html#cb12-3" tabindex="-1"></a>variavel<span class="sc">@</span>invalida <span class="ot">&lt;-</span> <span class="dv">40</span>  <span class="co"># Erro: caractere inválido (@)</span></span></code></pre></div>
 <p><strong>3. Diferenciação de Maiúsculas e Minúsculas:</strong> O R diferencia maiúsculas de minúsculas. Assim, <code>var</code>, <code>Var</code> e <code>VAR</code> são considerados nomes diferentes.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="conceitos-básicos.html#cb13-1" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb13-2"><a href="conceitos-básicos.html#cb13-2" aria-hidden="true" tabindex="-1"></a>Var <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="cb13-3"><a href="conceitos-básicos.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(var)  <span class="co"># 100</span></span>
-<span id="cb13-4"><a href="conceitos-básicos.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Var)  <span class="co"># 200</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="conceitos-básicos.html#cb13-1" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb13-2"><a href="conceitos-básicos.html#cb13-2" tabindex="-1"></a>Var <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb13-3"><a href="conceitos-básicos.html#cb13-3" tabindex="-1"></a><span class="fu">print</span>(var)  <span class="co"># 100</span></span>
+<span id="cb13-4"><a href="conceitos-básicos.html#cb13-4" tabindex="-1"></a><span class="fu">print</span>(Var)  <span class="co"># 200</span></span></code></pre></div>
 <p><strong>4. Palavras Reservadas:</strong> Não é permitido usar palavras reservadas do R (como <code>if</code>, <code>else</code>, <code>for</code>, <code>TRUE</code>, <code>FALSE</code>, etc.). Essas palavras têm significados específicos e não podem ser sobrescritas.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="conceitos-básicos.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="ot">&lt;-</span> <span class="dv">10</span>  <span class="co"># Erro: &#39;for&#39; é uma palavra reservada</span></span>
-<span id="cb14-2"><a href="conceitos-básicos.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="ot">&lt;-</span> <span class="dv">20</span>   <span class="co"># Erro: &#39;if&#39; é uma palavra reservada</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="conceitos-básicos.html#cb14-1" tabindex="-1"></a><span class="cf">for</span> <span class="ot">&lt;-</span> <span class="dv">10</span>  <span class="co"># Erro: &#39;for&#39; é uma palavra reservada</span></span>
+<span id="cb14-2"><a href="conceitos-básicos.html#cb14-2" tabindex="-1"></a><span class="cf">if</span> <span class="ot">&lt;-</span> <span class="dv">20</span>   <span class="co"># Erro: &#39;if&#39; é uma palavra reservada</span></span></code></pre></div>
 <p><strong>5. Pontos e Nomes de funções preexistentes:</strong> Não é recomendado utilizar pontos. Também evitar usar nomes que conflitem com funções <strong>preexistentes</strong> do R.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="conceitos-básicos.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Evitar</span></span>
-<span id="cb15-2"><a href="conceitos-básicos.html#cb15-2" aria-hidden="true" tabindex="-1"></a>nome.com.ponto <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># Correto, mas pode ser confuso</span></span>
-<span id="cb15-3"><a href="conceitos-básicos.html#cb15-3" aria-hidden="true" tabindex="-1"></a>mean <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb15-4"><a href="conceitos-básicos.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mean)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="conceitos-básicos.html#cb15-1" tabindex="-1"></a><span class="do">## Evitar</span></span>
+<span id="cb15-2"><a href="conceitos-básicos.html#cb15-2" tabindex="-1"></a>nome.com.ponto <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># Correto, mas pode ser confuso</span></span>
+<span id="cb15-3"><a href="conceitos-básicos.html#cb15-3" tabindex="-1"></a>mean <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb15-4"><a href="conceitos-básicos.html#cb15-4" tabindex="-1"></a><span class="fu">mean</span>(mean)</span></code></pre></div>
 </div>
 </p>
 </details>
 <div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
 <details open>
 <summary>
-<strong> 📌 Dicas para os nomes das variáveis (objetos) </strong>
+<strong> Dicas para os nomes das variáveis (objetos) </strong>
 </summary>
 <ul>
 <li>A convenção em R é usar underline (_) para nomes de objetos (exceto no inicio).</li>
 <li>Evitar nomes ambíguos e usar nomes descritivos que deixem claro o que o objeto representa.
 <!-- - Nomear funções com verbos para indicar ação, como `calcular_media`, `plotar_grafico`, etc. --></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="conceitos-básicos.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Exemplos de Nomes Válidos</span></span>
-<span id="cb16-2"><a href="conceitos-básicos.html#cb16-2" aria-hidden="true" tabindex="-1"></a>x_1 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb16-3"><a href="conceitos-básicos.html#cb16-3" aria-hidden="true" tabindex="-1"></a>minha_variavel <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb16-4"><a href="conceitos-básicos.html#cb16-4" aria-hidden="true" tabindex="-1"></a>temperatura_curitiba <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb16-5"><a href="conceitos-básicos.html#cb16-5" aria-hidden="true" tabindex="-1"></a>altura_estudantes <span class="ot">&lt;-</span> <span class="dv">160</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="conceitos-básicos.html#cb16-1" tabindex="-1"></a><span class="do">## Exemplos de Nomes Válidos</span></span>
+<span id="cb16-2"><a href="conceitos-básicos.html#cb16-2" tabindex="-1"></a>x_1 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb16-3"><a href="conceitos-básicos.html#cb16-3" tabindex="-1"></a>minha_variavel <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb16-4"><a href="conceitos-básicos.html#cb16-4" tabindex="-1"></a>temperatura_curitiba <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb16-5"><a href="conceitos-básicos.html#cb16-5" tabindex="-1"></a>altura_estudantes <span class="ot">&lt;-</span> <span class="dv">160</span></span></code></pre></div>
 </div>
 </p>
 </details>
@@ -532,24 +535,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>O quociente de <code>a</code> dividido por <code>b</code>.</li>
 </ol>
 <p><strong>3.</strong> Algumas regras devem ser seguidas ao nomear variáveis em R. Analise os seguintes nomes e indique quais são válidos e quais causarão erro. Justifique a sua resposta.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="conceitos-básicos.html#cb17-1" aria-hidden="true" tabindex="-1"></a>1numero <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb17-2"><a href="conceitos-básicos.html#cb17-2" aria-hidden="true" tabindex="-1"></a>meu_numero <span class="ot">&lt;-</span> <span class="dv">25</span></span>
-<span id="cb17-3"><a href="conceitos-básicos.html#cb17-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="st">&quot;2025-03-15&quot;</span></span>
-<span id="cb17-4"><a href="conceitos-básicos.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="ot">&lt;-</span> <span class="st">&quot;teste&quot;</span></span>
-<span id="cb17-5"><a href="conceitos-básicos.html#cb17-5" aria-hidden="true" tabindex="-1"></a>x<span class="sc">@</span>y <span class="ot">&lt;-</span> <span class="dv">50</span> </span>
-<span id="cb17-6"><a href="conceitos-básicos.html#cb17-6" aria-hidden="true" tabindex="-1"></a>x_y <span class="ot">&lt;-</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="conceitos-básicos.html#cb17-1" tabindex="-1"></a>1numero <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb17-2"><a href="conceitos-básicos.html#cb17-2" tabindex="-1"></a>meu_numero <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb17-3"><a href="conceitos-básicos.html#cb17-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="st">&quot;2025-03-15&quot;</span></span>
+<span id="cb17-4"><a href="conceitos-básicos.html#cb17-4" tabindex="-1"></a><span class="cf">for</span> <span class="ot">&lt;-</span> <span class="st">&quot;teste&quot;</span></span>
+<span id="cb17-5"><a href="conceitos-básicos.html#cb17-5" tabindex="-1"></a>x<span class="sc">@</span>y <span class="ot">&lt;-</span> <span class="dv">50</span> </span>
+<span id="cb17-6"><a href="conceitos-básicos.html#cb17-6" tabindex="-1"></a>x_y <span class="ot">&lt;-</span> <span class="dv">5</span></span></code></pre></div>
 </div>
 </div>
 <div id="protectedContent1" style="display:none;">
 <div id="respostas" class="section level3 unnumbered hasAnchor">
 <h3>Respostas<a href="conceitos-básicos.html#respostas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>3.</strong></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="conceitos-básicos.html#cb18-1" aria-hidden="true" tabindex="-1"></a>1numero <span class="ot">&lt;-</span> <span class="dv">100</span>   <span class="co"># ❌ Inválido: não pode começar com número</span></span>
-<span id="cb18-2"><a href="conceitos-básicos.html#cb18-2" aria-hidden="true" tabindex="-1"></a>meu_numero <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># ✅ Válido</span></span>
-<span id="cb18-3"><a href="conceitos-básicos.html#cb18-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="st">&quot;2025-03-15&quot;</span> <span class="co"># ⚠️ Válido, mas desaconselhado (conflito com função data())</span></span>
-<span id="cb18-4"><a href="conceitos-básicos.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="ot">&lt;-</span> <span class="st">&quot;teste&quot;</span>  <span class="co"># ❌ Inválido: &quot;for&quot; é palavra reservada</span></span>
-<span id="cb18-5"><a href="conceitos-básicos.html#cb18-5" aria-hidden="true" tabindex="-1"></a>x<span class="sc">@</span>y <span class="ot">&lt;-</span> <span class="dv">50</span>  <span class="co"># ❌ Inválido:  caractere inválido (@)</span></span>
-<span id="cb18-6"><a href="conceitos-básicos.html#cb18-6" aria-hidden="true" tabindex="-1"></a>x_y <span class="ot">&lt;-</span> <span class="dv">5</span>  <span class="co"># ✅ Válido</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="conceitos-básicos.html#cb18-1" tabindex="-1"></a>1numero <span class="ot">&lt;-</span> <span class="dv">100</span>   <span class="co"># Inválido: não pode começar com número</span></span>
+<span id="cb18-2"><a href="conceitos-básicos.html#cb18-2" tabindex="-1"></a>meu_numero <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Válido</span></span>
+<span id="cb18-3"><a href="conceitos-básicos.html#cb18-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="st">&quot;2025-03-15&quot;</span> <span class="co">#  Válido, mas desaconselhado (conflito com função data())</span></span>
+<span id="cb18-4"><a href="conceitos-básicos.html#cb18-4" tabindex="-1"></a><span class="cf">for</span> <span class="ot">&lt;-</span> <span class="st">&quot;teste&quot;</span>  <span class="co"># Inválido: &quot;for&quot; é palavra reservada</span></span>
+<span id="cb18-5"><a href="conceitos-básicos.html#cb18-5" tabindex="-1"></a>x<span class="sc">@</span>y <span class="ot">&lt;-</span> <span class="dv">50</span>  <span class="co"># Inválido:  caractere inválido (@)</span></span>
+<span id="cb18-6"><a href="conceitos-básicos.html#cb18-6" tabindex="-1"></a>x_y <span class="ot">&lt;-</span> <span class="dv">5</span>  <span class="co"># Válido</span></span></code></pre></div>
 </div>
 </div>
 <p><input type="password" id="passwordInput1" placeholder="Digite a senha">
@@ -680,15 +683,15 @@ document.getElementById("submitButton1").addEventListener("click", function()
 </ul>
 </div>
 <p><strong>Exemplos</strong></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="conceitos-básicos.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Operadores de Comparação</span></span>
-<span id="cb19-2"><a href="conceitos-básicos.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">3</span></span>
-<span id="cb19-3"><a href="conceitos-básicos.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">!=</span> <span class="dv">3</span></span>
-<span id="cb19-4"><a href="conceitos-básicos.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Operadores Lógicos</span></span>
-<span id="cb19-5"><a href="conceitos-básicos.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span>   <span class="co"># ambos são verdadeiros? Sim -&gt; TRUE, Não -&gt; FALSE</span></span>
-<span id="cb19-6"><a href="conceitos-básicos.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span>  <span class="co"># pelo menos um deles é verdadeiro? Sim -&gt; TRUE, Não -&gt; FALSE</span></span>
-<span id="cb19-7"><a href="conceitos-básicos.html#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Operadores de Comparação e Lógicos</span></span>
-<span id="cb19-8"><a href="conceitos-básicos.html#cb19-8" aria-hidden="true" tabindex="-1"></a>(<span class="dv">5</span><span class="sc">&gt;</span><span class="dv">3</span>) <span class="sc">&amp;</span> (<span class="dv">4</span><span class="sc">&gt;</span><span class="dv">6</span>) <span class="co"># FALSE</span></span>
-<span id="cb19-9"><a href="conceitos-básicos.html#cb19-9" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span><span class="sc">&lt;</span><span class="dv">3</span>) <span class="sc">|</span> (<span class="dv">4</span><span class="sc">&lt;</span><span class="dv">6</span>) <span class="co"># TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="conceitos-básicos.html#cb19-1" tabindex="-1"></a><span class="do">## Operadores de Comparação</span></span>
+<span id="cb19-2"><a href="conceitos-básicos.html#cb19-2" tabindex="-1"></a><span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">3</span></span>
+<span id="cb19-3"><a href="conceitos-básicos.html#cb19-3" tabindex="-1"></a><span class="dv">5</span> <span class="sc">!=</span> <span class="dv">3</span></span>
+<span id="cb19-4"><a href="conceitos-básicos.html#cb19-4" tabindex="-1"></a><span class="do">## Operadores Lógicos</span></span>
+<span id="cb19-5"><a href="conceitos-básicos.html#cb19-5" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span>   <span class="co"># ambos são verdadeiros? Sim -&gt; TRUE, Não -&gt; FALSE</span></span>
+<span id="cb19-6"><a href="conceitos-básicos.html#cb19-6" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span>  <span class="co"># pelo menos um deles é verdadeiro? Sim -&gt; TRUE, Não -&gt; FALSE</span></span>
+<span id="cb19-7"><a href="conceitos-básicos.html#cb19-7" tabindex="-1"></a><span class="do">## Operadores de Comparação e Lógicos</span></span>
+<span id="cb19-8"><a href="conceitos-básicos.html#cb19-8" tabindex="-1"></a>(<span class="dv">5</span><span class="sc">&gt;</span><span class="dv">3</span>) <span class="sc">&amp;</span> (<span class="dv">4</span><span class="sc">&gt;</span><span class="dv">6</span>) <span class="co"># FALSE</span></span>
+<span id="cb19-9"><a href="conceitos-básicos.html#cb19-9" tabindex="-1"></a>(<span class="dv">2</span><span class="sc">&lt;</span><span class="dv">3</span>) <span class="sc">|</span> (<span class="dv">4</span><span class="sc">&lt;</span><span class="dv">6</span>) <span class="co"># TRUE</span></span></code></pre></div>
 <!-- ## Comparando & e && -->
 <!-- print(1) & print(2) & FALSE & print(3) & print(4) # printa todos os elementos -->
 <!-- print(1) && print(2) && FALSE && print(3) && print(4) # para a execução quando encontra o FALSE -->
@@ -722,29 +725,29 @@ document.getElementById("submitButton1").addEventListener("click", function()
 <div id="respostas-1" class="section level3 unnumbered hasAnchor">
 <h3>Respostas<a href="conceitos-básicos.html#respostas-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>1.</strong></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="conceitos-básicos.html#cb20-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb20-2"><a href="conceitos-básicos.html#cb20-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb20-3"><a href="conceitos-básicos.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> a<span class="sc">&gt;</span>b</span>
-<span id="cb20-4"><a href="conceitos-básicos.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> (a<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>)</span>
-<span id="cb20-5"><a href="conceitos-básicos.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> a<span class="sc">&gt;</span>b <span class="sc">&amp;&amp;</span> (a<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="conceitos-básicos.html#cb20-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb20-2"><a href="conceitos-básicos.html#cb20-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb20-3"><a href="conceitos-básicos.html#cb20-3" tabindex="-1"></a><span class="sc">-</span> a<span class="sc">&gt;</span>b</span>
+<span id="cb20-4"><a href="conceitos-básicos.html#cb20-4" tabindex="-1"></a><span class="sc">-</span> (a<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>)</span>
+<span id="cb20-5"><a href="conceitos-básicos.html#cb20-5" tabindex="-1"></a><span class="sc">-</span> a<span class="sc">&gt;</span>b <span class="sc">&amp;&amp;</span> (a<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>)</span></code></pre></div>
 <p><strong>2.</strong></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="conceitos-básicos.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">5</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="conceitos-básicos.html#cb21-1" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">5</span>  </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="conceitos-básicos.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">==</span> <span class="dv">5</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="conceitos-básicos.html#cb23-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">==</span> <span class="dv">5</span>  </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="conceitos-básicos.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">!=</span> <span class="dv">3</span> </span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="conceitos-básicos.html#cb25-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">!=</span> <span class="dv">3</span> </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="conceitos-básicos.html#cb27-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">&gt;=</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="conceitos-básicos.html#cb27-1" tabindex="-1"></a>(<span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">&gt;=</span> <span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="conceitos-básicos.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">6</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="conceitos-básicos.html#cb29-1" tabindex="-1"></a><span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">6</span>  </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="conceitos-básicos.html#cb31-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">&amp;</span> (<span class="dv">10</span> <span class="sc">&lt;=</span> <span class="dv">20</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="conceitos-básicos.html#cb31-1" tabindex="-1"></a>(<span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">&amp;</span> (<span class="dv">10</span> <span class="sc">&lt;=</span> <span class="dv">20</span>) </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="conceitos-básicos.html#cb33-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">7</span> <span class="sc">&lt;</span> <span class="dv">3</span>) <span class="sc">|</span> (<span class="dv">8</span> <span class="sc">==</span> <span class="dv">8</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="conceitos-básicos.html#cb33-1" tabindex="-1"></a>(<span class="dv">7</span> <span class="sc">&lt;</span> <span class="dv">3</span>) <span class="sc">|</span> (<span class="dv">8</span> <span class="sc">==</span> <span class="dv">8</span>) </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="conceitos-básicos.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span> </span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="conceitos-básicos.html#cb35-1" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span> </span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="conceitos-básicos.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">3</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="conceitos-básicos.html#cb37-1" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">3</span>)  </span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 </div>
 </div>
@@ -769,67 +772,67 @@ document.getElementById("submitButton2").addEventListener("click", function()
 <div id="exercícios-da-sessão-1" class="section level3 unnumbered hasAnchor">
 <h3>1.4 Exercícios da Sessão<a href="conceitos-básicos.html#exercícios-da-sessão-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>1.</strong> Resolva as expressões abaixo (primeiramente sem o R) e explique o resultado com base na ordem de prioridade dos operadores. Na sequência, confira os resultados usando o R.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="conceitos-básicos.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a)</span></span>
-<span id="cb39-2"><a href="conceitos-básicos.html#cb39-2" aria-hidden="true" tabindex="-1"></a>resultado1 <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb39-3"><a href="conceitos-básicos.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># b) </span></span>
-<span id="cb39-4"><a href="conceitos-básicos.html#cb39-4" aria-hidden="true" tabindex="-1"></a>resultado2 <span class="ot">&lt;-</span> (<span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb39-5"><a href="conceitos-básicos.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># c) </span></span>
-<span id="cb39-6"><a href="conceitos-básicos.html#cb39-6" aria-hidden="true" tabindex="-1"></a>resultado3 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span></span>
-<span id="cb39-7"><a href="conceitos-básicos.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># d) </span></span>
-<span id="cb39-8"><a href="conceitos-básicos.html#cb39-8" aria-hidden="true" tabindex="-1"></a>resultado4 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>)</span>
-<span id="cb39-9"><a href="conceitos-básicos.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co"># e) </span></span>
-<span id="cb39-10"><a href="conceitos-básicos.html#cb39-10" aria-hidden="true" tabindex="-1"></a>resultado5 <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="conceitos-básicos.html#cb39-1" tabindex="-1"></a><span class="co"># a)</span></span>
+<span id="cb39-2"><a href="conceitos-básicos.html#cb39-2" tabindex="-1"></a>resultado1 <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb39-3"><a href="conceitos-básicos.html#cb39-3" tabindex="-1"></a><span class="co"># b) </span></span>
+<span id="cb39-4"><a href="conceitos-básicos.html#cb39-4" tabindex="-1"></a>resultado2 <span class="ot">&lt;-</span> (<span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb39-5"><a href="conceitos-básicos.html#cb39-5" tabindex="-1"></a><span class="co"># c) </span></span>
+<span id="cb39-6"><a href="conceitos-básicos.html#cb39-6" tabindex="-1"></a>resultado3 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb39-7"><a href="conceitos-básicos.html#cb39-7" tabindex="-1"></a><span class="co"># d) </span></span>
+<span id="cb39-8"><a href="conceitos-básicos.html#cb39-8" tabindex="-1"></a>resultado4 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>)</span>
+<span id="cb39-9"><a href="conceitos-básicos.html#cb39-9" tabindex="-1"></a><span class="co"># e) </span></span>
+<span id="cb39-10"><a href="conceitos-básicos.html#cb39-10" tabindex="-1"></a>resultado5 <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span></span></code></pre></div>
 <p><strong>2.</strong> Dados os valores:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="conceitos-básicos.html#cb40-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span>; y <span class="ot">&lt;-</span> <span class="dv">10</span>; z <span class="ot">&lt;-</span> <span class="dv">20</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="conceitos-básicos.html#cb40-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span>; y <span class="ot">&lt;-</span> <span class="dv">10</span>; z <span class="ot">&lt;-</span> <span class="dv">20</span></span></code></pre></div>
 <p>Quais das relações a seguir serão <code>TRUE</code> e quais serão <code>FALSE</code>:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="conceitos-básicos.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a)</span></span>
-<span id="cb41-2"><a href="conceitos-básicos.html#cb41-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">&amp;</span> y <span class="sc">&lt;</span> z  </span>
-<span id="cb41-3"><a href="conceitos-básicos.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># b) </span></span>
-<span id="cb41-4"><a href="conceitos-básicos.html#cb41-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">15</span> <span class="sc">|</span> y <span class="sc">&gt;</span> z  </span>
-<span id="cb41-5"><a href="conceitos-básicos.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># c) </span></span>
-<span id="cb41-6"><a href="conceitos-básicos.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(x <span class="sc">&lt;</span> z)  </span>
-<span id="cb41-7"><a href="conceitos-básicos.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># d) </span></span>
-<span id="cb41-8"><a href="conceitos-básicos.html#cb41-8" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">&gt;=</span> y) <span class="sc">&amp;</span> (y <span class="sc">!=</span> <span class="dv">10</span>)  </span>
-<span id="cb41-9"><a href="conceitos-básicos.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># e) </span></span>
-<span id="cb41-10"><a href="conceitos-básicos.html#cb41-10" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">&lt;</span> y) <span class="sc">|</span> (z <span class="sc">&gt;</span> x)  </span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="conceitos-básicos.html#cb41-1" tabindex="-1"></a><span class="co"># a)</span></span>
+<span id="cb41-2"><a href="conceitos-básicos.html#cb41-2" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">&amp;</span> y <span class="sc">&lt;</span> z  </span>
+<span id="cb41-3"><a href="conceitos-básicos.html#cb41-3" tabindex="-1"></a><span class="co"># b) </span></span>
+<span id="cb41-4"><a href="conceitos-básicos.html#cb41-4" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">15</span> <span class="sc">|</span> y <span class="sc">&gt;</span> z  </span>
+<span id="cb41-5"><a href="conceitos-básicos.html#cb41-5" tabindex="-1"></a><span class="co"># c) </span></span>
+<span id="cb41-6"><a href="conceitos-básicos.html#cb41-6" tabindex="-1"></a><span class="sc">!</span>(x <span class="sc">&lt;</span> z)  </span>
+<span id="cb41-7"><a href="conceitos-básicos.html#cb41-7" tabindex="-1"></a><span class="co"># d) </span></span>
+<span id="cb41-8"><a href="conceitos-básicos.html#cb41-8" tabindex="-1"></a>(x <span class="sc">&gt;=</span> y) <span class="sc">&amp;</span> (y <span class="sc">!=</span> <span class="dv">10</span>)  </span>
+<span id="cb41-9"><a href="conceitos-básicos.html#cb41-9" tabindex="-1"></a><span class="co"># e) </span></span>
+<span id="cb41-10"><a href="conceitos-básicos.html#cb41-10" tabindex="-1"></a>(x <span class="sc">&lt;</span> y) <span class="sc">|</span> (z <span class="sc">&gt;</span> x)  </span></code></pre></div>
 </div>
 <div id="protectedContent3" style="display:none;">
 <div id="respostas-2" class="section level3 unnumbered hasAnchor">
 <h3>Respostas<a href="conceitos-básicos.html#respostas-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>1.</strong></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="conceitos-básicos.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a)</span></span>
-<span id="cb42-2"><a href="conceitos-básicos.html#cb42-2" aria-hidden="true" tabindex="-1"></a>(resultado1 <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="conceitos-básicos.html#cb42-1" tabindex="-1"></a><span class="co"># a)</span></span>
+<span id="cb42-2"><a href="conceitos-básicos.html#cb42-2" tabindex="-1"></a>(resultado1 <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="conceitos-básicos.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># b) </span></span>
-<span id="cb44-2"><a href="conceitos-básicos.html#cb44-2" aria-hidden="true" tabindex="-1"></a>(resultado2 <span class="ot">&lt;-</span> (<span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="conceitos-básicos.html#cb44-1" tabindex="-1"></a><span class="co"># b) </span></span>
+<span id="cb44-2"><a href="conceitos-básicos.html#cb44-2" tabindex="-1"></a>(resultado2 <span class="ot">&lt;-</span> (<span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 16</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="conceitos-básicos.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c) </span></span>
-<span id="cb46-2"><a href="conceitos-básicos.html#cb46-2" aria-hidden="true" tabindex="-1"></a>(resultado3 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="conceitos-básicos.html#cb46-1" tabindex="-1"></a><span class="co"># c) </span></span>
+<span id="cb46-2"><a href="conceitos-básicos.html#cb46-2" tabindex="-1"></a>(resultado3 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="conceitos-básicos.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># d) </span></span>
-<span id="cb48-2"><a href="conceitos-básicos.html#cb48-2" aria-hidden="true" tabindex="-1"></a>(resultado4 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="conceitos-básicos.html#cb48-1" tabindex="-1"></a><span class="co"># d) </span></span>
+<span id="cb48-2"><a href="conceitos-básicos.html#cb48-2" tabindex="-1"></a>(resultado4 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="conceitos-básicos.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e) </span></span>
-<span id="cb50-2"><a href="conceitos-básicos.html#cb50-2" aria-hidden="true" tabindex="-1"></a>(resultado5 <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="conceitos-básicos.html#cb50-1" tabindex="-1"></a><span class="co"># e) </span></span>
+<span id="cb50-2"><a href="conceitos-básicos.html#cb50-2" tabindex="-1"></a>(resultado5 <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p><strong>2.</strong></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="conceitos-básicos.html#cb52-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb52-2"><a href="conceitos-básicos.html#cb52-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb52-3"><a href="conceitos-básicos.html#cb52-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb52-4"><a href="conceitos-básicos.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># a)</span></span>
-<span id="cb52-5"><a href="conceitos-básicos.html#cb52-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">&amp;</span> y <span class="sc">&lt;</span> z  </span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="conceitos-básicos.html#cb52-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb52-2"><a href="conceitos-básicos.html#cb52-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb52-3"><a href="conceitos-básicos.html#cb52-3" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb52-4"><a href="conceitos-básicos.html#cb52-4" tabindex="-1"></a><span class="co"># a)</span></span>
+<span id="cb52-5"><a href="conceitos-básicos.html#cb52-5" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">&amp;</span> y <span class="sc">&lt;</span> z  </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="conceitos-básicos.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># b) </span></span>
-<span id="cb54-2"><a href="conceitos-básicos.html#cb54-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">15</span> <span class="sc">|</span> y <span class="sc">&gt;</span> z  </span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="conceitos-básicos.html#cb54-1" tabindex="-1"></a><span class="co"># b) </span></span>
+<span id="cb54-2"><a href="conceitos-básicos.html#cb54-2" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">15</span> <span class="sc">|</span> y <span class="sc">&gt;</span> z  </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="conceitos-básicos.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c) </span></span>
-<span id="cb56-2"><a href="conceitos-básicos.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(x <span class="sc">&lt;</span> z)  </span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="conceitos-básicos.html#cb56-1" tabindex="-1"></a><span class="co"># c) </span></span>
+<span id="cb56-2"><a href="conceitos-básicos.html#cb56-2" tabindex="-1"></a><span class="sc">!</span>(x <span class="sc">&lt;</span> z)  </span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="conceitos-básicos.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># d) </span></span>
-<span id="cb58-2"><a href="conceitos-básicos.html#cb58-2" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">&gt;=</span> y) <span class="sc">&amp;</span> (y <span class="sc">!=</span> <span class="dv">10</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="conceitos-básicos.html#cb58-1" tabindex="-1"></a><span class="co"># d) </span></span>
+<span id="cb58-2"><a href="conceitos-básicos.html#cb58-2" tabindex="-1"></a>(x <span class="sc">&gt;=</span> y) <span class="sc">&amp;</span> (y <span class="sc">!=</span> <span class="dv">10</span>)  </span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="conceitos-básicos.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e) </span></span>
-<span id="cb60-2"><a href="conceitos-básicos.html#cb60-2" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">&lt;</span> y) <span class="sc">|</span> (z <span class="sc">&gt;</span> x)  </span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="conceitos-básicos.html#cb60-1" tabindex="-1"></a><span class="co"># e) </span></span>
+<span id="cb60-2"><a href="conceitos-básicos.html#cb60-2" tabindex="-1"></a>(x <span class="sc">&lt;</span> y) <span class="sc">|</span> (z <span class="sc">&gt;</span> x)  </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>

@@ -106,7 +106,7 @@ O Rstudio é dividido em quatro janelas principais:
 
 <img src="figs/console.png" width="70%" style="display: block; margin: auto;" />
 
-📌 Dicas:
+Dicas:
 
 - Para rodar um código, digite e pressione **Enter**.
 - Use as setas ↑ e ↓ para acessar comandos anteriores.
@@ -115,7 +115,7 @@ O Rstudio é dividido em quatro janelas principais:
 **Exemplo** Digite os códigos abaixo no *Console*. Use as setas ↑ e ↓ para acessar comandos anteriores. Limpe o console.
 
 
-```r
+``` r
 x <- 3 # pressione Enter
 y <- 2 # pressione Enter
 print(x) # pressione Enter
@@ -129,7 +129,7 @@ print(y) # pressione Enter
 
 <img src="figs/editor.png" width="70%" style="display: block; margin: auto;" />
 
-📌 Dicas:
+Dicas:
 
 - **Ctrl + Enter** → Executa a linha atual.
 - **Ctrl + Shift + Enter** ou **Ctrl + A** e **Ctrl + Enter** → Executa o script inteiro.
@@ -139,7 +139,7 @@ print(y) # pressione Enter
 **Exemplo** Digite os códigos abaixo no *Editor de Scripts*. Utilize **Ctrl + Enter** para compilar cada linha separadamente. Utilize **Ctrl + Shift + Enter** (ou **Ctrl + A** e **Ctrl + Enter**) para compilar todo o script. Salve o arquivo em algum repositório.
 
 
-```r
+``` r
 a <- -1
 b <- 5 
 a 
@@ -154,7 +154,7 @@ b
 
 <img src="figs/ambiente.png" width="70%" style="display: block; margin: auto;" />
 
-📌 Dicas:
+Dicas:
 
 - Use `ls()` no console para listar os objetos carregados.
 - Para limpar o ambiente:  `rm(list = ls())`
@@ -174,7 +174,7 @@ b
 
 <img src="figs/arquivos.png" width="70%" style="display: block; margin: auto;" />
 
-📌 Dicas:
+Dicas:
 
 - Instalar um pacote: `install.packages("nome_do_pacote")` ou clicar no botão `Install` na aba *Packages*.
 - Carregar um pacote: `library("nome_do_pacote")` ou "marcar" o pacote na aba *Packages*.
@@ -196,7 +196,7 @@ b
 
 **1.** No **Console**, execute os seguintes comandos e observe os resultados:
 
-```r
+``` r
 x <- 10
 y <- 5
 soma <- x + y
@@ -207,7 +207,7 @@ Qual foi o valor impresso no console? Use o comando `ls()` no console, o que ele
 
 **2.** No **Editor de Scripts**, crie um novo arquivo R: `File → New File → R Script`. Copie e cole o seguinte código no script:
 
-```r
+``` r
 # Criando um vetor
 numeros <- c(1, 2, 3, 4, 5)
 # Calculando a média
@@ -224,7 +224,7 @@ print(media)
 
 **3.** No **Editor de Scripts** cole este código e execute:
 
-```r
+``` r
 x <- seq(-10, 10, 0.1)
 y <- sin(x)
 plot(x, y, type = "l", col = "blue", main = "Gráfico de Seno")
@@ -239,7 +239,7 @@ plot(x, y, type = "l", col = "blue", main = "Gráfico de Seno")
 
 **5.** No *Console* do RStudio, consulte a documentação das seguintes funções:
 
-```r
+``` r
 ?mean
 ?sd
 ?sum
@@ -266,23 +266,23 @@ R funciona como uma calculadora, permitindo operações básicas com números e 
 **Exemplo**
 
 
-```r
+``` r
 # Soma
-2 + 3  # Resultado: 5
+2 + 3  
 # Subtração
-10 - 4  # Resultado: 6
+10 - 4  
 # Multiplicação
-5 * 2  # Resultado: 10
+5 * 2  
 # Divisão
-9 / 3  # Resultado: 3
+9 / 3  
 # Exponenciação
-2^3  # Resultado: 8
+2^3  
 # Raiz quadrada
-sqrt(16)  # Resultado: 4
+sqrt(16)
 # Resto da divisão 
-10 %% 3  # Resultado: 1
+10 %% 3 
 # Parte inteira da divisão
-10 %/% 3  # Resultado: 3
+10 %/% 3  
 ```
 
 <!-- Para estilizar caixas de texto: -->
@@ -298,13 +298,13 @@ sqrt(16)  # Resultado: 4
 
 **Exemplo**
 
-```r
-2 + 3 * 4    # Multiplicação ocorre primeiro -> 14
-(2 + 3) * 4  # Parênteses ocorre primeiro -> 20
-2 * 5 ^ 2    # Exponenciação ocorre primeiro -> 25
-(2 * 5) ^ 2  # Parênteses ocorre primeiro -> 100
-5 * 3 / 2    # Ordem indiferente
-5 + 3 - 2    # Ordem indiferente
+``` r
+2 + 3 * 4    
+(2 + 3) * 4  
+2 * 5 ^ 2    
+(2 * 5) ^ 2  
+5 * 3 / 2    
+5 + 3 - 2    
 ```
 
 ### Criando Variáveis (objetos) 
@@ -313,7 +313,7 @@ sqrt(16)  # Resultado: 4
 Para criar uma variável ou objeto, usamos o simbolo de atribuição `<-`
 
 
-```r
+``` r
 ## Atribuindo um número a um objeto:
 x <- 5; y <- 3  
 ```
@@ -321,7 +321,7 @@ x <- 5; y <- 3
 Operações entre objetos numéricos:
 
 
-```r
+``` r
 x+y # soma
 x-y # subtração
 x*y # produto
@@ -331,12 +331,12 @@ x/y # quociente
 
 <div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
 <details>
-  <summary><strong> 📌 Restrições nos nomes das variáveis (objetos) </strong></summary>
+  <summary><strong> Restrições nos nomes das variáveis (objetos) </strong></summary>
   
 **1. Começo do Nome:** Não pode começar com número ou caracteres especiais. Deve começar com uma letra (A-Z ou a-z).
     
 
-```r
+``` r
 nome_valido <- 5  # Correto
 1nome_invalido <- 15  # Erro: nome não pode começar com número
 @nome_invalido <- 15  # Erro: nome não pode começar com caracteres especiais
@@ -344,7 +344,7 @@ nome_valido <- 5  # Correto
 
 **2. Espaços e Caracteres:** O nome não deve conter espaços nem caracteres especiais como @, #, -, $, etc. O underline (_) é um caractere permitido no meio do nome.
 
-```r
+``` r
 variavel_valida_1 <- 20  # Correto
 variavel#invalida <- 40  # Erro: caractere inválido (#)
 variavel@invalida <- 40  # Erro: caractere inválido (@)
@@ -352,7 +352,7 @@ variavel@invalida <- 40  # Erro: caractere inválido (@)
 
 **3. Diferenciação de Maiúsculas e Minúsculas:** O R diferencia maiúsculas de minúsculas. Assim, `var`, `Var` e `VAR` são considerados nomes diferentes.
 
-```r
+``` r
 var <- 100
 Var <- 200
 print(var)  # 100
@@ -361,14 +361,14 @@ print(Var)  # 200
 
 **4. Palavras Reservadas:** Não é permitido usar palavras reservadas do R (como `if`, `else`, `for`, `TRUE`, `FALSE`, etc.). Essas palavras têm significados específicos e não podem ser sobrescritas.
 
-```r
+``` r
 for <- 10  # Erro: 'for' é uma palavra reservada
 if <- 20   # Erro: 'if' é uma palavra reservada
 ```
 
 **5. Pontos e Nomes de funções preexistentes:** Não é recomendado utilizar pontos. Também evitar usar nomes que conflitem com funções **preexistentes** do R.
 
-```r
+``` r
 ## Evitar
 nome.com.ponto <- 100  # Correto, mas pode ser confuso
 mean <- 2
@@ -381,14 +381,14 @@ mean(mean)
 
 <div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
 <details open>
-  <summary><strong> 📌 Dicas para os nomes das variáveis (objetos) </strong></summary>
+  <summary><strong> Dicas para os nomes das variáveis (objetos) </strong></summary>
 
 - A convenção em R é usar underline (_) para nomes de objetos (exceto no inicio).
 - Evitar nomes ambíguos e usar nomes descritivos que deixem claro o que o objeto representa.
 <!-- - Nomear funções com verbos para indicar ação, como `calcular_media`, `plotar_grafico`, etc. -->
 
 
-```r
+``` r
 ## Exemplos de Nomes Válidos
 x_1 <- 5
 minha_variavel <- 10
@@ -421,7 +421,7 @@ d. O quociente de `a` dividido por `b`.
 **3.** Algumas regras devem ser seguidas ao nomear variáveis em R. Analise os seguintes nomes e indique quais são válidos e quais causarão erro. Justifique a sua resposta.
 
 
-```r
+``` r
 1numero <- 100
 meu_numero <- 25
 data <- "2025-03-15"
@@ -436,13 +436,13 @@ x_y <- 5
 
 **3.**
 
-```r
-1numero <- 100   # ❌ Inválido: não pode começar com número
-meu_numero <- 25 # ✅ Válido
-data <- "2025-03-15" # ⚠️ Válido, mas desaconselhado (conflito com função data())
-for <- "teste"  # ❌ Inválido: "for" é palavra reservada
-x@y <- 50  # ❌ Inválido:  caractere inválido (@)
-x_y <- 5  # ✅ Válido
+``` r
+1numero <- 100   # Inválido: não pode começar com número
+meu_numero <- 25 # Válido
+data <- "2025-03-15" #  Válido, mas desaconselhado (conflito com função data())
+for <- "teste"  # Inválido: "for" é palavra reservada
+x@y <- 50  # Inválido:  caractere inválido (@)
+x_y <- 5  # Válido
 ```
 
 </div>
@@ -564,7 +564,7 @@ b <- 3
 
 **2.**
 
-```r
+``` r
 10 > 5  
 ```
 
@@ -572,7 +572,7 @@ b <- 3
 ## [1] TRUE
 ```
 
-```r
+``` r
 5 == 5  
 ```
 
@@ -580,7 +580,7 @@ b <- 3
 ## [1] TRUE
 ```
 
-```r
+``` r
 5 != 3 
 ```
 
@@ -588,7 +588,7 @@ b <- 3
 ## [1] TRUE
 ```
 
-```r
+``` r
 (3 + 2) >= 5
 ```
 
@@ -596,7 +596,7 @@ b <- 3
 ## [1] TRUE
 ```
 
-```r
+``` r
 10 / 2 < 6  
 ```
 
@@ -604,7 +604,7 @@ b <- 3
 ## [1] TRUE
 ```
 
-```r
+``` r
 (4 > 2) & (10 <= 20) 
 ```
 
@@ -612,7 +612,7 @@ b <- 3
 ## [1] TRUE
 ```
 
-```r
+``` r
 (7 < 3) | (8 == 8) 
 ```
 
@@ -620,7 +620,7 @@ b <- 3
 ## [1] TRUE
 ```
 
-```r
+``` r
 !TRUE 
 ```
 
@@ -628,7 +628,7 @@ b <- 3
 ## [1] FALSE
 ```
 
-```r
+``` r
 !(5 > 3)  
 ```
 
@@ -677,7 +677,7 @@ resultado5 <- 4^2 / 2
 
 **2.** Dados os valores:
 
-```r
+``` r
 x <- 15; y <- 10; z <- 20
 ```
 
@@ -701,7 +701,7 @@ x == 15 | y > z
 ### Respostas {-}
 **1.**
 
-```r
+``` r
 # a)
 (resultado1 <- 5 + 3 * 2)
 ```
@@ -710,7 +710,7 @@ x == 15 | y > z
 ## [1] 11
 ```
 
-```r
+``` r
 # b) 
 (resultado2 <- (5 + 3) * 2)
 ```
@@ -719,7 +719,7 @@ x == 15 | y > z
 ## [1] 16
 ```
 
-```r
+``` r
 # c) 
 (resultado3 <- 10 / 2 + 3)
 ```
@@ -728,7 +728,7 @@ x == 15 | y > z
 ## [1] 8
 ```
 
-```r
+``` r
 # d) 
 (resultado4 <- 10 / (2 + 3))
 ```
@@ -737,7 +737,7 @@ x == 15 | y > z
 ## [1] 2
 ```
 
-```r
+``` r
 # e) 
 (resultado5 <- 4^2 / 2)
 ```
@@ -748,7 +748,7 @@ x == 15 | y > z
 
 **2.**
 
-```r
+``` r
 x <- 15
 y <- 10
 z <- 20
@@ -760,7 +760,7 @@ x > y & y < z
 ## [1] TRUE
 ```
 
-```r
+``` r
 # b) 
 x == 15 | y > z  
 ```
@@ -769,7 +769,7 @@ x == 15 | y > z
 ## [1] TRUE
 ```
 
-```r
+``` r
 # c) 
 !(x < z)  
 ```
@@ -778,7 +778,7 @@ x == 15 | y > z
 ## [1] FALSE
 ```
 
-```r
+``` r
 # d) 
 (x >= y) & (y != 10)  
 ```
@@ -787,7 +787,7 @@ x == 15 | y > z
 ## [1] FALSE
 ```
 
-```r
+``` r
 # e) 
 (x < y) | (z > x)  
 ```
