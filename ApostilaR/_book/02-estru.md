@@ -802,11 +802,11 @@ as.factor(cores_char)
 
 <div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
 <details open>
-  <summary><strong> 📌 Quando Usar Cada Um? </strong></summary>
+  <summary><strong> Quando Usar Cada Um? </strong></summary>
 
-✔ *Caracteres (character)*: se os dados forem simplesmente rótulos sem necessidade de categorias ordenadas ou níveis fixos.
+- *Caracteres (character)*: se os dados forem simplesmente rótulos sem necessidade de categorias ordenadas ou níveis fixos.
 
-✔ *Fatores (factor)*: se os dados representam categorias que serão usadas em análises estatísticas ou visualizações gráficas.
+- *Fatores (factor)*: se os dados representam categorias que serão usadas em análises estatísticas ou visualizações gráficas.
 
 </div>
 </p>
@@ -1713,7 +1713,7 @@ meus_dados$Matriz[1,2]
 ```
 
 ```
-## [1] 5
+## [1] 4
 ```
 
 ``` r

@@ -11,5 +11,4 @@ vetores
 fatores
 matrizes
 listas
-data-frames
 tab:unnamed-chunk-12
