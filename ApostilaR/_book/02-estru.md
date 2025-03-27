@@ -356,11 +356,14 @@ document.getElementById("submitButton1").addEventListener("click", function()
 #### Operações com vetores {-}
 
 **Operações Aritméticas (elemento a elemento)**
-```r
+
+``` r
 # Considere os valores:
 a <- 2
 v1 <- c(1, 2, 3)
 v2 <- c(4, 5, 6)
+```
+```r
 ## Soma
 # Soma de vetores:
 v1+v2
@@ -385,6 +388,8 @@ v2%%v1
 v2%/%v1
 # Divisão de vetor por escalar:
 v1/a
+```
+```r
 ## Potenciação
 # Potenciação de vetores
 v1^v2
@@ -696,7 +701,7 @@ x[x %in% y]  # Retorna apenas os elementos de x que também estão em y
 
 
 
-Table: (\#tab:unnamed-chunk-12)Resumo das Funções para Vetores no R
+Table: (\#tab:unnamed-chunk-13)Resumo das Funções para Vetores no R
 
 |  Funcao  |                       Descricao                        |                   Exemplo                    |
 |:--------:|:------------------------------------------------------:|:--------------------------------------------:|
@@ -1223,7 +1228,8 @@ B <- matrix(5:8, nrow = 2)
 nrow(A) # Número de linhas
 ncol(A) # Número de colunas
 dim(A) # dimensão da matriz: número de linhas e número de colunas
-
+```
+```r
 A + B  # Soma elemento a elemento
 
 ## Multiplicação elemento a elemento
@@ -1541,15 +1547,6 @@ length(minha_lista)
 
 Renomeando os elementos da lista:
 
-
-``` r
-names(minha_lista) 
-```
-
-```
-## NULL
-```
-
 ``` r
 names(minha_lista) <- c("nome", "idade", "notas", "matriz")
 minha_lista
@@ -1596,6 +1593,43 @@ minha_lista$matriz # equivalente a minha_lista[[4]]
 ## [2,]    2    4
 ```
 
+Podemos também ter uma lista de listas:
+
+``` r
+lista2 <- list(nome = "Ana",
+              notas = list(sem1 = c(5,6,7), sem2 = c(8,6,9)),
+              materias = list(sem1 = c("Matematica", "Historia", "Fisica"),
+                              sem2 = c("Português", "Artes", "Geografia")))
+```
+
+Neste caso, para acessar os elementos, fazemos:
+
+``` r
+# Notas semestre 1
+lista2$notas$sem1
+```
+
+```
+## [1] 5 6 7
+```
+
+``` r
+# Disciplinas semestre 2
+lista2$materias$sem2
+```
+
+```
+## [1] "Português" "Artes"     "Geografia"
+```
+
+``` r
+# Disciplina 2 do semestre 2
+lista2$materias$sem2[2]
+```
+
+```
+## [1] "Artes"
+```
 
 #### Exercícios {-}
 
