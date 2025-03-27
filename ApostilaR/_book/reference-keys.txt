@@ -12,4 +12,3 @@ fatores
 matrizes
 listas
 tab:unnamed-chunk-12
-tab:unnamed-chunk-13
