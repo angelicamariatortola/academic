@@ -6,13 +6,10 @@ operações-básicas-em-r
 operações-aritméticas
 criando-variáveis-objetos
 operações-lógicas-e-comparações
-tab:unnamed-chunk-24
 estruturas-de-dados
 vetores
 fatores
 matrizes
 listas
 data-frames
-tab:unnamed-chunk-23
-tab:unnamed-chunk-22
 tab:unnamed-chunk-12

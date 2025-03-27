@@ -1597,64 +1597,236 @@ minha_lista$matriz # equivalente a minha_lista[[4]]
 ```
 
 
+#### Exercícios {-}
 
-<!-- # Acessando o elemento "nome" usando o operador $ -->
-<!-- minha_lista$nome  # Retorna "João" -->
+**1.** Crie uma lista chamada `aluno` com os seguintes elementos: Nome: "Maria", Idade: 22, Notas: 7, 8, 9, Curso: "Matemática". Depois, realize as operações:
 
-<!-- # Acessando o elemento "notas" usando [[ ]] -->
-<!-- minha_lista[["notas"]]  # Retorna c(8, 9, 10) -->
+a. Acesse e imprima o nome do aluno.
+b. Modifique a idade para 23.
+c. Adicione um novo elemento chamado "cidade" com o valor "Curitiba".
+d. Remova o elemento "curso".
 
-<!-- # Acessando o segundo valor do vetor "notas" -->
-<!-- minha_lista$notas[2]  # Retorna 9 -->
+**2.** Crie uma lista chamada meus_dados contendo um vetor numérico de 5 elementos, um vetor de caracteres com nomes de 3 cidades, um valor lógico (TRUE ou FALSE) e uma matriz 2x2 com números aleatórios.
 
-<br>
+a. Extraia o vetor numérico.
+b. Acesse o segundo elemento do vetor de caracteres.
+c. Modifique o valor lógico para FALSE.
+d. Extraia o valor da matriz da linha 1, coluna 2.
 
-## Data Frames
-Os data.frames são estruturas de dados que armazenam colunas de diferentes tipos (numéricas, categóricas, lógicas).
+**3.** Crie uma lista chamada familia, contendo: 
+
+- Pai: Lista com Nome = "Carlos" e Idade = 45.
+- Mãe: Lista com Nome = "Mariana" e Idade = 42.
+- Filhos: Um vetor com os nomes "Lucas" e "Ana".
+
+Agora, realize as seguintes operações:
+
+a. Acesse e imprima a idade do pai.
+b. Acesse e imprima o nome da mãe.
+c. Acesse e imprima o segundo filho.
+d. Modifique a idade da mãe para 43 anos.
+e. Adicione um novo filho chamado "Pedro".
+
+
+
+
+
+<div id="protectedContent5" style="display:none;">
+  
+### Respostas {-}
+
 
 ``` r
-## Criando um data frame
-dados <- data.frame(
-  Nome = c("Ana", "Bruno", "Carlos", "Maria", "Jose", "Tata", "Mia"),
-  Nivel_escolaridade = c("F","M","S","M","F","M","F"),
-  Idade = c(25, 30, 22, 10, 15, 16, 24),
-  Nota = c(8,6,3,4,7,2,9),
-  Aprovado = c(TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
+# 1. 
+# Criando a lista aluno
+aluno <- list(
+  Nome = "Maria",
+  Idade = 22,
+  Notas = c(7, 8, 9),
+  Curso = "Matemática"
 )
-
-## Algumas operações em data frames:
-
-# Selecionando a segunda coluna
-dados[, 2]
-
-# Selecionando linhas com idade maior que 25
-dados[dados$Idade > 25, ]
-
-# Selecionando apenas a coluna "Nome"
-dados$Nome
-
-# Usando subset para filtrar dados
-subset(dados, Idade > 25)
-
-# Selecionando apenas a coluna "Nome" onde a idade é maior que 25
-subset(dados, Idade > 25, select = Nome)
-
-# Ordenando o data frame por idade
-dados[order(dados$Idade), ]
-
-# Ordenando por idade em ordem decrescente
-dados[order(dados$Idade, decreasing = TRUE), ]
-
-# Adicionando uma nova coluna
-dados$Status <- c("Aprovado", "Aprovado", "Reprovado", "Aprovado")
-
-# Removendo uma coluna
-dados$Status <- NULL
-
-# Renomeando colunas
-colnames(dados) <- c("Nome_Aluno", "Idade_Aluno", "Nota_Final")
-dados
+# a. Acesse e imprima o nome do aluno
+aluno$Nome
 ```
 
-<br>
+```
+## [1] "Maria"
+```
 
+``` r
+# b. Modifique a idade para 23
+aluno$Idade <- 23
+# c. Adicione um novo elemento chamado "cidade" com o valor "Curitiba"
+aluno$Cidade <- "Curitiba"
+# d. Remova o elemento "curso"
+aluno$Curso <- NULL
+# Exibir a lista modificada
+aluno
+```
+
+```
+## $Nome
+## [1] "Maria"
+## 
+## $Idade
+## [1] 23
+## 
+## $Notas
+## [1] 7 8 9
+## 
+## $Cidade
+## [1] "Curitiba"
+```
+
+``` r
+# 2. 
+# Criando a lista meus_dados
+meus_dados <- list(
+  Numeros = c(10, 20, 30, 40, 50),  # a. Vetor numérico de 5 elementos
+  Cidades = c("São Paulo", "Curitiba", "Rio de Janeiro"),  # b. Vetor de caracteres
+  Logico = TRUE,  # c. Valor lógico
+  Matriz = matrix(sample(1:10, 4), nrow = 2)  # d. Matriz 2x2 com números aleatórios
+)
+
+# a. Extraia o vetor numérico
+meus_dados$Numeros
+```
+
+```
+## [1] 10 20 30 40 50
+```
+
+``` r
+# b. Acesse o segundo elemento do vetor de caracteres
+meus_dados$Cidades[2]
+```
+
+```
+## [1] "Curitiba"
+```
+
+``` r
+# c. Modifique o valor lógico para FALSE
+meus_dados$Logico <- FALSE
+# d. Extraia o valor da matriz da linha 1, coluna 2.
+meus_dados$Matriz[1,2]
+```
+
+```
+## [1] 5
+```
+
+``` r
+# 3.
+# Criando a lista familia
+familia <- list(
+  Pai = list(Nome = "Carlos", Idade = 45),
+  Mae = list(Nome = "Mariana", Idade = 42),
+  Filhos = c("Lucas", "Ana")
+)
+# a. Acesse e imprima a idade do pai
+familia$Pai$Idade
+```
+
+```
+## [1] 45
+```
+
+``` r
+# b. Acesse e imprima o nome da mãe
+familia$Mae$Nome
+```
+
+```
+## [1] "Mariana"
+```
+
+``` r
+# c. Acesse e imprima o segundo filho
+familia$Filhos[2]
+```
+
+```
+## [1] "Ana"
+```
+
+``` r
+# d. Modifique a idade da mãe para 43 anos
+familia$Mae$Idade <- 43
+# e. Adicione um novo filho chamado "Pedro"
+familia$Filhos <- c(familia$Filhos, "Pedro")
+```
+
+</div>
+  
+  <input type="password" id="passwordInput5" placeholder="Digite a senha">
+  <button id="submitButton5">Acesso Professor</button>
+  
+  
+<script>
+
+document.getElementById("submitButton5").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput5").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent5").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+
+
+
+<!-- ## Data Frames -->
+<!-- Os data.frames são estruturas de dados que armazenam colunas de diferentes tipos (numéricas, categóricas, lógicas). -->
+<!-- ```{r, eval=F} -->
+<!-- ## Criando um data frame -->
+<!-- dados <- data.frame( -->
+<!--   Nome = c("Ana", "Bruno", "Carlos", "Maria", "Jose", "Tata", "Mia"), -->
+<!--   Nivel_escolaridade = c("F","M","S","M","F","M","F"), -->
+<!--   Idade = c(25, 30, 22, 10, 15, 16, 24), -->
+<!--   Nota = c(8,6,3,4,7,2,9), -->
+<!--   Aprovado = c(TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE) -->
+<!-- ) -->
+
+<!-- ## Algumas operações em data frames: -->
+
+<!-- # Selecionando a segunda coluna -->
+<!-- dados[, 2] -->
+
+<!-- # Selecionando linhas com idade maior que 25 -->
+<!-- dados[dados$Idade > 25, ] -->
+
+<!-- # Selecionando apenas a coluna "Nome" -->
+<!-- dados$Nome -->
+
+<!-- # Usando subset para filtrar dados -->
+<!-- subset(dados, Idade > 25) -->
+
+<!-- # Selecionando apenas a coluna "Nome" onde a idade é maior que 25 -->
+<!-- subset(dados, Idade > 25, select = Nome) -->
+
+<!-- # Ordenando o data frame por idade -->
+<!-- dados[order(dados$Idade), ] -->
+
+<!-- # Ordenando por idade em ordem decrescente -->
+<!-- dados[order(dados$Idade, decreasing = TRUE), ] -->
+
+<!-- # Adicionando uma nova coluna -->
+<!-- dados$Status <- c("Aprovado", "Aprovado", "Reprovado", "Aprovado") -->
+
+<!-- # Removendo uma coluna -->
+<!-- dados$Status <- NULL -->
+
+<!-- # Renomeando colunas -->
+<!-- colnames(dados) <- c("Nome_Aluno", "Idade_Aluno", "Nota_Final") -->
+<!-- dados -->
+<!-- ``` -->
+
+
+<!-- #### 2 Exercícios da Sessão {-} -->
