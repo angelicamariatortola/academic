@@ -1263,67 +1263,48 @@ document.getElementById("submitButton4").addEventListener("click", function()
 <span id="cb180-7"><a href="estruturas-de-dados.html#cb180-7" tabindex="-1"></a>  <span class="at">Curso =</span> <span class="st">&quot;Matemática&quot;</span></span>
 <span id="cb180-8"><a href="estruturas-de-dados.html#cb180-8" tabindex="-1"></a>)</span>
 <span id="cb180-9"><a href="estruturas-de-dados.html#cb180-9" tabindex="-1"></a><span class="co"># a. Acesse e imprima o nome do aluno</span></span>
-<span id="cb180-10"><a href="estruturas-de-dados.html#cb180-10" tabindex="-1"></a>aluno<span class="sc">$</span>Nome</span></code></pre></div>
-<pre><code>## [1] &quot;Maria&quot;</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="estruturas-de-dados.html#cb182-1" tabindex="-1"></a><span class="co"># b. Modifique a idade para 23</span></span>
-<span id="cb182-2"><a href="estruturas-de-dados.html#cb182-2" tabindex="-1"></a>aluno<span class="sc">$</span>Idade <span class="ot">&lt;-</span> <span class="dv">23</span></span>
-<span id="cb182-3"><a href="estruturas-de-dados.html#cb182-3" tabindex="-1"></a><span class="co"># c. Adicione um novo elemento chamado &quot;cidade&quot; com o valor &quot;Curitiba&quot;</span></span>
-<span id="cb182-4"><a href="estruturas-de-dados.html#cb182-4" tabindex="-1"></a>aluno<span class="sc">$</span>Cidade <span class="ot">&lt;-</span> <span class="st">&quot;Curitiba&quot;</span></span>
-<span id="cb182-5"><a href="estruturas-de-dados.html#cb182-5" tabindex="-1"></a><span class="co"># d. Remova o elemento &quot;curso&quot;</span></span>
-<span id="cb182-6"><a href="estruturas-de-dados.html#cb182-6" tabindex="-1"></a>aluno<span class="sc">$</span>Curso <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb182-7"><a href="estruturas-de-dados.html#cb182-7" tabindex="-1"></a><span class="co"># Exibir a lista modificada</span></span>
-<span id="cb182-8"><a href="estruturas-de-dados.html#cb182-8" tabindex="-1"></a>aluno</span></code></pre></div>
-<pre><code>## $Nome
-## [1] &quot;Maria&quot;
-## 
-## $Idade
-## [1] 23
-## 
-## $Notas
-## [1] 7 8 9
-## 
-## $Cidade
-## [1] &quot;Curitiba&quot;</code></pre>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="estruturas-de-dados.html#cb184-1" tabindex="-1"></a><span class="co"># 2. </span></span>
-<span id="cb184-2"><a href="estruturas-de-dados.html#cb184-2" tabindex="-1"></a><span class="co"># Criando a lista meus_dados</span></span>
-<span id="cb184-3"><a href="estruturas-de-dados.html#cb184-3" tabindex="-1"></a>meus_dados <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb184-4"><a href="estruturas-de-dados.html#cb184-4" tabindex="-1"></a>  <span class="at">Numeros =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>),  <span class="co"># a. Vetor numérico de 5 elementos</span></span>
-<span id="cb184-5"><a href="estruturas-de-dados.html#cb184-5" tabindex="-1"></a>  <span class="at">Cidades =</span> <span class="fu">c</span>(<span class="st">&quot;São Paulo&quot;</span>, <span class="st">&quot;Curitiba&quot;</span>, <span class="st">&quot;Rio de Janeiro&quot;</span>),  <span class="co"># b. Vetor de caracteres</span></span>
-<span id="cb184-6"><a href="estruturas-de-dados.html#cb184-6" tabindex="-1"></a>  <span class="at">Logico =</span> <span class="cn">TRUE</span>,  <span class="co"># c. Valor lógico</span></span>
-<span id="cb184-7"><a href="estruturas-de-dados.html#cb184-7" tabindex="-1"></a>  <span class="at">Matriz =</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)  <span class="co"># d. Matriz 2x2 com números aleatórios</span></span>
-<span id="cb184-8"><a href="estruturas-de-dados.html#cb184-8" tabindex="-1"></a>)</span>
-<span id="cb184-9"><a href="estruturas-de-dados.html#cb184-9" tabindex="-1"></a></span>
-<span id="cb184-10"><a href="estruturas-de-dados.html#cb184-10" tabindex="-1"></a><span class="co"># a. Extraia o vetor numérico</span></span>
-<span id="cb184-11"><a href="estruturas-de-dados.html#cb184-11" tabindex="-1"></a>meus_dados<span class="sc">$</span>Numeros</span></code></pre></div>
-<pre><code>## [1] 10 20 30 40 50</code></pre>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="estruturas-de-dados.html#cb186-1" tabindex="-1"></a><span class="co"># b. Acesse o segundo elemento do vetor de caracteres</span></span>
-<span id="cb186-2"><a href="estruturas-de-dados.html#cb186-2" tabindex="-1"></a>meus_dados<span class="sc">$</span>Cidades[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;Curitiba&quot;</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="estruturas-de-dados.html#cb188-1" tabindex="-1"></a><span class="co"># c. Modifique o valor lógico para FALSE</span></span>
-<span id="cb188-2"><a href="estruturas-de-dados.html#cb188-2" tabindex="-1"></a>meus_dados<span class="sc">$</span>Logico <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb188-3"><a href="estruturas-de-dados.html#cb188-3" tabindex="-1"></a><span class="co"># d. Extraia o valor da matriz da linha 1, coluna 2.</span></span>
-<span id="cb188-4"><a href="estruturas-de-dados.html#cb188-4" tabindex="-1"></a>meus_dados<span class="sc">$</span>Matriz[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="estruturas-de-dados.html#cb190-1" tabindex="-1"></a><span class="co"># 3.</span></span>
-<span id="cb190-2"><a href="estruturas-de-dados.html#cb190-2" tabindex="-1"></a><span class="co"># Criando a lista familia</span></span>
-<span id="cb190-3"><a href="estruturas-de-dados.html#cb190-3" tabindex="-1"></a>familia <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb190-4"><a href="estruturas-de-dados.html#cb190-4" tabindex="-1"></a>  <span class="at">Pai =</span> <span class="fu">list</span>(<span class="at">Nome =</span> <span class="st">&quot;Carlos&quot;</span>, <span class="at">Idade =</span> <span class="dv">45</span>),</span>
-<span id="cb190-5"><a href="estruturas-de-dados.html#cb190-5" tabindex="-1"></a>  <span class="at">Mae =</span> <span class="fu">list</span>(<span class="at">Nome =</span> <span class="st">&quot;Mariana&quot;</span>, <span class="at">Idade =</span> <span class="dv">42</span>),</span>
-<span id="cb190-6"><a href="estruturas-de-dados.html#cb190-6" tabindex="-1"></a>  <span class="at">Filhos =</span> <span class="fu">c</span>(<span class="st">&quot;Lucas&quot;</span>, <span class="st">&quot;Ana&quot;</span>)</span>
-<span id="cb190-7"><a href="estruturas-de-dados.html#cb190-7" tabindex="-1"></a>)</span>
-<span id="cb190-8"><a href="estruturas-de-dados.html#cb190-8" tabindex="-1"></a><span class="co"># a. Acesse e imprima a idade do pai</span></span>
-<span id="cb190-9"><a href="estruturas-de-dados.html#cb190-9" tabindex="-1"></a>familia<span class="sc">$</span>Pai<span class="sc">$</span>Idade</span></code></pre></div>
-<pre><code>## [1] 45</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="estruturas-de-dados.html#cb192-1" tabindex="-1"></a><span class="co"># b. Acesse e imprima o nome da mãe</span></span>
-<span id="cb192-2"><a href="estruturas-de-dados.html#cb192-2" tabindex="-1"></a>familia<span class="sc">$</span>Mae<span class="sc">$</span>Nome</span></code></pre></div>
-<pre><code>## [1] &quot;Mariana&quot;</code></pre>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="estruturas-de-dados.html#cb194-1" tabindex="-1"></a><span class="co"># c. Acesse e imprima o segundo filho</span></span>
-<span id="cb194-2"><a href="estruturas-de-dados.html#cb194-2" tabindex="-1"></a>familia<span class="sc">$</span>Filhos[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;Ana&quot;</code></pre>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="estruturas-de-dados.html#cb196-1" tabindex="-1"></a><span class="co"># d. Modifique a idade da mãe para 43 anos</span></span>
-<span id="cb196-2"><a href="estruturas-de-dados.html#cb196-2" tabindex="-1"></a>familia<span class="sc">$</span>Mae<span class="sc">$</span>Idade <span class="ot">&lt;-</span> <span class="dv">43</span></span>
-<span id="cb196-3"><a href="estruturas-de-dados.html#cb196-3" tabindex="-1"></a><span class="co"># e. Adicione um novo filho chamado &quot;Pedro&quot;</span></span>
-<span id="cb196-4"><a href="estruturas-de-dados.html#cb196-4" tabindex="-1"></a>familia<span class="sc">$</span>Filhos <span class="ot">&lt;-</span> <span class="fu">c</span>(familia<span class="sc">$</span>Filhos, <span class="st">&quot;Pedro&quot;</span>)</span></code></pre></div>
+<span id="cb180-10"><a href="estruturas-de-dados.html#cb180-10" tabindex="-1"></a>aluno<span class="sc">$</span>Nome</span>
+<span id="cb180-11"><a href="estruturas-de-dados.html#cb180-11" tabindex="-1"></a><span class="co"># b. Modifique a idade para 23</span></span>
+<span id="cb180-12"><a href="estruturas-de-dados.html#cb180-12" tabindex="-1"></a>aluno<span class="sc">$</span>Idade <span class="ot">&lt;-</span> <span class="dv">23</span></span>
+<span id="cb180-13"><a href="estruturas-de-dados.html#cb180-13" tabindex="-1"></a><span class="co"># c. Adicione um novo elemento chamado &quot;cidade&quot; com o valor &quot;Curitiba&quot;</span></span>
+<span id="cb180-14"><a href="estruturas-de-dados.html#cb180-14" tabindex="-1"></a>aluno<span class="sc">$</span>Cidade <span class="ot">&lt;-</span> <span class="st">&quot;Curitiba&quot;</span></span>
+<span id="cb180-15"><a href="estruturas-de-dados.html#cb180-15" tabindex="-1"></a><span class="co"># d. Remova o elemento &quot;curso&quot;</span></span>
+<span id="cb180-16"><a href="estruturas-de-dados.html#cb180-16" tabindex="-1"></a>aluno<span class="sc">$</span>Curso <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb180-17"><a href="estruturas-de-dados.html#cb180-17" tabindex="-1"></a></span>
+<span id="cb180-18"><a href="estruturas-de-dados.html#cb180-18" tabindex="-1"></a><span class="co"># 2. </span></span>
+<span id="cb180-19"><a href="estruturas-de-dados.html#cb180-19" tabindex="-1"></a><span class="co"># Criando a lista meus_dados</span></span>
+<span id="cb180-20"><a href="estruturas-de-dados.html#cb180-20" tabindex="-1"></a>meus_dados <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb180-21"><a href="estruturas-de-dados.html#cb180-21" tabindex="-1"></a>  <span class="at">Numeros =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>),  <span class="co"># a. Vetor numérico de 5 elementos</span></span>
+<span id="cb180-22"><a href="estruturas-de-dados.html#cb180-22" tabindex="-1"></a>  <span class="at">Cidades =</span> <span class="fu">c</span>(<span class="st">&quot;São Paulo&quot;</span>, <span class="st">&quot;Curitiba&quot;</span>, <span class="st">&quot;Rio de Janeiro&quot;</span>),  <span class="co"># b. Vetor de caracteres</span></span>
+<span id="cb180-23"><a href="estruturas-de-dados.html#cb180-23" tabindex="-1"></a>  <span class="at">Logico =</span> <span class="cn">TRUE</span>,  <span class="co"># c. Valor lógico</span></span>
+<span id="cb180-24"><a href="estruturas-de-dados.html#cb180-24" tabindex="-1"></a>  <span class="at">Matriz =</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)  <span class="co"># d. Matriz 2x2 com números aleatórios</span></span>
+<span id="cb180-25"><a href="estruturas-de-dados.html#cb180-25" tabindex="-1"></a>)</span>
+<span id="cb180-26"><a href="estruturas-de-dados.html#cb180-26" tabindex="-1"></a><span class="co"># a. Extraia o vetor numérico</span></span>
+<span id="cb180-27"><a href="estruturas-de-dados.html#cb180-27" tabindex="-1"></a>meus_dados<span class="sc">$</span>Numeros</span>
+<span id="cb180-28"><a href="estruturas-de-dados.html#cb180-28" tabindex="-1"></a><span class="co"># b. Acesse o segundo elemento do vetor de caracteres</span></span>
+<span id="cb180-29"><a href="estruturas-de-dados.html#cb180-29" tabindex="-1"></a>meus_dados<span class="sc">$</span>Cidades[<span class="dv">2</span>]</span>
+<span id="cb180-30"><a href="estruturas-de-dados.html#cb180-30" tabindex="-1"></a><span class="co"># c. Modifique o valor lógico para FALSE</span></span>
+<span id="cb180-31"><a href="estruturas-de-dados.html#cb180-31" tabindex="-1"></a>meus_dados<span class="sc">$</span>Logico <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb180-32"><a href="estruturas-de-dados.html#cb180-32" tabindex="-1"></a><span class="co"># d. Extraia o valor da matriz da linha 1, coluna 2.</span></span>
+<span id="cb180-33"><a href="estruturas-de-dados.html#cb180-33" tabindex="-1"></a>meus_dados<span class="sc">$</span>Matriz[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb180-34"><a href="estruturas-de-dados.html#cb180-34" tabindex="-1"></a></span>
+<span id="cb180-35"><a href="estruturas-de-dados.html#cb180-35" tabindex="-1"></a><span class="co"># 3.</span></span>
+<span id="cb180-36"><a href="estruturas-de-dados.html#cb180-36" tabindex="-1"></a><span class="co"># Criando a lista familia</span></span>
+<span id="cb180-37"><a href="estruturas-de-dados.html#cb180-37" tabindex="-1"></a>familia <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb180-38"><a href="estruturas-de-dados.html#cb180-38" tabindex="-1"></a>  <span class="at">Pai =</span> <span class="fu">list</span>(<span class="at">Nome =</span> <span class="st">&quot;Carlos&quot;</span>, <span class="at">Idade =</span> <span class="dv">45</span>),</span>
+<span id="cb180-39"><a href="estruturas-de-dados.html#cb180-39" tabindex="-1"></a>  <span class="at">Mae =</span> <span class="fu">list</span>(<span class="at">Nome =</span> <span class="st">&quot;Mariana&quot;</span>, <span class="at">Idade =</span> <span class="dv">42</span>),</span>
+<span id="cb180-40"><a href="estruturas-de-dados.html#cb180-40" tabindex="-1"></a>  <span class="at">Filhos =</span> <span class="fu">c</span>(<span class="st">&quot;Lucas&quot;</span>, <span class="st">&quot;Ana&quot;</span>)</span>
+<span id="cb180-41"><a href="estruturas-de-dados.html#cb180-41" tabindex="-1"></a>)</span>
+<span id="cb180-42"><a href="estruturas-de-dados.html#cb180-42" tabindex="-1"></a><span class="co"># a. Acesse e imprima a idade do pai</span></span>
+<span id="cb180-43"><a href="estruturas-de-dados.html#cb180-43" tabindex="-1"></a>familia<span class="sc">$</span>Pai<span class="sc">$</span>Idade</span>
+<span id="cb180-44"><a href="estruturas-de-dados.html#cb180-44" tabindex="-1"></a><span class="co"># b. Acesse e imprima o nome da mãe</span></span>
+<span id="cb180-45"><a href="estruturas-de-dados.html#cb180-45" tabindex="-1"></a>familia<span class="sc">$</span>Mae<span class="sc">$</span>Nome</span>
+<span id="cb180-46"><a href="estruturas-de-dados.html#cb180-46" tabindex="-1"></a><span class="co"># c. Acesse e imprima o segundo filho</span></span>
+<span id="cb180-47"><a href="estruturas-de-dados.html#cb180-47" tabindex="-1"></a>familia<span class="sc">$</span>Filhos[<span class="dv">2</span>]</span>
+<span id="cb180-48"><a href="estruturas-de-dados.html#cb180-48" tabindex="-1"></a><span class="co"># d. Modifique a idade da mãe para 43 anos</span></span>
+<span id="cb180-49"><a href="estruturas-de-dados.html#cb180-49" tabindex="-1"></a>familia<span class="sc">$</span>Mae<span class="sc">$</span>Idade <span class="ot">&lt;-</span> <span class="dv">43</span></span>
+<span id="cb180-50"><a href="estruturas-de-dados.html#cb180-50" tabindex="-1"></a><span class="co"># e. Adicione um novo filho chamado &quot;Pedro&quot;</span></span>
+<span id="cb180-51"><a href="estruturas-de-dados.html#cb180-51" tabindex="-1"></a>familia<span class="sc">$</span>Filhos <span class="ot">&lt;-</span> <span class="fu">c</span>(familia<span class="sc">$</span>Filhos, <span class="st">&quot;Pedro&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <p><input type="password" id="passwordInput5" placeholder="Digite a senha">

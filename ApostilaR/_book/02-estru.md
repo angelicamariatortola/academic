@@ -1635,8 +1635,7 @@ e. Adicione um novo filho chamado "Pedro".
   
 ### Respostas {-}
 
-
-``` r
+```r
 # 1. 
 # Criando a lista aluno
 aluno <- list(
@@ -1647,38 +1646,13 @@ aluno <- list(
 )
 # a. Acesse e imprima o nome do aluno
 aluno$Nome
-```
-
-```
-## [1] "Maria"
-```
-
-``` r
 # b. Modifique a idade para 23
 aluno$Idade <- 23
 # c. Adicione um novo elemento chamado "cidade" com o valor "Curitiba"
 aluno$Cidade <- "Curitiba"
 # d. Remova o elemento "curso"
 aluno$Curso <- NULL
-# Exibir a lista modificada
-aluno
-```
 
-```
-## $Nome
-## [1] "Maria"
-## 
-## $Idade
-## [1] 23
-## 
-## $Notas
-## [1] 7 8 9
-## 
-## $Cidade
-## [1] "Curitiba"
-```
-
-``` r
 # 2. 
 # Criando a lista meus_dados
 meus_dados <- list(
@@ -1687,36 +1661,15 @@ meus_dados <- list(
   Logico = TRUE,  # c. Valor lógico
   Matriz = matrix(sample(1:10, 4), nrow = 2)  # d. Matriz 2x2 com números aleatórios
 )
-
 # a. Extraia o vetor numérico
 meus_dados$Numeros
-```
-
-```
-## [1] 10 20 30 40 50
-```
-
-``` r
 # b. Acesse o segundo elemento do vetor de caracteres
 meus_dados$Cidades[2]
-```
-
-```
-## [1] "Curitiba"
-```
-
-``` r
 # c. Modifique o valor lógico para FALSE
 meus_dados$Logico <- FALSE
 # d. Extraia o valor da matriz da linha 1, coluna 2.
 meus_dados$Matriz[1,2]
-```
 
-```
-## [1] 4
-```
-
-``` r
 # 3.
 # Criando a lista familia
 familia <- list(
@@ -1726,31 +1679,10 @@ familia <- list(
 )
 # a. Acesse e imprima a idade do pai
 familia$Pai$Idade
-```
-
-```
-## [1] 45
-```
-
-``` r
 # b. Acesse e imprima o nome da mãe
 familia$Mae$Nome
-```
-
-```
-## [1] "Mariana"
-```
-
-``` r
 # c. Acesse e imprima o segundo filho
 familia$Filhos[2]
-```
-
-```
-## [1] "Ana"
-```
-
-``` r
 # d. Modifique a idade da mãe para 43 anos
 familia$Mae$Idade <- 43
 # e. Adicione um novo filho chamado "Pedro"
