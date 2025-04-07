@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 # Conceitos Básicos
 
 ## Sobre o R e RStudio
