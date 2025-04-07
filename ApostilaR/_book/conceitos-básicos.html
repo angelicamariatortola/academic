@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 1 Conceitos Básicos | Estatística Computacional com o R</title>
+  <meta name="description" content="Capítulo 1 Conceitos Básicos | Estatística Computacional com o R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 1 Conceitos Básicos | Estatística Computacional com o R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 1 Conceitos Básicos | Estatística Computacional com o R" />
+  
+  
+  
+
+<meta name="author" content="Profª. Angélica Maria T. Ribeiro" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="estruturas-de-dados.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estatística Computacional com o R</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html"><i class="fa fa-check"></i><b>1</b> Conceitos Básicos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#sobre-o-r-e-rstudio"><i class="fa fa-check"></i><b>1.1</b> Sobre o R e RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#algumas-aplicações-de-r"><i class="fa fa-check"></i>Algumas aplicações de R:</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#referênciasfontes-de-ajuda"><i class="fa fa-check"></i>Referências/Fontes de ajuda</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#instalação-do-r-e-do-rstudio"><i class="fa fa-check"></i><b>1.2</b> Instalação do R e do RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#estrutura-do-rstudio"><i class="fa fa-check"></i><b>1.3</b> Estrutura do RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#exercícios-da-sessão"><i class="fa fa-check"></i>1.3 Exercícios da Sessão</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-básicas-em-r"><i class="fa fa-check"></i><b>1.4</b> Operações Básicas em R</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-aritméticas"><i class="fa fa-check"></i><b>1.4.1</b> Operações Aritméticas</a></li>
+<li class="chapter" data-level="1.4.2" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#criando-variáveis-objetos"><i class="fa fa-check"></i><b>1.4.2</b> Criando Variáveis (objetos)</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="1.4.3" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-lógicas-e-comparações"><i class="fa fa-check"></i><b>1.4.3</b> Operações Lógicas e Comparações</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas-1"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#exercícios-da-sessão-1"><i class="fa fa-check"></i>1.4 Exercícios da Sessão</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas-2"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>2</b> Estruturas de Dados</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetores"><i class="fa fa-check"></i><b>2.1</b> Vetores</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-3"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-4"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#fatores"><i class="fa fa-check"></i><b>2.2</b> Fatores</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-5"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#matrizes"><i class="fa fa-check"></i><b>2.3</b> Matrizes</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-6"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#listas"><i class="fa fa-check"></i><b>2.4</b> Listas</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-7"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#data-frames"><i class="fa fa-check"></i><b>2.5</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-8"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html"><i class="fa fa-check"></i><b>3</b> Controle de Fluxo e Funções</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#controle-de-fluxo"><i class="fa fa-check"></i><b>3.1</b> Controle de Fluxo</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#execução-condicional"><i class="fa fa-check"></i><b>3.1.1</b> Execução Condicional</a></li>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-9"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="3.1.2" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#loopings"><i class="fa fa-check"></i><b>3.1.2</b> Loopings</a></li>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-10"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="3.1.3" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#controle-de-fluxo-break-e-next"><i class="fa fa-check"></i><b>3.1.3</b> Controle de Fluxo (break e next)</a></li>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-11"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#família-de-funções-apply"><i class="fa fa-check"></i><b>3.2</b> Família de funções apply</a>
+<ul>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-12"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#funções"><i class="fa fa-check"></i><b>3.3</b> Funções</a>
+<ul>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-13"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estatística Computacional com o R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="conceitos-básicos" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Capítulo 1</span> Conceitos Básicos<a href="conceitos-básicos.html#conceitos-básicos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="sobre-o-r-e-rstudio" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Sobre o R e RStudio<a href="conceitos-básicos.html#sobre-o-r-e-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>O R é uma linguagem de programação para análises estatísticas de dados</li>
+<li>É de código aberto, sendo gratuito e de livre distribuição;</li>
+<li>Amplamente utilizado por pesquisadores, professores e estudantes</li>
+<li>Disponível para diferentes sistemas operacionais;</li>
+<li>Conta com inumeros pacotes que disponibilizam funções e dados estatisticos</li>
+<li>Junto ao R, o RStudio é utilizado como ambiente de desenvolvimento integrado</li>
+</ul>
+<div id="algumas-aplicações-de-r" class="section level3 unnumbered hasAnchor">
+<h3>Algumas aplicações de R:<a href="conceitos-básicos.html#algumas-aplicações-de-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<!-- # ```{r fig1, echo=FALSE, out.width="70%", fig.align="center"} -->
+<!-- # knitr::include_graphics("figs/aplicacoes_r1.png") -->
+<!-- # ``` -->
+<!-- #  -->
+<!-- # ```{r fig2, echo=FALSE, out.width="70%", fig.align="center"} -->
+<!-- # knitr::include_graphics("figs/aplicacoes_r2.png") -->
+<!-- # ``` -->
+<ul>
+<li>Construção de Livros:
+<ul>
+<li><a href="https://rc2e.com/">Livro: R Cookbook</a></li>
+<li><a href="https://mastering-shiny.org/">Livro: Mastering Shiny</a></li>
+<li><a href="https://bookdown.org/">Galeria do Bookdown</a></li>
+</ul></li>
+<li>Sites/páginas pessoais:
+<ul>
+<li><a href="https://angelicamariatortola.github.io/academic/index.html">Minha Página Pessoal</a></li>
+<li><a href="https://pkgs.rstudio.com/blogdown/articles/examples.html">Galeria do Blogdown</a></li>
+</ul></li>
+<li>Aplicativos dinâmicos:
+<ul>
+<li><a href="http://shiny.leg.ufpr.br/">Aplicativos LEG (UFPR)</a></li>
+<li><a href="https://educashiny.shinyapps.io/Plataforma/">Projeto de Extensão: EducaShiny</a></li>
+<li><a href="https://shiny.posit.co/r/gallery/">Galeria do Shiny</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="referênciasfontes-de-ajuda" class="section level3 unnumbered hasAnchor">
+<h3>Referências/Fontes de ajuda<a href="conceitos-básicos.html#referênciasfontes-de-ajuda" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="livros" class="section level4 unnumbered hasAnchor">
+<h4>Livros<a href="conceitos-básicos.html#livros" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="https://rc2e.com/">R Cookbook</a></li>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
+<li><a href="https://web.itu.edu.tr/~tokerem/The_Book_of_R.pdf">The Book of R: A First Course in Programming and Statistics</a></li>
+<li><a href="https://rstudio-education.github.io/hopr/">Hands-On Programming with R: Write Your Own Functions and Simulations</a></li>
+<li><a href="https://duhi23.github.io/Analisis-de-datos/Cotton.pdf">Learning R: A Step-by-Step Function Guide to Data Analysis</a></li>
+</ul>
+</div>
+<div id="materiais-em-português" class="section level4 unnumbered hasAnchor">
+<h4>Materiais em português<a href="conceitos-básicos.html#materiais-em-português" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="http://cursos.leg.ufpr.br/ecr/">Estatística Computacional com R (LEG/UFPR)</a></li>
+<li><a href="https://livro.curso-r.com/index.html">Ciência de Dados em R</a></li>
+<li><a href="https://www.est.ufmg.br/~marcosop/est008/aulas/Intro_R.pdf">Introdução ao Software R</a></li>
+<li><a href="https://www.lampada.uerj.br/arquivosdb/_book2/introducao.html#o-que-%C3%A9-o-r">Introdução ao R</a></li>
+<li><a href="https://bookdown.org/wevsena/curso_r_tce/curso_r_tce.html#o-que-e-r">Introdução ao R: Curso Básico de Linguagem R</a></li>
+<li><a href="https://nedurcode.com/r/Intro-R.html#4_Passos_iniciais">Introdução ao R (Vinícius A., Tania M. e Davi W.)</a> <br></li>
+</ul>
+</div>
+<div id="páginas-de-ajuda" class="section level4 unnumbered hasAnchor">
+<h4>Páginas de ajuda<a href="conceitos-básicos.html#páginas-de-ajuda" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="https://stackoverflow.com/">StackOverflow</a></li>
+<li><a href="https://www.r-bloggers.com/">R-bloggers</a></li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="instalação-do-r-e-do-rstudio" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Instalação do R e do RStudio<a href="conceitos-básicos.html#instalação-do-r-e-do-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Disponivel para Windows, macOS e Linux a instalação do <strong>R</strong> é simples basta seguir o passo-a-passo:</p>
+<ul>
+<li>Visitar o site do <strong>R</strong>: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></li>
+<li>Clicar no link referente ao sistema operacional correspondente</li>
+<li>Fazer a instalação de acordo com as instruções</li>
+</ul>
+<p><img src="figs/rpage.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Após a instalação do <strong>R</strong> seguir o passo-a-passo para a instalação do <strong>Rstudio</strong>:</p>
+<ul>
+<li>Visitar a <a href="https://posit.co/download/rstudio-desktop/">página do RStudio</a></li>
+<li>Fazer o download do arquivo referente ao sistema operacional correspondente</li>
+<li>Fazer a instalação de acordo com as instruções</li>
+</ul>
+<p><img src="figs/rstudiopage.png" width="50%" style="display: block; margin: auto;" /></p>
+<!-- ## Falar um pouco da página do cran : manuais, etc -->
+<!-- Pacotes, manual e demonstrações -->
+<hr />
+</div>
+<div id="estrutura-do-rstudio" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Estrutura do RStudio<a href="conceitos-básicos.html#estrutura-do-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<!-- interface, personalização, etc -->
+<p>O Rstudio é dividido em quatro janelas principais:</p>
+<p><strong>1. Console</strong> (Janela Inferior Esquerda):</p>
+<ul>
+<li>Permite executar comandos R diretamente.</li>
+<li>Exibe resultados e mensagens (saídas de funções, erros, avisos).</li>
+</ul>
+<p><img src="figs/console.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Dicas:</p>
+<ul>
+<li>Para rodar um código, digite e pressione <strong>Enter</strong>.</li>
+<li>Use as setas ↑ e ↓ para acessar comandos anteriores.</li>
+<li>O atalho <strong>Ctrl + L</strong> (Windows/Linux) ou <strong>Cmd + L</strong> (Mac) limpa o console.</li>
+</ul>
+<p><strong>Exemplo</strong> Digite os códigos abaixo no <em>Console</em>. Use as setas ↑ e ↓ para acessar comandos anteriores. Limpe o console.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="conceitos-básicos.html#cb1-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># pressione Enter</span></span>
+<span id="cb1-2"><a href="conceitos-básicos.html#cb1-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># pressione Enter</span></span>
+<span id="cb1-3"><a href="conceitos-básicos.html#cb1-3" tabindex="-1"></a><span class="fu">print</span>(x) <span class="co"># pressione Enter</span></span>
+<span id="cb1-4"><a href="conceitos-básicos.html#cb1-4" tabindex="-1"></a><span class="fu">print</span>(y) <span class="co"># pressione Enter</span></span></code></pre></div>
+<p><strong>2. Editor de Scripts</strong> (Janela Superior Esquerda):</p>
+<ul>
+<li>Editor de arquivos R (.R), RMarkdown (.Rmd), Shiny Apps, entre outros.</li>
+<li>Permite escrever e salvar códigos para execução posterior.</li>
+</ul>
+<p><img src="figs/editor.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Dicas:</p>
+<ul>
+<li><strong>Ctrl + Enter</strong> → Executa a linha atual.</li>
+<li><strong>Ctrl + Shift + Enter</strong> ou <strong>Ctrl + A</strong> e <strong>Ctrl + Enter</strong> → Executa o script inteiro.</li>
+<li><strong>Ctrl + S</strong> → Salva o arquivo.</li>
+<li>Para criar um novo script: <strong>File → New File → R Script</strong>.</li>
+</ul>
+<p><strong>Exemplo</strong> Digite os códigos abaixo no <em>Editor de Scripts</em>. Utilize <strong>Ctrl + Enter</strong> para compilar cada linha separadamente. Utilize <strong>Ctrl + Shift + Enter</strong> (ou <strong>Ctrl + A</strong> e <strong>Ctrl + Enter</strong>) para compilar todo o script. Salve o arquivo em algum repositório.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="conceitos-básicos.html#cb2-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb2-2"><a href="conceitos-básicos.html#cb2-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">5</span> </span>
+<span id="cb2-3"><a href="conceitos-básicos.html#cb2-3" tabindex="-1"></a>a </span>
+<span id="cb2-4"><a href="conceitos-básicos.html#cb2-4" tabindex="-1"></a>b</span></code></pre></div>
+<p><strong>3. Ambiente e Histórico</strong> (Janela Superior Direita):</p>
+<ul>
+<li><strong>Environment:</strong> Mostra objetos carregados na sessão (data frames, variáveis, funções).</li>
+<li><strong>History:</strong> Lista de comandos executados no console.</li>
+<li><strong>Connections:</strong> Permite conectar-se a bancos de dados.</li>
+</ul>
+<p><img src="figs/ambiente.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Dicas:</p>
+<ul>
+<li>Use <code>ls()</code> no console para listar os objetos carregados.</li>
+<li>Para limpar o ambiente: <code>rm(list = ls())</code></li>
+</ul>
+<p><strong>Exemplo</strong> Consulte as abas <em>Ambiente e Histórico</em>. Visualize as variáveis criadas e funções utilizadas. Utilize <code>rm(list = ls())</code> para limpar o ambiente.</p>
+<p><strong>4. Janela de Arquivos, Plots, Pacotes e Ajuda</strong> (Janela Inferior Direita):</p>
+<ul>
+<li><strong>Files:</strong> Gerenciador de arquivos do diretório de trabalho.</li>
+<li><strong>Plots:</strong> Exibe gráficos gerados pelo R.</li>
+<li><strong>Packages:</strong> Lista pacotes instalados e permite carregar ou instalar novos.</li>
+<li><strong>Help:</strong> Ajuda e documentação de funções do R.</li>
+<li><strong>Viewer:</strong> Exibe documentos HTML, visualizações interativas (como Shiny).</li>
+<li><strong>Presentation:</strong> Permite criar apresentações de slides (RMarkdown).</li>
+</ul>
+<p><img src="figs/arquivos.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Dicas:</p>
+<ul>
+<li>Instalar um pacote: <code>install.packages("nome_do_pacote")</code> ou clicar no botão <code>Install</code> na aba <em>Packages</em>.</li>
+<li>Carregar um pacote: <code>library("nome_do_pacote")</code> ou “marcar” o pacote na aba <em>Packages</em>.</li>
+<li>Visualizar ajuda de uma função (ou pacote): <code>?nome_da_função</code> ou <code>help(nome_da_função)</code>.</li>
+<li>Listar pacotes carregados: <code>search()</code></li>
+</ul>
+<p><img src="figs/install1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="figs/install2.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><strong>Exemplo</strong></p>
+<ul>
+<li>Copie e cole o código <code>plot(1:10)</code>. Visualize o resultado na aba <em>Plots</em>. Exporte o gráfico.</li>
+<li>Instale e carregue o pacote <code>ggplot2</code>. Encontre a documentação do pacote no cran do R.</li>
+<li>Consulte na aba <em>help</em> a documentação da função <code>mean()</code>. Qual argumento permite ignorar valores <code>NA</code> nos cálculos de média?</li>
+</ul>
+<div id="exercícios-da-sessão" class="section level3 unnumbered hasAnchor">
+<h3>1.3 Exercícios da Sessão<a href="conceitos-básicos.html#exercícios-da-sessão" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1.</strong> No <strong>Console</strong>, execute os seguintes comandos e observe os resultados:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="conceitos-básicos.html#cb3-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb3-2"><a href="conceitos-básicos.html#cb3-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-3"><a href="conceitos-básicos.html#cb3-3" tabindex="-1"></a>soma <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb3-4"><a href="conceitos-básicos.html#cb3-4" tabindex="-1"></a>soma</span></code></pre></div>
+<p>Qual foi o valor impresso no console? Use o comando <code>ls()</code> no console, o que ele faz?
+<!-- Objetivo: Aprender a rodar comandos e visualizar resultados no console. --></p>
+<p><strong>2.</strong> No <strong>Editor de Scripts</strong>, crie um novo arquivo R: <code>File → New File → R Script</code>. Copie e cole o seguinte código no script:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="conceitos-básicos.html#cb4-1" tabindex="-1"></a><span class="co"># Criando um vetor</span></span>
+<span id="cb4-2"><a href="conceitos-básicos.html#cb4-2" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb4-3"><a href="conceitos-básicos.html#cb4-3" tabindex="-1"></a><span class="co"># Calculando a média</span></span>
+<span id="cb4-4"><a href="conceitos-básicos.html#cb4-4" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(numeros)</span>
+<span id="cb4-5"><a href="conceitos-básicos.html#cb4-5" tabindex="-1"></a><span class="co"># Mostrando o resultado</span></span>
+<span id="cb4-6"><a href="conceitos-básicos.html#cb4-6" tabindex="-1"></a><span class="fu">print</span>(media)</span></code></pre></div>
+<ul>
+<li>Salve o script como meuscript.R</li>
+<li>Execute o script inteiro usando <strong>Ctrl + A</strong> e <strong>Ctrl + Enter</strong>.</li>
+<li>O que foi impresso no console?</li>
+</ul>
+<!-- Objetivo: Praticar a criação e execução de scripts no RStudio. -->
+<p><strong>3.</strong> No <strong>Editor de Scripts</strong> cole este código e execute:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="conceitos-básicos.html#cb5-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
+<span id="cb5-2"><a href="conceitos-básicos.html#cb5-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
+<span id="cb5-3"><a href="conceitos-básicos.html#cb5-3" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Gráfico de Seno&quot;</span>)</span></code></pre></div>
+<ul>
+<li>Vá até a aba Plots e veja o gráfico gerado.</li>
+<li>Clique em <code>Export</code> para salvar o gráfico.</li>
+</ul>
+<!-- Objetivo: Gerar gráficos e explorar a aba de Plots. -->
+<p><strong>4.</strong> Na aba <em>Packages</em>, instale e carregue o pacote de manipulação de dados <code>dplyr</code>. Encontre a documentação do pacote no <em>Cran</em> do R.</p>
+<p><strong>5.</strong> No <em>Console</em> do RStudio, consulte a documentação das seguintes funções:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="conceitos-básicos.html#cb6-1" tabindex="-1"></a>?mean</span>
+<span id="cb6-2"><a href="conceitos-básicos.html#cb6-2" tabindex="-1"></a>?sd</span>
+<span id="cb6-3"><a href="conceitos-básicos.html#cb6-3" tabindex="-1"></a>?sum</span>
+<span id="cb6-4"><a href="conceitos-básicos.html#cb6-4" tabindex="-1"></a>?seq</span>
+<span id="cb6-5"><a href="conceitos-básicos.html#cb6-5" tabindex="-1"></a>?sample</span></code></pre></div>
+<ul>
+<li>Descreva resumidamente o que faz cada função.</li>
+<li>Anote os principais <strong>argumentos</strong> de cada função.</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="operações-básicas-em-r" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Operações Básicas em R<a href="conceitos-básicos.html#operações-básicas-em-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<!-- R como calculadora. Operadores básicos (soma, sub, multi, log, etc). -->
+<!-- Operadores lógicos. -->
+<div id="operações-aritméticas" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Operações Aritméticas<a href="conceitos-básicos.html#operações-aritméticas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R funciona como uma calculadora, permitindo operações básicas com números e variáveis.</p>
+<p><strong>Exemplo</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="conceitos-básicos.html#cb7-1" tabindex="-1"></a><span class="co"># Soma</span></span>
+<span id="cb7-2"><a href="conceitos-básicos.html#cb7-2" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>  </span>
+<span id="cb7-3"><a href="conceitos-básicos.html#cb7-3" tabindex="-1"></a><span class="co"># Subtração</span></span>
+<span id="cb7-4"><a href="conceitos-básicos.html#cb7-4" tabindex="-1"></a><span class="dv">10</span> <span class="sc">-</span> <span class="dv">4</span>  </span>
+<span id="cb7-5"><a href="conceitos-básicos.html#cb7-5" tabindex="-1"></a><span class="co"># Multiplicação</span></span>
+<span id="cb7-6"><a href="conceitos-básicos.html#cb7-6" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">2</span>  </span>
+<span id="cb7-7"><a href="conceitos-básicos.html#cb7-7" tabindex="-1"></a><span class="co"># Divisão</span></span>
+<span id="cb7-8"><a href="conceitos-básicos.html#cb7-8" tabindex="-1"></a><span class="dv">9</span> <span class="sc">/</span> <span class="dv">3</span>  </span>
+<span id="cb7-9"><a href="conceitos-básicos.html#cb7-9" tabindex="-1"></a><span class="co"># Exponenciação</span></span>
+<span id="cb7-10"><a href="conceitos-básicos.html#cb7-10" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span>  </span>
+<span id="cb7-11"><a href="conceitos-básicos.html#cb7-11" tabindex="-1"></a><span class="co"># Raiz quadrada</span></span>
+<span id="cb7-12"><a href="conceitos-básicos.html#cb7-12" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">16</span>)</span>
+<span id="cb7-13"><a href="conceitos-básicos.html#cb7-13" tabindex="-1"></a><span class="co"># Resto da divisão </span></span>
+<span id="cb7-14"><a href="conceitos-básicos.html#cb7-14" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%%</span> <span class="dv">3</span> </span>
+<span id="cb7-15"><a href="conceitos-básicos.html#cb7-15" tabindex="-1"></a><span class="co"># Parte inteira da divisão</span></span>
+<span id="cb7-16"><a href="conceitos-básicos.html#cb7-16" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%/%</span> <span class="dv">3</span>  </span></code></pre></div>
+<!-- Para estilizar caixas de texto: -->
+<div id="ordem-de-prioridade-dos-operadores-aritméticos" class="section level5 unnumbered hasAnchor" style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 10px;">
+<h5>Ordem de Prioridade dos Operadores Aritméticos<a href="conceitos-básicos.html#ordem-de-prioridade-dos-operadores-aritméticos" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li>Parênteses <code>()</code> – maior prioridade</li>
+<li>Exponenciação <code>^</code></li>
+<li>Multiplicação e Divisão <code>*</code>, <code>/</code></li>
+<li>Soma e Subtração <code>+</code>, <code>-</code></li>
+</ul>
+</div>
+<p><strong>Exemplo</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="conceitos-básicos.html#cb8-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span>    </span>
+<span id="cb8-2"><a href="conceitos-básicos.html#cb8-2" tabindex="-1"></a>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">4</span>  </span>
+<span id="cb8-3"><a href="conceitos-básicos.html#cb8-3" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span>    </span>
+<span id="cb8-4"><a href="conceitos-básicos.html#cb8-4" tabindex="-1"></a>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">5</span>) <span class="sc">^</span> <span class="dv">2</span>  </span>
+<span id="cb8-5"><a href="conceitos-básicos.html#cb8-5" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">/</span> <span class="dv">2</span>    </span>
+<span id="cb8-6"><a href="conceitos-básicos.html#cb8-6" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span>    </span></code></pre></div>
+</div>
+<div id="criando-variáveis-objetos" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Criando Variáveis (objetos)<a href="conceitos-básicos.html#criando-variáveis-objetos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para criar uma variável ou objeto, usamos o simbolo de atribuição <code>&lt;-</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="conceitos-básicos.html#cb9-1" tabindex="-1"></a><span class="do">## Atribuindo um número a um objeto:</span></span>
+<span id="cb9-2"><a href="conceitos-básicos.html#cb9-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span>; y <span class="ot">&lt;-</span> <span class="dv">3</span>  </span></code></pre></div>
+<p>Operações entre objetos numéricos:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="conceitos-básicos.html#cb10-1" tabindex="-1"></a>x<span class="sc">+</span>y <span class="co"># soma</span></span>
+<span id="cb10-2"><a href="conceitos-básicos.html#cb10-2" tabindex="-1"></a>x<span class="sc">-</span>y <span class="co"># subtração</span></span>
+<span id="cb10-3"><a href="conceitos-básicos.html#cb10-3" tabindex="-1"></a>x<span class="sc">*</span>y <span class="co"># produto</span></span>
+<span id="cb10-4"><a href="conceitos-básicos.html#cb10-4" tabindex="-1"></a>x<span class="sc">/</span>y <span class="co"># quociente</span></span></code></pre></div>
+<div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
+<details>
+<summary>
+<strong> Restrições nos nomes das variáveis (objetos) </strong>
+</summary>
+<p><strong>1. Começo do Nome:</strong> Não pode começar com número ou caracteres especiais. Deve começar com uma letra (A-Z ou a-z).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="conceitos-básicos.html#cb11-1" tabindex="-1"></a>nome_valido <span class="ot">&lt;-</span> <span class="dv">5</span>  <span class="co"># Correto</span></span>
+<span id="cb11-2"><a href="conceitos-básicos.html#cb11-2" tabindex="-1"></a>1nome_invalido <span class="ot">&lt;-</span> <span class="dv">15</span>  <span class="co"># Erro: nome não pode começar com número</span></span>
+<span id="cb11-3"><a href="conceitos-básicos.html#cb11-3" tabindex="-1"></a><span class="sc">@</span>nome_invalido <span class="ot">&lt;-</span> <span class="dv">15</span>  <span class="co"># Erro: nome não pode começar com caracteres especiais</span></span></code></pre></div>
+<p><strong>2. Espaços e Caracteres:</strong> O nome não deve conter espaços nem caracteres especiais como @, #, -, $, etc. O underline (_) é um caractere permitido no meio do nome.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="conceitos-básicos.html#cb12-1" tabindex="-1"></a>variavel_valida_1 <span class="ot">&lt;-</span> <span class="dv">20</span>  <span class="co"># Correto</span></span>
+<span id="cb12-2"><a href="conceitos-básicos.html#cb12-2" tabindex="-1"></a>variavel<span class="co">#invalida &lt;- 40  # Erro: caractere inválido (#)</span></span>
+<span id="cb12-3"><a href="conceitos-básicos.html#cb12-3" tabindex="-1"></a>variavel<span class="sc">@</span>invalida <span class="ot">&lt;-</span> <span class="dv">40</span>  <span class="co"># Erro: caractere inválido (@)</span></span></code></pre></div>
+<p><strong>3. Diferenciação de Maiúsculas e Minúsculas:</strong> O R diferencia maiúsculas de minúsculas. Assim, <code>var</code>, <code>Var</code> e <code>VAR</code> são considerados nomes diferentes.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="conceitos-básicos.html#cb13-1" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb13-2"><a href="conceitos-básicos.html#cb13-2" tabindex="-1"></a>Var <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb13-3"><a href="conceitos-básicos.html#cb13-3" tabindex="-1"></a><span class="fu">print</span>(var)  <span class="co"># 100</span></span>
+<span id="cb13-4"><a href="conceitos-básicos.html#cb13-4" tabindex="-1"></a><span class="fu">print</span>(Var)  <span class="co"># 200</span></span></code></pre></div>
+<p><strong>4. Palavras Reservadas:</strong> Não é permitido usar palavras reservadas do R (como <code>if</code>, <code>else</code>, <code>for</code>, <code>TRUE</code>, <code>FALSE</code>, etc.). Essas palavras têm significados específicos e não podem ser sobrescritas.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="conceitos-básicos.html#cb14-1" tabindex="-1"></a><span class="cf">for</span> <span class="ot">&lt;-</span> <span class="dv">10</span>  <span class="co"># Erro: &#39;for&#39; é uma palavra reservada</span></span>
+<span id="cb14-2"><a href="conceitos-básicos.html#cb14-2" tabindex="-1"></a><span class="cf">if</span> <span class="ot">&lt;-</span> <span class="dv">20</span>   <span class="co"># Erro: &#39;if&#39; é uma palavra reservada</span></span></code></pre></div>
+<p><strong>5. Pontos e Nomes de funções preexistentes:</strong> Não é recomendado utilizar pontos. Também evitar usar nomes que conflitem com funções <strong>preexistentes</strong> do R.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="conceitos-básicos.html#cb15-1" tabindex="-1"></a><span class="do">## Evitar</span></span>
+<span id="cb15-2"><a href="conceitos-básicos.html#cb15-2" tabindex="-1"></a>nome.com.ponto <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># Correto, mas pode ser confuso</span></span>
+<span id="cb15-3"><a href="conceitos-básicos.html#cb15-3" tabindex="-1"></a>mean <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb15-4"><a href="conceitos-básicos.html#cb15-4" tabindex="-1"></a><span class="fu">mean</span>(mean)</span></code></pre></div>
+</div>
+</p>
+</details>
+<div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
+<details open>
+<summary>
+<strong> Dicas para os nomes das variáveis (objetos) </strong>
+</summary>
+<ul>
+<li>A convenção em R é usar underline (_) para nomes de objetos (exceto no inicio).</li>
+<li>Evitar nomes ambíguos e usar nomes descritivos que deixem claro o que o objeto representa.
+<!-- - Nomear funções com verbos para indicar ação, como `calcular_media`, `plotar_grafico`, etc. --></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="conceitos-básicos.html#cb16-1" tabindex="-1"></a><span class="do">## Exemplos de Nomes Válidos</span></span>
+<span id="cb16-2"><a href="conceitos-básicos.html#cb16-2" tabindex="-1"></a>x_1 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb16-3"><a href="conceitos-básicos.html#cb16-3" tabindex="-1"></a>minha_variavel <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb16-4"><a href="conceitos-básicos.html#cb16-4" tabindex="-1"></a>temperatura_curitiba <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb16-5"><a href="conceitos-básicos.html#cb16-5" tabindex="-1"></a>altura_estudantes <span class="ot">&lt;-</span> <span class="dv">160</span></span></code></pre></div>
+</div>
+</p>
+</details>
+<div id="exercícios" class="section level4 unnumbered hasAnchor">
+<h4>Exercícios<a href="conceitos-básicos.html#exercícios" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Realize as seguintes operações no R:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Soma de 45 e 23.</li>
+<li>Subtração de 78 por 35.</li>
+<li>Multiplicação de 12 e 9.</li>
+<li>Divisão de 100 por 4.</li>
+<li>Calcule 5 elevado à potência 3.</li>
+<li>Calcule a raiz quadrada de 64.</li>
+</ol>
+<p><strong>2.</strong> Atribua os valores 10 e 5 a duas variáveis chamadas <code>a</code> e <code>b</code>, respectivamente. Em seguida, calcule:</p>
+<ol style="list-style-type: lower-alpha">
+<li>A soma de <code>a</code> e <code>b</code>.</li>
+<li>O produto de <code>a</code> e <code>b</code>.</li>
+<li>A diferença entre <code>a</code> e <code>b</code>.</li>
+<li>O quociente de <code>a</code> dividido por <code>b</code>.</li>
+</ol>
+<p><strong>3.</strong> Algumas regras devem ser seguidas ao nomear variáveis em R. Analise os seguintes nomes e indique quais são válidos e quais causarão erro. Justifique a sua resposta.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="conceitos-básicos.html#cb17-1" tabindex="-1"></a>1numero <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb17-2"><a href="conceitos-básicos.html#cb17-2" tabindex="-1"></a>meu_numero <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb17-3"><a href="conceitos-básicos.html#cb17-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="st">&quot;2025-03-15&quot;</span></span>
+<span id="cb17-4"><a href="conceitos-básicos.html#cb17-4" tabindex="-1"></a><span class="cf">for</span> <span class="ot">&lt;-</span> <span class="st">&quot;teste&quot;</span></span>
+<span id="cb17-5"><a href="conceitos-básicos.html#cb17-5" tabindex="-1"></a>x<span class="sc">@</span>y <span class="ot">&lt;-</span> <span class="dv">50</span> </span>
+<span id="cb17-6"><a href="conceitos-básicos.html#cb17-6" tabindex="-1"></a>x_y <span class="ot">&lt;-</span> <span class="dv">5</span></span></code></pre></div>
+</div>
+</div>
+<div id="protectedContent1" style="display:none;">
+<div id="respostas" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="conceitos-básicos.html#respostas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>3.</strong></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="conceitos-básicos.html#cb18-1" tabindex="-1"></a>1numero <span class="ot">&lt;-</span> <span class="dv">100</span>   <span class="co"># Inválido: não pode começar com número</span></span>
+<span id="cb18-2"><a href="conceitos-básicos.html#cb18-2" tabindex="-1"></a>meu_numero <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Válido</span></span>
+<span id="cb18-3"><a href="conceitos-básicos.html#cb18-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="st">&quot;2025-03-15&quot;</span> <span class="co">#  Válido, mas desaconselhado (conflito com função data())</span></span>
+<span id="cb18-4"><a href="conceitos-básicos.html#cb18-4" tabindex="-1"></a><span class="cf">for</span> <span class="ot">&lt;-</span> <span class="st">&quot;teste&quot;</span>  <span class="co"># Inválido: &quot;for&quot; é palavra reservada</span></span>
+<span id="cb18-5"><a href="conceitos-básicos.html#cb18-5" tabindex="-1"></a>x<span class="sc">@</span>y <span class="ot">&lt;-</span> <span class="dv">50</span>  <span class="co"># Inválido:  caractere inválido (@)</span></span>
+<span id="cb18-6"><a href="conceitos-básicos.html#cb18-6" tabindex="-1"></a>x_y <span class="ot">&lt;-</span> <span class="dv">5</span>  <span class="co"># Válido</span></span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput1" placeholder="Digite a senha">
+<button id="submitButton1">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton1").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput1").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent1").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+<div id="operações-lógicas-e-comparações" class="section level3 hasAnchor" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Operações Lógicas e Comparações<a href="conceitos-básicos.html#operações-lógicas-e-comparações" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Os operadores lógicos em R são usados para avaliar expressões booleanas (VERDADEIRO ou FALSO) e criar condições. Eles operam em vetores, valores lógicos (<code>TRUE</code>, <code>FALSE</code>) e numéricos e são muito usados em estruturas condicionais e filtros de dados.</p>
+<div id="operadores-de-comparação" class="section level4 unnumbered hasAnchor">
+<h4>1. Operadores de Comparação<a href="conceitos-básicos.html#operadores-de-comparação" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Estes operadores retornam <code>TRUE</code> ou <code>FALSE</code>, dependendo do resultado da comparação.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>==</code></td>
+<td>Igualdade</td>
+<td><code>10 == 10</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>Diferente</td>
+<td><code>10 != 5</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td><code>&gt;</code></td>
+<td>Maior que</td>
+<td><code>10 &gt; 5</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;</code></td>
+<td>Menor que</td>
+<td><code>10 &lt; 5</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td><code>&gt;=</code></td>
+<td>Maior ou igual</td>
+<td><code>10 &gt;= 10</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;=</code></td>
+<td>Menor ou igual</td>
+<td><code>10 &lt;= 5</code></td>
+<td><code>FALSE</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Obs.:</strong> Para consultar o <em>help</em> destas funções usar <code>?Comparison</code> ou <code>help("operador")</code>, para algum operador específico.</p>
+</div>
+<div id="operadores-lógicos" class="section level4 unnumbered hasAnchor">
+<h4>2. Operadores Lógicos<a href="conceitos-básicos.html#operadores-lógicos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>!</code></td>
+<td>Negação lógica</td>
+<td><code>!TRUE</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td><code>&amp;</code></td>
+<td>E lógico</td>
+<td><code>(TRUE &amp; FALSE)</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td><code>|</code></td>
+<td>OU lógico</td>
+<td><code>(TRUE | FALSE)</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td><code>&amp;&amp;</code></td>
+<td>E lógico</td>
+<td><code>(TRUE &amp;&amp; FALSE)</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td><code>||</code></td>
+<td>OU lógico</td>
+<td><code>(TRUE || FALSE)</code></td>
+<td><code>TRUE</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Obs.:</strong> Para consultar o <em>help</em> destas funções usar <code>?Logic</code> ou <code>help("operador")</code>, para algum operador específico.</p>
+<!-- Para estilizar caixas de texto: -->
+<div id="diferença-entre-e-e" class="section level5 unnumbered hasAnchor" style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 10px;">
+<h5>Diferença entre <code>&amp;</code> e <code>&amp;&amp;</code>, <code>|</code> e <code>||</code><a href="conceitos-básicos.html#diferença-entre-e-e" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li>As formas mais curtas (<code>&amp;</code> e <code>|</code>) realizam comparações elemento a elemento.</li>
+<li>As formas mais longas (<code>&amp;&amp;</code> e <code>||</code>) avaliam da esquerda para a direita, prosseguindo apenas até que o resultado seja determinado (em geral, mais eficiente computacionalmente).</li>
+</ul>
+</div>
+<p><strong>Exemplos</strong></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="conceitos-básicos.html#cb19-1" tabindex="-1"></a><span class="do">## Operadores de Comparação</span></span>
+<span id="cb19-2"><a href="conceitos-básicos.html#cb19-2" tabindex="-1"></a><span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">3</span></span>
+<span id="cb19-3"><a href="conceitos-básicos.html#cb19-3" tabindex="-1"></a><span class="dv">5</span> <span class="sc">!=</span> <span class="dv">3</span></span>
+<span id="cb19-4"><a href="conceitos-básicos.html#cb19-4" tabindex="-1"></a><span class="do">## Operadores Lógicos</span></span>
+<span id="cb19-5"><a href="conceitos-básicos.html#cb19-5" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span>   <span class="co"># ambos são verdadeiros? Sim -&gt; TRUE, Não -&gt; FALSE</span></span>
+<span id="cb19-6"><a href="conceitos-básicos.html#cb19-6" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span>  <span class="co"># pelo menos um deles é verdadeiro? Sim -&gt; TRUE, Não -&gt; FALSE</span></span>
+<span id="cb19-7"><a href="conceitos-básicos.html#cb19-7" tabindex="-1"></a><span class="do">## Operadores de Comparação e Lógicos</span></span>
+<span id="cb19-8"><a href="conceitos-básicos.html#cb19-8" tabindex="-1"></a>(<span class="dv">5</span><span class="sc">&gt;</span><span class="dv">3</span>) <span class="sc">&amp;</span> (<span class="dv">4</span><span class="sc">&gt;</span><span class="dv">6</span>) <span class="co"># FALSE</span></span>
+<span id="cb19-9"><a href="conceitos-básicos.html#cb19-9" tabindex="-1"></a>(<span class="dv">2</span><span class="sc">&lt;</span><span class="dv">3</span>) <span class="sc">|</span> (<span class="dv">4</span><span class="sc">&lt;</span><span class="dv">6</span>) <span class="co"># TRUE</span></span></code></pre></div>
+<!-- ## Comparando & e && -->
+<!-- print(1) & print(2) & FALSE & print(3) & print(4) # printa todos os elementos -->
+<!-- print(1) && print(2) && FALSE && print(3) && print(4) # para a execução quando encontra o FALSE -->
+</div>
+<div id="exercícios-1" class="section level4 unnumbered hasAnchor">
+<h4>Exercícios<a href="conceitos-básicos.html#exercícios-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Considere os seguintes números: <code>a &lt;- 7</code>, <code>b &lt;- 3</code>. No R, verifique as condições:</p>
+<ul>
+<li>Se <code>a</code> é maior que <code>b</code></li>
+<li>Se <code>a</code> é divisível por 2</li>
+<li>Se <code>a</code> é maior que <code>b</code> E (lógico) se <code>a</code> é divisível por 2, usando o operador lógico <code>&amp;&amp;</code></li>
+</ul>
+<p><strong>2.</strong> Identifique, primeiramente <strong>sem o uso do R</strong>, o que retornará as relações a seguir (<code>TRUE</code> ou <code>FALSE</code>). Na sequência, confira os resultados usando o R.</p>
+<ul>
+<li>10 &gt; 5<br />
+</li>
+<li>5 == 5<br />
+</li>
+<li>5 != 3</li>
+<li>(3 + 2) &gt;= 5</li>
+<li>10 / 2 &lt; 6<br />
+</li>
+<li>(4 &gt; 2) &amp; (10 &lt;= 20)</li>
+<li>(7 &lt; 3) | (8 == 8)</li>
+<li>!TRUE</li>
+<li>!(5 &gt; 3)</li>
+</ul>
+</div>
+</div>
+<div id="protectedContent2" style="display:none;">
+<div id="respostas-1" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="conceitos-básicos.html#respostas-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1.</strong></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="conceitos-básicos.html#cb20-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb20-2"><a href="conceitos-básicos.html#cb20-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb20-3"><a href="conceitos-básicos.html#cb20-3" tabindex="-1"></a><span class="sc">-</span> a<span class="sc">&gt;</span>b</span>
+<span id="cb20-4"><a href="conceitos-básicos.html#cb20-4" tabindex="-1"></a><span class="sc">-</span> (a<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>)</span>
+<span id="cb20-5"><a href="conceitos-básicos.html#cb20-5" tabindex="-1"></a><span class="sc">-</span> a<span class="sc">&gt;</span>b <span class="sc">&amp;&amp;</span> (a<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>)</span></code></pre></div>
+<p><strong>2.</strong></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="conceitos-básicos.html#cb21-1" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">5</span>  </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="conceitos-básicos.html#cb23-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">==</span> <span class="dv">5</span>  </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="conceitos-básicos.html#cb25-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">!=</span> <span class="dv">3</span> </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="conceitos-básicos.html#cb27-1" tabindex="-1"></a>(<span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">&gt;=</span> <span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="conceitos-básicos.html#cb29-1" tabindex="-1"></a><span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">6</span>  </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="conceitos-básicos.html#cb31-1" tabindex="-1"></a>(<span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">&amp;</span> (<span class="dv">10</span> <span class="sc">&lt;=</span> <span class="dv">20</span>) </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="conceitos-básicos.html#cb33-1" tabindex="-1"></a>(<span class="dv">7</span> <span class="sc">&lt;</span> <span class="dv">3</span>) <span class="sc">|</span> (<span class="dv">8</span> <span class="sc">==</span> <span class="dv">8</span>) </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="conceitos-básicos.html#cb35-1" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span> </span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="conceitos-básicos.html#cb37-1" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">3</span>)  </span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+</div>
+<p><input type="password" id="passwordInput2" placeholder="Digite a senha">
+<button id="submitButton2">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton2").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput2").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent2").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+<div id="exercícios-da-sessão-1" class="section level3 unnumbered hasAnchor">
+<h3>1.4 Exercícios da Sessão<a href="conceitos-básicos.html#exercícios-da-sessão-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1.</strong> Resolva as expressões abaixo (primeiramente sem o R) e explique o resultado com base na ordem de prioridade dos operadores. Na sequência, confira os resultados usando o R.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="conceitos-básicos.html#cb39-1" tabindex="-1"></a><span class="co"># a)</span></span>
+<span id="cb39-2"><a href="conceitos-básicos.html#cb39-2" tabindex="-1"></a>resultado1 <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb39-3"><a href="conceitos-básicos.html#cb39-3" tabindex="-1"></a><span class="co"># b) </span></span>
+<span id="cb39-4"><a href="conceitos-básicos.html#cb39-4" tabindex="-1"></a>resultado2 <span class="ot">&lt;-</span> (<span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb39-5"><a href="conceitos-básicos.html#cb39-5" tabindex="-1"></a><span class="co"># c) </span></span>
+<span id="cb39-6"><a href="conceitos-básicos.html#cb39-6" tabindex="-1"></a>resultado3 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb39-7"><a href="conceitos-básicos.html#cb39-7" tabindex="-1"></a><span class="co"># d) </span></span>
+<span id="cb39-8"><a href="conceitos-básicos.html#cb39-8" tabindex="-1"></a>resultado4 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>)</span>
+<span id="cb39-9"><a href="conceitos-básicos.html#cb39-9" tabindex="-1"></a><span class="co"># e) </span></span>
+<span id="cb39-10"><a href="conceitos-básicos.html#cb39-10" tabindex="-1"></a>resultado5 <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span></span></code></pre></div>
+<p><strong>2.</strong> Dados os valores:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="conceitos-básicos.html#cb40-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span>; y <span class="ot">&lt;-</span> <span class="dv">10</span>; z <span class="ot">&lt;-</span> <span class="dv">20</span></span></code></pre></div>
+<p>Quais das relações a seguir serão <code>TRUE</code> e quais serão <code>FALSE</code>:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="conceitos-básicos.html#cb41-1" tabindex="-1"></a><span class="co"># a)</span></span>
+<span id="cb41-2"><a href="conceitos-básicos.html#cb41-2" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">&amp;</span> y <span class="sc">&lt;</span> z  </span>
+<span id="cb41-3"><a href="conceitos-básicos.html#cb41-3" tabindex="-1"></a><span class="co"># b) </span></span>
+<span id="cb41-4"><a href="conceitos-básicos.html#cb41-4" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">15</span> <span class="sc">|</span> y <span class="sc">&gt;</span> z  </span>
+<span id="cb41-5"><a href="conceitos-básicos.html#cb41-5" tabindex="-1"></a><span class="co"># c) </span></span>
+<span id="cb41-6"><a href="conceitos-básicos.html#cb41-6" tabindex="-1"></a><span class="sc">!</span>(x <span class="sc">&lt;</span> z)  </span>
+<span id="cb41-7"><a href="conceitos-básicos.html#cb41-7" tabindex="-1"></a><span class="co"># d) </span></span>
+<span id="cb41-8"><a href="conceitos-básicos.html#cb41-8" tabindex="-1"></a>(x <span class="sc">&gt;=</span> y) <span class="sc">&amp;</span> (y <span class="sc">!=</span> <span class="dv">10</span>)  </span>
+<span id="cb41-9"><a href="conceitos-básicos.html#cb41-9" tabindex="-1"></a><span class="co"># e) </span></span>
+<span id="cb41-10"><a href="conceitos-básicos.html#cb41-10" tabindex="-1"></a>(x <span class="sc">&lt;</span> y) <span class="sc">|</span> (z <span class="sc">&gt;</span> x)  </span></code></pre></div>
+</div>
+<div id="protectedContent3" style="display:none;">
+<div id="respostas-2" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="conceitos-básicos.html#respostas-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1.</strong></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="conceitos-básicos.html#cb42-1" tabindex="-1"></a><span class="co"># a)</span></span>
+<span id="cb42-2"><a href="conceitos-básicos.html#cb42-2" tabindex="-1"></a>(resultado1 <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="conceitos-básicos.html#cb44-1" tabindex="-1"></a><span class="co"># b) </span></span>
+<span id="cb44-2"><a href="conceitos-básicos.html#cb44-2" tabindex="-1"></a>(resultado2 <span class="ot">&lt;-</span> (<span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 16</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="conceitos-básicos.html#cb46-1" tabindex="-1"></a><span class="co"># c) </span></span>
+<span id="cb46-2"><a href="conceitos-básicos.html#cb46-2" tabindex="-1"></a>(resultado3 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="conceitos-básicos.html#cb48-1" tabindex="-1"></a><span class="co"># d) </span></span>
+<span id="cb48-2"><a href="conceitos-básicos.html#cb48-2" tabindex="-1"></a>(resultado4 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="conceitos-básicos.html#cb50-1" tabindex="-1"></a><span class="co"># e) </span></span>
+<span id="cb50-2"><a href="conceitos-básicos.html#cb50-2" tabindex="-1"></a>(resultado5 <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<p><strong>2.</strong></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="conceitos-básicos.html#cb52-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb52-2"><a href="conceitos-básicos.html#cb52-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb52-3"><a href="conceitos-básicos.html#cb52-3" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb52-4"><a href="conceitos-básicos.html#cb52-4" tabindex="-1"></a><span class="co"># a)</span></span>
+<span id="cb52-5"><a href="conceitos-básicos.html#cb52-5" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">&amp;</span> y <span class="sc">&lt;</span> z  </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="conceitos-básicos.html#cb54-1" tabindex="-1"></a><span class="co"># b) </span></span>
+<span id="cb54-2"><a href="conceitos-básicos.html#cb54-2" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">15</span> <span class="sc">|</span> y <span class="sc">&gt;</span> z  </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="conceitos-básicos.html#cb56-1" tabindex="-1"></a><span class="co"># c) </span></span>
+<span id="cb56-2"><a href="conceitos-básicos.html#cb56-2" tabindex="-1"></a><span class="sc">!</span>(x <span class="sc">&lt;</span> z)  </span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="conceitos-básicos.html#cb58-1" tabindex="-1"></a><span class="co"># d) </span></span>
+<span id="cb58-2"><a href="conceitos-básicos.html#cb58-2" tabindex="-1"></a>(x <span class="sc">&gt;=</span> y) <span class="sc">&amp;</span> (y <span class="sc">!=</span> <span class="dv">10</span>)  </span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="conceitos-básicos.html#cb60-1" tabindex="-1"></a><span class="co"># e) </span></span>
+<span id="cb60-2"><a href="conceitos-básicos.html#cb60-2" tabindex="-1"></a>(x <span class="sc">&lt;</span> y) <span class="sc">|</span> (z <span class="sc">&gt;</span> x)  </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+</div>
+<p><input type="password" id="passwordInput3" placeholder="Digite a senha">
+<button id="submitButton3">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton3").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput3").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent3").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estruturas-de-dados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
