@@ -164,10 +164,8 @@ Modificando valores do vetor $a$:
 ```r
 # Substituindo um elemento
 a[2] <- 99
-print(a)
 # Adicionando novos elementos
 a <- c(a, 200)
-print(a)
 # ou usando a função append():
 a <- append(a, 300)
 # Removendo alguma posição do vetor:
@@ -458,166 +456,36 @@ x1 | x1
 <div id="protectedContent2" style="display:none;">
   
 ### Respostas {-}
-
-``` r
+```r
 # 1. 
 x <- 1:100
 x^3
-```
-
-```
-##   [1]       1       8      27      64     125     216     343     512     729
-##  [10]    1000    1331    1728    2197    2744    3375    4096    4913    5832
-##  [19]    6859    8000    9261   10648   12167   13824   15625   17576   19683
-##  [28]   21952   24389   27000   29791   32768   35937   39304   42875   46656
-##  [37]   50653   54872   59319   64000   68921   74088   79507   85184   91125
-##  [46]   97336  103823  110592  117649  125000  132651  140608  148877  157464
-##  [55]  166375  175616  185193  195112  205379  216000  226981  238328  250047
-##  [64]  262144  274625  287496  300763  314432  328509  343000  357911  373248
-##  [73]  389017  405224  421875  438976  456533  474552  493039  512000  531441
-##  [82]  551368  571787  592704  614125  636056  658503  681472  704969  729000
-##  [91]  753571  778688  804357  830584  857375  884736  912673  941192  970299
-## [100] 1000000
-```
-
-``` r
 # 2. 
 v1 <- c(3, 6, 9, 12)
 v2 <- c(2, 4, 6, 8)
 v1 + v2
-```
-
-```
-## [1]  5 10 15 20
-```
-
-``` r
 v1 - v2
-```
-
-```
-## [1] 1 2 3 4
-```
-
-``` r
 v1 * v2
-```
-
-```
-## [1]  6 24 54 96
-```
-
-``` r
 v1 / v2
-```
-
-```
-## [1] 1.5 1.5 1.5 1.5
-```
-
-``` r
 v1^2
-```
-
-```
-## [1]   9  36  81 144
-```
-
-``` r
 sqrt(v2)
-```
-
-```
-## [1] 1.414214 2.000000 2.449490 2.828427
-```
-
-``` r
 v1%*%v2
 ```
-
-```
-##      [,1]
-## [1,]  180
-```
-
-``` r
+```r
 # 3. 
 v3 <- c(10, 20, 30) 
 v4 <- c(5, 15)
 v3+v4
-```
-
-```
-## Warning in v3 + v4: longer object length is not a multiple of shorter object
-## length
-```
-
-```
-## [1] 15 35 35
-```
-
-``` r
 v3*v4
-```
-
-```
-## Warning in v3 * v4: longer object length is not a multiple of shorter object
-## length
-```
-
-```
-## [1]  50 300 150
-```
-
-``` r
 # 4. 
 v6 <- c(10, 15, 20, 25) 
 v7 <- c(12, 15, 18, 28)
 v6>v7
-```
-
-```
-## [1] FALSE FALSE  TRUE FALSE
-```
-
-``` r
 v6<v7
-```
-
-```
-## [1]  TRUE FALSE FALSE  TRUE
-```
-
-``` r
 v6==v7
-```
-
-```
-## [1] FALSE  TRUE FALSE FALSE
-```
-
-``` r
 v6!=v7
-```
-
-```
-## [1]  TRUE FALSE  TRUE  TRUE
-```
-
-``` r
 v6[v6>15]
-```
-
-```
-## [1] 20 25
-```
-
-``` r
 v7[v7 <= 20]
-```
-
-```
-## [1] 12 15 18
 ```
 
 </div>
@@ -694,49 +562,120 @@ x[x %in% y]  # Retorna apenas os elementos de x que também estão em y
 ```
 
 
-
-Table: (\#tab:unnamed-chunk-13)Resumo das Funções para Vetores no R
-
-|  Funcao  |                       Descricao                        |                   Exemplo                    |
-|:--------:|:------------------------------------------------------:|:--------------------------------------------:|
-|  sum()   |              Soma dos elementos do vetor               |             sum(c(1, 4, 2)) → 7              |
-| length() |              Número de elementos do vetor              |            length(c(1, 2, 3)) → 3            |
-|  sort()  |              Ordena os elementos do vetor              |           sort(c(5, 1, 3)) → 1 3 5           |
-| which()  |    Indices dos elementos que atendem a uma condição    |         which(c(2, 5, 8) > 4) → 2 3          |
-| unique() |               Valores únicos de um vetor               |       unique(c(1, 1, 2, 3, 3)) → 1 2 3       |
-| table()  |          Frequência de cada elemento do vetor          |      table(c('A', 'B', 'A')) → A:2 B:1       |
-|   %in%   | Verifica se os elementos de um vetor pertencem a outro | c(2, 3, 4) %in% c(3, 4, 5) → FALSE TRUE TRUE |
-
+<table class="table" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:unnamed-chunk-12)(\#tab:unnamed-chunk-12)Resumo das Funções para Vetores no R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Funcao </th>
+   <th style="text-align:center;"> Descricao </th>
+   <th style="text-align:center;"> Exemplo </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> sum() </td>
+   <td style="text-align:center;"> Soma dos elementos do vetor </td>
+   <td style="text-align:center;"> sum(c(1, 4, 2)) → 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> length() </td>
+   <td style="text-align:center;"> Número de elementos do vetor </td>
+   <td style="text-align:center;"> length(c(1, 2, 3)) → 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> sort() </td>
+   <td style="text-align:center;"> Ordena os elementos do vetor </td>
+   <td style="text-align:center;"> sort(c(5, 1, 3)) → 1 3 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> which() </td>
+   <td style="text-align:center;"> Indices dos elementos que atendem a uma condição </td>
+   <td style="text-align:center;"> which(c(2, 5, 8) &gt; 4) → 2 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> unique() </td>
+   <td style="text-align:center;"> Valores únicos de um vetor </td>
+   <td style="text-align:center;"> unique(c(1, 1, 2, 3, 3)) → 1 2 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> table() </td>
+   <td style="text-align:center;"> Frequência de cada elemento do vetor </td>
+   <td style="text-align:center;"> table(c('A', 'B', 'A')) → A:2 B:1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> %in% </td>
+   <td style="text-align:center;"> Verifica se os elementos de um vetor pertencem a outro </td>
+   <td style="text-align:center;"> c(2, 3, 4) %in% c(3, 4, 5) → FALSE TRUE TRUE </td>
+  </tr>
+</tbody>
+</table>
 
 #### Valores perdidos e especiais {-}
 
 Valores perdidos devem ser definidos como `NA` (not available):
 ```r
 x <- c(1, 3, NA, 2)
-x
 ```
 
 Outros valores especiais são `NaN` (not a number),`-Inf` (menos infinito) e `Inf` (mais infinito):
-```r
+
+``` r
 y <- 0/0
 print(y)
+```
+
+```
+## [1] NaN
+```
+
+``` r
 z <- 1/0
 print(z)
 ```
 
+```
+## [1] Inf
+```
+
 Podemos testar a presença de valores especiais:
-```r
+
+``` r
 # Testando presença de NA:
 x <- c(1, 3, NA, 2)
 is.na(x)
+```
+
+```
+## [1] FALSE FALSE  TRUE FALSE
+```
+
+``` r
 # ou
 any(is.na(x))
+```
+
+```
+## [1] TRUE
+```
+
+``` r
 # Testando presença de NaN:
 y <- 0/0
 is.na(y)
+```
+
+```
+## [1] TRUE
+```
+
+``` r
 # Testando presença de -Inf ou Inf:
 z <- 1/0
 is.infinite(z)
+```
+
+```
+## [1] TRUE
 ```
 
 ## Fatores
@@ -911,147 +850,36 @@ c. Ordene os niveis em ordem alfabética usando `sort()` e recalcule as frequên
   
 ### Respostas {-}
 
-
-``` r
+```r
 # 1. 
 v1 <- c(2, 4, 6, 2, 8, 6, 10, 2, 4, 6)
 length(v1)
-```
-
-```
-## [1] 10
-```
-
-``` r
 unique(v1)
-```
-
-```
-## [1]  2  4  6  8 10
-```
-
-``` r
 sort(v1, decreasing = T)
-```
-
-```
-##  [1] 10  8  6  6  6  4  4  2  2  2
-```
-
-``` r
 # 2. 
 fatores <- factor(c("A", "B", "A", "C", "B", "A", "C", "B", "C", "A"))
 table(fatores)
-```
-
-```
-## fatores
-## A B C 
-## 4 3 3
-```
-
-``` r
 unique(fatores) #ou
-```
-
-```
-## [1] A B C
-## Levels: A B C
-```
-
-``` r
 levels(fatores)
-```
-
-```
-## [1] "A" "B" "C"
-```
-
-``` r
 # 3. 
 v2 <- c(5, 10, 15, 20, 25)
 v3 <- c(10, 20, 30)
 # Verificando presença de elementos
 v2 %in% v3  # -> elementos 10 e 20
-```
-
-```
-## [1] FALSE  TRUE FALSE  TRUE FALSE
-```
-
-``` r
 # Posições dos valores de v2 que estão em v3
 which(v2 %in% v3) # -> posições 2 e 4
-```
-
-```
-## [1] 2 4
-```
-
-``` r
 # 4. 
 v4 <- c(10, NA, 30, 50, NA, NaN, 20)
 sum(v4, na.rm = TRUE)  
-```
-
-```
-## [1] 110
-```
-
-``` r
 length(v4[!is.na(v4)])  
-```
-
-```
-## [1] 4
-```
-
-``` r
 sort(v4, na.last = TRUE)  
-```
-
-```
-## [1]  10  20  30  50  NA  NA NaN
-```
-
-``` r
 which(is.na(v4))
-```
-
-```
-## [1] 2 5 6
-```
-
-``` r
 # 5. 
 categorias <- factor(c("A", "B", "A", "A", "B", "A", "B", "C", "A", "C"))
 table(categorias)
-```
-
-```
-## categorias
-## A B C 
-## 5 3 2
-```
-
-``` r
 levels(categorias)[levels(categorias) == "B"] <- "X"; table(categorias)
-```
-
-```
-## categorias
-## A X C 
-## 5 3 2
-```
-
-``` r
-categ_ord <- factor(categorias, levels = sort(levels(categorias))); table(categ_ord)
-```
-
-```
-## categ_ord
-## A C X 
-## 5 2 3
+categ_ord <- factor(categorias, levels = sort(levels(categorias)));
+table(categ_ord)
 ```
 </div>
   
@@ -1180,7 +1008,6 @@ Acessando Elementos de Matrizes
 ```r
 # Criando uma matriz 3x3
 matriz <- matrix(1:9, nrow = 3)
-matriz
 # Para acessar o elemento da linha 2, coluna 3:
 matriz[2, 3]  
 # Acessando a segunda linha
@@ -1551,6 +1378,8 @@ aluno <- list(
   Notas = c(7, 8, 9),
   Curso = "Matemática"
 )
+```
+```r
 # a. Acesse e imprima o nome do aluno
 aluno$Nome
 # b. Modifique a idade para 23
@@ -1738,7 +1567,8 @@ dados[2,3]
 
 ``` r
 # Adicionando uma nova coluna aos dados
-dados$Status <- c("Aprovado", "Aprovado", "Reprovado", "Reprovado", "Aprovado", "Reprovado")
+dados$Status <- c("Aprovado", "Aprovado", "Reprovado", "Reprovado", 
+                  "Aprovado", "Reprovado")
 # Removendo uma coluna dos dados
 dados$Status <- NULL
 # Renomeando colunas
@@ -2042,115 +1872,7 @@ a. Identifique quais colunas contêm valores NA.
 b. Conte quantos NA existem em cada coluna do data frame.
 c. Remova todas as observações que possuem pelo menos um NA no data frame.
 
-<div id="protectedContent7" style="display:none;">
-  
-### Respostas {-}
 
-```r
-## 1.
-M <- matrix(1:16, nrow = 4, byrow = TRUE)
-# a.
-M_t <- t(M)
-# b. 
-diag(M) <- 99
-# c.
-M <- M * c(1, 2, 3, 4)
-# d.
-M2 <- matrix(1:9, nrow = 3, byrow = TRUE,
-             dimnames = list(c("Linha1", "Linha2", "Linha3"),
-                             c("Col1", "Col2", "Col3")))
-M2[c("Linha2", "Linha3"), ]
-## 2. 
-minha_lista <- list(
-  vetor = c(10, 20, 30, 40, 50),
-  matriz = matrix(1:4, nrow = 2),
-  dados = data.frame(Nome = c("Ana", "Beto", "Clara"), Idade = c(25, 30, 22))
-)
-# a. 
-minha_lista[[2]] <- c(5,9,10,45,3)
-# b.
-is.data.frame(minha_lista$dados)
-# c. 
-minha_lista[[3]][, 2, drop = FALSE]
-# ou
-minha_lista$dados$Idade
-# d. 
-minha_lista <- minha_lista[-length(minha_lista)]
-## 3.
-df <- data.frame(
-  Nome = c("Alice", "Bruno", "Carlos", "Daniela", "Eduardo"),
-  Idade = c(23, 45, 31, 20, 30),
-  Profissao = c("Engenheiro", "Professor", "Médico", "Advogado", "Designer")
-)
-# a. 
-df$Profissao <- as.factor(df$Profissao)
-levels(df$Profissao)
-# b. 
-df <- df[order(df$Idade, decreasing = TRUE), ]
-# ou
-df <- df[order(-df$Idade), ]
-# c. 
-df[df$Idade %% 2 == 0, ]
-# d. 
-df_novo <- df[1:3, ]
-## 4. 
-# a.
-airquality$Temp
-# b. 
-airquality[, c("Ozone", "Wind")]
-# c. 
-airquality[airquality$Day == 15, ]
-# d. 
-airquality[airquality$Month == 7, ]
-# e. 
-airquality[airquality$Wind > 10, ]
-# f.
-airquality$Temp_Celsius <- (airquality$Temp - 32) * 5/9
-# g.
-airquality[order(airquality$Ozone), ]
-# h.
-airquality[airquality$Month %in% c(5, 6), ]
-## 5.
-# a.
-subset(airquality, Ozone > 50 & Wind < 10)
-# b. 
-subset(airquality, Temp > 85, select = c(Temp, Wind))
-# c.
-subset(airquality, Day >= 1 & Day <= 10)
-# d.
-subset(airquality, Wind >= 5 & Wind <= 15)
-## 6. 
-df <- data.frame(
-  Nome = c("Ana", "Bruno", "Bia", "Daniela", "Eduardo"),
-  Idade = c(25, NA, 31, 29, NA),
-  Altura = c(1.65, 1.80, 1.75, NA, 1.68)
-)
-# a.
-colSums(is.na(df)) > 0
-# b.
-colSums(is.na(df))
-# d. 
-df_limpo <- na.omit(df)
-```
+<!-- ### Respostas {-} -->
 
-</div>
-  
-  <input type="password" id="passwordInput7" placeholder="Digite a senha">
-  <button id="submitButton7">Acesso Professor</button>
-  
-  
-<script>
-document.getElementById("submitButton7").addEventListener("click", function() 
-{
-  var password = document.getElementById("passwordInput7").value;
-  var correctPassword = "0987";
-  
-  if (password === correctPassword) 
-  {
-    document.getElementById("protectedContent7").style.display = "block";
-  }else 
-  {
-    alert("Senha incorreta! Tente novamente.");
-  }
-});
-</script>
+
