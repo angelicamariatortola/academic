@@ -67,3 +67,11 @@ exercícios-8
 a.
 família-de-funções-apply
 verificar-se-os-elementos-das-listas-são-todos-pares
+tibbles
+o-pacote-dplyr
+o-operador-pipe
+importação-e-exportação-de-dados
+selecionando-colunas
+exercícios---faça-o-que-se-pede-com-e-sem-o-pipe
+kkkk
+kkk

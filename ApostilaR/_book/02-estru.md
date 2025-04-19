@@ -743,9 +743,9 @@ as.factor(cores_char)
 
 - *Fatores (factor)*: se os dados representam categorias que serão usadas em análises estatísticas ou visualizações gráficas.
 
-</div>
-</p>
 </details>
+</div>
+
 
 A ordem dos níveis dos fatores pode também ser modificada através do argumento `levels`:
 
