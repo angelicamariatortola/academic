@@ -22,7 +22,8 @@ Para identificar o diretório de trabalho da sessão R usamos `getwd()`. Para de
 
 Aqui vamos utilizar o diretório de trabalho:
 ```r
-setwd("/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/Capitulo 3 - Importacao")
+setwd("/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/
+Capitulo 3 - Importacao")
 ```
 
 
@@ -50,32 +51,9 @@ data("Adler", package = "carData")
 ```
 
 Trabalhando com os dados importados:
-
-``` r
+```r
 # Acessando variáveis destes dados:
 Adler$instruction 
-```
-
-```
-##   [1] good       good       good       good       good       good      
-##   [7] good       good       good       good       good       good      
-##  [13] good       good       good       good       good       good      
-##  [19] good       good       good       good       good       good      
-##  [25] good       good       good       good       good       good      
-##  [31] good       good       good       good       good       good      
-##  [37] scientific scientific scientific scientific scientific scientific
-##  [43] scientific scientific scientific scientific scientific scientific
-##  [49] scientific scientific scientific scientific scientific scientific
-##  [55] scientific scientific scientific scientific scientific scientific
-##  [61] scientific scientific scientific scientific scientific scientific
-##  [67] scientific scientific scientific scientific scientific scientific
-##  [73] none       none       none       none       none       none      
-##  [79] none       none       none       none       none       none      
-##  [85] none       none       none       none       none       none      
-##  [91] none       none       none       none       none       none      
-##  [97] none       none       none       none       none       none      
-## [103] none       none       none       none       none       none      
-## Levels: good none scientific
 ```
 
 ``` r
@@ -156,9 +134,11 @@ dados_adler_tsv <- read.delim("dados_adler.tsv",  header = T)
 Podemos usar as funções `read.table` e `read.csv` também para importar dados da web:
 ```r
 ## Extensão txt
-dados_web_txt <- read.table("https://angelicamariatortola.github.io/academic/figs/dados_adler.txt", header = T)
+dados_web_txt <- read.table("https://angelicamariatortola.github.io/academic/
+figs/dados_adler.txt", header = T)
 ## Extensão csv
-dados_web_csv <- read.csv("https://angelicamariatortola.github.io/academic/figs/dados_adler.csv", header = T)
+dados_web_csv <- read.csv("https://angelicamariatortola.github.io/academic/
+figs/dados_adler.csv", header = T)
 ```
 
 #### Exercícios {-}
@@ -218,7 +198,8 @@ names(iris)
 nrow(mtcars); ncol(mtcars)
 nrow(iris); ncol(iris)
 # 2.
-setwd("/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/Capitulo 3 - Importacao")
+setwd("/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/
+Capitulo 3 - Importacao")
 # a.
 dados_txt <- read.table("dados.txt", sep = " ", header = T)
 # b.
@@ -313,7 +294,6 @@ b. `vendas.csv`.
 c. `dados.txt`.
 d. `tabela.tsv`.
 
-
 **2.** Usando funções do pacote `readxl`:
 
 a. Importe a planilha 1 do arquivo `notas.xlsx`.
@@ -329,7 +309,8 @@ d. Liste os nomes das planilhas do arquivo `multiaba.xlsx`.
 ```r
 # 1.
 library(readr)
-setwd("/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/ApostilaR/data")
+setwd("/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/
+ApostilaR/data")
 df_alunos <- read_csv("exercicios_importacao_r/alunos.csv")
 df_vendas <- read_csv2("exercicios_importacao_r/vendas.csv")
 df_pipe <- read_delim("exercicios_importacao_r/dados.txt", delim = "|")
@@ -337,8 +318,10 @@ df_tsv <- read_tsv("exercicios_importacao_r/tabela.tsv")
 # 2.
 library(readxl)
 df_notas <- read_excel("exercicios_importacao_r/notas.xlsx")
-df_financeiro <- read_excel("exercicios_importacao_r/financeiro.xlsx", sheet = "2025")
-df_relatorio <- read_excel("exercicios_importacao_r/relatorio.xlsx", range = "B2:D10")
+df_financeiro <- read_excel("exercicios_importacao_r/financeiro.xlsx", 
+sheet = "2025")
+df_relatorio <- read_excel("exercicios_importacao_r/relatorio.xlsx", 
+range = "B2:D10")
 abas <- excel_sheets("exercicios_importacao_r/multiaba.xlsx")
 ```
 
@@ -924,7 +907,7 @@ arrange(data_imdb, desc(ano), desc(orcamento))
 
 #### Exercícios  {-}
 
-**1.** Considerando o conjunto de dados `mtcars` do pacote `datasets`, faça o que se pede usando o operador Pipe (`%>%`):
+**1.** Considerando o conjunto de dados `mtcars` do pacote `datasets`, faça o que se pede usando o operador Pipe (`%>%`) e as funções do pacote `dplyr`:
 
 a. Selecione todas as colunas que começam com a letra "d".
 b. Selecione todas as colunas que terminam com a letra "t".
@@ -935,7 +918,7 @@ f. Organize os dados em ordem crescente de mpg (milhas por galão).
 g. Organize os dados em ordem decrescente de hp (horsepower).
 h. Organize os dados em ordem crescente por cyl (cilindros) e por mpg (milhas por galão).
 
-**2.** Considerando o conjunto de dados `iris` do pacote `datasets`, faça o que se pede usando o operador Pipe (`%>%`)
+**2.** Considerando o conjunto de dados `iris` do pacote `datasets`, faça o que se pede usando o operador Pipe (`%>%`) e as funções do pacote `dplyr`:
 
 a. Selecione apenas as colunas que contêm "Length".
 b. Selecione todas as colunas exceto as que terminam com "Width".
@@ -985,9 +968,7 @@ document.getElementById("submitButton4").addEventListener("click", function()
 });
 </script>
 
-  
 
-  
 #### Função `filter` (filtra linhas) {-}
 
 
@@ -1221,19 +1202,19 @@ head(data_imdb_lucro_pais %>% select(lucro, pais))
 
 #### Exercícios {-}
 
-Nos exercicios a seguir, utilize o operador Pipe (`%>%`).
+Nos exercicios a seguir, utilize o operador Pipe (`%>%`) e as funções do pacote `dplyr`.
 
 **1.** Considerando o conjunto de dados `mtcars` do pacote `datasets`:
 
 a. Filtre os carros com mpg (milhas por galão) maior que 25.
 b. Filtre os carros com hp maior que 150 e mostre apenas mpg, hp e wt.
 c. Filtre os carros com cyl igual a 4 ou 8 (use %in%).
+d. Crie uma nova coluna peso_relativo em mtcars que seja wt / max(wt) (peso relativo).
 
 **2.** Considerando o conjunto de dados `iris` do pacote `datasets`:
 
 a. Filtre apenas as observações da espécie que contém "set" no nome.
 b. Filtre a espécie que contém "ver" e mostre apenas colunas com "Length".
-c. Crie uma nova coluna peso_relativo em mtcars que seja wt / max(wt) (peso relativo).
 
 **3.** Utilize a base imdb nos exercícios a seguir.
 
@@ -1254,18 +1235,24 @@ e. Crie uma nova coluna que classifique o filme em "recente" (posterior a 2000) 
 
 ```r
 # 1.
+# a.
 mtcars %>%  filter(mpg > 25)
+# b.
 mtcars %>% filter(hp > 150) %>% 
   select(mpg, hp, wt)
+# c.
 mtcars %>% filter(cyl %in% c(4, 8))
+# d.
+mtcars %>% 
+  mutate(peso_relativo = wt / max(wt))
 # 2.
+# a.
 iris %>% 
   filter(str_detect(Species, "set"))
+# b.
 iris %>% 
   filter(str_detect(Species, "ver")) %>% 
   select(contains("Length"))
-mtcars %>% 
-  mutate(peso_relativo = wt / max(wt))
 # 3.
 # a.
 filmes_ordenados <- data_imdb %>%
@@ -1314,8 +1301,6 @@ document.getElementById("submitButton5").addEventListener("click", function()
   }
 });
 </script>
-
-
 
 
 #### Funções `summarise`, `group_by` e `count` {-}
@@ -1567,7 +1552,7 @@ filmes %>% count(ano, genero)
 
 #### Exercícios  {-}
 
-Utilize a base imdb nos exercícios a seguir.
+Utilize a base imdb e as funções do pacote `dplyr` nos exercícios a seguir.
 
 a. Calcule a duração média e mediana dos filmes da base.
 b. Calcule o lucro médio dos filmes com duração maior que 2 horas (ou seja, 120 minutos).
@@ -1594,7 +1579,8 @@ data_imdb %>%
 # c.
 data_imdb %>%
   mutate(lucro = receita - orcamento,
-         grupo_duracao = ifelse(duracao < 120, "< 120 min", "≥ 120 min")) %>%
+         grupo_duracao = ifelse(duracao < 120, "< 120 min", 
+         "≥ 120 min")) %>%
   group_by(grupo_duracao) %>%
   summarise(lucro_medio = mean(lucro, na.rm = TRUE))
 # d
@@ -1643,7 +1629,7 @@ document.getElementById("submitButton6").addEventListener("click", function()
 **2.** Crie dois conjuntos de dados em duas planilhas distintas de um arquivo de excel e salve o arquivo em alguma pasta do seu computador com a extensão .xlsx. Na sequencia, importe estes dados para o R e exiba os nomes das planilhas, usando funções do pacote `readxl`. 
 
 
-**3.** Considerando os dados do imdb:
+**3.** Considerando os dados do imdb e as funções do pacote `dplyr`:
 
 a. Filtre os filmes lançados entre 1990 e 1999 com lucro (receita - orçamento) positivo. Em seguida, mostre apenas titulo, ano e lucro, ordenados por lucro decrescente.
 b. Crie uma nova variável lucro = receita - orcamento, e depois: selecione os gêneros "Action", "Drama" e "Comedy", calcule o lucro médio por gênero, ordene do maior para o menor lucro.

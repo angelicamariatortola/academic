@@ -945,7 +945,7 @@ Essa função tem os seguintes componentes:
 
 - `minha_soma`: nome da função
 - `a` e `b`: argumentos da função
-- `soma <- x + y`: operação que a função executa
+- `soma <- a + b`: operação que a função executa
 - `return(soma)`: valor retornado pela função
 
 Após rodarmos o código de criar a função, podemos chamá-la como outras funções do R:
