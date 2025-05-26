@@ -126,3 +126,8 @@ r-valor-p-grafico-echofalse-fig.aligncenter-fig.width10-fig.height4-warningfalse
 tab:unnamed-chunk-54
 principais-modelos-discretos
 principais-modelos-contínuos
+gráficos-e-visualização-de-dados
+gráficos-básicos-com-graphics
+gráficos-com-ggplot2
+gráficos-interativos-com-plotly
+tabela-de-personalizações-com-theme
