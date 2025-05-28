@@ -164,8 +164,10 @@ Modificando valores do vetor $a$:
 ```r
 # Substituindo um elemento
 a[2] <- 99
+print(a)
 # Adicionando novos elementos
 a <- c(a, 200)
+print(a)
 # ou usando a função append():
 a <- append(a, 300)
 # Removendo alguma posição do vetor:
@@ -354,14 +356,11 @@ document.getElementById("submitButton1").addEventListener("click", function()
 #### Operações com vetores {-}
 
 **Operações Aritméticas (elemento a elemento)**
-
-``` r
+```r
 # Considere os valores:
 a <- 2
 v1 <- c(1, 2, 3)
 v2 <- c(4, 5, 6)
-```
-```r
 ## Soma
 # Soma de vetores:
 v1+v2
@@ -386,8 +385,6 @@ v2%%v1
 v2%/%v1
 # Divisão de vetor por escalar:
 v1/a
-```
-```r
 ## Potenciação
 # Potenciação de vetores
 v1^v2
@@ -456,36 +453,166 @@ x1 | x1
 <div id="protectedContent2" style="display:none;">
   
 ### Respostas {-}
-```r
+
+``` r
 # 1. 
 x <- 1:100
 x^3
+```
+
+```
+##   [1]       1       8      27      64     125     216     343     512     729
+##  [10]    1000    1331    1728    2197    2744    3375    4096    4913    5832
+##  [19]    6859    8000    9261   10648   12167   13824   15625   17576   19683
+##  [28]   21952   24389   27000   29791   32768   35937   39304   42875   46656
+##  [37]   50653   54872   59319   64000   68921   74088   79507   85184   91125
+##  [46]   97336  103823  110592  117649  125000  132651  140608  148877  157464
+##  [55]  166375  175616  185193  195112  205379  216000  226981  238328  250047
+##  [64]  262144  274625  287496  300763  314432  328509  343000  357911  373248
+##  [73]  389017  405224  421875  438976  456533  474552  493039  512000  531441
+##  [82]  551368  571787  592704  614125  636056  658503  681472  704969  729000
+##  [91]  753571  778688  804357  830584  857375  884736  912673  941192  970299
+## [100] 1000000
+```
+
+``` r
 # 2. 
 v1 <- c(3, 6, 9, 12)
 v2 <- c(2, 4, 6, 8)
 v1 + v2
+```
+
+```
+## [1]  5 10 15 20
+```
+
+``` r
 v1 - v2
+```
+
+```
+## [1] 1 2 3 4
+```
+
+``` r
 v1 * v2
+```
+
+```
+## [1]  6 24 54 96
+```
+
+``` r
 v1 / v2
+```
+
+```
+## [1] 1.5 1.5 1.5 1.5
+```
+
+``` r
 v1^2
+```
+
+```
+## [1]   9  36  81 144
+```
+
+``` r
 sqrt(v2)
+```
+
+```
+## [1] 1.414214 2.000000 2.449490 2.828427
+```
+
+``` r
 v1%*%v2
 ```
-```r
+
+```
+##      [,1]
+## [1,]  180
+```
+
+``` r
 # 3. 
 v3 <- c(10, 20, 30) 
 v4 <- c(5, 15)
 v3+v4
+```
+
+```
+## Warning in v3 + v4: longer object length is not a multiple of shorter object
+## length
+```
+
+```
+## [1] 15 35 35
+```
+
+``` r
 v3*v4
+```
+
+```
+## Warning in v3 * v4: longer object length is not a multiple of shorter object
+## length
+```
+
+```
+## [1]  50 300 150
+```
+
+``` r
 # 4. 
 v6 <- c(10, 15, 20, 25) 
 v7 <- c(12, 15, 18, 28)
 v6>v7
+```
+
+```
+## [1] FALSE FALSE  TRUE FALSE
+```
+
+``` r
 v6<v7
+```
+
+```
+## [1]  TRUE FALSE FALSE  TRUE
+```
+
+``` r
 v6==v7
+```
+
+```
+## [1] FALSE  TRUE FALSE FALSE
+```
+
+``` r
 v6!=v7
+```
+
+```
+## [1]  TRUE FALSE  TRUE  TRUE
+```
+
+``` r
 v6[v6>15]
+```
+
+```
+## [1] 20 25
+```
+
+``` r
 v7[v7 <= 20]
+```
+
+```
+## [1] 12 15 18
 ```
 
 </div>
@@ -522,32 +649,38 @@ document.getElementById("submitButton2").addEventListener("click", function()
 x <- c(1, 3, 7, 8, 15)
 sum(x)  
 ```
+
 **`length()` - Tamanho do vetor**
 ```r
 x <- c(2, 4, 6, 8, 10)
 length(x)  
 ```
+
 **`sort()` - Ordenar um vetor**
 ```r
 x <- c(10, 5, 8, 3, 1)
 sort(x)  # Ordenação crescente
 sort(x, decreasing = TRUE)  # Ordenação decrescente
 ```
+
 **`which()` - Índices que satisfazem uma condição**
 ```r
 x <- c(10, 20, 30, 40, 50)
 which(x > 25)  # Retorna os índices dos elementos maiores que 25
 ```
+
 **`unique()` - Elementos únicos**
 ```r
 x <- c(1, 2, 2, 3, 3, 3, 4, 4, 4, 4)
 unique(x)  # Retorna os valores únicos
 ```
+
 **`table()` - Frequência dos elementos**
 ```r
 x <- c("A", "B", "A", "C", "B", "B", "A")
 table(x)  # Conta quantas vezes cada letra aparece
 ```
+
 **`%in%` - Operador de Pertinência**
 
 Verifica se os elementos de um vetor estão presentes em outro.
@@ -562,120 +695,52 @@ x[x %in% y]  # Retorna apenas os elementos de x que também estão em y
 ```
 
 
-<table class="table" style="font-size: 11px; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">(\#tab:unnamed-chunk-12)(\#tab:unnamed-chunk-12)Resumo das Funções para Vetores no R</caption>
- <thead>
-  <tr>
-   <th style="text-align:center;"> Funcao </th>
-   <th style="text-align:center;"> Descricao </th>
-   <th style="text-align:center;"> Exemplo </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:center;"> sum() </td>
-   <td style="text-align:center;"> Soma dos elementos do vetor </td>
-   <td style="text-align:center;"> sum(c(1, 4, 2)) → 7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> length() </td>
-   <td style="text-align:center;"> Número de elementos do vetor </td>
-   <td style="text-align:center;"> length(c(1, 2, 3)) → 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> sort() </td>
-   <td style="text-align:center;"> Ordena os elementos do vetor </td>
-   <td style="text-align:center;"> sort(c(5, 1, 3)) → 1 3 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> which() </td>
-   <td style="text-align:center;"> Indices dos elementos que atendem a uma condição </td>
-   <td style="text-align:center;"> which(c(2, 5, 8) &gt; 4) → 2 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> unique() </td>
-   <td style="text-align:center;"> Valores únicos de um vetor </td>
-   <td style="text-align:center;"> unique(c(1, 1, 2, 3, 3)) → 1 2 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> table() </td>
-   <td style="text-align:center;"> Frequência de cada elemento do vetor </td>
-   <td style="text-align:center;"> table(c('A', 'B', 'A')) → A:2 B:1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> %in% </td>
-   <td style="text-align:center;"> Verifica se os elementos de um vetor pertencem a outro </td>
-   <td style="text-align:center;"> c(2, 3, 4) %in% c(3, 4, 5) → FALSE TRUE TRUE </td>
-  </tr>
-</tbody>
-</table>
+
+Table: (\#tab:unnamed-chunk-12)Resumo das Funções para Vetores no R
+
+|  Funcao  |                       Descricao                        |                   Exemplo                    |
+|:--------:|:------------------------------------------------------:|:--------------------------------------------:|
+|  sum()   |              Soma dos elementos do vetor               |             sum(c(1, 4, 2)) → 7              |
+| length() |              Número de elementos do vetor              |            length(c(1, 2, 3)) → 3            |
+|  sort()  |              Ordena os elementos do vetor              |           sort(c(5, 1, 3)) → 1 3 5           |
+| which()  |    Indices dos elementos que atendem a uma condição    |         which(c(2, 5, 8) > 4) → 2 3          |
+| unique() |               Valores únicos de um vetor               |       unique(c(1, 1, 2, 3, 3)) → 1 2 3       |
+| table()  |          Frequência de cada elemento do vetor          |      table(c('A', 'B', 'A')) → A:2 B:1       |
+|   %in%   | Verifica se os elementos de um vetor pertencem a outro | c(2, 3, 4) %in% c(3, 4, 5) → FALSE TRUE TRUE |
+
+
+<br>
 
 #### Valores perdidos e especiais {-}
 
 Valores perdidos devem ser definidos como `NA` (not available):
 ```r
 x <- c(1, 3, NA, 2)
+x
 ```
 
 Outros valores especiais são `NaN` (not a number),`-Inf` (menos infinito) e `Inf` (mais infinito):
-
-``` r
+```r
 y <- 0/0
 print(y)
-```
-
-```
-## [1] NaN
-```
-
-``` r
 z <- 1/0
 print(z)
 ```
 
-```
-## [1] Inf
-```
-
 Podemos testar a presença de valores especiais:
-
-``` r
-# Testando presença de NA:
+```r
+# Testando presença de NA ou NaN:
 x <- c(1, 3, NA, 2)
 is.na(x)
-```
-
-```
-## [1] FALSE FALSE  TRUE FALSE
-```
-
-``` r
 # ou
 any(is.na(x))
-```
 
-```
-## [1] TRUE
-```
-
-``` r
-# Testando presença de NaN:
 y <- 0/0
 is.na(y)
-```
 
-```
-## [1] TRUE
-```
-
-``` r
 # Testando presença de -Inf ou Inf:
 z <- 1/0
 is.infinite(z)
-```
-
-```
-## [1] TRUE
 ```
 
 ## Fatores
@@ -743,9 +808,9 @@ as.factor(cores_char)
 
 - *Fatores (factor)*: se os dados representam categorias que serão usadas em análises estatísticas ou visualizações gráficas.
 
-</details>
 </div>
-
+</p>
+</details>
 
 A ordem dos níveis dos fatores pode também ser modificada através do argumento `levels`:
 
@@ -778,6 +843,7 @@ satisfacao
 <div style="background-color: #e6f2ff; border: 1px solid #007acc; padding: 10px; border-radius: 5px;">
 <details open>
   <summary><strong> Comparação entre ordered = TRUE e ordered = FALSE </strong></summary>
+
 - `ordered = TRUE`: implica que o R respeita a ordem entre os níveis, permitindo comparações e análises baseadas nessa ordem (variáveis ordinais).
 - `ordered = FALSE`: significa que os níveis são apenas categorias e não são comparáveis em termos de hierarquia ou ordem (variáveis nominais).
 
@@ -850,36 +916,147 @@ c. Ordene os niveis em ordem alfabética usando `sort()` e recalcule as frequên
   
 ### Respostas {-}
 
-```r
+
+``` r
 # 1. 
 v1 <- c(2, 4, 6, 2, 8, 6, 10, 2, 4, 6)
 length(v1)
+```
+
+```
+## [1] 10
+```
+
+``` r
 unique(v1)
+```
+
+```
+## [1]  2  4  6  8 10
+```
+
+``` r
 sort(v1, decreasing = T)
+```
+
+```
+##  [1] 10  8  6  6  6  4  4  2  2  2
+```
+
+``` r
 # 2. 
 fatores <- factor(c("A", "B", "A", "C", "B", "A", "C", "B", "C", "A"))
 table(fatores)
+```
+
+```
+## fatores
+## A B C 
+## 4 3 3
+```
+
+``` r
 unique(fatores) #ou
+```
+
+```
+## [1] A B C
+## Levels: A B C
+```
+
+``` r
 levels(fatores)
+```
+
+```
+## [1] "A" "B" "C"
+```
+
+``` r
 # 3. 
 v2 <- c(5, 10, 15, 20, 25)
 v3 <- c(10, 20, 30)
 # Verificando presença de elementos
 v2 %in% v3  # -> elementos 10 e 20
+```
+
+```
+## [1] FALSE  TRUE FALSE  TRUE FALSE
+```
+
+``` r
 # Posições dos valores de v2 que estão em v3
 which(v2 %in% v3) # -> posições 2 e 4
+```
+
+```
+## [1] 2 4
+```
+
+``` r
 # 4. 
 v4 <- c(10, NA, 30, 50, NA, NaN, 20)
 sum(v4, na.rm = TRUE)  
+```
+
+```
+## [1] 110
+```
+
+``` r
 length(v4[!is.na(v4)])  
+```
+
+```
+## [1] 4
+```
+
+``` r
 sort(v4, na.last = TRUE)  
+```
+
+```
+## [1]  10  20  30  50  NA  NA NaN
+```
+
+``` r
 which(is.na(v4))
+```
+
+```
+## [1] 2 5 6
+```
+
+``` r
 # 5. 
 categorias <- factor(c("A", "B", "A", "A", "B", "A", "B", "C", "A", "C"))
 table(categorias)
+```
+
+```
+## categorias
+## A B C 
+## 5 3 2
+```
+
+``` r
 levels(categorias)[levels(categorias) == "B"] <- "X"; table(categorias)
-categ_ord <- factor(categorias, levels = sort(levels(categorias)));
-table(categ_ord)
+```
+
+```
+## categorias
+## A X C 
+## 5 3 2
+```
+
+``` r
+categ_ord <- factor(categorias, levels = sort(levels(categorias))); table(categ_ord)
+```
+
+```
+## categ_ord
+## A C X 
+## 5 2 3
 ```
 </div>
   
@@ -1008,6 +1185,7 @@ Acessando Elementos de Matrizes
 ```r
 # Criando uma matriz 3x3
 matriz <- matrix(1:9, nrow = 3)
+matriz
 # Para acessar o elemento da linha 2, coluna 3:
 matriz[2, 3]  
 # Acessando a segunda linha
@@ -1045,21 +1223,27 @@ B <- matrix(5:8, nrow = 2)
 nrow(A) # Número de linhas
 ncol(A) # Número de colunas
 dim(A) # dimensão da matriz: número de linhas e número de colunas
-```
-```r
+
 A + B  # Soma elemento a elemento
+
 ## Multiplicação elemento a elemento
 A * B  
+
 ## Multiplicação de matrizes (produto matricial)
 A %*% B  
+
 ## Transposta de uma matriz
 t(A)
+
 ## Diagonal de uma matriz
 diag(A)
+
 ## Determinante de uma matriz
 det(A)
+
 ## Inversão de uma matriz 
 solve(A)
+
 ## Função solve para resolver sistemas de equações. Seja Ax=b, com
 b <- c(2,5)
 # então a solução x do sistema é:
@@ -1100,26 +1284,130 @@ b. Uma matriz diagonal com os números 2, 4, 6 e 8 na diagonal principal.
   
 ### Respostas {-}
 
-```r
+
+``` r
 # 1. 
 mat <- matrix(1:12, ncol = 3, byrow = T)
 mat[3,2]
+```
+
+```
+## [1] 8
+```
+
+``` r
 mat[2,]
+```
+
+```
+## [1] 4 5 6
+```
+
+``` r
 mat[4,3] <- 99
+
 # 2. 
 M <- matrix(1:15, ncol = 5)
+M
+```
+
+```
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    4    7   10   13
+## [2,]    2    5    8   11   14
+## [3,]    3    6    9   12   15
+```
+
+``` r
 nrow(M); ncol(M)
+```
+
+```
+## [1] 3
+```
+
+```
+## [1] 5
+```
+
+``` r
 M <- matrix(1:15, ncol = 5, byrow = T)
 M[2,4]
+```
+
+```
+## [1] 9
+```
+
+``` r
 M[3,5] <- 100
 M[,1] <- 0
+
 # 3. 
 A <- matrix(1:9, ncol = 3)
 B <- matrix(10:18, ncol = 3)
+A; B
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]   10   13   16
+## [2,]   11   14   17
+## [3,]   12   15   18
+```
+
+``` r
 A + B
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]   11   17   23
+## [2,]   13   19   25
+## [3,]   15   21   27
+```
+
+``` r
 A - B
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]   -9   -9   -9
+## [2,]   -9   -9   -9
+## [3,]   -9   -9   -9
+```
+
+``` r
 A*B
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]   10   52  112
+## [2,]   22   70  136
+## [3,]   36   90  162
+```
+
+``` r
 A%*%B
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]  138  174  210
+## [2,]  171  216  261
+## [3,]  204  258  312
+```
+
+``` r
 # 4. 
 I <- diag(4)
 matriz_diag <- diag(c(2,4,6,8))
@@ -1253,6 +1541,15 @@ length(minha_lista)
 
 Renomeando os elementos da lista:
 
+
+``` r
+names(minha_lista) 
+```
+
+```
+## NULL
+```
+
 ``` r
 names(minha_lista) <- c("nome", "idade", "notas", "matriz")
 minha_lista
@@ -1299,39 +1596,6 @@ minha_lista$matriz # equivalente a minha_lista[[4]]
 ## [2,]    2    4
 ```
 
-Podemos também ter uma lista de listas:
-
-``` r
-lista2 <- list(nome = "Ana",
-              notas = list(sem1 = c(5,6,7), sem2 = c(8,6,9)),
-              materias = list(sem1 = c("Matematica", "Historia", "Fisica"),
-                              sem2 = c("Português", "Artes", "Geografia")))
-```
-
-Neste caso, para acessar os elementos, fazemos:
-
-``` r
-# Notas semestre 1
-lista2$notas$sem1
-```
-
-```
-## [1] 5 6 7
-```
-
-``` r
-# Disciplinas semestre 2
-lista2$materias$sem2
-```
-
-```
-## [1] "Português" "Artes"     "Geografia"
-```
-
-``` r
-# Disciplina 2 do semestre 2
-# lista2$materias$sem2[2]
-```
 
 #### Exercícios {-}
 
@@ -1365,6 +1629,8 @@ e. Adicione um novo filho chamado "Pedro".
 
 
 
+
+
 <div id="protectedContent5" style="display:none;">
   
 ### Respostas {-}
@@ -1378,8 +1644,6 @@ aluno <- list(
   Notas = c(7, 8, 9),
   Curso = "Matemática"
 )
-```
-```r
 # a. Acesse e imprima o nome do aluno
 aluno$Nome
 # b. Modifique a idade para 23
@@ -1388,6 +1652,7 @@ aluno$Idade <- 23
 aluno$Cidade <- "Curitiba"
 # d. Remova o elemento "curso"
 aluno$Curso <- NULL
+
 # 2. 
 # Criando a lista meus_dados
 meus_dados <- list(
@@ -1404,6 +1669,7 @@ meus_dados$Cidades[2]
 meus_dados$Logico <- FALSE
 # d. Extraia o valor da matriz da linha 1, coluna 2.
 meus_dados$Matriz[1,2]
+
 # 3.
 # Criando a lista familia
 familia <- list(
@@ -1446,433 +1712,53 @@ document.getElementById("submitButton5").addEventListener("click", function()
 });
 </script>
 
-## Data Frames
-Os data.frames são estruturas de dados que armazenam colunas de diferentes tipos (numéricas, categóricas, lógicas).
 
-``` r
-## Criando um data frame
-dados <- data.frame(
-  Nome = c("Ana", "Bruno", "Carlos", "Maria", "Jose", "Tata"),
-  Nivel_escolaridade = c("F","M","S","M","F","M"),
-  Idade = c(25, 30, 22, 10, 15, 16),
-  Nota = c(8,6,3,4,7,2),
-  Aprovado = c(TRUE, TRUE, FALSE, FALSE, TRUE, FALSE)
-)
-dados
-```
 
-```
-##     Nome Nivel_escolaridade Idade Nota Aprovado
-## 1    Ana                  F    25    8     TRUE
-## 2  Bruno                  M    30    6     TRUE
-## 3 Carlos                  S    22    3    FALSE
-## 4  Maria                  M    10    4    FALSE
-## 5   Jose                  F    15    7     TRUE
-## 6   Tata                  M    16    2    FALSE
-```
+<!-- ## Data Frames -->
+<!-- Os data.frames são estruturas de dados que armazenam colunas de diferentes tipos (numéricas, categóricas, lógicas). -->
+<!-- ```{r, eval=F} -->
+<!-- ## Criando um data frame -->
+<!-- dados <- data.frame( -->
+<!--   Nome = c("Ana", "Bruno", "Carlos", "Maria", "Jose", "Tata", "Mia"), -->
+<!--   Nivel_escolaridade = c("F","M","S","M","F","M","F"), -->
+<!--   Idade = c(25, 30, 22, 10, 15, 16, 24), -->
+<!--   Nota = c(8,6,3,4,7,2,9), -->
+<!--   Aprovado = c(TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE) -->
+<!-- ) -->
 
-``` r
-## Algumas operações em data frames:
-## Visualizar os primeiros valores:
-head(dados)  # Mostra as primeiras 6 linhas (padrão)
-```
+<!-- ## Algumas operações em data frames: -->
 
-```
-##     Nome Nivel_escolaridade Idade Nota Aprovado
-## 1    Ana                  F    25    8     TRUE
-## 2  Bruno                  M    30    6     TRUE
-## 3 Carlos                  S    22    3    FALSE
-## 4  Maria                  M    10    4    FALSE
-## 5   Jose                  F    15    7     TRUE
-## 6   Tata                  M    16    2    FALSE
-```
+<!-- # Selecionando a segunda coluna -->
+<!-- dados[, 2] -->
 
-``` r
-head(dados, 3) # Mostra as primeiras 3 linhas
-```
+<!-- # Selecionando linhas com idade maior que 25 -->
+<!-- dados[dados$Idade > 25, ] -->
 
-```
-##     Nome Nivel_escolaridade Idade Nota Aprovado
-## 1    Ana                  F    25    8     TRUE
-## 2  Bruno                  M    30    6     TRUE
-## 3 Carlos                  S    22    3    FALSE
-```
+<!-- # Selecionando apenas a coluna "Nome" -->
+<!-- dados$Nome -->
 
-``` r
-## Visualizar os últimos valores:
-tail(dados)
-```
+<!-- # Usando subset para filtrar dados -->
+<!-- subset(dados, Idade > 25) -->
 
-```
-##     Nome Nivel_escolaridade Idade Nota Aprovado
-## 1    Ana                  F    25    8     TRUE
-## 2  Bruno                  M    30    6     TRUE
-## 3 Carlos                  S    22    3    FALSE
-## 4  Maria                  M    10    4    FALSE
-## 5   Jose                  F    15    7     TRUE
-## 6   Tata                  M    16    2    FALSE
-```
+<!-- # Selecionando apenas a coluna "Nome" onde a idade é maior que 25 -->
+<!-- subset(dados, Idade > 25, select = Nome) -->
 
-``` r
-## estrutura 
-str(dados)  
-```
+<!-- # Ordenando o data frame por idade -->
+<!-- dados[order(dados$Idade), ] -->
 
-```
-## 'data.frame':	6 obs. of  5 variables:
-##  $ Nome              : chr  "Ana" "Bruno" "Carlos" "Maria" ...
-##  $ Nivel_escolaridade: chr  "F" "M" "S" "M" ...
-##  $ Idade             : num  25 30 22 10 15 16
-##  $ Nota              : num  8 6 3 4 7 2
-##  $ Aprovado          : logi  TRUE TRUE FALSE FALSE TRUE FALSE
-```
+<!-- # Ordenando por idade em ordem decrescente -->
+<!-- dados[order(dados$Idade, decreasing = TRUE), ] -->
 
-``` r
-## Selecionando colunas
-# Podemos fazer:
-dados[, 2]
-```
+<!-- # Adicionando uma nova coluna -->
+<!-- dados$Status <- c("Aprovado", "Aprovado", "Reprovado", "Aprovado") -->
 
-```
-## [1] "F" "M" "S" "M" "F" "M"
-```
+<!-- # Removendo uma coluna -->
+<!-- dados$Status <- NULL -->
 
-``` r
-# ou
-dados$Nivel_escolaridade
-```
+<!-- # Renomeando colunas -->
+<!-- colnames(dados) <- c("Nome_Aluno", "Idade_Aluno", "Nota_Final") -->
+<!-- dados -->
+<!-- ``` -->
 
-```
-## [1] "F" "M" "S" "M" "F" "M"
-```
 
-``` r
-## Selecionando linhas:
-dados[3,]
-```
-
-```
-##     Nome Nivel_escolaridade Idade Nota Aprovado
-## 3 Carlos                  S    22    3    FALSE
-```
-
-``` r
-## Selecionando um valor de uma linha e uma coluna:
-dados[2,3]
-```
-
-```
-## [1] 30
-```
-
-``` r
-# Adicionando uma nova coluna aos dados
-dados$Status <- c("Aprovado", "Aprovado", "Reprovado", "Reprovado", 
-                  "Aprovado", "Reprovado")
-# Removendo uma coluna dos dados
-dados$Status <- NULL
-# Renomeando colunas
-colnames(dados) <- c("nome", "nivel", "idade", "nota", "aprovado")
-```
-
-Ordenando e filtrando valores de um data.frame:
-
-``` r
-# Ordenando os dados por idade -> função order()
-dados[order(dados$idade), ]
-```
-
-```
-##     nome nivel idade nota aprovado
-## 4  Maria     M    10    4    FALSE
-## 5   Jose     F    15    7     TRUE
-## 6   Tata     M    16    2    FALSE
-## 3 Carlos     S    22    3    FALSE
-## 1    Ana     F    25    8     TRUE
-## 2  Bruno     M    30    6     TRUE
-```
-
-``` r
-# Ordenando por idade em ordem decrescente
-dados[order(dados$idade, decreasing = TRUE), ]
-```
-
-```
-##     nome nivel idade nota aprovado
-## 2  Bruno     M    30    6     TRUE
-## 1    Ana     F    25    8     TRUE
-## 3 Carlos     S    22    3    FALSE
-## 6   Tata     M    16    2    FALSE
-## 5   Jose     F    15    7     TRUE
-## 4  Maria     M    10    4    FALSE
-```
-
-``` r
-# Selecionando linhas em que Aprovado == T
-dados[dados$aprovado == T, ]
-```
-
-```
-##    nome nivel idade nota aprovado
-## 1   Ana     F    25    8     TRUE
-## 2 Bruno     M    30    6     TRUE
-## 5  Jose     F    15    7     TRUE
-```
-
-``` r
-# Selecionando linhas em que idade maior que 25
-dados[dados$idade > 25, ]
-```
-
-```
-##    nome nivel idade nota aprovado
-## 2 Bruno     M    30    6     TRUE
-```
-
-Usando a função subset:
-
-``` r
-# Selecionando linhas em que Aprovado == T
-subset(dados, aprovado == T)
-```
-
-```
-##    nome nivel idade nota aprovado
-## 1   Ana     F    25    8     TRUE
-## 2 Bruno     M    30    6     TRUE
-## 5  Jose     F    15    7     TRUE
-```
-
-``` r
-# Selecionando linhas em que idade maior que 25
-subset(dados, idade > 25)
-```
-
-```
-##    nome nivel idade nota aprovado
-## 2 Bruno     M    30    6     TRUE
-```
-
-``` r
-# Selecionando apenas a coluna "Nome" 
-# onde a idade é maior que 25
-subset(dados, idade > 25, select = nome)
-```
-
-```
-##    nome
-## 2 Bruno
-```
-
-``` r
-# Selecionando os estudantes aprovados 
-# e com nota maior ou igual a 7.
-subset(dados, nota >= 7 & aprovado == T)
-```
-
-```
-##   nome nivel idade nota aprovado
-## 1  Ana     F    25    8     TRUE
-## 5 Jose     F    15    7     TRUE
-```
-
-
-Podemos também acessar data frames disponíveis em pacotes do R:
-
-
-``` r
-# Visualizando os dados de todos os pacotes:
-data(package = .packages(all.available = TRUE))
-# Visualizando dados do pacote datasets
-data(package = "datasets")
-# Chamando o conjunto `mtcars` do pacote datasets
-data("mtcars", package = "datasets")
-# Visualizando as primeiras linhas do dataframe
-head(mtcars)
-```
-
-```
-##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
-```
-
-``` r
-# Informações sobre os dados:
-?mtcars
-# Estrutura dos dados
-str(mtcars)
-```
-
-```
-## 'data.frame':	32 obs. of  11 variables:
-##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
-##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
-##  $ disp: num  160 160 108 258 360 ...
-##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
-##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
-##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
-##  $ qsec: num  16.5 17 18.6 19.4 17 ...
-##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
-##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
-##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
-##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
-```
-
-``` r
-# Nomes das colunas
-names(mtcars)
-```
-
-```
-##  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
-## [11] "carb"
-```
-```r
-# Selecionando as variáveis mpg e cyl
-mtcars[, c("mpg", "cyl")]
-```
-
-
-#### Exercícios {-}
-
-**1.** Considere o data.frame:
-
-``` r
-dados <- data.frame(
-  Nome = c("Ana", "Bruno", "Carlos", "Daniela", "Eduardo"),
-  Idade = c(25, 30, 22, 28, 35),
-  Altura = c(1.65, 1.80, 1.75, 1.60, 1.85),
-  Peso = c(60, 85, 70, 55, 90),
-  Estudante = c(TRUE, FALSE, TRUE, FALSE, FALSE)
-)
-```
-
-a. Selecione apenas a coluna Nome.
-b. Selecione as colunas Nome e Idade.
-c. Selecione a linha correspondente a "Carlos".
-d. Selecione os nomes das pessoas com idade superior a 28 anos.
-e. Selecione apenas os estudantes (Estudante == TRUE).
-f. Crie uma nova coluna chamada IMC usando a fórmula IMC = Peso / (Altura^2).
-g. Usando a função subset, selecione todas as pessoas com altura maior que 1.70m.
-h. Usando a função subset, selecione apenas os estudantes (Estudante == TRUE) e mostre apenas as colunas Nome e Idade.
-i. Usando a função subset, selecione as pessoas com IMC >= 25 e que não são estudantes
-j. Usando a função subset, filtre os indivíduos com idade entre 25 e 35 anos.
-k. Ordenar o data frame em ordem crescente de idade
-
-
-<div id="protectedContent6" style="display:none;">
-  
-### Respostas {-}
-
-```r
-# 1. 
-# a. 
-dados$Nome
-# b. 
-dados[, c("Nome", "Idade")]
-# c. 
-dados[dados$Nome == "Carlos", ]
-# d.
-dados[dados$Idade > 28,]$Nome
-# e. 
-dados[dados$Estudante == TRUE, ]
-# f. 
-dados$IMC <- dados$Peso / (dados$Altura^2)
-# g.
-subset(dados, Altura > 1.70)
-# h. 
-subset(dados, Estudante == TRUE, select = c(Nome, Idade))
-# i.
-subset(dados, IMC >= 25 & Estudante == FALSE)
-# j. 
-subset(dados, Idade >= 25 & Idade <= 35)
-# k. 
-dados[order(dados$Idade), ]
-```
-
-</div>
-  
-  <input type="password" id="passwordInput6" placeholder="Digite a senha">
-  <button id="submitButton6">Acesso Professor</button>
-  
-  
-<script>
-document.getElementById("submitButton6").addEventListener("click", function() 
-{
-  var password = document.getElementById("passwordInput6").value;
-  var correctPassword = "0987";
-  
-  if (password === correctPassword) 
-  {
-    document.getElementById("protectedContent6").style.display = "block";
-  }else 
-  {
-    alert("Senha incorreta! Tente novamente.");
-  }
-});
-</script>
-
-<br>
-
-#### Exercícios do Capítulo 2 <span style="color:red">(Entregar na lista 1)</span>  {-}
-
-
-**1.** Crie uma matriz M de dimensão 4x4 contendo números de 1 a 16 preenchidos por linha.
-
-a. Transponha a matriz M e salve o resultado em M_t.
-b. Substitua todos os valores da diagonal principal de M por 99.
-c. Multiplique cada linha da matriz M por um vetor c(1, 2, 3, 4).
-d. Crie uma matriz 3x3 e nomeie suas linhas como "Linha1", "Linha2", "Linha3" e colunas como "Col1", "Col2", "Col3". Depois, selecione apenas os elementos da segunda e terceira linha.
-
-**2.** Crie uma lista chamada minha_lista contendo um vetor numérico de 5 elementos, uma matriz 2x2 e um data frame de 3 linhas e 2 colunas.
-
-a. Substitua o segundo elemento da lista por um novo vetor de 5 números.
-b. Verifique se um dos elementos da lista é um data frame.
-c. Extraia a segunda coluna do data frame armazenado dentro da lista.
-d. Remova o último elemento da lista sem saber quantos elementos ela possui.
-
-
-**3.** Crie um data frame chamado df com 5 observações e as colunas Nome (caractere), Idade (numérico) e Profissao (caractere).
-
-a. Converta a coluna Profissao em um fator e exiba seus níveis.
-b. Reordene o data frame pela coluna Idade em ordem decrescente.
-c. Selecione todas as linhas onde a idade seja um número par.
-d. Crie um novo data frame contendo apenas os três primeiros registros do data frame original.
-
-**4.** Use o data frame `airquality` para responder às questões abaixo:
-
-a. Selecione apenas a coluna Temp.
-b. Selecione as colunas Ozone e Wind.
-c. Selecione os dados do dia 15.
-d. Selecione as medições do mês de julho (Month == 7).
-e. Selecione apenas as linhas onde Wind é maior que 10 mph.
-f. Adicione uma nova coluna chamada Temp_Celsius convertendo a temperatura para graus Celsius ((Temp - 32) * 5/9).
-g. Reordene o dataset do menor para o maior valor de Ozone.
-h. Usando a função `%in%` selecione apenas os dados dos meses de maio e junho (5 e 6).
-
-**5.** Usando a função subset e considerando os dados anteriores `airquality`, faça o que se pede:
-
-a. Selecione todas as medições onde Ozone está acima de 50 e Wind está abaixo de 10 mph.
-b. Filtre apenas os registros onde a temperatura (Temp) está acima de 85°F e retorne apenas as colunas Temp e Wind.
-c. Selecione as medições para os dias 1 a 10.
-d. Extraia todas as medições onde a velocidade do vento (Wind) está entre 5 e 15 mph.
-
-**6.** Crie um data frame chamado df com três colunas:
-
-- "Nome": c("Ana", "Bruno", "Bia", "Daniela", "Eduardo")
-- "Idade": c(25, NA, 31, 29, NA)
-- "Altura": c(1.65, 1.80, 1.75, NA, 1.68)
-
-a. Identifique quais colunas contêm valores NA.
-b. Conte quantos NA existem em cada coluna do data frame.
-c. Remova todas as observações que possuem pelo menos um NA no data frame.
-
-
-<!-- ### Respostas {-} -->
-
-
+<!-- #### 2 Exercícios da Sessão {-} -->
