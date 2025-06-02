@@ -53,6 +53,14 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -1063,8 +1071,8 @@ f(x)=\frac{1}{b-a}, \quad \text{para} \quad x\in [a,b]
 <pre><code>## [1] 0.5</code></pre>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="análises-estatísticas-básicas.html#cb89-1" tabindex="-1"></a><span class="co"># 3. Gerando 10 valores desta distribuição:</span></span>
 <span id="cb89-2"><a href="análises-estatísticas-básicas.html#cb89-2" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">10</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>##  [1] 4.263366 3.695014 1.915480 3.207094 4.124525 1.570830 2.113109 1.522795
-##  [9] 3.534608 1.908361</code></pre>
+<pre><code>##  [1] 2.198369 3.735111 2.298691 4.540298 3.536568 1.364490 4.958256 1.045955
+##  [9] 1.063603 2.994198</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="análises-estatísticas-básicas.html#cb91-1" tabindex="-1"></a><span class="co"># 4. O valor x tal que P(X ≤ x) = 0,25</span></span>
 <span id="cb91-2"><a href="análises-estatísticas-básicas.html#cb91-2" tabindex="-1"></a><span class="fu">qunif</span>(<span class="fl">0.25</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
@@ -1110,8 +1118,8 @@ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{1}{2}\left(\frac{x - \mu}{\sigma}
 <pre><code>## [1] 0.5</code></pre>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="análises-estatísticas-básicas.html#cb99-1" tabindex="-1"></a><span class="co"># 3. Gerando 10 valores desta distribuição:</span></span>
 <span id="cb99-2"><a href="análises-estatísticas-básicas.html#cb99-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>##  [1] 12.297273 11.922183  8.990866 10.110263  7.764902 11.249396  7.574351
-##  [8] 10.837670 13.358769  8.045839</code></pre>
+<pre><code>##  [1] 11.341628 13.394654  5.929122  8.037496  5.345661  7.107315 12.763518
+##  [8]  7.464431 11.079662 10.634856</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="análises-estatísticas-básicas.html#cb101-1" tabindex="-1"></a><span class="co"># 4. O valor x tal que P(X ≤ x) = 0,25</span></span>
 <span id="cb101-2"><a href="análises-estatísticas-básicas.html#cb101-2" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.25</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 8.65102</code></pre>
@@ -1160,8 +1168,8 @@ Z = \frac{X-\mu}{\sigma} \sim N(0,1)
 <pre><code>## [1] 0.003199768</code></pre>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="análises-estatísticas-básicas.html#cb109-1" tabindex="-1"></a><span class="co"># 3. Gerando 10 valores desta distribuição:</span></span>
 <span id="cb109-2"><a href="análises-estatísticas-básicas.html#cb109-2" tabindex="-1"></a><span class="fu">rt</span>(<span class="dv">10</span>,  <span class="at">df =</span> <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>##  [1]  1.1404647  2.1675864  0.1428530 -1.4541490  0.1446453 -1.9388167
-##  [7] -0.1675570 -1.9567472  0.1835628 -0.3981754</code></pre>
+<pre><code>##  [1] -1.50145591 -2.66650256 -1.56052297 -1.35812943 -0.08865624  0.64188797
+##  [7] -0.37458407 -0.91277564 -0.76620614 -1.04947870</code></pre>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="análises-estatísticas-básicas.html#cb111-1" tabindex="-1"></a><span class="co"># 4. O valor x tal que P(X ≤ x) = 0,25</span></span>
 <span id="cb111-2"><a href="análises-estatísticas-básicas.html#cb111-2" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.25</span>,  <span class="at">df =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] -0.7266868</code></pre>
