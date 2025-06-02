@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Controle de Fluxo e Funções | Estatística Computacional com o R</title>
+  <meta name="description" content="Capítulo 3 Controle de Fluxo e Funções | Estatística Computacional com o R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Controle de Fluxo e Funções | Estatística Computacional com o R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Controle de Fluxo e Funções | Estatística Computacional com o R" />
+  
+  
+  
+
+<meta name="author" content="Profª. Angélica Maria T. Ribeiro" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estruturas-de-dados.html"/>
+<link rel="next" href="importação-e-manipulação-de-dados.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estatística Computacional com o R</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html"><i class="fa fa-check"></i><b>1</b> Conceitos Básicos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#sobre-o-r-e-rstudio"><i class="fa fa-check"></i><b>1.1</b> Sobre o R e RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#algumas-aplicações-de-r"><i class="fa fa-check"></i>Algumas aplicações de R:</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#referênciasfontes-de-ajuda"><i class="fa fa-check"></i>Referências/Fontes de ajuda</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#instalação-do-r-e-do-rstudio"><i class="fa fa-check"></i><b>1.2</b> Instalação do R e do RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#estrutura-do-rstudio"><i class="fa fa-check"></i><b>1.3</b> Estrutura do RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#exercícios-da-sessão"><i class="fa fa-check"></i>1.3 Exercícios da Sessão</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-básicas-em-r"><i class="fa fa-check"></i><b>1.4</b> Operações Básicas em R</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-aritméticas"><i class="fa fa-check"></i><b>1.4.1</b> Operações Aritméticas</a></li>
+<li class="chapter" data-level="1.4.2" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#criando-variáveis-objetos"><i class="fa fa-check"></i><b>1.4.2</b> Criando Variáveis (objetos)</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="1.4.3" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#operações-lógicas-e-comparações"><i class="fa fa-check"></i><b>1.4.3</b> Operações Lógicas e Comparações</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas-1"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#exercícios-da-sessão-1"><i class="fa fa-check"></i>1.4 Exercícios da Sessão</a></li>
+<li class="chapter" data-level="" data-path="conceitos-básicos.html"><a href="conceitos-básicos.html#respostas-2"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>2</b> Estruturas de Dados</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetores"><i class="fa fa-check"></i><b>2.1</b> Vetores</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-3"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-4"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#fatores"><i class="fa fa-check"></i><b>2.2</b> Fatores</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-5"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#matrizes"><i class="fa fa-check"></i><b>2.3</b> Matrizes</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-6"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#listas"><i class="fa fa-check"></i><b>2.4</b> Listas</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-7"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#data-frames"><i class="fa fa-check"></i><b>2.5</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#respostas-8"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html"><i class="fa fa-check"></i><b>3</b> Controle de Fluxo e Funções</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#controle-de-fluxo"><i class="fa fa-check"></i><b>3.1</b> Controle de Fluxo</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#execução-condicional"><i class="fa fa-check"></i><b>3.1.1</b> Execução Condicional</a></li>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-9"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="3.1.2" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#loopings"><i class="fa fa-check"></i><b>3.1.2</b> Loopings</a></li>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-10"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="3.1.3" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#controle-de-fluxo-break-e-next"><i class="fa fa-check"></i><b>3.1.3</b> Controle de Fluxo (break e next)</a></li>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-11"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#família-de-funções-apply"><i class="fa fa-check"></i><b>3.2</b> Família de funções apply</a>
+<ul>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-12"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#funções"><i class="fa fa-check"></i><b>3.3</b> Funções</a>
+<ul>
+<li class="chapter" data-level="" data-path="controle-de-fluxo-e-funções.html"><a href="controle-de-fluxo-e-funções.html#respostas-13"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html"><i class="fa fa-check"></i><b>4</b> Importação e Manipulação de dados</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#importação-e-exportação-de-dados"><i class="fa fa-check"></i><b>4.1</b> Importação e exportação de Dados</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#usando-funções-básicas-do-r"><i class="fa fa-check"></i><b>4.1.1</b> Usando funções básicas do R</a></li>
+<li class="chapter" data-level="" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#respostas-14"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="4.1.2" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#usando-funções-do-pacote-readr"><i class="fa fa-check"></i><b>4.1.2</b> Usando funções do pacote readr</a></li>
+<li class="chapter" data-level="4.1.3" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#usando-funções-do-pacote-readxl"><i class="fa fa-check"></i><b>4.1.3</b> Usando funções do pacote readxl</a></li>
+<li class="chapter" data-level="" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#respostas-15"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#manipulação-de-dados"><i class="fa fa-check"></i><b>4.2</b> Manipulação de Dados</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#tibbles"><i class="fa fa-check"></i><b>4.2.1</b> Tibbles</a></li>
+<li class="chapter" data-level="4.2.2" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#o-operador-pipe"><i class="fa fa-check"></i><b>4.2.2</b> O Operador Pipe (<code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#respostas-16"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="4.2.3" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#o-pacote-dplyr"><i class="fa fa-check"></i><b>4.2.3</b> O pacote dplyr</a></li>
+<li class="chapter" data-level="" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#respostas-17"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#respostas-18"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="" data-path="importação-e-manipulação-de-dados.html"><a href="importação-e-manipulação-de-dados.html#respostas-19"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html"><i class="fa fa-check"></i><b>5</b> Análises Estatísticas Básicas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#análises-descritivas"><i class="fa fa-check"></i><b>5.1</b> Análises Descritivas</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#tabelas-de-frequência"><i class="fa fa-check"></i><b>5.1.1</b> Tabelas de Frequência</a></li>
+<li class="chapter" data-level="5.1.2" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#medidas-descritivas"><i class="fa fa-check"></i><b>5.1.2</b> Medidas Descritivas</a></li>
+<li class="chapter" data-level="5.1.3" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#gráficos"><i class="fa fa-check"></i><b>5.1.3</b> Gráficos</a></li>
+<li class="chapter" data-level="" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#respostas-20"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#probabilidade"><i class="fa fa-check"></i><b>5.2</b> Probabilidade</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#principais-modelos-discretos"><i class="fa fa-check"></i><b>5.2.1</b> Principais Modelos Discretos</a></li>
+<li class="chapter" data-level="5.2.2" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#principais-modelos-contínuos"><i class="fa fa-check"></i><b>5.2.2</b> Principais Modelos Contínuos</a></li>
+<li class="chapter" data-level="" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#respostas-21"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#análises-inferenciais"><i class="fa fa-check"></i><b>5.3</b> Análises Inferenciais</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#intervalo-de-confiança"><i class="fa fa-check"></i><b>5.3.1</b> Intervalo de Confiança</a></li>
+<li class="chapter" data-level="5.3.2" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#testes-de-hipóteses"><i class="fa fa-check"></i><b>5.3.2</b> Testes de Hipóteses</a></li>
+<li class="chapter" data-level="" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#respostas-22"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gráficos-e-visualização-de-dados.html"><a href="gráficos-e-visualização-de-dados.html"><i class="fa fa-check"></i><b>6</b> Gráficos e visualização de dados</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="gráficos-e-visualização-de-dados.html"><a href="gráficos-e-visualização-de-dados.html#gráficos-básicos-com-graphics"><i class="fa fa-check"></i><b>6.1</b> Gráficos básicos com graphics</a>
+<ul>
+<li class="chapter" data-level="" data-path="gráficos-e-visualização-de-dados.html"><a href="gráficos-e-visualização-de-dados.html#respostas-23"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="gráficos-e-visualização-de-dados.html"><a href="gráficos-e-visualização-de-dados.html#gráficos-com-ggplot2"><i class="fa fa-check"></i><b>6.2</b> Gráficos com ggplot2</a>
+<ul>
+<li class="chapter" data-level="" data-path="gráficos-e-visualização-de-dados.html"><a href="gráficos-e-visualização-de-dados.html#respostas-24"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-e-visualização-de-dados.html"><a href="gráficos-e-visualização-de-dados.html#gráficos-interativos-com-plotly"><i class="fa fa-check"></i><b>6.3</b> Gráficos Interativos com plotly</a>
+<ul>
+<li class="chapter" data-level="" data-path="gráficos-e-visualização-de-dados.html"><a href="gráficos-e-visualização-de-dados.html#respostas-25"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>7</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="r-markdown.html"><a href="r-markdown.html#conceitos-básicos-1"><i class="fa fa-check"></i><b>7.1</b> Conceitos Básicos</a></li>
+<li class="chapter" data-level="7.2" data-path="r-markdown.html"><a href="r-markdown.html#corpo-do-documento"><i class="fa fa-check"></i><b>7.2</b> Corpo do documento</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#respostas-26"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#respostas-27"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="r-markdown.html"><a href="r-markdown.html#slides-e-apresentações"><i class="fa fa-check"></i><b>7.3</b> Slides e Apresentações</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estatística Computacional com o R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="controle-de-fluxo-e-funções" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Controle de Fluxo e Funções<a href="controle-de-fluxo-e-funções.html#controle-de-fluxo-e-funções" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="controle-de-fluxo" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Controle de Fluxo<a href="controle-de-fluxo-e-funções.html#controle-de-fluxo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="execução-condicional" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Execução Condicional<a href="controle-de-fluxo-e-funções.html#execução-condicional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="if-e-if-else" class="section level4 unnumbered hasAnchor">
+<h4>1. <code>if</code> e <code>if-else</code><a href="controle-de-fluxo-e-funções.html#if-e-if-else" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>O comando <strong>if</strong> é usado para executar um comando se alguma condição for satisfeita.</p>
+<p><strong>Estrutura do if:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="controle-de-fluxo-e-funções.html#cb1-1" tabindex="-1"></a><span class="cf">if</span> (condicao) {</span>
+<span id="cb1-2"><a href="controle-de-fluxo-e-funções.html#cb1-2" tabindex="-1"></a>  <span class="co"># comandos que serao rodados</span></span>
+<span id="cb1-3"><a href="controle-de-fluxo-e-funções.html#cb1-3" tabindex="-1"></a>  <span class="co"># se condicao = TRUE</span></span>
+<span id="cb1-4"><a href="controle-de-fluxo-e-funções.html#cb1-4" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="controle-de-fluxo-e-funções.html#cb2-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb2-2"><a href="controle-de-fluxo-e-funções.html#cb2-2" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb2-3"><a href="controle-de-fluxo-e-funções.html#cb2-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;O número é positivo&quot;</span>)</span>
+<span id="cb2-4"><a href="controle-de-fluxo-e-funções.html#cb2-4" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;O número é positivo&quot;</code></pre>
+<p>Caso queiramos executar um bloco alternativo, usamos o <code>if</code> em conjunto com o <code>else</code>:</p>
+<p><strong>Estrutura do if-else:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="controle-de-fluxo-e-funções.html#cb4-1" tabindex="-1"></a><span class="cf">if</span> (condicao) {</span>
+<span id="cb4-2"><a href="controle-de-fluxo-e-funções.html#cb4-2" tabindex="-1"></a>  <span class="co"># comandos que serao rodados</span></span>
+<span id="cb4-3"><a href="controle-de-fluxo-e-funções.html#cb4-3" tabindex="-1"></a>  <span class="co"># se condicao = TRUE</span></span>
+<span id="cb4-4"><a href="controle-de-fluxo-e-funções.html#cb4-4" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb4-5"><a href="controle-de-fluxo-e-funções.html#cb4-5" tabindex="-1"></a>  <span class="co"># comandos que serao rodados</span></span>
+<span id="cb4-6"><a href="controle-de-fluxo-e-funções.html#cb4-6" tabindex="-1"></a>  <span class="co"># se condicao = FALSE</span></span>
+<span id="cb4-7"><a href="controle-de-fluxo-e-funções.html#cb4-7" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="controle-de-fluxo-e-funções.html#cb5-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">3</span></span>
+<span id="cb5-2"><a href="controle-de-fluxo-e-funções.html#cb5-2" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb5-3"><a href="controle-de-fluxo-e-funções.html#cb5-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;O número é positivo&quot;</span>)</span>
+<span id="cb5-4"><a href="controle-de-fluxo-e-funções.html#cb5-4" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb5-5"><a href="controle-de-fluxo-e-funções.html#cb5-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;O número é negativo ou zero&quot;</span>)</span>
+<span id="cb5-6"><a href="controle-de-fluxo-e-funções.html#cb5-6" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;O número é negativo ou zero&quot;</code></pre>
+</div>
+<div id="ifelse" class="section level4 unnumbered hasAnchor">
+<h4>2. <code>ifelse</code><a href="controle-de-fluxo-e-funções.html#ifelse" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A função <code>ifelse()</code> é útil quando precisamos aplicar uma condição de forma vetorizada.</p>
+<p><strong>Estrutura do ifelse:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="controle-de-fluxo-e-funções.html#cb7-1" tabindex="-1"></a><span class="fu">ifelse</span>(vetor_de_condicoes, valor_se_TRUE, valor_se_FALSE)</span></code></pre></div>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="controle-de-fluxo-e-funções.html#cb8-1" tabindex="-1"></a>notas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">5</span>)</span>
+<span id="cb8-2"><a href="controle-de-fluxo-e-funções.html#cb8-2" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(notas <span class="sc">&gt;=</span> <span class="dv">6</span>, <span class="st">&quot;Aprovado&quot;</span>, <span class="st">&quot;Reprovado&quot;</span>)</span>
+<span id="cb8-3"><a href="controle-de-fluxo-e-funções.html#cb8-3" tabindex="-1"></a><span class="fu">print</span>(resultado)</span></code></pre></div>
+<pre><code>## [1] &quot;Aprovado&quot;  &quot;Reprovado&quot; &quot;Aprovado&quot;  &quot;Reprovado&quot;</code></pre>
+</div>
+<div id="exercícios-8" class="section level4 unnumbered hasAnchor">
+<h4>Exercícios<a href="controle-de-fluxo-e-funções.html#exercícios-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Crie uma estrutura <code>if</code> que verifique se um número é maior do que 100 e em caso afirmativo print a mensagem: “O número é maior que 100”.</p>
+<p><strong>2.</strong> Crie uma estrutura <code>if</code> que verifique se um número é múltiplo de 5 e em caso afirmativo print a mensagem: “O número é múltiplo de 5”.</p>
+<p><strong>3.</strong> Crie uma estrutura usando <code>if</code> em conjunto com <code>else</code> que print “Aprovado”, caso a nota seja maior ou igual a 7, e “Reprovado”, caso contrário.</p>
+<p><strong>4.</strong> Crie um vetor de números e use <code>ifelse</code> para verificar quais são pares e ímpares.</p>
+<p><strong>5.</strong> Crie um vetor de idades e use <code>ifelse</code> para classificar cada idade como “Menor de idade”, se menor que 18, ou “Maior de idade”, caso contrário.</p>
+</div>
+</div>
+<div id="protectedContent1" style="display:none;">
+<div id="respostas-9" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="controle-de-fluxo-e-funções.html#respostas-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="controle-de-fluxo-e-funções.html#cb10-1" tabindex="-1"></a><span class="co"># 1.</span></span>
+<span id="cb10-2"><a href="controle-de-fluxo-e-funções.html#cb10-2" tabindex="-1"></a>numero <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb10-3"><a href="controle-de-fluxo-e-funções.html#cb10-3" tabindex="-1"></a><span class="cf">if</span> (numero <span class="sc">&gt;</span> <span class="dv">100</span>) {</span>
+<span id="cb10-4"><a href="controle-de-fluxo-e-funções.html#cb10-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;O número é maior que 100&quot;</span>)</span>
+<span id="cb10-5"><a href="controle-de-fluxo-e-funções.html#cb10-5" tabindex="-1"></a>}</span>
+<span id="cb10-6"><a href="controle-de-fluxo-e-funções.html#cb10-6" tabindex="-1"></a><span class="co"># 2.</span></span>
+<span id="cb10-7"><a href="controle-de-fluxo-e-funções.html#cb10-7" tabindex="-1"></a>numero <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb10-8"><a href="controle-de-fluxo-e-funções.html#cb10-8" tabindex="-1"></a><span class="cf">if</span> (numero <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb10-9"><a href="controle-de-fluxo-e-funções.html#cb10-9" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;O número é múltiplo de 5&quot;</span>)</span>
+<span id="cb10-10"><a href="controle-de-fluxo-e-funções.html#cb10-10" tabindex="-1"></a>}</span>
+<span id="cb10-11"><a href="controle-de-fluxo-e-funções.html#cb10-11" tabindex="-1"></a><span class="co"># 3.</span></span>
+<span id="cb10-12"><a href="controle-de-fluxo-e-funções.html#cb10-12" tabindex="-1"></a>nota <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb10-13"><a href="controle-de-fluxo-e-funções.html#cb10-13" tabindex="-1"></a><span class="cf">if</span> (nota <span class="sc">&gt;=</span> <span class="dv">7</span>) {</span>
+<span id="cb10-14"><a href="controle-de-fluxo-e-funções.html#cb10-14" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Aprovado!&quot;</span>)</span>
+<span id="cb10-15"><a href="controle-de-fluxo-e-funções.html#cb10-15" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb10-16"><a href="controle-de-fluxo-e-funções.html#cb10-16" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Reprovado!&quot;</span>)</span>
+<span id="cb10-17"><a href="controle-de-fluxo-e-funções.html#cb10-17" tabindex="-1"></a>}</span>
+<span id="cb10-18"><a href="controle-de-fluxo-e-funções.html#cb10-18" tabindex="-1"></a><span class="co"># 4. </span></span>
+<span id="cb10-19"><a href="controle-de-fluxo-e-funções.html#cb10-19" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span>
+<span id="cb10-20"><a href="controle-de-fluxo-e-funções.html#cb10-20" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(numeros <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;Par&quot;</span>, <span class="st">&quot;Ímpar&quot;</span>)</span>
+<span id="cb10-21"><a href="controle-de-fluxo-e-funções.html#cb10-21" tabindex="-1"></a><span class="fu">print</span>(resultado)</span>
+<span id="cb10-22"><a href="controle-de-fluxo-e-funções.html#cb10-22" tabindex="-1"></a><span class="co"># 5.</span></span>
+<span id="cb10-23"><a href="controle-de-fluxo-e-funções.html#cb10-23" tabindex="-1"></a>idades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">30</span>, <span class="dv">12</span>)</span>
+<span id="cb10-24"><a href="controle-de-fluxo-e-funções.html#cb10-24" tabindex="-1"></a>classificacao <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(idades <span class="sc">&gt;=</span> <span class="dv">18</span>, <span class="st">&quot;Maior de idade&quot;</span>, <span class="st">&quot;Menor de idade&quot;</span>)</span>
+<span id="cb10-25"><a href="controle-de-fluxo-e-funções.html#cb10-25" tabindex="-1"></a><span class="fu">print</span>(classificacao)</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput1" placeholder="Digite a senha">
+<button id="submitButton1">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton1").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput1").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent1").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+<div id="loopings" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Loopings<a href="controle-de-fluxo-e-funções.html#loopings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Os loops são usados para repetir blocos de código até que uma condição seja atendida.</p>
+<div id="for" class="section level4 unnumbered hasAnchor">
+<h4>1. <code>for</code><a href="controle-de-fluxo-e-funções.html#for" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Usado para iterar sobre vetores, listas ou sequências.</p>
+<p><strong>Estrutura do <code>for</code>:</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="controle-de-fluxo-e-funções.html#cb11-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> conjunto_de_valores){</span>
+<span id="cb11-2"><a href="controle-de-fluxo-e-funções.html#cb11-2" tabindex="-1"></a>  <span class="co"># comandos que serão repetidos</span></span>
+<span id="cb11-3"><a href="controle-de-fluxo-e-funções.html#cb11-3" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Exemplo: Imprimindo números de 1 a 5</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="controle-de-fluxo-e-funções.html#cb12-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb12-2"><a href="controle-de-fluxo-e-funções.html#cb12-2" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb12-3"><a href="controle-de-fluxo-e-funções.html#cb12-3" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<p><strong>Exemplo: Iterando sobre um vetor de letras</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="controle-de-fluxo-e-funções.html#cb14-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb14-2"><a href="controle-de-fluxo-e-funções.html#cb14-2" tabindex="-1"></a>  <span class="fu">print</span>(letters[i])</span>
+<span id="cb14-3"><a href="controle-de-fluxo-e-funções.html#cb14-3" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;a&quot;
+## [1] &quot;b&quot;
+## [1] &quot;c&quot;
+## [1] &quot;d&quot;
+## [1] &quot;e&quot;</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="controle-de-fluxo-e-funções.html#cb16-1" tabindex="-1"></a><span class="co"># letters -&gt; vetor de letras do alfabeto disponíveis no R</span></span></code></pre></div>
+<p><strong>Exemplo: Iterando em vetores</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="controle-de-fluxo-e-funções.html#cb17-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb17-2"><a href="controle-de-fluxo-e-funções.html#cb17-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(v)) {</span>
+<span id="cb17-3"><a href="controle-de-fluxo-e-funções.html#cb17-3" tabindex="-1"></a>  v[i] <span class="ot">&lt;-</span> v[i]<span class="sc">/</span><span class="dv">10</span></span>
+<span id="cb17-4"><a href="controle-de-fluxo-e-funções.html#cb17-4" tabindex="-1"></a>}</span>
+<span id="cb17-5"><a href="controle-de-fluxo-e-funções.html#cb17-5" tabindex="-1"></a>v</span></code></pre></div>
+<pre><code>##  [1] 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+<p>Mas o R é vetorizado este é o tipo de loop não faz sentido, pois é muito mais rápido e fácil fazer: <code>v &lt;- v/10</code>.</p>
+<p><strong>Exemplo: Iterando em listas</strong></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="controle-de-fluxo-e-funções.html#cb19-1" tabindex="-1"></a><span class="co"># Criando uma lista de vetores com tamanhos diferentes</span></span>
+<span id="cb19-2"><a href="controle-de-fluxo-e-funções.html#cb19-2" tabindex="-1"></a>lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>))</span>
+<span id="cb19-3"><a href="controle-de-fluxo-e-funções.html#cb19-3" tabindex="-1"></a><span class="co"># Dividindo cada vetor da lista pelo seu máximo:</span></span>
+<span id="cb19-4"><a href="controle-de-fluxo-e-funções.html#cb19-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(lista)) {</span>
+<span id="cb19-5"><a href="controle-de-fluxo-e-funções.html#cb19-5" tabindex="-1"></a>  lista[[i]] <span class="ot">&lt;-</span> lista[[i]] <span class="sc">/</span> <span class="fu">max</span>(lista[[i]])</span>
+<span id="cb19-6"><a href="controle-de-fluxo-e-funções.html#cb19-6" tabindex="-1"></a>}</span>
+<span id="cb19-7"><a href="controle-de-fluxo-e-funções.html#cb19-7" tabindex="-1"></a>lista</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 0.3333333 0.6666667 1.0000000
+## 
+## [[2]]
+## [1] 0.25 0.50 0.75 1.00</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="controle-de-fluxo-e-funções.html#cb21-1" tabindex="-1"></a><span class="co"># seq_along(lista) faz o mesmo que 1:length(lista)</span></span>
+<span id="cb21-2"><a href="controle-de-fluxo-e-funções.html#cb21-2" tabindex="-1"></a><span class="co"># Não podemos simplesmente fazer lista / max(lista), </span></span>
+<span id="cb21-3"><a href="controle-de-fluxo-e-funções.html#cb21-3" tabindex="-1"></a><span class="co"># pois lista não é um vetor numérico, mas uma lista de vetores.</span></span></code></pre></div>
+<p><strong>Exemplo: Iterando em matrizes (diferença entre &amp; e &amp;&amp;)</strong></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="controle-de-fluxo-e-funções.html#cb22-1" tabindex="-1"></a><span class="do">## Comparando os Tempos de Execução:</span></span>
+<span id="cb22-2"><a href="controle-de-fluxo-e-funções.html#cb22-2" tabindex="-1"></a>n_linhas <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb22-3"><a href="controle-de-fluxo-e-funções.html#cb22-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb22-4"><a href="controle-de-fluxo-e-funções.html#cb22-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="fu">c</span>(T,F), <span class="at">size =</span> n_linhas<span class="sc">^</span><span class="dv">2</span>, <span class="at">replace =</span> T), <span class="at">nrow =</span> n_linhas)</span>
+<span id="cb22-5"><a href="controle-de-fluxo-e-funções.html#cb22-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="fu">c</span>(T,F), <span class="at">size =</span> n_linhas<span class="sc">^</span><span class="dv">2</span>, <span class="at">replace =</span> T), <span class="at">nrow =</span> n_linhas)</span>
+<span id="cb22-6"><a href="controle-de-fluxo-e-funções.html#cb22-6" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> n_linhas, <span class="at">ncol =</span> n_linhas)</span>
+<span id="cb22-7"><a href="controle-de-fluxo-e-funções.html#cb22-7" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="controle-de-fluxo-e-funções.html#cb22-8" tabindex="-1"></a><span class="co"># Usando &amp; (avalia todos)</span></span>
+<span id="cb22-9"><a href="controle-de-fluxo-e-funções.html#cb22-9" tabindex="-1"></a><span class="fu">system.time</span>({</span>
+<span id="cb22-10"><a href="controle-de-fluxo-e-funções.html#cb22-10" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)) {</span>
+<span id="cb22-11"><a href="controle-de-fluxo-e-funções.html#cb22-11" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(x)) {</span>
+<span id="cb22-12"><a href="controle-de-fluxo-e-funções.html#cb22-12" tabindex="-1"></a>      <span class="cf">if</span>(x[i,j] <span class="sc">&amp;</span> y[i,j] <span class="sc">&amp;</span> (i<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>) <span class="sc">&amp;</span> (j<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>))</span>
+<span id="cb22-13"><a href="controle-de-fluxo-e-funções.html#cb22-13" tabindex="-1"></a>      {</span>
+<span id="cb22-14"><a href="controle-de-fluxo-e-funções.html#cb22-14" tabindex="-1"></a>         result1[i,j] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb22-15"><a href="controle-de-fluxo-e-funções.html#cb22-15" tabindex="-1"></a>      }</span>
+<span id="cb22-16"><a href="controle-de-fluxo-e-funções.html#cb22-16" tabindex="-1"></a>    }</span>
+<span id="cb22-17"><a href="controle-de-fluxo-e-funções.html#cb22-17" tabindex="-1"></a>  }</span>
+<span id="cb22-18"><a href="controle-de-fluxo-e-funções.html#cb22-18" tabindex="-1"></a>})</span>
+<span id="cb22-19"><a href="controle-de-fluxo-e-funções.html#cb22-19" tabindex="-1"></a><span class="co"># Usando &amp;&amp; (só avalia o primeiro)</span></span>
+<span id="cb22-20"><a href="controle-de-fluxo-e-funções.html#cb22-20" tabindex="-1"></a><span class="fu">system.time</span>({</span>
+<span id="cb22-21"><a href="controle-de-fluxo-e-funções.html#cb22-21" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)) {</span>
+<span id="cb22-22"><a href="controle-de-fluxo-e-funções.html#cb22-22" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(x)) {</span>
+<span id="cb22-23"><a href="controle-de-fluxo-e-funções.html#cb22-23" tabindex="-1"></a>      <span class="cf">if</span>(x[i,j] <span class="sc">&amp;&amp;</span> y[i,j] <span class="sc">&amp;&amp;</span> (i<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>) <span class="sc">&amp;&amp;</span> (j<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>))</span>
+<span id="cb22-24"><a href="controle-de-fluxo-e-funções.html#cb22-24" tabindex="-1"></a>      {</span>
+<span id="cb22-25"><a href="controle-de-fluxo-e-funções.html#cb22-25" tabindex="-1"></a>         result1[i,j] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb22-26"><a href="controle-de-fluxo-e-funções.html#cb22-26" tabindex="-1"></a>      }</span>
+<span id="cb22-27"><a href="controle-de-fluxo-e-funções.html#cb22-27" tabindex="-1"></a>    }</span>
+<span id="cb22-28"><a href="controle-de-fluxo-e-funções.html#cb22-28" tabindex="-1"></a>  }</span>
+<span id="cb22-29"><a href="controle-de-fluxo-e-funções.html#cb22-29" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="controle-de-fluxo-e-funções.html#cb23-1" tabindex="-1"></a><span class="do">## Comparando os Termos Avaliados:</span></span>
+<span id="cb23-2"><a href="controle-de-fluxo-e-funções.html#cb23-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> T)</span>
+<span id="cb23-3"><a href="controle-de-fluxo-e-funções.html#cb23-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> T)</span>
+<span id="cb23-4"><a href="controle-de-fluxo-e-funções.html#cb23-4" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb23-5"><a href="controle-de-fluxo-e-funções.html#cb23-5" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="controle-de-fluxo-e-funções.html#cb23-6" tabindex="-1"></a><span class="co"># Função que identifica as avaliações</span></span>
+<span id="cb23-7"><a href="controle-de-fluxo-e-funções.html#cb23-7" tabindex="-1"></a>print_eval <span class="ot">&lt;-</span> <span class="cf">function</span>(val, label, i, j) {</span>
+<span id="cb23-8"><a href="controle-de-fluxo-e-funções.html#cb23-8" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;[%d,%d] Avaliando: %s → %s</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
+<span id="cb23-9"><a href="controle-de-fluxo-e-funções.html#cb23-9" tabindex="-1"></a>              i, j, label, val))</span>
+<span id="cb23-10"><a href="controle-de-fluxo-e-funções.html#cb23-10" tabindex="-1"></a>  <span class="co"># printa uma mensagem substituindo %d e %s</span></span>
+<span id="cb23-11"><a href="controle-de-fluxo-e-funções.html#cb23-11" tabindex="-1"></a>  <span class="co"># pelos valores i, j, label, val</span></span>
+<span id="cb23-12"><a href="controle-de-fluxo-e-funções.html#cb23-12" tabindex="-1"></a>  <span class="co"># %d usado para números e %s para strings (textos)</span></span>
+<span id="cb23-13"><a href="controle-de-fluxo-e-funções.html#cb23-13" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb23-14"><a href="controle-de-fluxo-e-funções.html#cb23-14" tabindex="-1"></a>}</span>
+<span id="cb23-15"><a href="controle-de-fluxo-e-funções.html#cb23-15" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="controle-de-fluxo-e-funções.html#cb23-16" tabindex="-1"></a><span class="co"># Usando &amp; (avalia todos)</span></span>
+<span id="cb23-17"><a href="controle-de-fluxo-e-funções.html#cb23-17" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)) {</span>
+<span id="cb23-18"><a href="controle-de-fluxo-e-funções.html#cb23-18" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(x)) {</span>
+<span id="cb23-19"><a href="controle-de-fluxo-e-funções.html#cb23-19" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">print_eval</span>(x[i,j], <span class="st">&quot;x&quot;</span>, i, j) <span class="sc">&amp;</span> </span>
+<span id="cb23-20"><a href="controle-de-fluxo-e-funções.html#cb23-20" tabindex="-1"></a>        <span class="fu">print_eval</span>(y[i,j], <span class="st">&quot;y&quot;</span>, i, j) <span class="sc">&amp;</span> </span>
+<span id="cb23-21"><a href="controle-de-fluxo-e-funções.html#cb23-21" tabindex="-1"></a>        <span class="fu">print_eval</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;i par&quot;</span>, i, j) <span class="sc">&amp;</span> </span>
+<span id="cb23-22"><a href="controle-de-fluxo-e-funções.html#cb23-22" tabindex="-1"></a>        <span class="fu">print_eval</span>(j <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;j par&quot;</span>, i, j)) {</span>
+<span id="cb23-23"><a href="controle-de-fluxo-e-funções.html#cb23-23" tabindex="-1"></a>      result1[i,j] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb23-24"><a href="controle-de-fluxo-e-funções.html#cb23-24" tabindex="-1"></a>    }</span>
+<span id="cb23-25"><a href="controle-de-fluxo-e-funções.html#cb23-25" tabindex="-1"></a>  }</span>
+<span id="cb23-26"><a href="controle-de-fluxo-e-funções.html#cb23-26" tabindex="-1"></a>}</span>
+<span id="cb23-27"><a href="controle-de-fluxo-e-funções.html#cb23-27" tabindex="-1"></a><span class="co"># Usando &amp;&amp; (só avalia o primeiro)</span></span>
+<span id="cb23-28"><a href="controle-de-fluxo-e-funções.html#cb23-28" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)) {</span>
+<span id="cb23-29"><a href="controle-de-fluxo-e-funções.html#cb23-29" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(x)) {</span>
+<span id="cb23-30"><a href="controle-de-fluxo-e-funções.html#cb23-30" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">print_eval</span>(x[i,j], <span class="st">&quot;x&quot;</span>, i, j) <span class="sc">&amp;&amp;</span> </span>
+<span id="cb23-31"><a href="controle-de-fluxo-e-funções.html#cb23-31" tabindex="-1"></a>        <span class="fu">print_eval</span>(y[i,j], <span class="st">&quot;y&quot;</span>, i, j) <span class="sc">&amp;&amp;</span> </span>
+<span id="cb23-32"><a href="controle-de-fluxo-e-funções.html#cb23-32" tabindex="-1"></a>        <span class="fu">print_eval</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;i par&quot;</span>, i, j) <span class="sc">&amp;&amp;</span> </span>
+<span id="cb23-33"><a href="controle-de-fluxo-e-funções.html#cb23-33" tabindex="-1"></a>        <span class="fu">print_eval</span>(j <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;j par&quot;</span>, i, j)) {</span>
+<span id="cb23-34"><a href="controle-de-fluxo-e-funções.html#cb23-34" tabindex="-1"></a>      result1[i,j] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb23-35"><a href="controle-de-fluxo-e-funções.html#cb23-35" tabindex="-1"></a>    }</span>
+<span id="cb23-36"><a href="controle-de-fluxo-e-funções.html#cb23-36" tabindex="-1"></a>  }</span>
+<span id="cb23-37"><a href="controle-de-fluxo-e-funções.html#cb23-37" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="while" class="section level4 unnumbered hasAnchor">
+<h4>2. <code>while</code><a href="controle-de-fluxo-e-funções.html#while" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>o recurso <code>for</code> é útil se você souber com antecedência o conjunto de valores sobre o qual deseja repetir uma ação. Caso não saiba, o loop <code>while</code> é mais flexível.</p>
+<p><strong>Estrutura do while:</strong></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="controle-de-fluxo-e-funções.html#cb24-1" tabindex="-1"></a><span class="cf">while</span> (condição) {</span>
+<span id="cb24-2"><a href="controle-de-fluxo-e-funções.html#cb24-2" tabindex="-1"></a>  <span class="co"># comandos a serem executados</span></span>
+<span id="cb24-3"><a href="controle-de-fluxo-e-funções.html#cb24-3" tabindex="-1"></a>  <span class="co"># enquanto a condição for verdadeira</span></span>
+<span id="cb24-4"><a href="controle-de-fluxo-e-funções.html#cb24-4" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="controle-de-fluxo-e-funções.html#cb25-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb25-2"><a href="controle-de-fluxo-e-funções.html#cb25-2" tabindex="-1"></a><span class="cf">while</span> (x <span class="sc">&lt;=</span> <span class="dv">3</span>) {</span>
+<span id="cb25-3"><a href="controle-de-fluxo-e-funções.html#cb25-3" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb25-4"><a href="controle-de-fluxo-e-funções.html#cb25-4" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb25-5"><a href="controle-de-fluxo-e-funções.html#cb25-5" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3</code></pre>
+</div>
+<div id="repeat" class="section level4 unnumbered hasAnchor">
+<h4>3. <code>repeat</code><a href="controle-de-fluxo-e-funções.html#repeat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Executa comandos indefinidamente até que um <code>break</code> seja encontrado.</p>
+<p><strong>Estrutura do repeat:</strong></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="controle-de-fluxo-e-funções.html#cb27-1" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb27-2"><a href="controle-de-fluxo-e-funções.html#cb27-2" tabindex="-1"></a>  <span class="co"># código</span></span>
+<span id="cb27-3"><a href="controle-de-fluxo-e-funções.html#cb27-3" tabindex="-1"></a>  <span class="cf">if</span> (condição) <span class="cf">break</span></span>
+<span id="cb27-4"><a href="controle-de-fluxo-e-funções.html#cb27-4" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Exemplo:</strong> Parando quando x for 3</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="controle-de-fluxo-e-funções.html#cb28-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb28-2"><a href="controle-de-fluxo-e-funções.html#cb28-2" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb28-3"><a href="controle-de-fluxo-e-funções.html#cb28-3" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb28-4"><a href="controle-de-fluxo-e-funções.html#cb28-4" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb28-5"><a href="controle-de-fluxo-e-funções.html#cb28-5" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">3</span>) <span class="cf">break</span></span>
+<span id="cb28-6"><a href="controle-de-fluxo-e-funções.html#cb28-6" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3</code></pre>
+<p>📌 Diferença entre <code>while</code> e <code>repeat</code>:</p>
+<p><strong>while:</strong></p>
+<ul>
+<li>A condição é testada antes de executar o bloco de código.</li>
+<li>O código só executa se a condição for verdadeira.</li>
+<li>Se a condição inicial for falsa, o bloco não será executado nem uma vez.</li>
+</ul>
+<p><strong>repeat:</strong></p>
+<ul>
+<li>Não há condição inicial.</li>
+<li>O código é executado sempre até que um break seja chamado manualmente.</li>
+<li>É como um loop infinito que só para com break.</li>
+</ul>
+</div>
+<div id="exercicios" class="section level4 unnumbered hasAnchor">
+<h4>Exercicios<a href="controle-de-fluxo-e-funções.html#exercicios" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Usando <code>for</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Imprima os números de 1 a 10.</li>
+<li>Imprima os números pares de 2 a 20.</li>
+<li>Calcule a soma dos números de 1 a 100.</li>
+<li>Imprima o quadrado de cada número de 1 a 10.</li>
+<li>Dado um valor numérico, calcule o seu fatorial.</li>
+<li>Dado um vetor de nomes, imprima todos os nomes em letras maiúsculas.</li>
+<li>Imprima todos os elementos de uma matriz 3x3.</li>
+<li>Imprima a soma de cada linha de uma matriz.</li>
+</ol>
+<p><strong>2.</strong> Usando <code>while</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Imprima os números de 1 a 10.</li>
+<li>Imprima os elementos do vetor <code>vetor &lt;- c("a", "b", "c", "d")</code> um por um.</li>
+<li>Conte quantos números pares existem no vetor <code>v &lt;- c(2, 5, 8, 11, 14, 19)</code>.</li>
+<li>Some os elementos do vetor <code>z &lt;- c(10, 15, 20, 5, 8, 3)</code> até que a soma passe de 50.</li>
+</ol>
+<p><strong>3.</strong> Usando <code>repeat</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Simular lançamentos de um dado até sair um número 6 (dica: use a função <code>sample()</code> para simular os lançamentos).</li>
+<li>Some os números do vetor <code>numeros &lt;- c(30, 20, 25, 10, 15, 5)</code> até atingir ou ultrapassar 100.</li>
+</ol>
+</div>
+</div>
+<div id="protectedContent2" style="display:none;">
+<div id="respostas-10" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="controle-de-fluxo-e-funções.html#respostas-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="controle-de-fluxo-e-funções.html#cb30-1" tabindex="-1"></a><span class="do">## 1.</span></span>
+<span id="cb30-2"><a href="controle-de-fluxo-e-funções.html#cb30-2" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb30-3"><a href="controle-de-fluxo-e-funções.html#cb30-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb30-4"><a href="controle-de-fluxo-e-funções.html#cb30-4" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb30-5"><a href="controle-de-fluxo-e-funções.html#cb30-5" tabindex="-1"></a>}</span>
+<span id="cb30-6"><a href="controle-de-fluxo-e-funções.html#cb30-6" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb30-7"><a href="controle-de-fluxo-e-funções.html#cb30-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="dv">2</span>)) {</span>
+<span id="cb30-8"><a href="controle-de-fluxo-e-funções.html#cb30-8" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb30-9"><a href="controle-de-fluxo-e-funções.html#cb30-9" tabindex="-1"></a>}</span>
+<span id="cb30-10"><a href="controle-de-fluxo-e-funções.html#cb30-10" tabindex="-1"></a><span class="co"># c.</span></span>
+<span id="cb30-11"><a href="controle-de-fluxo-e-funções.html#cb30-11" tabindex="-1"></a>soma <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb30-12"><a href="controle-de-fluxo-e-funções.html#cb30-12" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
+<span id="cb30-13"><a href="controle-de-fluxo-e-funções.html#cb30-13" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> soma <span class="sc">+</span> i</span>
+<span id="cb30-14"><a href="controle-de-fluxo-e-funções.html#cb30-14" tabindex="-1"></a>}</span>
+<span id="cb30-15"><a href="controle-de-fluxo-e-funções.html#cb30-15" tabindex="-1"></a><span class="fu">print</span>(soma)</span>
+<span id="cb30-16"><a href="controle-de-fluxo-e-funções.html#cb30-16" tabindex="-1"></a><span class="co"># d.</span></span>
+<span id="cb30-17"><a href="controle-de-fluxo-e-funções.html#cb30-17" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb30-18"><a href="controle-de-fluxo-e-funções.html#cb30-18" tabindex="-1"></a>  <span class="fu">print</span>(i<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb30-19"><a href="controle-de-fluxo-e-funções.html#cb30-19" tabindex="-1"></a>}</span>
+<span id="cb30-20"><a href="controle-de-fluxo-e-funções.html#cb30-20" tabindex="-1"></a><span class="co"># e.</span></span>
+<span id="cb30-21"><a href="controle-de-fluxo-e-funções.html#cb30-21" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb30-22"><a href="controle-de-fluxo-e-funções.html#cb30-22" tabindex="-1"></a>fatorial <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-23"><a href="controle-de-fluxo-e-funções.html#cb30-23" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num) {</span>
+<span id="cb30-24"><a href="controle-de-fluxo-e-funções.html#cb30-24" tabindex="-1"></a>  fatorial <span class="ot">&lt;-</span> fatorial <span class="sc">*</span> i</span>
+<span id="cb30-25"><a href="controle-de-fluxo-e-funções.html#cb30-25" tabindex="-1"></a>}</span>
+<span id="cb30-26"><a href="controle-de-fluxo-e-funções.html#cb30-26" tabindex="-1"></a><span class="fu">print</span>(fatorial)</span>
+<span id="cb30-27"><a href="controle-de-fluxo-e-funções.html#cb30-27" tabindex="-1"></a><span class="co"># f.</span></span>
+<span id="cb30-28"><a href="controle-de-fluxo-e-funções.html#cb30-28" tabindex="-1"></a>nomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ana&quot;</span>, <span class="st">&quot;joao&quot;</span>, <span class="st">&quot;maria&quot;</span>, <span class="st">&quot;carlos&quot;</span>)</span>
+<span id="cb30-29"><a href="controle-de-fluxo-e-funções.html#cb30-29" tabindex="-1"></a><span class="cf">for</span> (nome <span class="cf">in</span> nomes) {</span>
+<span id="cb30-30"><a href="controle-de-fluxo-e-funções.html#cb30-30" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">toupper</span>(nome))</span>
+<span id="cb30-31"><a href="controle-de-fluxo-e-funções.html#cb30-31" tabindex="-1"></a>}</span>
+<span id="cb30-32"><a href="controle-de-fluxo-e-funções.html#cb30-32" tabindex="-1"></a><span class="co"># g.</span></span>
+<span id="cb30-33"><a href="controle-de-fluxo-e-funções.html#cb30-33" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-34"><a href="controle-de-fluxo-e-funções.html#cb30-34" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(matriz)) {</span>
+<span id="cb30-35"><a href="controle-de-fluxo-e-funções.html#cb30-35" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(matriz)) {</span>
+<span id="cb30-36"><a href="controle-de-fluxo-e-funções.html#cb30-36" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Elemento [&quot;</span>, i, <span class="st">&quot;,&quot;</span>, j, <span class="st">&quot;] =&quot;</span>, matriz[i, j]))</span>
+<span id="cb30-37"><a href="controle-de-fluxo-e-funções.html#cb30-37" tabindex="-1"></a>  }</span>
+<span id="cb30-38"><a href="controle-de-fluxo-e-funções.html#cb30-38" tabindex="-1"></a>}</span>
+<span id="cb30-39"><a href="controle-de-fluxo-e-funções.html#cb30-39" tabindex="-1"></a><span class="co"># h.</span></span>
+<span id="cb30-40"><a href="controle-de-fluxo-e-funções.html#cb30-40" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-41"><a href="controle-de-fluxo-e-funções.html#cb30-41" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(matriz)) {</span>
+<span id="cb30-42"><a href="controle-de-fluxo-e-funções.html#cb30-42" tabindex="-1"></a>  linha_soma <span class="ot">&lt;-</span> <span class="fu">sum</span>(matriz[i, ])</span>
+<span id="cb30-43"><a href="controle-de-fluxo-e-funções.html#cb30-43" tabindex="-1"></a>  <span class="fu">print</span>(linha_soma)</span>
+<span id="cb30-44"><a href="controle-de-fluxo-e-funções.html#cb30-44" tabindex="-1"></a>  <span class="co"># print(paste(&quot;Soma da linha&quot;, i, &quot;=&quot;, linha_soma))</span></span>
+<span id="cb30-45"><a href="controle-de-fluxo-e-funções.html#cb30-45" tabindex="-1"></a>}</span>
+<span id="cb30-46"><a href="controle-de-fluxo-e-funções.html#cb30-46" tabindex="-1"></a><span class="do">## 2.</span></span>
+<span id="cb30-47"><a href="controle-de-fluxo-e-funções.html#cb30-47" tabindex="-1"></a><span class="co"># a. </span></span>
+<span id="cb30-48"><a href="controle-de-fluxo-e-funções.html#cb30-48" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-49"><a href="controle-de-fluxo-e-funções.html#cb30-49" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb30-50"><a href="controle-de-fluxo-e-funções.html#cb30-50" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb30-51"><a href="controle-de-fluxo-e-funções.html#cb30-51" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-52"><a href="controle-de-fluxo-e-funções.html#cb30-52" tabindex="-1"></a>}</span>
+<span id="cb30-53"><a href="controle-de-fluxo-e-funções.html#cb30-53" tabindex="-1"></a><span class="co"># b. </span></span>
+<span id="cb30-54"><a href="controle-de-fluxo-e-funções.html#cb30-54" tabindex="-1"></a>vetor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</span>
+<span id="cb30-55"><a href="controle-de-fluxo-e-funções.html#cb30-55" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-56"><a href="controle-de-fluxo-e-funções.html#cb30-56" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="fu">length</span>(vetor)) {</span>
+<span id="cb30-57"><a href="controle-de-fluxo-e-funções.html#cb30-57" tabindex="-1"></a>  <span class="fu">print</span>(vetor[i])</span>
+<span id="cb30-58"><a href="controle-de-fluxo-e-funções.html#cb30-58" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-59"><a href="controle-de-fluxo-e-funções.html#cb30-59" tabindex="-1"></a>}</span>
+<span id="cb30-60"><a href="controle-de-fluxo-e-funções.html#cb30-60" tabindex="-1"></a><span class="co"># c. </span></span>
+<span id="cb30-61"><a href="controle-de-fluxo-e-funções.html#cb30-61" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">19</span>)</span>
+<span id="cb30-62"><a href="controle-de-fluxo-e-funções.html#cb30-62" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-63"><a href="controle-de-fluxo-e-funções.html#cb30-63" tabindex="-1"></a>pares <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb30-64"><a href="controle-de-fluxo-e-funções.html#cb30-64" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="fu">length</span>(v)) {</span>
+<span id="cb30-65"><a href="controle-de-fluxo-e-funções.html#cb30-65" tabindex="-1"></a>  <span class="cf">if</span> (v[i] <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb30-66"><a href="controle-de-fluxo-e-funções.html#cb30-66" tabindex="-1"></a>    pares <span class="ot">&lt;-</span> pares <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-67"><a href="controle-de-fluxo-e-funções.html#cb30-67" tabindex="-1"></a>  }</span>
+<span id="cb30-68"><a href="controle-de-fluxo-e-funções.html#cb30-68" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-69"><a href="controle-de-fluxo-e-funções.html#cb30-69" tabindex="-1"></a>}</span>
+<span id="cb30-70"><a href="controle-de-fluxo-e-funções.html#cb30-70" tabindex="-1"></a><span class="co"># d. </span></span>
+<span id="cb30-71"><a href="controle-de-fluxo-e-funções.html#cb30-71" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">3</span>)</span>
+<span id="cb30-72"><a href="controle-de-fluxo-e-funções.html#cb30-72" tabindex="-1"></a>soma <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb30-73"><a href="controle-de-fluxo-e-funções.html#cb30-73" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-74"><a href="controle-de-fluxo-e-funções.html#cb30-74" tabindex="-1"></a><span class="cf">while</span> (soma <span class="sc">&lt;=</span> <span class="dv">50</span> <span class="sc">&amp;&amp;</span> i <span class="sc">&lt;=</span> <span class="fu">length</span>(z)) {</span>
+<span id="cb30-75"><a href="controle-de-fluxo-e-funções.html#cb30-75" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> soma <span class="sc">+</span> z[i]</span>
+<span id="cb30-76"><a href="controle-de-fluxo-e-funções.html#cb30-76" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-77"><a href="controle-de-fluxo-e-funções.html#cb30-77" tabindex="-1"></a>}</span>
+<span id="cb30-78"><a href="controle-de-fluxo-e-funções.html#cb30-78" tabindex="-1"></a><span class="do">## 3.</span></span>
+<span id="cb30-79"><a href="controle-de-fluxo-e-funções.html#cb30-79" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb30-80"><a href="controle-de-fluxo-e-funções.html#cb30-80" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb30-81"><a href="controle-de-fluxo-e-funções.html#cb30-81" tabindex="-1"></a>  dado <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb30-82"><a href="controle-de-fluxo-e-funções.html#cb30-82" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Resultado:&quot;</span>, dado))</span>
+<span id="cb30-83"><a href="controle-de-fluxo-e-funções.html#cb30-83" tabindex="-1"></a>  <span class="cf">if</span> (dado <span class="sc">==</span> <span class="dv">6</span>) <span class="cf">break</span></span>
+<span id="cb30-84"><a href="controle-de-fluxo-e-funções.html#cb30-84" tabindex="-1"></a>}</span>
+<span id="cb30-85"><a href="controle-de-fluxo-e-funções.html#cb30-85" tabindex="-1"></a><span class="co"># b. </span></span>
+<span id="cb30-86"><a href="controle-de-fluxo-e-funções.html#cb30-86" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">5</span>)</span>
+<span id="cb30-87"><a href="controle-de-fluxo-e-funções.html#cb30-87" tabindex="-1"></a>soma <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb30-88"><a href="controle-de-fluxo-e-funções.html#cb30-88" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-89"><a href="controle-de-fluxo-e-funções.html#cb30-89" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb30-90"><a href="controle-de-fluxo-e-funções.html#cb30-90" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> soma <span class="sc">+</span> numeros[i]</span>
+<span id="cb30-91"><a href="controle-de-fluxo-e-funções.html#cb30-91" tabindex="-1"></a>  <span class="cf">if</span> (soma <span class="sc">&gt;=</span> <span class="dv">100</span> <span class="sc">||</span> i <span class="sc">==</span> <span class="fu">length</span>(numeros)) <span class="cf">break</span></span>
+<span id="cb30-92"><a href="controle-de-fluxo-e-funções.html#cb30-92" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-93"><a href="controle-de-fluxo-e-funções.html#cb30-93" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput2" placeholder="Digite a senha">
+<button id="submitButton2">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton2").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput2").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent2").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+<div id="controle-de-fluxo-break-e-next" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Controle de Fluxo (break e next)<a href="controle-de-fluxo-e-funções.html#controle-de-fluxo-break-e-next" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O R oferece mecanismos para interromper ou pular iterações em loops.</p>
+<div id="break" class="section level4 unnumbered hasAnchor">
+<h4>1. break<a href="controle-de-fluxo-e-funções.html#break" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Interrompe a execução de um loop.</p>
+<p><strong>Exemplo:</strong> Parar quando encontrar um número maior que 5.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="controle-de-fluxo-e-funções.html#cb31-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb31-2"><a href="controle-de-fluxo-e-funções.html#cb31-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(v)) {</span>
+<span id="cb31-3"><a href="controle-de-fluxo-e-funções.html#cb31-3" tabindex="-1"></a>  <span class="cf">if</span> (v[i] <span class="sc">&gt;</span> <span class="dv">5</span>) {</span>
+<span id="cb31-4"><a href="controle-de-fluxo-e-funções.html#cb31-4" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;Número maior que 5 encontrado! Parando o loop.&quot;</span>)</span>
+<span id="cb31-5"><a href="controle-de-fluxo-e-funções.html#cb31-5" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb31-6"><a href="controle-de-fluxo-e-funções.html#cb31-6" tabindex="-1"></a>  }</span>
+<span id="cb31-7"><a href="controle-de-fluxo-e-funções.html#cb31-7" tabindex="-1"></a>  <span class="fu">print</span>(v[i])</span>
+<span id="cb31-8"><a href="controle-de-fluxo-e-funções.html#cb31-8" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 2
+## [1] 3
+## [1] &quot;Número maior que 5 encontrado! Parando o loop.&quot;</code></pre>
+</div>
+<div id="next" class="section level4 unnumbered hasAnchor">
+<h4>2. next<a href="controle-de-fluxo-e-funções.html#next" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Pula a iteração atual e continua para a próxima.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="controle-de-fluxo-e-funções.html#cb33-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb33-2"><a href="controle-de-fluxo-e-funções.html#cb33-2" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) <span class="cf">next</span></span>
+<span id="cb33-3"><a href="controle-de-fluxo-e-funções.html#cb33-3" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb33-4"><a href="controle-de-fluxo-e-funções.html#cb33-4" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 3
+## [1] 5</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="controle-de-fluxo-e-funções.html#cb35-1" tabindex="-1"></a><span class="co"># Os números pares foram ignorados.</span></span></code></pre></div>
+</div>
+<div id="exercicios-1" class="section level4 unnumbered hasAnchor">
+<h4>Exercicios<a href="controle-de-fluxo-e-funções.html#exercicios-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Usando <code>break</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Imprima números de 1 a 10, mas parar se encontrar um múltiplo de 7.</li>
+<li>Imprima os valores do vetor <code>valores &lt;- c(5, 3, 2, -1, 7)</code> até encontrar o número negativo.</li>
+<li>Some os elementos do vetor <code>numeros &lt;- c(5, 10, 15, 20, 30)</code> até a soma ultrapassar 50.</li>
+</ol>
+<p><strong>2.</strong> Usando <code>next</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Imprima somente os números pares de 1 a 10.</li>
+<li>Dado o vetor <code>vetor &lt;- c(10, -5, 7, -2, 4)</code>, imprima somente os seus valores positivos.</li>
+<li>Dado o vetor <code>dados &lt;- c(10, NA, 20, 15, NA, 5)</code>, pule os valores NA ao calcular a soma.</li>
+</ol>
+</div>
+</div>
+<div id="protectedContent3" style="display:none;">
+<div id="respostas-11" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="controle-de-fluxo-e-funções.html#respostas-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="controle-de-fluxo-e-funções.html#cb36-1" tabindex="-1"></a><span class="do">## 1.</span></span>
+<span id="cb36-2"><a href="controle-de-fluxo-e-funções.html#cb36-2" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb36-3"><a href="controle-de-fluxo-e-funções.html#cb36-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb36-4"><a href="controle-de-fluxo-e-funções.html#cb36-4" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">7</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb36-5"><a href="controle-de-fluxo-e-funções.html#cb36-5" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb36-6"><a href="controle-de-fluxo-e-funções.html#cb36-6" tabindex="-1"></a>  }</span>
+<span id="cb36-7"><a href="controle-de-fluxo-e-funções.html#cb36-7" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb36-8"><a href="controle-de-fluxo-e-funções.html#cb36-8" tabindex="-1"></a>}</span>
+<span id="cb36-9"><a href="controle-de-fluxo-e-funções.html#cb36-9" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb36-10"><a href="controle-de-fluxo-e-funções.html#cb36-10" tabindex="-1"></a>valores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">7</span>)</span>
+<span id="cb36-11"><a href="controle-de-fluxo-e-funções.html#cb36-11" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb36-12"><a href="controle-de-fluxo-e-funções.html#cb36-12" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(valores))</span>
+<span id="cb36-13"><a href="controle-de-fluxo-e-funções.html#cb36-13" tabindex="-1"></a>  {</span>
+<span id="cb36-14"><a href="controle-de-fluxo-e-funções.html#cb36-14" tabindex="-1"></a>    <span class="cf">if</span> (valores[i] <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb36-15"><a href="controle-de-fluxo-e-funções.html#cb36-15" tabindex="-1"></a>      <span class="fu">print</span>(<span class="st">&quot;Número negativo encontrado.&quot;</span>)</span>
+<span id="cb36-16"><a href="controle-de-fluxo-e-funções.html#cb36-16" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb36-17"><a href="controle-de-fluxo-e-funções.html#cb36-17" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb36-18"><a href="controle-de-fluxo-e-funções.html#cb36-18" tabindex="-1"></a>    <span class="fu">print</span>(valores[i])</span>
+<span id="cb36-19"><a href="controle-de-fluxo-e-funções.html#cb36-19" tabindex="-1"></a>  }</span>
+<span id="cb36-20"><a href="controle-de-fluxo-e-funções.html#cb36-20" tabindex="-1"></a>}</span>
+<span id="cb36-21"><a href="controle-de-fluxo-e-funções.html#cb36-21" tabindex="-1"></a><span class="co"># c. </span></span>
+<span id="cb36-22"><a href="controle-de-fluxo-e-funções.html#cb36-22" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
+<span id="cb36-23"><a href="controle-de-fluxo-e-funções.html#cb36-23" tabindex="-1"></a>soma <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb36-24"><a href="controle-de-fluxo-e-funções.html#cb36-24" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> numeros) {</span>
+<span id="cb36-25"><a href="controle-de-fluxo-e-funções.html#cb36-25" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> soma <span class="sc">+</span> n</span>
+<span id="cb36-26"><a href="controle-de-fluxo-e-funções.html#cb36-26" tabindex="-1"></a>  <span class="cf">if</span> (soma <span class="sc">&gt;</span> <span class="dv">50</span>) {</span>
+<span id="cb36-27"><a href="controle-de-fluxo-e-funções.html#cb36-27" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb36-28"><a href="controle-de-fluxo-e-funções.html#cb36-28" tabindex="-1"></a>  }</span>
+<span id="cb36-29"><a href="controle-de-fluxo-e-funções.html#cb36-29" tabindex="-1"></a>}</span>
+<span id="cb36-30"><a href="controle-de-fluxo-e-funções.html#cb36-30" tabindex="-1"></a><span class="do">## 2. </span></span>
+<span id="cb36-31"><a href="controle-de-fluxo-e-funções.html#cb36-31" tabindex="-1"></a><span class="co"># a. </span></span>
+<span id="cb36-32"><a href="controle-de-fluxo-e-funções.html#cb36-32" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb36-33"><a href="controle-de-fluxo-e-funções.html#cb36-33" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">!=</span> <span class="dv">0</span>) {</span>
+<span id="cb36-34"><a href="controle-de-fluxo-e-funções.html#cb36-34" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb36-35"><a href="controle-de-fluxo-e-funções.html#cb36-35" tabindex="-1"></a>  }</span>
+<span id="cb36-36"><a href="controle-de-fluxo-e-funções.html#cb36-36" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb36-37"><a href="controle-de-fluxo-e-funções.html#cb36-37" tabindex="-1"></a>}</span>
+<span id="cb36-38"><a href="controle-de-fluxo-e-funções.html#cb36-38" tabindex="-1"></a><span class="co"># b. </span></span>
+<span id="cb36-39"><a href="controle-de-fluxo-e-funções.html#cb36-39" tabindex="-1"></a>vetor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">7</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb36-40"><a href="controle-de-fluxo-e-funções.html#cb36-40" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(v)) {</span>
+<span id="cb36-41"><a href="controle-de-fluxo-e-funções.html#cb36-41" tabindex="-1"></a>  <span class="cf">if</span> (vetor[i] <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb36-42"><a href="controle-de-fluxo-e-funções.html#cb36-42" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb36-43"><a href="controle-de-fluxo-e-funções.html#cb36-43" tabindex="-1"></a>  }</span>
+<span id="cb36-44"><a href="controle-de-fluxo-e-funções.html#cb36-44" tabindex="-1"></a>  <span class="fu">print</span>(vetor[i])</span>
+<span id="cb36-45"><a href="controle-de-fluxo-e-funções.html#cb36-45" tabindex="-1"></a>}</span>
+<span id="cb36-46"><a href="controle-de-fluxo-e-funções.html#cb36-46" tabindex="-1"></a><span class="co"># c.</span></span>
+<span id="cb36-47"><a href="controle-de-fluxo-e-funções.html#cb36-47" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="cn">NA</span>, <span class="dv">20</span>, <span class="dv">15</span>, <span class="cn">NA</span>, <span class="dv">5</span>)</span>
+<span id="cb36-48"><a href="controle-de-fluxo-e-funções.html#cb36-48" tabindex="-1"></a>soma <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb36-49"><a href="controle-de-fluxo-e-funções.html#cb36-49" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> dados) {</span>
+<span id="cb36-50"><a href="controle-de-fluxo-e-funções.html#cb36-50" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(i)) {</span>
+<span id="cb36-51"><a href="controle-de-fluxo-e-funções.html#cb36-51" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb36-52"><a href="controle-de-fluxo-e-funções.html#cb36-52" tabindex="-1"></a>  }</span>
+<span id="cb36-53"><a href="controle-de-fluxo-e-funções.html#cb36-53" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> soma <span class="sc">+</span> i</span>
+<span id="cb36-54"><a href="controle-de-fluxo-e-funções.html#cb36-54" tabindex="-1"></a>}</span>
+<span id="cb36-55"><a href="controle-de-fluxo-e-funções.html#cb36-55" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb36-56"><a href="controle-de-fluxo-e-funções.html#cb36-56" tabindex="-1"></a>soma <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb36-57"><a href="controle-de-fluxo-e-funções.html#cb36-57" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dados)) {</span>
+<span id="cb36-58"><a href="controle-de-fluxo-e-funções.html#cb36-58" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(dados[i])) {</span>
+<span id="cb36-59"><a href="controle-de-fluxo-e-funções.html#cb36-59" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb36-60"><a href="controle-de-fluxo-e-funções.html#cb36-60" tabindex="-1"></a>  }</span>
+<span id="cb36-61"><a href="controle-de-fluxo-e-funções.html#cb36-61" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> soma <span class="sc">+</span> dados[i]</span>
+<span id="cb36-62"><a href="controle-de-fluxo-e-funções.html#cb36-62" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput3" placeholder="Digite a senha">
+<button id="submitButton3">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton3").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput3").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent3").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+</div>
+<div id="família-de-funções-apply" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Família de funções apply<a href="controle-de-fluxo-e-funções.html#família-de-funções-apply" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Essas funções servem para evitar loops explícitos (for, while) e tornar o código mais limpo e eficiente. São funções vetorizadas que operam em listas, matrizes, data.frames, etc.</p>
+<!-- | Função   | Aplicação                          | Exemplo                                 | -->
+<!-- |----------|------------------------------------|------------------------------------------| -->
+<!-- | apply()  | Matriz, por linha/coluna           | apply(mat, 1, sum)                        | -->
+<!-- | lapply() | Lista → Lista                      | lapply(lista, mean)                       | -->
+<!-- | sapply() | Lista → Vetor simplificado         | sapply(lista, mean)                       | -->
+<!-- | tapply() | Vetor com grupos (fator)           | tapply(dados, grupos, mean)              | -->
+<div id="apply" class="section level4 unnumbered hasAnchor">
+<h4>apply<a href="controle-de-fluxo-e-funções.html#apply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Aplica uma função a linhas ou colunas de uma matriz ou data.frame.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="controle-de-fluxo-e-funções.html#cb37-1" tabindex="-1"></a><span class="do">## Estrutura do apply:</span></span>
+<span id="cb37-2"><a href="controle-de-fluxo-e-funções.html#cb37-2" tabindex="-1"></a><span class="fu">apply</span>(matriz, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> sum)  <span class="co"># aplica por linha</span></span>
+<span id="cb37-3"><a href="controle-de-fluxo-e-funções.html#cb37-3" tabindex="-1"></a><span class="fu">apply</span>(matriz, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum) <span class="co"># aplica por coluna</span></span></code></pre></div>
+<p><strong>Exemplo:</strong> Comparando <code>for</code> e <code>apply</code> em operações com matrizes</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="controle-de-fluxo-e-funções.html#cb38-1" tabindex="-1"></a><span class="co"># Soma das linhas de uma matriz usando `for`:</span></span>
+<span id="cb38-2"><a href="controle-de-fluxo-e-funções.html#cb38-2" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb38-3"><a href="controle-de-fluxo-e-funções.html#cb38-3" tabindex="-1"></a>soma_for <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb38-4"><a href="controle-de-fluxo-e-funções.html#cb38-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mat)) {</span>
+<span id="cb38-5"><a href="controle-de-fluxo-e-funções.html#cb38-5" tabindex="-1"></a>    soma_for[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mat[i,])</span>
+<span id="cb38-6"><a href="controle-de-fluxo-e-funções.html#cb38-6" tabindex="-1"></a>}</span>
+<span id="cb38-7"><a href="controle-de-fluxo-e-funções.html#cb38-7" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Resultado com for:&quot;</span>, soma_for)</span></code></pre></div>
+<pre><code>## Resultado com for: 12 15 18</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="controle-de-fluxo-e-funções.html#cb40-1" tabindex="-1"></a><span class="co"># Soma das linhas de uma matriz usando `apply`:</span></span>
+<span id="cb40-2"><a href="controle-de-fluxo-e-funções.html#cb40-2" tabindex="-1"></a>soma_apply <span class="ot">&lt;-</span> <span class="fu">apply</span>(mat, <span class="dv">1</span>, sum)</span>
+<span id="cb40-3"><a href="controle-de-fluxo-e-funções.html#cb40-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Resultado com apply:&quot;</span>, soma_apply)</span></code></pre></div>
+<pre><code>## Resultado com apply: 12 15 18</code></pre>
+</div>
+<div id="lapply" class="section level4 unnumbered hasAnchor">
+<h4>lapply<a href="controle-de-fluxo-e-funções.html#lapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Aplica uma função a cada elemento de uma lista, retornando outra lista.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="controle-de-fluxo-e-funções.html#cb42-1" tabindex="-1"></a><span class="do">## Estrutura do lapply:</span></span>
+<span id="cb42-2"><a href="controle-de-fluxo-e-funções.html#cb42-2" tabindex="-1"></a><span class="fu">lapply</span>(lista, sum)</span></code></pre></div>
+</div>
+<div id="sapply" class="section level4 unnumbered hasAnchor">
+<h4>sapply<a href="controle-de-fluxo-e-funções.html#sapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Igual ao lapply(), mas simplifica o resultado (tenta transformar em vetor/matriz).</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="controle-de-fluxo-e-funções.html#cb43-1" tabindex="-1"></a><span class="do">## Estrutura do sapply:</span></span>
+<span id="cb43-2"><a href="controle-de-fluxo-e-funções.html#cb43-2" tabindex="-1"></a><span class="fu">sapply</span>(lista, sum)</span></code></pre></div>
+<p><strong>Exemplo:</strong> Comparando <code>for</code> com <code>lapply</code> e <code>sapply</code> em operações com listas.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="controle-de-fluxo-e-funções.html#cb44-1" tabindex="-1"></a><span class="co"># Soma de cada vetor de uma lista usando `for`:</span></span>
+<span id="cb44-2"><a href="controle-de-fluxo-e-funções.html#cb44-2" tabindex="-1"></a>lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">v1 =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">v2 =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>))</span>
+<span id="cb44-3"><a href="controle-de-fluxo-e-funções.html#cb44-3" tabindex="-1"></a>soma_for_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">v1 =</span> <span class="fu">c</span>(), <span class="at">v2 =</span> <span class="fu">c</span>())</span>
+<span id="cb44-4"><a href="controle-de-fluxo-e-funções.html#cb44-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(lista)) {</span>
+<span id="cb44-5"><a href="controle-de-fluxo-e-funções.html#cb44-5" tabindex="-1"></a>    soma_for_lista[[i]] <span class="ot">&lt;-</span> <span class="fu">sum</span>(lista[[i]])</span>
+<span id="cb44-6"><a href="controle-de-fluxo-e-funções.html#cb44-6" tabindex="-1"></a>}</span>
+<span id="cb44-7"><a href="controle-de-fluxo-e-funções.html#cb44-7" tabindex="-1"></a>soma_for_lista <span class="co"># resultado em lista</span></span></code></pre></div>
+<pre><code>## $v1
+## [1] 6
+## 
+## $v2
+## [1] 9</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="controle-de-fluxo-e-funções.html#cb46-1" tabindex="-1"></a><span class="fu">unlist</span>(soma_for_lista) <span class="co"># resultado em vetor</span></span></code></pre></div>
+<pre><code>## v1 v2 
+##  6  9</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="controle-de-fluxo-e-funções.html#cb48-1" tabindex="-1"></a><span class="co"># Soma de cada vetor de uma lista usando `lapply` e `sapply`:</span></span>
+<span id="cb48-2"><a href="controle-de-fluxo-e-funções.html#cb48-2" tabindex="-1"></a>(soma_lapply <span class="ot">&lt;-</span> <span class="fu">lapply</span>(lista, sum)) <span class="co"># resultado em lista</span></span></code></pre></div>
+<pre><code>## $v1
+## [1] 6
+## 
+## $v2
+## [1] 9</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="controle-de-fluxo-e-funções.html#cb50-1" tabindex="-1"></a>(soma_sapply <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lista, sum)) <span class="co"># resultado em vetor</span></span></code></pre></div>
+<pre><code>## v1 v2 
+##  6  9</code></pre>
+</div>
+<div id="tapply" class="section level4 unnumbered hasAnchor">
+<h4>tapply<a href="controle-de-fluxo-e-funções.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Aplica uma função a valores por grupo.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="controle-de-fluxo-e-funções.html#cb52-1" tabindex="-1"></a><span class="do">## Estrutura do tapply:</span></span>
+<span id="cb52-2"><a href="controle-de-fluxo-e-funções.html#cb52-2" tabindex="-1"></a><span class="fu">tapply</span>(valores, grupos, soma)</span></code></pre></div>
+<p><strong>Exemplo:</strong> Comparando <code>for</code> com <code>tapply</code> para grupos.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="controle-de-fluxo-e-funções.html#cb53-1" tabindex="-1"></a><span class="co"># Soma dos valores por grupo usando `for`:</span></span>
+<span id="cb53-2"><a href="controle-de-fluxo-e-funções.html#cb53-2" tabindex="-1"></a>valores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>)</span>
+<span id="cb53-3"><a href="controle-de-fluxo-e-funções.html#cb53-3" tabindex="-1"></a>grupos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>)</span>
+<span id="cb53-4"><a href="controle-de-fluxo-e-funções.html#cb53-4" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb53-5"><a href="controle-de-fluxo-e-funções.html#cb53-5" tabindex="-1"></a>grupos_unicos <span class="ot">&lt;-</span> <span class="fu">unique</span>(grupos)</span>
+<span id="cb53-6"><a href="controle-de-fluxo-e-funções.html#cb53-6" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(grupos_unicos)) {</span>
+<span id="cb53-7"><a href="controle-de-fluxo-e-funções.html#cb53-7" tabindex="-1"></a>  resultado[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(valores[grupos <span class="sc">==</span> grupos_unicos[i]])</span>
+<span id="cb53-8"><a href="controle-de-fluxo-e-funções.html#cb53-8" tabindex="-1"></a>}</span>
+<span id="cb53-9"><a href="controle-de-fluxo-e-funções.html#cb53-9" tabindex="-1"></a><span class="fu">print</span>(resultado)</span></code></pre></div>
+<pre><code>## [1]  80 130</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="controle-de-fluxo-e-funções.html#cb55-1" tabindex="-1"></a><span class="co"># Soma dos valores por grupo usando `tapply`:</span></span>
+<span id="cb55-2"><a href="controle-de-fluxo-e-funções.html#cb55-2" tabindex="-1"></a><span class="fu">tapply</span>(valores, grupos, sum)</span></code></pre></div>
+<pre><code>##   A   B 
+##  80 130</code></pre>
+</div>
+<div id="exercicios-2" class="section level4 unnumbered hasAnchor">
+<h4>Exercicios<a href="controle-de-fluxo-e-funções.html#exercicios-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Usando <code>apply</code>, <code>lapply</code>, <code>sapply</code> ou <code>tapply</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Calcule a soma de cada coluna de uma matriz.</li>
+<li>Calcule o valor máximo de cada linha de uma matriz.</li>
+<li>Ordene cada coluna de uma matriz.</li>
+<li>Calcule o comprimento de cada vetor numa lista.</li>
+<li>Converta uma lista de strings com letras minúsculas para maiúsculas.</li>
+<li>Calcule a média para cada vetor da lista <code>valores &lt;- list(x = 1:5, y = 2:6, z = 3:7)</code>
+e retorne em um vetor.</li>
+<li>Calcule a média de salários por setor, para os dados:</li>
+</ol>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="controle-de-fluxo-e-funções.html#cb57-1" tabindex="-1"></a>salario <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2500</span>, <span class="dv">2200</span>, <span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">4500</span>)</span>
+<span id="cb57-2"><a href="controle-de-fluxo-e-funções.html#cb57-2" tabindex="-1"></a>setor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;RH&quot;</span>, <span class="st">&quot;RH&quot;</span>, <span class="st">&quot;RH&quot;</span>, <span class="st">&quot;TI&quot;</span>, <span class="st">&quot;TI&quot;</span>, <span class="st">&quot;TI&quot;</span>)</span></code></pre></div>
+</div>
+<div id="protectedContent4" style="display:none;">
+<div id="respostas-12" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="controle-de-fluxo-e-funções.html#respostas-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="controle-de-fluxo-e-funções.html#cb58-1" tabindex="-1"></a><span class="do">## 1.</span></span>
+<span id="cb58-2"><a href="controle-de-fluxo-e-funções.html#cb58-2" tabindex="-1"></a><span class="co"># a. Calcule a soma de cada coluna de uma matriz.</span></span>
+<span id="cb58-3"><a href="controle-de-fluxo-e-funções.html#cb58-3" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb58-4"><a href="controle-de-fluxo-e-funções.html#cb58-4" tabindex="-1"></a><span class="fu">apply</span>(matriz, <span class="dv">2</span>, sum)</span>
+<span id="cb58-5"><a href="controle-de-fluxo-e-funções.html#cb58-5" tabindex="-1"></a><span class="co"># b. Calcule o valor máximo de cada linha de uma matriz.</span></span>
+<span id="cb58-6"><a href="controle-de-fluxo-e-funções.html#cb58-6" tabindex="-1"></a><span class="fu">apply</span>(matriz, <span class="dv">1</span>, max)</span>
+<span id="cb58-7"><a href="controle-de-fluxo-e-funções.html#cb58-7" tabindex="-1"></a><span class="co"># c. Ordene cada coluna de uma matriz.</span></span>
+<span id="cb58-8"><a href="controle-de-fluxo-e-funções.html#cb58-8" tabindex="-1"></a><span class="fu">apply</span>(matriz, <span class="dv">2</span>, sort)</span>
+<span id="cb58-9"><a href="controle-de-fluxo-e-funções.html#cb58-9" tabindex="-1"></a><span class="co"># d. Calcule o comprimento de cada vetor numa lista.</span></span>
+<span id="cb58-10"><a href="controle-de-fluxo-e-funções.html#cb58-10" tabindex="-1"></a>lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">c =</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">30</span>)</span>
+<span id="cb58-11"><a href="controle-de-fluxo-e-funções.html#cb58-11" tabindex="-1"></a><span class="fu">lapply</span>(lista, length)</span>
+<span id="cb58-12"><a href="controle-de-fluxo-e-funções.html#cb58-12" tabindex="-1"></a><span class="co"># e. Converta uma lista de strings com letras minúsculas para maiúsculas.</span></span>
+<span id="cb58-13"><a href="controle-de-fluxo-e-funções.html#cb58-13" tabindex="-1"></a>palavras <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;gato&quot;</span>, <span class="st">&quot;cachorro&quot;</span>, <span class="st">&quot;papagaio&quot;</span>)</span>
+<span id="cb58-14"><a href="controle-de-fluxo-e-funções.html#cb58-14" tabindex="-1"></a><span class="fu">lapply</span>(palavras, toupper)</span>
+<span id="cb58-15"><a href="controle-de-fluxo-e-funções.html#cb58-15" tabindex="-1"></a><span class="co"># f. Calcule a média para cada vetor da lista e retorne em um vetor.</span></span>
+<span id="cb58-16"><a href="controle-de-fluxo-e-funções.html#cb58-16" tabindex="-1"></a>valores <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">y =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">z =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>)</span>
+<span id="cb58-17"><a href="controle-de-fluxo-e-funções.html#cb58-17" tabindex="-1"></a><span class="fu">sapply</span>(valores, mean)</span>
+<span id="cb58-18"><a href="controle-de-fluxo-e-funções.html#cb58-18" tabindex="-1"></a><span class="co"># g. Calcule a média de salários por setor.</span></span>
+<span id="cb58-19"><a href="controle-de-fluxo-e-funções.html#cb58-19" tabindex="-1"></a>salario <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2500</span>, <span class="dv">2200</span>, <span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">4500</span>)</span>
+<span id="cb58-20"><a href="controle-de-fluxo-e-funções.html#cb58-20" tabindex="-1"></a>setor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;RH&quot;</span>, <span class="st">&quot;RH&quot;</span>, <span class="st">&quot;RH&quot;</span>, <span class="st">&quot;TI&quot;</span>, <span class="st">&quot;TI&quot;</span>, <span class="st">&quot;TI&quot;</span>)</span>
+<span id="cb58-21"><a href="controle-de-fluxo-e-funções.html#cb58-21" tabindex="-1"></a><span class="fu">tapply</span>(salario, setor, mean)</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput4" placeholder="Digite a senha">
+<button id="submitButton4">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton4").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput4").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent4").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+</div>
+<div id="funções" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Funções<a href="controle-de-fluxo-e-funções.html#funções" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Funções em R são blocos de código reutilizáveis que executam tarefas específicas.</p>
+<div id="estrutura-de-função" class="section level4 unnumbered hasAnchor">
+<h4>Estrutura de função<a href="controle-de-fluxo-e-funções.html#estrutura-de-função" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="controle-de-fluxo-e-funções.html#cb59-1" tabindex="-1"></a>nome_da_funcao <span class="ot">&lt;-</span> <span class="cf">function</span>(argumentos_separados_por_virgula) {</span>
+<span id="cb59-2"><a href="controle-de-fluxo-e-funções.html#cb59-2" tabindex="-1"></a>  <span class="co"># corpo da função</span></span>
+<span id="cb59-3"><a href="controle-de-fluxo-e-funções.html#cb59-3" tabindex="-1"></a>  <span class="co"># instruções e retorno</span></span>
+<span id="cb59-4"><a href="controle-de-fluxo-e-funções.html#cb59-4" tabindex="-1"></a>  <span class="fu">return</span>(valor)</span>
+<span id="cb59-5"><a href="controle-de-fluxo-e-funções.html#cb59-5" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Exemplo:</strong> Função que calcula a soma de dois valores.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="controle-de-fluxo-e-funções.html#cb60-1" tabindex="-1"></a>minha_soma <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb60-2"><a href="controle-de-fluxo-e-funções.html#cb60-2" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
+<span id="cb60-3"><a href="controle-de-fluxo-e-funções.html#cb60-3" tabindex="-1"></a>  <span class="fu">return</span>(soma)  <span class="co"># resultado retornado</span></span>
+<span id="cb60-4"><a href="controle-de-fluxo-e-funções.html#cb60-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Essa função tem os seguintes componentes:</p>
+<ul>
+<li><code>minha_soma</code>: nome da função</li>
+<li><code>a</code> e <code>b</code>: argumentos da função</li>
+<li><code>soma &lt;- a + b</code>: operação que a função executa</li>
+<li><code>return(soma)</code>: valor retornado pela função</li>
+</ul>
+<p>Após rodarmos o código de criar a função, podemos chamá-la como outras funções do R:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="controle-de-fluxo-e-funções.html#cb61-1" tabindex="-1"></a><span class="fu">minha_soma</span>(<span class="dv">2</span>,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>Se criar a função sem retorno, ela cria o objeto, mas não o retorna ao ser chamada:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="controle-de-fluxo-e-funções.html#cb63-1" tabindex="-1"></a>minha_nova_soma <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb63-2"><a href="controle-de-fluxo-e-funções.html#cb63-2" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
+<span id="cb63-3"><a href="controle-de-fluxo-e-funções.html#cb63-3" tabindex="-1"></a>}</span>
+<span id="cb63-4"><a href="controle-de-fluxo-e-funções.html#cb63-4" tabindex="-1"></a><span class="fu">minha_nova_soma</span>(<span class="dv">2</span>,<span class="dv">2</span>)</span></code></pre></div>
+<p>No entanto, a última linha da função é a atribuição <code>soma &lt;- x + y</code> e esse será o “resultado retornado”. Assim, podemos visualizar este resultado da função se o atribuirmos para outro objeto:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="controle-de-fluxo-e-funções.html#cb64-1" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">minha_nova_soma</span>(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb64-2"><a href="controle-de-fluxo-e-funções.html#cb64-2" tabindex="-1"></a>resultado</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Na prática, no entanto, é sempre bom criarmos funções que retornem os seus resultados.</p>
+<p><strong>Exemplo:</strong> Função que calcula o quadrado de um número.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="controle-de-fluxo-e-funções.html#cb66-1" tabindex="-1"></a><span class="do">## Forma mais sucinta</span></span>
+<span id="cb66-2"><a href="controle-de-fluxo-e-funções.html#cb66-2" tabindex="-1"></a><span class="do">## se o corpo da função for na mesma linha não é necessário colocar chaves</span></span>
+<span id="cb66-3"><a href="controle-de-fluxo-e-funções.html#cb66-3" tabindex="-1"></a>quad <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb66-4"><a href="controle-de-fluxo-e-funções.html#cb66-4" tabindex="-1"></a><span class="fu">quad</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<p><strong>Componentes de uma função:</strong></p>
+<ul>
+<li>nome_da_funcao: Nome que você escolhe para a função.</li>
+<li>function(): Palavra-chave que define uma função.</li>
+<li>argumentos: Parâmetros de entrada.</li>
+<li>corpo da função: Código executado.</li>
+<li>return(): (opcional) Retorna o valor final da função.</li>
+</ul>
+</div>
+<div id="funções-com-argumentos-padrão" class="section level4 unnumbered hasAnchor">
+<h4>Funções com argumentos padrão<a href="controle-de-fluxo-e-funções.html#funções-com-argumentos-padrão" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Voltando ao exemplo da soma de dois números. Se fixarmos um valor para algum dos argumentos, apenas o valor do outro argumento seria necessário:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="controle-de-fluxo-e-funções.html#cb68-1" tabindex="-1"></a>minha_soma2 <span class="ot">&lt;-</span> <span class="cf">function</span>(a, <span class="at">b =</span> <span class="dv">0</span>) {</span>
+<span id="cb68-2"><a href="controle-de-fluxo-e-funções.html#cb68-2" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
+<span id="cb68-3"><a href="controle-de-fluxo-e-funções.html#cb68-3" tabindex="-1"></a>  <span class="fu">return</span>(soma)  <span class="co"># resultado retornado</span></span>
+<span id="cb68-4"><a href="controle-de-fluxo-e-funções.html#cb68-4" tabindex="-1"></a>}</span>
+<span id="cb68-5"><a href="controle-de-fluxo-e-funções.html#cb68-5" tabindex="-1"></a><span class="fu">minha_soma2</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>No R, muitas funções já tem alguns argumentos pré-definidos (default), ficando a critério do usuário modificá-los ou não.</p>
+</div>
+<div id="funções-anônimas" class="section level4 unnumbered hasAnchor">
+<h4>Funções anônimas<a href="controle-de-fluxo-e-funções.html#funções-anônimas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Usadas geralmente dentro de funções como apply, lapply, etc.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="controle-de-fluxo-e-funções.html#cb70-1" tabindex="-1"></a>lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb70-2"><a href="controle-de-fluxo-e-funções.html#cb70-2" tabindex="-1"></a><span class="fu">lapply</span>(lista, <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1 4
+## 
+## [[2]]
+## [1]  4  9 16</code></pre>
+</div>
+<div id="funções-que-usam-outras-funções" class="section level4 unnumbered hasAnchor">
+<h4>Funções que usam outras funções<a href="controle-de-fluxo-e-funções.html#funções-que-usam-outras-funções" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Podemos também usar funções dentro de funções.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="controle-de-fluxo-e-funções.html#cb72-1" tabindex="-1"></a><span class="co"># Função que calcula a soma das colunas de uma matriz:</span></span>
+<span id="cb72-2"><a href="controle-de-fluxo-e-funções.html#cb72-2" tabindex="-1"></a>calcula_soma_matriz <span class="ot">&lt;-</span> <span class="cf">function</span>(mat){</span>
+<span id="cb72-3"><a href="controle-de-fluxo-e-funções.html#cb72-3" tabindex="-1"></a>  soma_linhas <span class="ot">&lt;-</span> <span class="fu">apply</span>(mat, <span class="dv">2</span>, sum)</span>
+<span id="cb72-4"><a href="controle-de-fluxo-e-funções.html#cb72-4" tabindex="-1"></a>  <span class="fu">return</span>(soma_linhas)</span>
+<span id="cb72-5"><a href="controle-de-fluxo-e-funções.html#cb72-5" tabindex="-1"></a>}</span>
+<span id="cb72-6"><a href="controle-de-fluxo-e-funções.html#cb72-6" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb72-7"><a href="controle-de-fluxo-e-funções.html#cb72-7" tabindex="-1"></a><span class="fu">calcula_soma_matriz</span>(matriz)</span></code></pre></div>
+<pre><code>## [1]  6 15 24</code></pre>
+</div>
+<div id="funções-que-retornam-multiplos-objetos" class="section level4 unnumbered hasAnchor">
+<h4>Funções que retornam multiplos objetos<a href="controle-de-fluxo-e-funções.html#funções-que-retornam-multiplos-objetos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Funções podem retornar múltiplos valores. Podemos utilizar <code>list()</code> ou <code>data.frame()</code> para agrupar os retornos.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="controle-de-fluxo-e-funções.html#cb74-1" tabindex="-1"></a><span class="co"># Função que retorna os valores minimos e máximos de um vetor:</span></span>
+<span id="cb74-2"><a href="controle-de-fluxo-e-funções.html#cb74-2" tabindex="-1"></a>min_max_vetor <span class="ot">&lt;-</span> <span class="cf">function</span>(v){</span>
+<span id="cb74-3"><a href="controle-de-fluxo-e-funções.html#cb74-3" tabindex="-1"></a>  min_vec <span class="ot">&lt;-</span> <span class="fu">min</span>(v)</span>
+<span id="cb74-4"><a href="controle-de-fluxo-e-funções.html#cb74-4" tabindex="-1"></a>  max_vec <span class="ot">&lt;-</span> <span class="fu">max</span>(v)</span>
+<span id="cb74-5"><a href="controle-de-fluxo-e-funções.html#cb74-5" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">minimo_vec =</span> min_vec, <span class="at">maximo_vec =</span> max_vec))</span>
+<span id="cb74-6"><a href="controle-de-fluxo-e-funções.html#cb74-6" tabindex="-1"></a>}</span>
+<span id="cb74-7"><a href="controle-de-fluxo-e-funções.html#cb74-7" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">90</span>,<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb74-8"><a href="controle-de-fluxo-e-funções.html#cb74-8" tabindex="-1"></a><span class="fu">min_max_vetor</span>(v)</span></code></pre></div>
+<pre><code>## $minimo_vec
+## [1] 0
+## 
+## $maximo_vec
+## [1] 90</code></pre>
+</div>
+<div id="exercícios-9" class="section level4 unnumbered hasAnchor">
+<h4>Exercícios<a href="controle-de-fluxo-e-funções.html#exercícios-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Crie uma função <code>raiz_numeros()</code> que receba 2 números e devolva a raiz quadrada da soma desses números.</p>
+<p><strong>2.</strong> Crie uma função <code>max_numeros()</code> que receba dois valores (numéricos) e devolva o maior deles.</p>
+<p><strong>3.</strong> Crie uma função <code>soma_pares()</code> que recebe um vetor numérico e retorna a soma apenas dos números pares.</p>
+<p><strong>4.</strong> Crie a função <code>remover_na(vetor)</code> que remove os NA de um vetor e retorna o vetor limpo.</p>
+<p><strong>5.</strong> Defina uma função <code>resumo_vetor()</code> que retorne o mínimo, a mediana e o máximo de um vetor. Faça com que a função lide com NA’s e que isso seja um argumento com default.</p>
+<p><strong>6.</strong> Rode <code>help(sample)</code> para descobrir o que a função <code>sample()</code> faz. Em seguida</p>
+<ol style="list-style-type: lower-alpha">
+<li>use-a para escrever uma função <code>linha_aleatoria()</code> que devolva uma linha aleatória de um dataframe;</li>
+<li>generalize a função para <code>linha_aleatoria_n()</code> que retorne um número <code>n</code> qualquer de linhas do dataframe, especificado pelo usuário.</li>
+<li>Como tratar possíveis erros do código anterior?</li>
+</ol>
+</div>
+<div id="protectedContent5" style="display:none;">
+<div id="respostas-13" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="controle-de-fluxo-e-funções.html#respostas-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="controle-de-fluxo-e-funções.html#cb76-1" tabindex="-1"></a><span class="do">## 1.</span></span>
+<span id="cb76-2"><a href="controle-de-fluxo-e-funções.html#cb76-2" tabindex="-1"></a>raiz_numeros <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b){</span>
+<span id="cb76-3"><a href="controle-de-fluxo-e-funções.html#cb76-3" tabindex="-1"></a>  raiz_ab <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(a<span class="sc">+</span>b)</span>
+<span id="cb76-4"><a href="controle-de-fluxo-e-funções.html#cb76-4" tabindex="-1"></a>  <span class="fu">return</span>(raiz_ab)</span>
+<span id="cb76-5"><a href="controle-de-fluxo-e-funções.html#cb76-5" tabindex="-1"></a>}</span>
+<span id="cb76-6"><a href="controle-de-fluxo-e-funções.html#cb76-6" tabindex="-1"></a><span class="do">## 2.</span></span>
+<span id="cb76-7"><a href="controle-de-fluxo-e-funções.html#cb76-7" tabindex="-1"></a>max_numeros <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b){</span>
+<span id="cb76-8"><a href="controle-de-fluxo-e-funções.html#cb76-8" tabindex="-1"></a>  maior_ab <span class="ot">&lt;-</span> <span class="fu">max</span>(a, b)</span>
+<span id="cb76-9"><a href="controle-de-fluxo-e-funções.html#cb76-9" tabindex="-1"></a>  <span class="fu">return</span>(maior_ab)</span>
+<span id="cb76-10"><a href="controle-de-fluxo-e-funções.html#cb76-10" tabindex="-1"></a>}</span>
+<span id="cb76-11"><a href="controle-de-fluxo-e-funções.html#cb76-11" tabindex="-1"></a><span class="do">## 3.</span></span>
+<span id="cb76-12"><a href="controle-de-fluxo-e-funções.html#cb76-12" tabindex="-1"></a>soma_pares <span class="ot">&lt;-</span> <span class="cf">function</span>(v){</span>
+<span id="cb76-13"><a href="controle-de-fluxo-e-funções.html#cb76-13" tabindex="-1"></a>  soma <span class="ot">&lt;-</span> <span class="fu">sum</span>(v[v<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>])</span>
+<span id="cb76-14"><a href="controle-de-fluxo-e-funções.html#cb76-14" tabindex="-1"></a>  <span class="fu">return</span>(soma)</span>
+<span id="cb76-15"><a href="controle-de-fluxo-e-funções.html#cb76-15" tabindex="-1"></a>}</span>
+<span id="cb76-16"><a href="controle-de-fluxo-e-funções.html#cb76-16" tabindex="-1"></a><span class="do">## 4.</span></span>
+<span id="cb76-17"><a href="controle-de-fluxo-e-funções.html#cb76-17" tabindex="-1"></a>remover_na <span class="ot">&lt;-</span> <span class="cf">function</span>(vetor){</span>
+<span id="cb76-18"><a href="controle-de-fluxo-e-funções.html#cb76-18" tabindex="-1"></a>  vetor_limpo <span class="ot">&lt;-</span> vetor[<span class="sc">!</span><span class="fu">is.na</span>(vetor)]</span>
+<span id="cb76-19"><a href="controle-de-fluxo-e-funções.html#cb76-19" tabindex="-1"></a>  <span class="fu">return</span>(vetor_limpo)</span>
+<span id="cb76-20"><a href="controle-de-fluxo-e-funções.html#cb76-20" tabindex="-1"></a>}</span>
+<span id="cb76-21"><a href="controle-de-fluxo-e-funções.html#cb76-21" tabindex="-1"></a><span class="do">## 5.</span></span>
+<span id="cb76-22"><a href="controle-de-fluxo-e-funções.html#cb76-22" tabindex="-1"></a>resumo_vetor <span class="ot">&lt;-</span> <span class="cf">function</span>(v, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb76-23"><a href="controle-de-fluxo-e-funções.html#cb76-23" tabindex="-1"></a>  min_vec <span class="ot">=</span> <span class="fu">min</span>(v, <span class="at">na.rm =</span> na.rm)</span>
+<span id="cb76-24"><a href="controle-de-fluxo-e-funções.html#cb76-24" tabindex="-1"></a>  mediana_vec <span class="ot">=</span> <span class="fu">median</span>(v, <span class="at">na.rm =</span> na.rm)</span>
+<span id="cb76-25"><a href="controle-de-fluxo-e-funções.html#cb76-25" tabindex="-1"></a>  max_vec <span class="ot">=</span> <span class="fu">max</span>(v, <span class="at">na.rm =</span> na.rm)</span>
+<span id="cb76-26"><a href="controle-de-fluxo-e-funções.html#cb76-26" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">minimo =</span> min_vec, <span class="at">mediana =</span> mediana_vec, <span class="at">maximo =</span> max_vec))</span>
+<span id="cb76-27"><a href="controle-de-fluxo-e-funções.html#cb76-27" tabindex="-1"></a>}</span>
+<span id="cb76-28"><a href="controle-de-fluxo-e-funções.html#cb76-28" tabindex="-1"></a><span class="do">## 6.</span></span>
+<span id="cb76-29"><a href="controle-de-fluxo-e-funções.html#cb76-29" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nome =</span> <span class="fu">c</span>(<span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Beto&quot;</span>, <span class="st">&quot;Carlos&quot;</span>), <span class="at">idade =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">48</span>,<span class="dv">37</span>), </span>
+<span id="cb76-30"><a href="controle-de-fluxo-e-funções.html#cb76-30" tabindex="-1"></a>                    <span class="at">escolaridade =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;S&quot;</span>))</span>
+<span id="cb76-31"><a href="controle-de-fluxo-e-funções.html#cb76-31" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb76-32"><a href="controle-de-fluxo-e-funções.html#cb76-32" tabindex="-1"></a>linha_aleatoria <span class="ot">&lt;-</span> <span class="cf">function</span>(dados){</span>
+<span id="cb76-33"><a href="controle-de-fluxo-e-funções.html#cb76-33" tabindex="-1"></a>  linha <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dados), <span class="at">size =</span> <span class="dv">1</span>)</span>
+<span id="cb76-34"><a href="controle-de-fluxo-e-funções.html#cb76-34" tabindex="-1"></a>  <span class="fu">return</span>(dados[linha,])</span>
+<span id="cb76-35"><a href="controle-de-fluxo-e-funções.html#cb76-35" tabindex="-1"></a>}</span>
+<span id="cb76-36"><a href="controle-de-fluxo-e-funções.html#cb76-36" tabindex="-1"></a><span class="co"># b. </span></span>
+<span id="cb76-37"><a href="controle-de-fluxo-e-funções.html#cb76-37" tabindex="-1"></a>linha_aleatoria_n <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, n){</span>
+<span id="cb76-38"><a href="controle-de-fluxo-e-funções.html#cb76-38" tabindex="-1"></a>  linha <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dados), <span class="at">size =</span> n_min)</span>
+<span id="cb76-39"><a href="controle-de-fluxo-e-funções.html#cb76-39" tabindex="-1"></a>  <span class="fu">return</span>(dados[linha,])</span>
+<span id="cb76-40"><a href="controle-de-fluxo-e-funções.html#cb76-40" tabindex="-1"></a>}</span>
+<span id="cb76-41"><a href="controle-de-fluxo-e-funções.html#cb76-41" tabindex="-1"></a><span class="co"># c. </span></span>
+<span id="cb76-42"><a href="controle-de-fluxo-e-funções.html#cb76-42" tabindex="-1"></a>linha_aleatoria_n <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, n){</span>
+<span id="cb76-43"><a href="controle-de-fluxo-e-funções.html#cb76-43" tabindex="-1"></a>  <span class="cf">if</span>(n <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="fu">return</span>(<span class="fu">cat</span>(<span class="st">&quot;n deve ser maior do que 0 e menor do que nrow(dados)&quot;</span>))</span>
+<span id="cb76-44"><a href="controle-de-fluxo-e-funções.html#cb76-44" tabindex="-1"></a>  n_min <span class="ot">&lt;-</span> <span class="fu">min</span>(n, <span class="fu">nrow</span>(dados))</span>
+<span id="cb76-45"><a href="controle-de-fluxo-e-funções.html#cb76-45" tabindex="-1"></a>  linha <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dados), <span class="at">size =</span> n_min)</span>
+<span id="cb76-46"><a href="controle-de-fluxo-e-funções.html#cb76-46" tabindex="-1"></a>  <span class="fu">return</span>(dados[linha,])</span>
+<span id="cb76-47"><a href="controle-de-fluxo-e-funções.html#cb76-47" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput5" placeholder="Digite a senha">
+<button id="submitButton5">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton5").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput5").value;
+  var correctPassword = "0987";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent5").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+<div id="exercícios-do-capítulo-3-entregar-na-lista-1" class="section level4 unnumbered hasAnchor">
+<h4>Exercícios do Capítulo 3 <span style="color:red">(Entregar na lista 1)</span><a href="controle-de-fluxo-e-funções.html#exercícios-do-capítulo-3-entregar-na-lista-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1.</strong> Considere o dataframe com as colunas a seguir. Crie uma função <code>filtra_dados()</code> com os argumentos <code>dados</code>, <code>variável</code> e <code>filtro</code>, de modo que o usuário consiga definir um conjunto de valores no <code>filtro</code>, para alguma <code>variavel</code> especificada. Trate a possível situação de erro no caso do usuário entrar com outros nomes que não estão no conjunto de dados.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="controle-de-fluxo-e-funções.html#cb77-1" tabindex="-1"></a>  nome <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Bruno&quot;</span>, <span class="st">&quot;Carlos&quot;</span>, <span class="st">&quot;Diana&quot;</span>)</span>
+<span id="cb77-2"><a href="controle-de-fluxo-e-funções.html#cb77-2" tabindex="-1"></a>  idade <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">22</span>)</span>
+<span id="cb77-3"><a href="controle-de-fluxo-e-funções.html#cb77-3" tabindex="-1"></a>  nota <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="fl">6.4</span>, <span class="fl">9.2</span>, <span class="fl">4.8</span>)</span></code></pre></div>
+<p><strong>2.</strong> Criar função que receba nota e retorne:</p>
+<ul>
+<li>“Aprovado”, se &gt;= 7</li>
+<li>“Recuperação”, se &gt;= 5 e &lt; 7</li>
+<li>“Reprovado”, se &lt; 5</li>
+</ul>
+<p><strong>3.</strong> Crie uma função que receba a idade de uma pessoa e classifique-a como “Criança” (se 0-12 anos), “Adolescente” (se 13-17 anos), “Adulto” (se 18-59 anos) ou “Idoso” (se 60+ anos).</p>
+<p><strong>4.</strong> Crie uma função que retorne todos os elementos pares de cada vetor dentro de uma lista.</p>
+<p><strong>5.</strong> Crie uma função chamada <code>calculadora_soma()</code> que:</p>
+<ul>
+<li>Peça ao usuário que digite vários números separados por vírgula (ex: 10, 20, 30).</li>
+<li>Leia esses valores usando a função <code>readline()</code>.</li>
+<li>Converta os valores digitados para números.</li>
+<li>Some todos os valores e mostre o resultado na tela.</li>
+</ul>
+<p><strong>Dica:</strong> Use a função <code>strsplit()</code> para separar os números de entrada pela vírgula e <code>as.numeric()</code> para transformar os textos em números.</p>
+<!-- #### Funções aninhadas {-} -->
+<!-- Funções aninhadas são funções definidas dentro de outras funções. -->
+<!-- ```{r} -->
+<!-- ``` -->
+<!-- #### Funções recursivas {-} -->
+<!-- Função recursiva é uma função que chama a si mesma dentro de seu corpo. -->
+<!-- ```{r} -->
+<!-- fatorial <- function(n) { -->
+<!--   if (n == 0 || n == 1)  -->
+<!--     { -->
+<!--       return(1) -->
+<!--     } else { -->
+<!--       fac <- n * fatorial(n - 1) -->
+<!--       return(fac) -->
+<!--     } -->
+<!-- } -->
+<!-- fatorial(5)   -->
+<!-- ``` -->
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estruturas-de-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="importação-e-manipulação-de-dados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
