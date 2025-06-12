@@ -897,7 +897,8 @@ Outras informações em: https://quarto.org/docs/presentations/revealjs/
 
 Reproduza a seguinte apresentação usando `Quarto Presentation` do R Markdown: [Apresentação de Slides com RMarkdown](https://angelicamariatortola.github.io/academic/figs/aula-estatistica.html)
 
-#### Exercícios do Capítulo 7 <span style="color:red">(Entregar na lista 2)</span>  {-}
+
+## Exercícios do Capítulo 7 <span style="color:red">(Entregar na lista 2)</span>  
 
 **1.** Criar um relatório no RMarkdown que inclua:
 

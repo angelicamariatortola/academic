@@ -1621,7 +1621,7 @@ document.getElementById("submitButton6").addEventListener("click", function()
 </script>
 
 
-#### Exercícios do Capítulo 4 <span style="color:red">(Entregar na lista 1)</span>  {-}
+## Exercícios do Capítulo 4 <span style="color:red">(Entregar na lista 1)</span>  
 
 
 **1** Crie um data frame no R com os dados fictícios. Após isso, crie uma pasta no computador chamada "meus_dados" e usando as funções do pacote `readr`, use as funções de exportação para enviar os dados do R, nos formatos txt e csv, para a pasta "meus_dados". Após isso utilize as funções de importação para trazer novamente estes dados para o R. 

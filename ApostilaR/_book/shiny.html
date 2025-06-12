@@ -284,6 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#respostas-27"><i class="fa fa-check"></i>Respostas</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="r-markdown.html"><a href="r-markdown.html#slides-e-apresentações"><i class="fa fa-check"></i><b>7.3</b> Slides e Apresentações</a></li>
+<li class="chapter" data-level="7.4" data-path="r-markdown.html"><a href="r-markdown.html#exercícios-do-capítulo-7-entregar-na-lista-2"><i class="fa fa-check"></i><b>7.4</b> Exercícios do Capítulo 7 <span style="color:red">(Entregar na lista 2)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>8</b> Shiny</a>
 <ul>
@@ -321,7 +322,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#respostas-33"><i class="fa fa-check"></i>Respostas</a></li>
 <li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#exercícios-27"><i class="fa fa-check"></i>Exercícios</a></li>
 <li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#respostas-34"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="8.4.2" data-path="shiny.html"><a href="shiny.html#temas-1"><i class="fa fa-check"></i><b>8.4.2</b> Temas</a></li>
+<li class="chapter" data-level="8.4.3" data-path="shiny.html"><a href="shiny.html#html"><i class="fa fa-check"></i><b>8.4.3</b> HTML</a></li>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#exercícios-28"><i class="fa fa-check"></i>Exercícios</a></li>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#respostas-35"><i class="fa fa-check"></i>Respostas</a></li>
 </ul></li>
+<li class="chapter" data-level="8.5" data-path="shiny.html"><a href="shiny.html#ui-dinâmica"><i class="fa fa-check"></i><b>8.5</b> UI dinâmica</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="shiny.html"><a href="shiny.html#usando-a-familia-de-funções-update"><i class="fa fa-check"></i><b>8.5.1</b> Usando a familia de funções update</a></li>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#exercícios-29"><i class="fa fa-check"></i>Exercícios</a></li>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#respostas-36"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="8.5.2" data-path="shiny.html"><a href="shiny.html#usando-tabsetpanel-com-updatetabsetpanel"><i class="fa fa-check"></i><b>8.5.2</b> Usando tabsetPanel() com updateTabsetPanel()</a></li>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#exercícios-30"><i class="fa fa-check"></i>Exercícios</a></li>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#respostas-37"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="8.5.3" data-path="shiny.html"><a href="shiny.html#usando-uioutput-e-renderui"><i class="fa fa-check"></i><b>8.5.3</b> Usando <code>uiOutput()</code> e <code>renderUI()</code></a></li>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#exercícios-31"><i class="fa fa-check"></i>Exercícios</a></li>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#respostas-38"><i class="fa fa-check"></i>Respostas</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="shiny.html"><a href="shiny.html#exercícios-do-capítulo-8-entregar-na-lista-2"><i class="fa fa-check"></i><b>8.6</b> Exercícios do Capítulo 8 <span style="color:red">(Entregar na lista 2)</span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1908,11 +1926,995 @@ document.getElementById("submitButton7").addEventListener("click", function()
   }
 });
 </script>
-<!-- ### Temas -->
-<!-- ### HTML -->
+<div id="temas-1" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Temas<a href="shiny.html#temas-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Principais abordagens para aplicar temas em Shiny.</p>
+<div id="temas-básicos-com-shinythemes" class="section level4 unnumbered hasAnchor">
+<h4>Temas básicos com shinythemes<a href="shiny.html#temas-básicos-com-shinythemes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="shiny.html#cb65-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb65-2"><a href="shiny.html#cb65-2" tabindex="-1"></a><span class="fu">library</span>(shinythemes)</span>
+<span id="cb65-3"><a href="shiny.html#cb65-3" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="shiny.html#cb65-4" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb65-5"><a href="shiny.html#cb65-5" tabindex="-1"></a>  <span class="at">theme =</span> <span class="fu">shinytheme</span>(<span class="st">&quot;cerulean&quot;</span>),  <span class="co"># Exemplo de tema</span></span>
+<span id="cb65-6"><a href="shiny.html#cb65-6" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;App com tema &#39;cerulean&#39;&quot;</span>),</span>
+<span id="cb65-7"><a href="shiny.html#cb65-7" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb65-8"><a href="shiny.html#cb65-8" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb65-9"><a href="shiny.html#cb65-9" tabindex="-1"></a>      <span class="fu">sliderInput</span>(<span class="st">&quot;num&quot;</span>, <span class="st">&quot;Escolha um número&quot;</span>, <span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">50</span>)</span>
+<span id="cb65-10"><a href="shiny.html#cb65-10" tabindex="-1"></a>    ),</span>
+<span id="cb65-11"><a href="shiny.html#cb65-11" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb65-12"><a href="shiny.html#cb65-12" tabindex="-1"></a>      <span class="fu">textOutput</span>(<span class="st">&quot;res&quot;</span>)</span>
+<span id="cb65-13"><a href="shiny.html#cb65-13" tabindex="-1"></a>    )</span>
+<span id="cb65-14"><a href="shiny.html#cb65-14" tabindex="-1"></a>  )</span>
+<span id="cb65-15"><a href="shiny.html#cb65-15" tabindex="-1"></a>)</span>
+<span id="cb65-16"><a href="shiny.html#cb65-16" tabindex="-1"></a></span>
+<span id="cb65-17"><a href="shiny.html#cb65-17" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb65-18"><a href="shiny.html#cb65-18" tabindex="-1"></a>  output<span class="sc">$</span>res <span class="ot">&lt;-</span> <span class="fu">renderText</span>({ <span class="fu">paste</span>(<span class="st">&quot;Você escolheu&quot;</span>, input<span class="sc">$</span>num) })</span>
+<span id="cb65-19"><a href="shiny.html#cb65-19" tabindex="-1"></a>}</span>
+<span id="cb65-20"><a href="shiny.html#cb65-20" tabindex="-1"></a></span>
+<span id="cb65-21"><a href="shiny.html#cb65-21" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div>
+<p>Outros temas disponíveis:
+- cosmo
+- cyborg
+- darkly
+- flatly
+- journal
+- lumen
+- paper
+- readable</p>
+</div>
+<div id="customização-avançada-com-bslib-bootstrap-themes" class="section level4 unnumbered hasAnchor">
+<h4>Customização avançada com bslib (Bootstrap themes)<a href="shiny.html#customização-avançada-com-bslib-bootstrap-themes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="shiny.html#cb66-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb66-2"><a href="shiny.html#cb66-2" tabindex="-1"></a><span class="fu">library</span>(bslib)</span>
+<span id="cb66-3"><a href="shiny.html#cb66-3" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="shiny.html#cb66-4" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb66-5"><a href="shiny.html#cb66-5" tabindex="-1"></a>  <span class="at">theme =</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(</span>
+<span id="cb66-6"><a href="shiny.html#cb66-6" tabindex="-1"></a>    <span class="at">bg =</span> <span class="st">&quot;#0b3d91&quot;</span>, </span>
+<span id="cb66-7"><a href="shiny.html#cb66-7" tabindex="-1"></a>    <span class="at">fg =</span> <span class="st">&quot;white&quot;</span>, </span>
+<span id="cb66-8"><a href="shiny.html#cb66-8" tabindex="-1"></a>    <span class="at">base_font =</span> <span class="st">&quot;Source Sans Pro&quot;</span></span>
+<span id="cb66-9"><a href="shiny.html#cb66-9" tabindex="-1"></a>  ),</span>
+<span id="cb66-10"><a href="shiny.html#cb66-10" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;App com bslib e tema &#39;minty&#39;&quot;</span>),</span>
+<span id="cb66-11"><a href="shiny.html#cb66-11" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb66-12"><a href="shiny.html#cb66-12" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb66-13"><a href="shiny.html#cb66-13" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;n&quot;</span>, <span class="st">&quot;Número&quot;</span>, <span class="dv">1</span>)</span>
+<span id="cb66-14"><a href="shiny.html#cb66-14" tabindex="-1"></a>    ),</span>
+<span id="cb66-15"><a href="shiny.html#cb66-15" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb66-16"><a href="shiny.html#cb66-16" tabindex="-1"></a>      <span class="fu">verbatimTextOutput</span>(<span class="st">&quot;result&quot;</span>)</span>
+<span id="cb66-17"><a href="shiny.html#cb66-17" tabindex="-1"></a>    )</span>
+<span id="cb66-18"><a href="shiny.html#cb66-18" tabindex="-1"></a>  )</span>
+<span id="cb66-19"><a href="shiny.html#cb66-19" tabindex="-1"></a>)</span>
+<span id="cb66-20"><a href="shiny.html#cb66-20" tabindex="-1"></a></span>
+<span id="cb66-21"><a href="shiny.html#cb66-21" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb66-22"><a href="shiny.html#cb66-22" tabindex="-1"></a>  output<span class="sc">$</span>result <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({ input<span class="sc">$</span>n<span class="sc">^</span><span class="dv">2</span> })</span>
+<span id="cb66-23"><a href="shiny.html#cb66-23" tabindex="-1"></a>}</span>
+<span id="cb66-24"><a href="shiny.html#cb66-24" tabindex="-1"></a></span>
+<span id="cb66-25"><a href="shiny.html#cb66-25" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<ul>
+<li>bg: Cores para o fundo.</li>
+<li>fg: Cores para o primeiro plano.</li>
+<li>base_font: A fonte padrão.</li>
+</ul>
+<p>Para visualizar o exemplo de um tema específico:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="shiny.html#cb67-1" tabindex="-1"></a>theme <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(</span>
+<span id="cb67-2"><a href="shiny.html#cb67-2" tabindex="-1"></a>    <span class="at">bg =</span> <span class="st">&quot;#0b3d91&quot;</span>, </span>
+<span id="cb67-3"><a href="shiny.html#cb67-3" tabindex="-1"></a>    <span class="at">fg =</span> <span class="st">&quot;white&quot;</span>, </span>
+<span id="cb67-4"><a href="shiny.html#cb67-4" tabindex="-1"></a>    <span class="at">base_font =</span> <span class="st">&quot;Source Sans Pro&quot;</span></span>
+<span id="cb67-5"><a href="shiny.html#cb67-5" tabindex="-1"></a>  )</span>
+<span id="cb67-6"><a href="shiny.html#cb67-6" tabindex="-1"></a>bslib<span class="sc">::</span><span class="fu">bs_theme_preview</span>(theme)</span></code></pre></div>
+<p>Para personalizar os gráficos de acordo com o tema do app, usar <code>thematic_shiny()</code> do pacote <code>thematic</code>.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="shiny.html#cb68-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb68-2"><a href="shiny.html#cb68-2" tabindex="-1"></a><span class="fu">library</span>(thematic)</span>
+<span id="cb68-3"><a href="shiny.html#cb68-3" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="shiny.html#cb68-4" tabindex="-1"></a><span class="fu">thematic_shiny</span>()  <span class="co"># aplica automaticamente o tema</span></span>
+<span id="cb68-5"><a href="shiny.html#cb68-5" tabindex="-1"></a></span>
+<span id="cb68-6"><a href="shiny.html#cb68-6" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb68-7"><a href="shiny.html#cb68-7" tabindex="-1"></a>  <span class="at">theme =</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(</span>
+<span id="cb68-8"><a href="shiny.html#cb68-8" tabindex="-1"></a>    <span class="at">bg =</span> <span class="st">&quot;#0b3d91&quot;</span>, </span>
+<span id="cb68-9"><a href="shiny.html#cb68-9" tabindex="-1"></a>    <span class="at">fg =</span> <span class="st">&quot;white&quot;</span>, </span>
+<span id="cb68-10"><a href="shiny.html#cb68-10" tabindex="-1"></a>    <span class="at">base_font =</span> <span class="st">&quot;Source Sans Pro&quot;</span></span>
+<span id="cb68-11"><a href="shiny.html#cb68-11" tabindex="-1"></a>  ),</span>
+<span id="cb68-12"><a href="shiny.html#cb68-12" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;App com thematic&quot;</span>),</span>
+<span id="cb68-13"><a href="shiny.html#cb68-13" tabindex="-1"></a>  <span class="fu">plotOutput</span>(<span class="st">&quot;plot&quot;</span>)</span>
+<span id="cb68-14"><a href="shiny.html#cb68-14" tabindex="-1"></a>)</span>
+<span id="cb68-15"><a href="shiny.html#cb68-15" tabindex="-1"></a></span>
+<span id="cb68-16"><a href="shiny.html#cb68-16" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb68-17"><a href="shiny.html#cb68-17" tabindex="-1"></a>  output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb68-18"><a href="shiny.html#cb68-18" tabindex="-1"></a>    <span class="fu">plot</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
+<span id="cb68-19"><a href="shiny.html#cb68-19" tabindex="-1"></a>  })</span>
+<span id="cb68-20"><a href="shiny.html#cb68-20" tabindex="-1"></a>}</span>
+<span id="cb68-21"><a href="shiny.html#cb68-21" tabindex="-1"></a></span>
+<span id="cb68-22"><a href="shiny.html#cb68-22" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p>Observações:</p>
+<ul>
+<li>Para criar as cores você pode consultar <code>colors()</code>, ou consultar os códigos em <a href="https://r-charts.com/colors/" class="uri">https://r-charts.com/colors/</a>.</li>
+<li>Para fontes, você pode usar o suporte do Google Fonts via a função <code>font_google()</code> do próprio <code>bslib</code>, com diferentes opções em <a href="https://fonts.google.com/" class="uri">https://fonts.google.com/</a>.</li>
+</ul>
+</div>
+</div>
+<div id="html" class="section level3 hasAnchor" number="8.4.3">
+<h3><span class="header-section-number">8.4.3</span> HTML<a href="shiny.html#html" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O Shiny foi projetado para que, como usuário de R, você não precise aprender os detalhes de HTML. No entanto, se você tiver algum conhecimento de HTML e CSS, é possível personalizá-lo ainda mais.</p>
+<p>Todas as funções de entrada, saída e layout do shiny: apenas geram HTML. Você pode ver esse HTML executando funções de interface do usuário diretamente no console:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="shiny.html#cb69-1" tabindex="-1"></a><span class="co"># Código no console</span></span>
+<span id="cb69-2"><a href="shiny.html#cb69-2" tabindex="-1"></a><span class="fu">fluidPage</span>(</span>
+<span id="cb69-3"><a href="shiny.html#cb69-3" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;What&#39;s your name?&quot;</span>)</span>
+<span id="cb69-4"><a href="shiny.html#cb69-4" tabindex="-1"></a>)</span>
+<span id="cb69-5"><a href="shiny.html#cb69-5" tabindex="-1"></a><span class="co"># Saída</span></span>
+<span id="cb69-6"><a href="shiny.html#cb69-6" tabindex="-1"></a><span class="sc">&lt;</span>div class<span class="ot">=</span><span class="st">&quot;container-fluid&quot;</span><span class="sc">&gt;</span></span>
+<span id="cb69-7"><a href="shiny.html#cb69-7" tabindex="-1"></a>  <span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">&quot;form-group shiny-input-container&quot;</span><span class="sc">&gt;</span></span>
+<span id="cb69-8"><a href="shiny.html#cb69-8" tabindex="-1"></a>    <span class="er">&lt;</span>label class<span class="ot">=</span><span class="st">&quot;control-label&quot;</span> id<span class="ot">=</span><span class="st">&quot;name-label&quot;</span> <span class="cf">for</span><span class="ot">=</span><span class="st">&quot;name&quot;</span><span class="sc">&gt;</span>What<span class="st">&#39;s your name?</span></span>
+<span id="cb69-9"><a href="shiny.html#cb69-9" tabindex="-1"></a><span class="st">    &lt;/label&gt;</span></span>
+<span id="cb69-10"><a href="shiny.html#cb69-10" tabindex="-1"></a><span class="st">    &lt;input id=&quot;name&quot; type=&quot;text&quot; class=&quot;shiny-input-text form-control&quot; value=&quot;&quot;</span></span>
+<span id="cb69-11"><a href="shiny.html#cb69-11" tabindex="-1"></a><span class="st">    /&gt;</span></span>
+<span id="cb69-12"><a href="shiny.html#cb69-12" tabindex="-1"></a><span class="st">  &lt;/div&gt;</span></span>
+<span id="cb69-13"><a href="shiny.html#cb69-13" tabindex="-1"></a><span class="st">&lt;/div&gt;</span></span></code></pre></div>
+<p>É possível adicionar seu próprio HTML ao ui. Uma maneira de fazer isso é incluir HTML literal com a função <code>HTML()</code>, juntamente com a “constante de caractere bruto”, <code>r"()"</code>, para facilitar a inclusão de aspas na string:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="shiny.html#cb70-1" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb70-2"><a href="shiny.html#cb70-2" tabindex="-1"></a>  <span class="fu">HTML</span>(r<span class="st">&quot;(</span></span>
+<span id="cb70-3"><a href="shiny.html#cb70-3" tabindex="-1"></a><span class="st">    &lt;h1&gt;This is a heading&lt;/h1&gt;</span></span>
+<span id="cb70-4"><a href="shiny.html#cb70-4" tabindex="-1"></a><span class="st">    &lt;p class=&quot;</span>my<span class="sc">-</span>class<span class="st">&quot;&gt;This is some text!&lt;/p&gt;</span></span>
+<span id="cb70-5"><a href="shiny.html#cb70-5" tabindex="-1"></a><span class="st">    &lt;ul&gt;</span></span>
+<span id="cb70-6"><a href="shiny.html#cb70-6" tabindex="-1"></a><span class="st">      &lt;li&gt;First bullet&lt;/li&gt;</span></span>
+<span id="cb70-7"><a href="shiny.html#cb70-7" tabindex="-1"></a><span class="st">      &lt;li&gt;Second bullet&lt;/li&gt;</span></span>
+<span id="cb70-8"><a href="shiny.html#cb70-8" tabindex="-1"></a><span class="st">    &lt;/ul&gt;</span></span>
+<span id="cb70-9"><a href="shiny.html#cb70-9" tabindex="-1"></a><span class="st">  )&quot;</span>)</span>
+<span id="cb70-10"><a href="shiny.html#cb70-10" tabindex="-1"></a>)</span></code></pre></div>
+<p>Outra opção é usar o auxiliar HTML fornecido pelo Shiny. Existem funções regulares para os elementos mais importantes, como <code>h1()</code> e <code>p()</code>, e outros podem ser acessados por meio de tags auxiliares. Recriando o HTML acima:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="shiny.html#cb71-1" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb71-2"><a href="shiny.html#cb71-2" tabindex="-1"></a>  <span class="fu">h1</span>(<span class="st">&quot;This is a heading&quot;</span>),</span>
+<span id="cb71-3"><a href="shiny.html#cb71-3" tabindex="-1"></a>  <span class="fu">p</span>(<span class="st">&quot;This is some text!&quot;</span>, <span class="at">class =</span> <span class="st">&quot;my-class&quot;</span>),</span>
+<span id="cb71-4"><a href="shiny.html#cb71-4" tabindex="-1"></a>  tags<span class="sc">$</span><span class="fu">ul</span>(</span>
+<span id="cb71-5"><a href="shiny.html#cb71-5" tabindex="-1"></a>    tags<span class="sc">$</span><span class="fu">li</span>(<span class="st">&quot;First bullet&quot;</span>), </span>
+<span id="cb71-6"><a href="shiny.html#cb71-6" tabindex="-1"></a>    tags<span class="sc">$</span><span class="fu">li</span>(<span class="st">&quot;Second bullet&quot;</span>)</span>
+<span id="cb71-7"><a href="shiny.html#cb71-7" tabindex="-1"></a>  )</span>
+<span id="cb71-8"><a href="shiny.html#cb71-8" tabindex="-1"></a>)</span></code></pre></div>
+<p>O livro <a href="https://unleash-shiny.rinterface.com/index.html">Outstanding User Interfaces with Shiny</a>, de David Granjon, pode ser consultado para mais detalhes sobre como usar HTML, CSS e JavaScript para criar interfaces de usuário mais atraentes.</p>
+</div>
+<div id="exercícios-28" class="section level3 unnumbered hasAnchor">
+<h3>Exercícios<a href="shiny.html#exercícios-28" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1.</strong> Crie um aplicativo Shiny simples com um tema usando <code>bslib</code> com as seguintes características:</p>
+<ul>
+<li>Cor de fundo (bg) para um tom de azul claro: #e6f2ff.</li>
+<li>Cor do texto (fg) para um cinza escuro: #2c3e50.</li>
+<li>Fonte base como “Lato” (Google Fonts). Dica: Você pode usar a função <code>font_google("Lato")</code> para aplicar a fonte.</li>
+</ul>
+<p><strong>2.</strong> Use <code>bslib::bs_theme_preview()</code> para criar o tema mais feio possível.</p>
+</div>
+<div id="protectedContent8" style="display:none;">
+<div id="respostas-35" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="shiny.html#respostas-35" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="shiny.html#cb72-1" tabindex="-1"></a><span class="do">## 1.</span></span>
+<span id="cb72-2"><a href="shiny.html#cb72-2" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb72-3"><a href="shiny.html#cb72-3" tabindex="-1"></a><span class="fu">library</span>(thematic)</span>
+<span id="cb72-4"><a href="shiny.html#cb72-4" tabindex="-1"></a><span class="fu">thematic_shiny</span>()  <span class="co"># aplica automaticamente o tema</span></span>
+<span id="cb72-5"><a href="shiny.html#cb72-5" tabindex="-1"></a></span>
+<span id="cb72-6"><a href="shiny.html#cb72-6" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb72-7"><a href="shiny.html#cb72-7" tabindex="-1"></a>  <span class="at">theme =</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(</span>
+<span id="cb72-8"><a href="shiny.html#cb72-8" tabindex="-1"></a>    <span class="at">bg =</span> <span class="st">&quot;#e6f2ff&quot;</span>, </span>
+<span id="cb72-9"><a href="shiny.html#cb72-9" tabindex="-1"></a>    <span class="at">fg =</span> <span class="st">&quot;#2c3e50&quot;</span>, </span>
+<span id="cb72-10"><a href="shiny.html#cb72-10" tabindex="-1"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">&quot;Lato&quot;</span>)</span>
+<span id="cb72-11"><a href="shiny.html#cb72-11" tabindex="-1"></a>  ),</span>
+<span id="cb72-12"><a href="shiny.html#cb72-12" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;App com thematic&quot;</span>),</span>
+<span id="cb72-13"><a href="shiny.html#cb72-13" tabindex="-1"></a>  <span class="fu">plotOutput</span>(<span class="st">&quot;plot&quot;</span>)</span>
+<span id="cb72-14"><a href="shiny.html#cb72-14" tabindex="-1"></a>)</span>
+<span id="cb72-15"><a href="shiny.html#cb72-15" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb72-16"><a href="shiny.html#cb72-16" tabindex="-1"></a>  output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb72-17"><a href="shiny.html#cb72-17" tabindex="-1"></a>    <span class="fu">plot</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
+<span id="cb72-18"><a href="shiny.html#cb72-18" tabindex="-1"></a>  })</span>
+<span id="cb72-19"><a href="shiny.html#cb72-19" tabindex="-1"></a>}</span>
+<span id="cb72-20"><a href="shiny.html#cb72-20" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span>
+<span id="cb72-21"><a href="shiny.html#cb72-21" tabindex="-1"></a><span class="do">## 2.</span></span>
+<span id="cb72-22"><a href="shiny.html#cb72-22" tabindex="-1"></a>tema <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(</span>
+<span id="cb72-23"><a href="shiny.html#cb72-23" tabindex="-1"></a>    <span class="at">bg =</span> <span class="st">&quot;#ff00ff&quot;</span>,      <span class="co"># Rosa neon de fundo</span></span>
+<span id="cb72-24"><a href="shiny.html#cb72-24" tabindex="-1"></a>    <span class="at">fg =</span> <span class="st">&quot;#00ff00&quot;</span>,      <span class="co"># Verde neon para texto</span></span>
+<span id="cb72-25"><a href="shiny.html#cb72-25" tabindex="-1"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">&quot;Comic Neue&quot;</span>),  <span class="co"># Fonte bizarra</span></span>
+<span id="cb72-26"><a href="shiny.html#cb72-26" tabindex="-1"></a>    <span class="at">heading_font =</span> <span class="fu">font_google</span>(<span class="st">&quot;Creepster&quot;</span>), </span>
+<span id="cb72-27"><a href="shiny.html#cb72-27" tabindex="-1"></a>    <span class="co"># Título ainda mais estranho</span></span>
+<span id="cb72-28"><a href="shiny.html#cb72-28" tabindex="-1"></a>    <span class="at">code_font =</span> <span class="st">&quot;Courier New&quot;</span></span>
+<span id="cb72-29"><a href="shiny.html#cb72-29" tabindex="-1"></a>  )</span>
+<span id="cb72-30"><a href="shiny.html#cb72-30" tabindex="-1"></a>bslib<span class="sc">::</span><span class="fu">bs_theme_preview</span>(tema)</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput8" placeholder="Digite a senha">
+<button id="submitButton8">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton8").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput8").value;
+  var correctPassword = "09878";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent8").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
 <!-- ## Gráficos -->
 <!-- ## Comentários do usuário -->
-<!-- ## UI dinâmica -->
+</div>
+<div id="ui-dinâmica" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> UI dinâmica<a href="shiny.html#ui-dinâmica" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O shiny disponibiliza alguns recursos para criar interfaces de usuário dinâmicas, alterando a UI usando código executado na função do servidor.</p>
+<p>Existem três técnicas principais para criar interfaces de usuário dinâmicas:</p>
+<ul>
+<li><p>Usando a familia de funções <code>update</code> para modificar parâmetros de controles de entrada.</p></li>
+<li><p>Usando <code>tabsetPanel()</code> com <code>updateTabsetPanel()</code> para mostrar e ocultar condicionalmente partes da interface do usuário.</p></li>
+<li><p>Usando <code>uiOutput()</code> e <code>renderUI()</code> gerando partes selecionadas da interface do usuário com código.</p></li>
+</ul>
+<div id="usando-a-familia-de-funções-update" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Usando a familia de funções update<a href="shiny.html#usando-a-familia-de-funções-update" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cada controle de entrada, por exemplo <code>textInput()</code>, é pareado com uma função de atualização, por exemplo <code>updateTextInput()</code>, que permite modificar o controle após sua criação.</p>
+<div id="exemplos" class="section level4 unnumbered hasAnchor">
+<h4>Exemplos<a href="shiny.html#exemplos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1. Atualizando parâmetros de slider</strong></p>
+<p>No exemplo a seguir, o aplicativo possui duas entradas que controlam o min e max de outra entrada, um controle deslizante. A ideia principal é usar <code>observeEvent()</code> para disparar <code>updateSliderInput()</code> sempre que as entradas min ou max mudarem.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="shiny.html#cb73-1" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb73-2"><a href="shiny.html#cb73-2" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;Mínimo&quot;</span>, <span class="dv">0</span>),</span>
+<span id="cb73-3"><a href="shiny.html#cb73-3" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="st">&quot;max&quot;</span>, <span class="st">&quot;Máximo&quot;</span>, <span class="dv">3</span>),</span>
+<span id="cb73-4"><a href="shiny.html#cb73-4" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">&quot;n&quot;</span>, <span class="st">&quot;n&quot;</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3</span>, <span class="at">value =</span> <span class="dv">1</span>)</span>
+<span id="cb73-5"><a href="shiny.html#cb73-5" tabindex="-1"></a>)</span>
+<span id="cb73-6"><a href="shiny.html#cb73-6" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb73-7"><a href="shiny.html#cb73-7" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>min, {</span>
+<span id="cb73-8"><a href="shiny.html#cb73-8" tabindex="-1"></a>    <span class="fu">updateSliderInput</span>(<span class="at">inputId =</span> <span class="st">&quot;n&quot;</span>, <span class="at">min =</span> input<span class="sc">$</span>min)</span>
+<span id="cb73-9"><a href="shiny.html#cb73-9" tabindex="-1"></a>  })</span>
+<span id="cb73-10"><a href="shiny.html#cb73-10" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>max, {</span>
+<span id="cb73-11"><a href="shiny.html#cb73-11" tabindex="-1"></a>    <span class="fu">updateSliderInput</span>(<span class="at">inputId =</span> <span class="st">&quot;n&quot;</span>, <span class="at">max =</span> input<span class="sc">$</span>max)</span>
+<span id="cb73-12"><a href="shiny.html#cb73-12" tabindex="-1"></a>  })</span>
+<span id="cb73-13"><a href="shiny.html#cb73-13" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="figs/shiny_layout9.png" width="243" style="display: block; margin: auto;" /></p>
+<p>As funções de atualização recebem o nome do input como o argumento inputId. Os argumentos restantes correspondem aos argumentos para construir o input que podem ser modificados após a criação.</p>
+<p><strong>2. Resetar controles</strong></p>
+<p>O app a seguir ilustra como redefinir os parâmetros dos controles para seus valores iniciais.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="shiny.html#cb74-1" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb74-2"><a href="shiny.html#cb74-2" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x1&quot;</span>, <span class="dv">0</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">10</span>, <span class="at">max =</span> <span class="dv">10</span>),</span>
+<span id="cb74-3"><a href="shiny.html#cb74-3" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="dv">0</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">10</span>, <span class="at">max =</span> <span class="dv">10</span>),</span>
+<span id="cb74-4"><a href="shiny.html#cb74-4" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">&quot;x3&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="dv">0</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">10</span>, <span class="at">max =</span> <span class="dv">10</span>),</span>
+<span id="cb74-5"><a href="shiny.html#cb74-5" tabindex="-1"></a>  <span class="fu">actionButton</span>(<span class="st">&quot;reset&quot;</span>, <span class="st">&quot;Reset&quot;</span>)</span>
+<span id="cb74-6"><a href="shiny.html#cb74-6" tabindex="-1"></a>)</span>
+<span id="cb74-7"><a href="shiny.html#cb74-7" tabindex="-1"></a></span>
+<span id="cb74-8"><a href="shiny.html#cb74-8" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb74-9"><a href="shiny.html#cb74-9" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>reset, {</span>
+<span id="cb74-10"><a href="shiny.html#cb74-10" tabindex="-1"></a>    <span class="fu">updateSliderInput</span>(<span class="at">inputId =</span> <span class="st">&quot;x1&quot;</span>, <span class="at">value =</span> <span class="dv">0</span>)</span>
+<span id="cb74-11"><a href="shiny.html#cb74-11" tabindex="-1"></a>    <span class="fu">updateSliderInput</span>(<span class="at">inputId =</span> <span class="st">&quot;x2&quot;</span>, <span class="at">value =</span> <span class="dv">0</span>)</span>
+<span id="cb74-12"><a href="shiny.html#cb74-12" tabindex="-1"></a>    <span class="fu">updateSliderInput</span>(<span class="at">inputId =</span> <span class="st">&quot;x3&quot;</span>, <span class="at">value =</span> <span class="dv">0</span>)</span>
+<span id="cb74-13"><a href="shiny.html#cb74-13" tabindex="-1"></a>  })</span>
+<span id="cb74-14"><a href="shiny.html#cb74-14" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>3. Atualizar texto de um botão de ação</strong></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="shiny.html#cb75-1" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb75-2"><a href="shiny.html#cb75-2" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="st">&quot;n&quot;</span>, <span class="st">&quot;Simulations&quot;</span>, <span class="dv">10</span>),</span>
+<span id="cb75-3"><a href="shiny.html#cb75-3" tabindex="-1"></a>  <span class="fu">actionButton</span>(<span class="st">&quot;simulate&quot;</span>, <span class="st">&quot;Simulate&quot;</span>)</span>
+<span id="cb75-4"><a href="shiny.html#cb75-4" tabindex="-1"></a>)</span>
+<span id="cb75-5"><a href="shiny.html#cb75-5" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="shiny.html#cb75-6" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb75-7"><a href="shiny.html#cb75-7" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>n, {</span>
+<span id="cb75-8"><a href="shiny.html#cb75-8" tabindex="-1"></a>    label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Simulate &quot;</span>, input<span class="sc">$</span>n, <span class="st">&quot; times&quot;</span>)</span>
+<span id="cb75-9"><a href="shiny.html#cb75-9" tabindex="-1"></a>    <span class="fu">updateActionButton</span>(<span class="at">inputId =</span> <span class="st">&quot;simulate&quot;</span>, <span class="at">label =</span> label)</span>
+<span id="cb75-10"><a href="shiny.html#cb75-10" tabindex="-1"></a>  })</span>
+<span id="cb75-11"><a href="shiny.html#cb75-11" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>4. Caixas de seleção hierárquicas</strong></p>
+<p>Uma aplicação particularmente importante é facilitar a seleção em uma longa lista de opções possíveis, por meio da filtragem passo a passo.</p>
+<p>Considere o conjunto de dados para um painel de vendas, obtidos de <a href="https://www.kaggle.com/kyanyoga/sample-sales-data" class="uri">https://www.kaggle.com/kyanyoga/sample-sales-data</a>.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="shiny.html#cb76-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb76-2"><a href="shiny.html#cb76-2" tabindex="-1"></a><span class="do">## Lendo os dados:</span></span>
+<span id="cb76-3"><a href="shiny.html#cb76-3" tabindex="-1"></a>sales <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;figs/sales_data_sample.csv&quot;</span>, <span class="at">col_types =</span> <span class="fu">cols</span>(),</span>
+<span id="cb76-4"><a href="shiny.html#cb76-4" tabindex="-1"></a><span class="at">na =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb76-5"><a href="shiny.html#cb76-5" tabindex="-1"></a>sales <span class="sc">%&gt;%</span></span>
+<span id="cb76-6"><a href="shiny.html#cb76-6" tabindex="-1"></a>  <span class="fu">select</span>(TERRITORY, CUSTOMERNAME, ORDERNUMBER, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb76-7"><a href="shiny.html#cb76-7" tabindex="-1"></a>  <span class="fu">arrange</span>(ORDERNUMBER)</span></code></pre></div>
+<p>Neste caso, os dados tem uma hierarquia natural:</p>
+<ul>
+<li>Cada território (TERRITORY) contém clientes (CUSTOMERNAME).</li>
+<li>Cada cliente (CUSTOMERNAME) tem vários pedidos (ORDERNUMBER).</li>
+<li>Cada pedido (ORDERNUMBER) contém linhas.</li>
+</ul>
+<p>Vamos criar uma interface de usuário onde você possa:</p>
+<ul>
+<li>Selecionar um território para ver todos os clientes.</li>
+<li>Selecionar um cliente para ver todos os pedidos.</li>
+<li>Selecionar um pedido para ver as linhas subjacentes.</li>
+</ul>
+<p>A essência da UI é simples: três caixas de seleção e uma tabela de saída. As opções para as caixas de seleção <code>customername</code> e <code>ordernumber</code> serão geradas dinamicamente, então usamos <code>choices = NULL</code>.</p>
+<p>Na função de servidor:</p>
+<ul>
+<li>É criado um reativo, <code>territory()</code>, que contém as linhas das vendas que correspondem ao território selecionado.</li>
+<li>Sempre que <code>territory()</code> muda, a lista <code>choices</code> na caixa de seleção <code>input$customername</code> é atualizada.</li>
+<li>É criado outro reativo, <code>customer()</code>, que contém as linhas de <code>territory()</code> que correspondem ao cliente selecionado.</li>
+<li>Sempre que <code>customer()</code> muda, a lista <code>choices</code> na caixa de seleção <code>input$ordernumber</code> é atualizada.</li>
+<li>Os pedidos selecionados são exibidos em <code>output$data</code>.</li>
+</ul>
+<p>Neste caso, o territory e customer foram considerados reativos, por terem sido utilizados em mais de um lugar. Em casos mais simples, isso não seria necessário.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="shiny.html#cb77-1" tabindex="-1"></a><span class="co"># Interface do usuário</span></span>
+<span id="cb77-2"><a href="shiny.html#cb77-2" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb77-3"><a href="shiny.html#cb77-3" tabindex="-1"></a>  <span class="co"># Menu suspenso para selecionar o território</span></span>
+<span id="cb77-4"><a href="shiny.html#cb77-4" tabindex="-1"></a>  <span class="co"># (usa os valores únicos da coluna TERRITORY)</span></span>
+<span id="cb77-5"><a href="shiny.html#cb77-5" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;territory&quot;</span>, <span class="st">&quot;Território&quot;</span>, <span class="at">choices =</span> <span class="fu">unique</span>(sales<span class="sc">$</span>TERRITORY)),</span>
+<span id="cb77-6"><a href="shiny.html#cb77-6" tabindex="-1"></a>  </span>
+<span id="cb77-7"><a href="shiny.html#cb77-7" tabindex="-1"></a>  <span class="co"># Menu suspenso para selecionar o cliente </span></span>
+<span id="cb77-8"><a href="shiny.html#cb77-8" tabindex="-1"></a>  <span class="co"># (inicialmente vazio, será preenchido dinamicamente)</span></span>
+<span id="cb77-9"><a href="shiny.html#cb77-9" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;customername&quot;</span>, <span class="st">&quot;Cliente&quot;</span>, <span class="at">choices =</span> <span class="cn">NULL</span>),</span>
+<span id="cb77-10"><a href="shiny.html#cb77-10" tabindex="-1"></a>  </span>
+<span id="cb77-11"><a href="shiny.html#cb77-11" tabindex="-1"></a>  <span class="co"># Menu suspenso para selecionar o número do pedido</span></span>
+<span id="cb77-12"><a href="shiny.html#cb77-12" tabindex="-1"></a>  <span class="co"># (também vazio no início)</span></span>
+<span id="cb77-13"><a href="shiny.html#cb77-13" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;ordernumber&quot;</span>, <span class="st">&quot;Pedido&quot;</span>, <span class="at">choices =</span> <span class="cn">NULL</span>),</span>
+<span id="cb77-14"><a href="shiny.html#cb77-14" tabindex="-1"></a>  </span>
+<span id="cb77-15"><a href="shiny.html#cb77-15" tabindex="-1"></a>  <span class="co"># Local onde será exibida a tabela com os dados filtrados</span></span>
+<span id="cb77-16"><a href="shiny.html#cb77-16" tabindex="-1"></a>  <span class="fu">tableOutput</span>(<span class="st">&quot;data&quot;</span>)</span>
+<span id="cb77-17"><a href="shiny.html#cb77-17" tabindex="-1"></a>)</span>
+<span id="cb77-18"><a href="shiny.html#cb77-18" tabindex="-1"></a></span>
+<span id="cb77-19"><a href="shiny.html#cb77-19" tabindex="-1"></a><span class="co"># Lógica do servidor</span></span>
+<span id="cb77-20"><a href="shiny.html#cb77-20" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb77-21"><a href="shiny.html#cb77-21" tabindex="-1"></a></span>
+<span id="cb77-22"><a href="shiny.html#cb77-22" tabindex="-1"></a>  <span class="co"># Expressão reativa que filtra os dados com base no território selecionado</span></span>
+<span id="cb77-23"><a href="shiny.html#cb77-23" tabindex="-1"></a>  territory <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb77-24"><a href="shiny.html#cb77-24" tabindex="-1"></a>    <span class="fu">filter</span>(sales, TERRITORY <span class="sc">==</span> input<span class="sc">$</span>territory)</span>
+<span id="cb77-25"><a href="shiny.html#cb77-25" tabindex="-1"></a>  })</span>
+<span id="cb77-26"><a href="shiny.html#cb77-26" tabindex="-1"></a></span>
+<span id="cb77-27"><a href="shiny.html#cb77-27" tabindex="-1"></a>  <span class="co"># Quando o território mudar, atualiza a lista de clientes disponíveis</span></span>
+<span id="cb77-28"><a href="shiny.html#cb77-28" tabindex="-1"></a>  <span class="fu">observeEvent</span>(<span class="fu">territory</span>(), {</span>
+<span id="cb77-29"><a href="shiny.html#cb77-29" tabindex="-1"></a>    <span class="co"># clientes únicos do território filtrado</span></span>
+<span id="cb77-30"><a href="shiny.html#cb77-30" tabindex="-1"></a>    choices <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">territory</span>()<span class="sc">$</span>CUSTOMERNAME)  </span>
+<span id="cb77-31"><a href="shiny.html#cb77-31" tabindex="-1"></a>    <span class="co"># atualiza o selectInput de cliente</span></span>
+<span id="cb77-32"><a href="shiny.html#cb77-32" tabindex="-1"></a>    <span class="fu">updateSelectInput</span>(<span class="at">inputId =</span> <span class="st">&quot;customername&quot;</span>, <span class="at">choices =</span> choices)  </span>
+<span id="cb77-33"><a href="shiny.html#cb77-33" tabindex="-1"></a>  })</span>
+<span id="cb77-34"><a href="shiny.html#cb77-34" tabindex="-1"></a>  </span>
+<span id="cb77-35"><a href="shiny.html#cb77-35" tabindex="-1"></a>  <span class="co"># Expressão reativa que filtra os dados com base no cliente selecionado</span></span>
+<span id="cb77-36"><a href="shiny.html#cb77-36" tabindex="-1"></a>  customer <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb77-37"><a href="shiny.html#cb77-37" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>customername)  <span class="co"># garante que o cliente foi selecionado</span></span>
+<span id="cb77-38"><a href="shiny.html#cb77-38" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">territory</span>(), CUSTOMERNAME <span class="sc">==</span> input<span class="sc">$</span>customername)</span>
+<span id="cb77-39"><a href="shiny.html#cb77-39" tabindex="-1"></a>  })</span>
+<span id="cb77-40"><a href="shiny.html#cb77-40" tabindex="-1"></a></span>
+<span id="cb77-41"><a href="shiny.html#cb77-41" tabindex="-1"></a>  <span class="co"># Quando o cliente mudar, atualiza a lista de pedidos disponíveis</span></span>
+<span id="cb77-42"><a href="shiny.html#cb77-42" tabindex="-1"></a>  <span class="fu">observeEvent</span>(<span class="fu">customer</span>(), {</span>
+<span id="cb77-43"><a href="shiny.html#cb77-43" tabindex="-1"></a>    <span class="co"># pedidos únicos do cliente filtrado</span></span>
+<span id="cb77-44"><a href="shiny.html#cb77-44" tabindex="-1"></a>    choices <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">customer</span>()<span class="sc">$</span>ORDERNUMBER) </span>
+<span id="cb77-45"><a href="shiny.html#cb77-45" tabindex="-1"></a>    <span class="co"># atualiza o selectInput de pedido</span></span>
+<span id="cb77-46"><a href="shiny.html#cb77-46" tabindex="-1"></a>    <span class="fu">updateSelectInput</span>(<span class="at">inputId =</span> <span class="st">&quot;ordernumber&quot;</span>, <span class="at">choices =</span> choices)  </span>
+<span id="cb77-47"><a href="shiny.html#cb77-47" tabindex="-1"></a>  })</span>
+<span id="cb77-48"><a href="shiny.html#cb77-48" tabindex="-1"></a>  </span>
+<span id="cb77-49"><a href="shiny.html#cb77-49" tabindex="-1"></a>  <span class="co"># Renderiza a tabela com os dados filtrados pelo pedido selecionado</span></span>
+<span id="cb77-50"><a href="shiny.html#cb77-50" tabindex="-1"></a>  output<span class="sc">$</span>data <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb77-51"><a href="shiny.html#cb77-51" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>ordernumber)  <span class="co"># garante que um pedido foi selecionado</span></span>
+<span id="cb77-52"><a href="shiny.html#cb77-52" tabindex="-1"></a>    <span class="fu">customer</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb77-53"><a href="shiny.html#cb77-53" tabindex="-1"></a>      <span class="co"># filtra pelo pedido selecionado</span></span>
+<span id="cb77-54"><a href="shiny.html#cb77-54" tabindex="-1"></a>      <span class="fu">filter</span>(ORDERNUMBER <span class="sc">==</span> input<span class="sc">$</span>ordernumber) <span class="sc">%&gt;%</span>  </span>
+<span id="cb77-55"><a href="shiny.html#cb77-55" tabindex="-1"></a>      <span class="co"># seleciona as colunas a serem exibidas</span></span>
+<span id="cb77-56"><a href="shiny.html#cb77-56" tabindex="-1"></a>      <span class="fu">select</span>(QUANTITYORDERED, PRICEEACH, PRODUCTCODE)  </span>
+<span id="cb77-57"><a href="shiny.html#cb77-57" tabindex="-1"></a>  })</span>
+<span id="cb77-58"><a href="shiny.html#cb77-58" tabindex="-1"></a>}</span></code></pre></div>
+<p>Este aplicativo está disponível em: <a href="https://hadley.shinyapps.io/ms-update-nested/" class="uri">https://hadley.shinyapps.io/ms-update-nested/</a></p>
+<!-- - Congelamento de entradas reativas -->
+<!-- - Referências circulares -->
+<!-- - Entradas inter-relacionadas -->
+</div>
+</div>
+<div id="exercícios-29" class="section level3 unnumbered hasAnchor">
+<h3>Exercícios<a href="shiny.html#exercícios-29" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1.</strong> Atualizar rótulo de slider com valor atual.</p>
+<p><strong>2.</strong> Atualizar opções de <code>selectInput()</code> com botão.</p>
+<p><strong>3.</strong> Atualizar valor do slider para a média.</p>
+<p><strong>4.</strong> Complete a interface de usuário abaixo com uma função de servidor que atualiza as opções de <code>input$county</code> com base em <code>input$state</code>.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="shiny.html#cb78-1" tabindex="-1"></a><span class="fu">library</span>(openintro, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb78-2"><a href="shiny.html#cb78-2" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="shiny.html#cb78-3" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">unique</span>(county<span class="sc">$</span>state)</span>
+<span id="cb78-4"><a href="shiny.html#cb78-4" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="shiny.html#cb78-5" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb78-6"><a href="shiny.html#cb78-6" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;state&quot;</span>, <span class="st">&quot;State&quot;</span>, <span class="at">choices =</span> states),</span>
+<span id="cb78-7"><a href="shiny.html#cb78-7" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;county&quot;</span>, <span class="st">&quot;County&quot;</span>, <span class="at">choices =</span> <span class="cn">NULL</span>)</span>
+<span id="cb78-8"><a href="shiny.html#cb78-8" tabindex="-1"></a>)</span></code></pre></div>
+<p><strong>5.</strong> Complete a interface de usuário abaixo com uma função de servidor que atualiza as opções de <code>input$country</code> com base em <code>input$continent</code>. Use <code>output$data</code> para exibir todas as linhas correspondentes.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="shiny.html#cb79-1" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb79-2"><a href="shiny.html#cb79-2" tabindex="-1"></a>continents <span class="ot">&lt;-</span> <span class="fu">unique</span>(gapminder<span class="sc">$</span>continent)</span>
+<span id="cb79-3"><a href="shiny.html#cb79-3" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="shiny.html#cb79-4" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb79-5"><a href="shiny.html#cb79-5" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;continent&quot;</span>, <span class="st">&quot;Continent&quot;</span>, <span class="at">choices =</span> continents),</span>
+<span id="cb79-6"><a href="shiny.html#cb79-6" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;Country&quot;</span>, <span class="at">choices =</span> <span class="cn">NULL</span>),</span>
+<span id="cb79-7"><a href="shiny.html#cb79-7" tabindex="-1"></a>  <span class="fu">tableOutput</span>(<span class="st">&quot;data&quot;</span>)</span>
+<span id="cb79-8"><a href="shiny.html#cb79-8" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="protectedContent9" style="display:none;">
+<div id="respostas-36" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="shiny.html#respostas-36" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="shiny.html#cb80-1" tabindex="-1"></a><span class="do">## 1.</span></span>
+<span id="cb80-2"><a href="shiny.html#cb80-2" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb80-3"><a href="shiny.html#cb80-3" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">&quot;nota&quot;</span>, <span class="st">&quot;Nota&quot;</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>, <span class="at">value =</span> <span class="dv">5</span>),</span>
+<span id="cb80-4"><a href="shiny.html#cb80-4" tabindex="-1"></a>  <span class="fu">actionButton</span>(<span class="st">&quot;atualizar&quot;</span>, <span class="st">&quot;Atualizar rótulo&quot;</span>)</span>
+<span id="cb80-5"><a href="shiny.html#cb80-5" tabindex="-1"></a>)</span>
+<span id="cb80-6"><a href="shiny.html#cb80-6" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb80-7"><a href="shiny.html#cb80-7" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>atualizar, {</span>
+<span id="cb80-8"><a href="shiny.html#cb80-8" tabindex="-1"></a>    <span class="fu">updateSliderInput</span>(<span class="at">inputId =</span> <span class="st">&quot;nota&quot;</span>, </span>
+<span id="cb80-9"><a href="shiny.html#cb80-9" tabindex="-1"></a>                      <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;Nota:&quot;</span>, input<span class="sc">$</span>nota))</span>
+<span id="cb80-10"><a href="shiny.html#cb80-10" tabindex="-1"></a>  })</span>
+<span id="cb80-11"><a href="shiny.html#cb80-11" tabindex="-1"></a>}</span>
+<span id="cb80-12"><a href="shiny.html#cb80-12" tabindex="-1"></a><span class="do">## 2.</span></span>
+<span id="cb80-13"><a href="shiny.html#cb80-13" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb80-14"><a href="shiny.html#cb80-14" tabindex="-1"></a>  <span class="fu">actionButton</span>(<span class="st">&quot;trocar&quot;</span>, <span class="st">&quot;Trocar opções&quot;</span>),</span>
+<span id="cb80-15"><a href="shiny.html#cb80-15" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;escolha&quot;</span>, <span class="st">&quot;Escolha uma opção:&quot;</span>, <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</span>
+<span id="cb80-16"><a href="shiny.html#cb80-16" tabindex="-1"></a>)</span>
+<span id="cb80-17"><a href="shiny.html#cb80-17" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb80-18"><a href="shiny.html#cb80-18" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>trocar, {</span>
+<span id="cb80-19"><a href="shiny.html#cb80-19" tabindex="-1"></a>    novas_opcoes <span class="ot">&lt;-</span> <span class="fu">sample</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>], <span class="at">size =</span> <span class="dv">3</span>)</span>
+<span id="cb80-20"><a href="shiny.html#cb80-20" tabindex="-1"></a>    <span class="fu">updateSelectInput</span>(<span class="at">inputId =</span> <span class="st">&quot;escolha&quot;</span>, <span class="at">choices =</span> novas_opcoes)</span>
+<span id="cb80-21"><a href="shiny.html#cb80-21" tabindex="-1"></a>  })</span>
+<span id="cb80-22"><a href="shiny.html#cb80-22" tabindex="-1"></a>}</span>
+<span id="cb80-23"><a href="shiny.html#cb80-23" tabindex="-1"></a><span class="do">## 3.</span></span>
+<span id="cb80-24"><a href="shiny.html#cb80-24" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb80-25"><a href="shiny.html#cb80-25" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;Valor A&quot;</span>, <span class="at">value =</span> <span class="dv">10</span>),</span>
+<span id="cb80-26"><a href="shiny.html#cb80-26" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;Valor B&quot;</span>, <span class="at">value =</span> <span class="dv">30</span>),</span>
+<span id="cb80-27"><a href="shiny.html#cb80-27" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">&quot;media&quot;</span>, <span class="st">&quot;Média&quot;</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">value =</span> <span class="dv">20</span>)</span>
+<span id="cb80-28"><a href="shiny.html#cb80-28" tabindex="-1"></a>)</span>
+<span id="cb80-29"><a href="shiny.html#cb80-29" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb80-30"><a href="shiny.html#cb80-30" tabindex="-1"></a>  <span class="fu">observeEvent</span>(<span class="fu">c</span>(input<span class="sc">$</span>a, input<span class="sc">$</span>b), {</span>
+<span id="cb80-31"><a href="shiny.html#cb80-31" tabindex="-1"></a>    media_valor <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">c</span>(input<span class="sc">$</span>a, input<span class="sc">$</span>b))</span>
+<span id="cb80-32"><a href="shiny.html#cb80-32" tabindex="-1"></a>    <span class="fu">updateSliderInput</span>(<span class="at">inputId =</span> <span class="st">&quot;media&quot;</span>, <span class="at">value =</span> media_valor)</span>
+<span id="cb80-33"><a href="shiny.html#cb80-33" tabindex="-1"></a>  })</span>
+<span id="cb80-34"><a href="shiny.html#cb80-34" tabindex="-1"></a>}</span>
+<span id="cb80-35"><a href="shiny.html#cb80-35" tabindex="-1"></a><span class="do">## 4.</span></span>
+<span id="cb80-36"><a href="shiny.html#cb80-36" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb80-37"><a href="shiny.html#cb80-37" tabindex="-1"></a><span class="fu">library</span>(openintro, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb80-38"><a href="shiny.html#cb80-38" tabindex="-1"></a></span>
+<span id="cb80-39"><a href="shiny.html#cb80-39" tabindex="-1"></a><span class="co"># Lista única de estados disponíveis no dataset &#39;county&#39;</span></span>
+<span id="cb80-40"><a href="shiny.html#cb80-40" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">unique</span>(county<span class="sc">$</span>state)</span>
+<span id="cb80-41"><a href="shiny.html#cb80-41" tabindex="-1"></a><span class="co"># Interface do usuário</span></span>
+<span id="cb80-42"><a href="shiny.html#cb80-42" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb80-43"><a href="shiny.html#cb80-43" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;state&quot;</span>, <span class="st">&quot;State&quot;</span>, <span class="at">choices =</span> states),<span class="co"># Seletor de estado</span></span>
+<span id="cb80-44"><a href="shiny.html#cb80-44" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;county&quot;</span>, <span class="st">&quot;County&quot;</span>, <span class="at">choices =</span> <span class="cn">NULL</span>) </span>
+<span id="cb80-45"><a href="shiny.html#cb80-45" tabindex="-1"></a>  <span class="co"># Seletor de condado (atualizado dinamicamente)</span></span>
+<span id="cb80-46"><a href="shiny.html#cb80-46" tabindex="-1"></a>)</span>
+<span id="cb80-47"><a href="shiny.html#cb80-47" tabindex="-1"></a><span class="co"># Função do servidor</span></span>
+<span id="cb80-48"><a href="shiny.html#cb80-48" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb80-49"><a href="shiny.html#cb80-49" tabindex="-1"></a>  <span class="co"># Observa mudanças no estado selecionado</span></span>
+<span id="cb80-50"><a href="shiny.html#cb80-50" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>state, {</span>
+<span id="cb80-51"><a href="shiny.html#cb80-51" tabindex="-1"></a>    <span class="co"># Filtra os condados correspondentes ao estado selecionado</span></span>
+<span id="cb80-52"><a href="shiny.html#cb80-52" tabindex="-1"></a>    counties <span class="ot">&lt;-</span> <span class="fu">unique</span>(county<span class="sc">$</span>name[county<span class="sc">$</span>state <span class="sc">==</span> input<span class="sc">$</span>state])</span>
+<span id="cb80-53"><a href="shiny.html#cb80-53" tabindex="-1"></a>    <span class="co"># Atualiza o seletor de condados</span></span>
+<span id="cb80-54"><a href="shiny.html#cb80-54" tabindex="-1"></a>    <span class="fu">updateSelectInput</span>(<span class="at">inputId =</span> <span class="st">&quot;county&quot;</span>, <span class="at">choices =</span> counties)</span>
+<span id="cb80-55"><a href="shiny.html#cb80-55" tabindex="-1"></a>  })</span>
+<span id="cb80-56"><a href="shiny.html#cb80-56" tabindex="-1"></a>}</span>
+<span id="cb80-57"><a href="shiny.html#cb80-57" tabindex="-1"></a><span class="do">## ou (solução livro)</span></span>
+<span id="cb80-58"><a href="shiny.html#cb80-58" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb80-59"><a href="shiny.html#cb80-59" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>state, {</span>
+<span id="cb80-60"><a href="shiny.html#cb80-60" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>state)</span>
+<span id="cb80-61"><a href="shiny.html#cb80-61" tabindex="-1"></a>    <span class="co"># pull out county names</span></span>
+<span id="cb80-62"><a href="shiny.html#cb80-62" tabindex="-1"></a>    choices <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span> </span>
+<span id="cb80-63"><a href="shiny.html#cb80-63" tabindex="-1"></a>      <span class="fu">filter</span>(state <span class="sc">==</span> input<span class="sc">$</span>state) <span class="sc">%&gt;%</span></span>
+<span id="cb80-64"><a href="shiny.html#cb80-64" tabindex="-1"></a>      <span class="fu">pull</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb80-65"><a href="shiny.html#cb80-65" tabindex="-1"></a>      <span class="fu">unique</span>()</span>
+<span id="cb80-66"><a href="shiny.html#cb80-66" tabindex="-1"></a>    </span>
+<span id="cb80-67"><a href="shiny.html#cb80-67" tabindex="-1"></a>    <span class="fu">updateSelectInput</span>(<span class="at">inputId =</span> <span class="st">&quot;county&quot;</span>, <span class="at">choices =</span> choices)</span>
+<span id="cb80-68"><a href="shiny.html#cb80-68" tabindex="-1"></a>  })</span>
+<span id="cb80-69"><a href="shiny.html#cb80-69" tabindex="-1"></a>}</span>
+<span id="cb80-70"><a href="shiny.html#cb80-70" tabindex="-1"></a><span class="co"># Executa o aplicativo</span></span>
+<span id="cb80-71"><a href="shiny.html#cb80-71" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span>
+<span id="cb80-72"><a href="shiny.html#cb80-72" tabindex="-1"></a></span>
+<span id="cb80-73"><a href="shiny.html#cb80-73" tabindex="-1"></a><span class="do">## 5.</span></span>
+<span id="cb80-74"><a href="shiny.html#cb80-74" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb80-75"><a href="shiny.html#cb80-75" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb80-76"><a href="shiny.html#cb80-76" tabindex="-1"></a>continents <span class="ot">&lt;-</span> <span class="fu">unique</span>(gapminder<span class="sc">$</span>continent)</span>
+<span id="cb80-77"><a href="shiny.html#cb80-77" tabindex="-1"></a></span>
+<span id="cb80-78"><a href="shiny.html#cb80-78" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb80-79"><a href="shiny.html#cb80-79" tabindex="-1"></a>  <span class="co"># add &quot;(All)&quot; to the list of choices</span></span>
+<span id="cb80-80"><a href="shiny.html#cb80-80" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;continent&quot;</span>, <span class="st">&quot;Continent&quot;</span>, <span class="at">choices =</span> continents), </span>
+<span id="cb80-81"><a href="shiny.html#cb80-81" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;Country&quot;</span>, <span class="at">choices =</span> <span class="cn">NULL</span>),</span>
+<span id="cb80-82"><a href="shiny.html#cb80-82" tabindex="-1"></a>  <span class="fu">tableOutput</span>(<span class="st">&quot;data&quot;</span>)</span>
+<span id="cb80-83"><a href="shiny.html#cb80-83" tabindex="-1"></a>)</span>
+<span id="cb80-84"><a href="shiny.html#cb80-84" tabindex="-1"></a><span class="co"># Função do servidor (usando base R)</span></span>
+<span id="cb80-85"><a href="shiny.html#cb80-85" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb80-86"><a href="shiny.html#cb80-86" tabindex="-1"></a>  <span class="co"># Observa mudanças no estado selecionado</span></span>
+<span id="cb80-87"><a href="shiny.html#cb80-87" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>continent, {</span>
+<span id="cb80-88"><a href="shiny.html#cb80-88" tabindex="-1"></a>    choices <span class="ot">&lt;-</span> <span class="fu">unique</span>(gapminder<span class="sc">$</span>country[gapminder<span class="sc">$</span>continent <span class="sc">==</span> input<span class="sc">$</span>continent])</span>
+<span id="cb80-89"><a href="shiny.html#cb80-89" tabindex="-1"></a>    <span class="co"># Atualiza o seletor de condados</span></span>
+<span id="cb80-90"><a href="shiny.html#cb80-90" tabindex="-1"></a>    <span class="fu">updateSelectInput</span>(<span class="at">inputId =</span> <span class="st">&quot;country&quot;</span>, <span class="at">choices =</span> choices)</span>
+<span id="cb80-91"><a href="shiny.html#cb80-91" tabindex="-1"></a>  })</span>
+<span id="cb80-92"><a href="shiny.html#cb80-92" tabindex="-1"></a>  </span>
+<span id="cb80-93"><a href="shiny.html#cb80-93" tabindex="-1"></a>  output<span class="sc">$</span>data <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb80-94"><a href="shiny.html#cb80-94" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>country)</span>
+<span id="cb80-95"><a href="shiny.html#cb80-95" tabindex="-1"></a>    gapminder[gapminder<span class="sc">$</span>continent <span class="sc">==</span> input<span class="sc">$</span>continent <span class="sc">&amp;</span></span>
+<span id="cb80-96"><a href="shiny.html#cb80-96" tabindex="-1"></a>              gapminder<span class="sc">$</span>country <span class="sc">==</span> input<span class="sc">$</span>country, ]</span>
+<span id="cb80-97"><a href="shiny.html#cb80-97" tabindex="-1"></a>  })</span>
+<span id="cb80-98"><a href="shiny.html#cb80-98" tabindex="-1"></a>}</span>
+<span id="cb80-99"><a href="shiny.html#cb80-99" tabindex="-1"></a><span class="co"># Função do servidor (usando dplyr)</span></span>
+<span id="cb80-100"><a href="shiny.html#cb80-100" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb80-101"><a href="shiny.html#cb80-101" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>continent, {</span>
+<span id="cb80-102"><a href="shiny.html#cb80-102" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>continent)</span>
+<span id="cb80-103"><a href="shiny.html#cb80-103" tabindex="-1"></a>    <span class="co"># pull out country names</span></span>
+<span id="cb80-104"><a href="shiny.html#cb80-104" tabindex="-1"></a>    choices <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb80-105"><a href="shiny.html#cb80-105" tabindex="-1"></a>      <span class="fu">filter</span>(continent <span class="sc">==</span> input<span class="sc">$</span>continent) <span class="sc">%&gt;%</span></span>
+<span id="cb80-106"><a href="shiny.html#cb80-106" tabindex="-1"></a>      <span class="fu">pull</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb80-107"><a href="shiny.html#cb80-107" tabindex="-1"></a>      <span class="fu">unique</span>()</span>
+<span id="cb80-108"><a href="shiny.html#cb80-108" tabindex="-1"></a>    </span>
+<span id="cb80-109"><a href="shiny.html#cb80-109" tabindex="-1"></a>    <span class="fu">updateSelectInput</span>(<span class="at">inputId =</span> <span class="st">&quot;country&quot;</span>, <span class="at">choices =</span> choices)</span>
+<span id="cb80-110"><a href="shiny.html#cb80-110" tabindex="-1"></a>  })</span>
+<span id="cb80-111"><a href="shiny.html#cb80-111" tabindex="-1"></a>  </span>
+<span id="cb80-112"><a href="shiny.html#cb80-112" tabindex="-1"></a>  output<span class="sc">$</span>data <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb80-113"><a href="shiny.html#cb80-113" tabindex="-1"></a>    gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb80-114"><a href="shiny.html#cb80-114" tabindex="-1"></a>      <span class="fu">filter</span>(continent <span class="sc">==</span> input<span class="sc">$</span>continent,</span>
+<span id="cb80-115"><a href="shiny.html#cb80-115" tabindex="-1"></a>             country <span class="sc">==</span> input<span class="sc">$</span>country)</span>
+<span id="cb80-116"><a href="shiny.html#cb80-116" tabindex="-1"></a>  })</span>
+<span id="cb80-117"><a href="shiny.html#cb80-117" tabindex="-1"></a>}</span>
+<span id="cb80-118"><a href="shiny.html#cb80-118" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput8" placeholder="Digite a senha">
+<button id="submitButton8">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton9").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput9").value;
+  var correctPassword = "09878";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent9").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+<div id="usando-tabsetpanel-com-updatetabsetpanel" class="section level3 hasAnchor" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> Usando tabsetPanel() com updateTabsetPanel()<a href="shiny.html#usando-tabsetpanel-com-updatetabsetpanel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exemplos-1" class="section level4 unnumbered hasAnchor">
+<h4>Exemplos<a href="shiny.html#exemplos-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1. Guias condicionais</strong></p>
+<p>Imagine que você queira um aplicativo que permita ao usuário simular distribuições normal, uniforme e exponencial. Cada distribuição tem parâmetros diferentes, então precisaremos de uma maneira de mostrar controles diferentes para cada distribuição. Cada distribuição terá sua interface de usuário exclusiva com <code>tabPanel()</code> e, em seguida, serão oranizadas em guias de um arquivo <code>tabsetPanel()</code>.</p>
+<p>Em seguida, isso será incorporado na interface de usuário que permite ao usuário escolher o número de amostras e mostra um histograma dos resultados.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="shiny.html#cb81-1" tabindex="-1"></a><span class="co"># Define um conjunto de abas ocultas, onde cada aba contém os</span></span>
+<span id="cb81-2"><a href="shiny.html#cb81-2" tabindex="-1"></a><span class="co"># parâmetros para uma distribuição específica</span></span>
+<span id="cb81-3"><a href="shiny.html#cb81-3" tabindex="-1"></a>parameter_tabs <span class="ot">&lt;-</span> <span class="fu">tabsetPanel</span>(</span>
+<span id="cb81-4"><a href="shiny.html#cb81-4" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;params&quot;</span>,   <span class="co"># ID do tabset usado para controle via server</span></span>
+<span id="cb81-5"><a href="shiny.html#cb81-5" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;hidden&quot;</span>, <span class="co"># Oculta as abas </span></span>
+<span id="cb81-6"><a href="shiny.html#cb81-6" tabindex="-1"></a>  <span class="co"># (elas são trocadas programaticamente, não clicáveis)</span></span>
+<span id="cb81-7"><a href="shiny.html#cb81-7" tabindex="-1"></a>  <span class="co"># Aba para distribuição normal: precisa de média e desvio padrão</span></span>
+<span id="cb81-8"><a href="shiny.html#cb81-8" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">&quot;normal&quot;</span>,</span>
+<span id="cb81-9"><a href="shiny.html#cb81-9" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&quot;mean&quot;</span>, <span class="st">&quot;mean&quot;</span>, <span class="at">value =</span> <span class="dv">1</span>), <span class="co"># Input para média</span></span>
+<span id="cb81-10"><a href="shiny.html#cb81-10" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&quot;sd&quot;</span>, <span class="st">&quot;standard deviation&quot;</span>, </span>
+<span id="cb81-11"><a href="shiny.html#cb81-11" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">0</span>, <span class="at">value =</span> <span class="dv">1</span>)  <span class="co"># Input para desvio padrão</span></span>
+<span id="cb81-12"><a href="shiny.html#cb81-12" tabindex="-1"></a>  ),</span>
+<span id="cb81-13"><a href="shiny.html#cb81-13" tabindex="-1"></a>  <span class="co"># Aba para distribuição uniforme: precisa de mínimo e máximo</span></span>
+<span id="cb81-14"><a href="shiny.html#cb81-14" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">&quot;uniform&quot;</span>,</span>
+<span id="cb81-15"><a href="shiny.html#cb81-15" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="at">value =</span> <span class="dv">0</span>),  <span class="co"># Limite inferior</span></span>
+<span id="cb81-16"><a href="shiny.html#cb81-16" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&quot;max&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="at">value =</span> <span class="dv">1</span>)   <span class="co"># Limite superior</span></span>
+<span id="cb81-17"><a href="shiny.html#cb81-17" tabindex="-1"></a>  ),</span>
+<span id="cb81-18"><a href="shiny.html#cb81-18" tabindex="-1"></a>  <span class="co"># Aba para distribuição exponencial: precisa da taxa</span></span>
+<span id="cb81-19"><a href="shiny.html#cb81-19" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">&quot;exponential&quot;</span>,</span>
+<span id="cb81-20"><a href="shiny.html#cb81-20" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&quot;rate&quot;</span>, <span class="st">&quot;rate&quot;</span>, <span class="at">value =</span> <span class="dv">1</span>, <span class="at">min =</span> <span class="dv">0</span>)  </span>
+<span id="cb81-21"><a href="shiny.html#cb81-21" tabindex="-1"></a>    <span class="co"># Parâmetro de taxa (lambda)</span></span>
+<span id="cb81-22"><a href="shiny.html#cb81-22" tabindex="-1"></a>  )</span>
+<span id="cb81-23"><a href="shiny.html#cb81-23" tabindex="-1"></a>)</span>
+<span id="cb81-24"><a href="shiny.html#cb81-24" tabindex="-1"></a></span>
+<span id="cb81-25"><a href="shiny.html#cb81-25" tabindex="-1"></a><span class="co"># Interface do usuário</span></span>
+<span id="cb81-26"><a href="shiny.html#cb81-26" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb81-27"><a href="shiny.html#cb81-27" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb81-28"><a href="shiny.html#cb81-28" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb81-29"><a href="shiny.html#cb81-29" tabindex="-1"></a>      <span class="fu">selectInput</span>(<span class="st">&quot;dist&quot;</span>, </span>
+<span id="cb81-30"><a href="shiny.html#cb81-30" tabindex="-1"></a>      <span class="st">&quot;Distribution&quot;</span>, <span class="co"># Menu suspenso para escolher a distribuição</span></span>
+<span id="cb81-31"><a href="shiny.html#cb81-31" tabindex="-1"></a>        <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;normal&quot;</span>, <span class="st">&quot;uniform&quot;</span>, <span class="st">&quot;exponential&quot;</span>)</span>
+<span id="cb81-32"><a href="shiny.html#cb81-32" tabindex="-1"></a>      ),</span>
+<span id="cb81-33"><a href="shiny.html#cb81-33" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;n&quot;</span>, <span class="st">&quot;Number of samples&quot;</span>,</span>
+<span id="cb81-34"><a href="shiny.html#cb81-34" tabindex="-1"></a>      <span class="at">value =</span> <span class="dv">100</span>), <span class="co"># Quantidade de amostras</span></span>
+<span id="cb81-35"><a href="shiny.html#cb81-35" tabindex="-1"></a>      parameter_tabs <span class="co"># Os inputs de parâmetros definidos acima</span></span>
+<span id="cb81-36"><a href="shiny.html#cb81-36" tabindex="-1"></a>    ),</span>
+<span id="cb81-37"><a href="shiny.html#cb81-37" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb81-38"><a href="shiny.html#cb81-38" tabindex="-1"></a>      <span class="fu">plotOutput</span>(<span class="st">&quot;hist&quot;</span>)  <span class="co"># Área para exibir o histograma</span></span>
+<span id="cb81-39"><a href="shiny.html#cb81-39" tabindex="-1"></a>    )</span>
+<span id="cb81-40"><a href="shiny.html#cb81-40" tabindex="-1"></a>  )</span>
+<span id="cb81-41"><a href="shiny.html#cb81-41" tabindex="-1"></a>)</span>
+<span id="cb81-42"><a href="shiny.html#cb81-42" tabindex="-1"></a></span>
+<span id="cb81-43"><a href="shiny.html#cb81-43" tabindex="-1"></a><span class="co"># Função do servidor</span></span>
+<span id="cb81-44"><a href="shiny.html#cb81-44" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb81-45"><a href="shiny.html#cb81-45" tabindex="-1"></a>  </span>
+<span id="cb81-46"><a href="shiny.html#cb81-46" tabindex="-1"></a>  <span class="co"># Observa a escolha da distribuição e atualiza o tabsetPanel correspondente</span></span>
+<span id="cb81-47"><a href="shiny.html#cb81-47" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>dist, {</span>
+<span id="cb81-48"><a href="shiny.html#cb81-48" tabindex="-1"></a>    <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">&quot;params&quot;</span>, </span>
+<span id="cb81-49"><a href="shiny.html#cb81-49" tabindex="-1"></a>    <span class="at">selected =</span> input<span class="sc">$</span>dist)  <span class="co"># Ativa a aba correspondente à distribuição</span></span>
+<span id="cb81-50"><a href="shiny.html#cb81-50" tabindex="-1"></a>  })</span>
+<span id="cb81-51"><a href="shiny.html#cb81-51" tabindex="-1"></a></span>
+<span id="cb81-52"><a href="shiny.html#cb81-52" tabindex="-1"></a>  <span class="co"># Gera a amostra com base na distribuição e nos parâmetros escolhidos</span></span>
+<span id="cb81-53"><a href="shiny.html#cb81-53" tabindex="-1"></a>  sample <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb81-54"><a href="shiny.html#cb81-54" tabindex="-1"></a>    <span class="cf">switch</span>(input<span class="sc">$</span>dist,</span>
+<span id="cb81-55"><a href="shiny.html#cb81-55" tabindex="-1"></a>      <span class="at">normal =</span> <span class="fu">rnorm</span>(input<span class="sc">$</span>n, input<span class="sc">$</span>mean, input<span class="sc">$</span>sd),   </span>
+<span id="cb81-56"><a href="shiny.html#cb81-56" tabindex="-1"></a>      <span class="co"># Gera amostra normal</span></span>
+<span id="cb81-57"><a href="shiny.html#cb81-57" tabindex="-1"></a>      <span class="at">uniform =</span> <span class="fu">runif</span>(input<span class="sc">$</span>n, input<span class="sc">$</span>min, input<span class="sc">$</span>max), </span>
+<span id="cb81-58"><a href="shiny.html#cb81-58" tabindex="-1"></a>      <span class="co"># Gera amostra uniforme</span></span>
+<span id="cb81-59"><a href="shiny.html#cb81-59" tabindex="-1"></a>      <span class="at">exponential =</span> <span class="fu">rexp</span>(input<span class="sc">$</span>n, input<span class="sc">$</span>rate)                 </span>
+<span id="cb81-60"><a href="shiny.html#cb81-60" tabindex="-1"></a>      <span class="co"># Gera amostra exponencial</span></span>
+<span id="cb81-61"><a href="shiny.html#cb81-61" tabindex="-1"></a>    )</span>
+<span id="cb81-62"><a href="shiny.html#cb81-62" tabindex="-1"></a>  })</span>
+<span id="cb81-63"><a href="shiny.html#cb81-63" tabindex="-1"></a></span>
+<span id="cb81-64"><a href="shiny.html#cb81-64" tabindex="-1"></a>  <span class="co"># Desenha o histograma da amostra gerada</span></span>
+<span id="cb81-65"><a href="shiny.html#cb81-65" tabindex="-1"></a>  output<span class="sc">$</span>hist <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu">hist</span>(<span class="fu">sample</span>()), <span class="at">res =</span> <span class="dv">96</span>)     </span>
+<span id="cb81-66"><a href="shiny.html#cb81-66" tabindex="-1"></a>  <span class="co"># res = 96 define resolução para melhor visualização</span></span>
+<span id="cb81-67"><a href="shiny.html#cb81-67" tabindex="-1"></a>}</span></code></pre></div>
+<p>O resultado pode ser visualizado em: <a href="https://hadley.shinyapps.io/ms-dynamic-conditional/" class="uri">https://hadley.shinyapps.io/ms-dynamic-conditional/</a></p>
+<p><strong>2. Guias sequenciais</strong></p>
+<p>A mesma ideia pode ser usada para criar um “assistente”, um tipo de interface que facilita a coleta de um conjunto de informações, distribuindo-as por várias páginas. Neste exemplo, cada “página” têm botões de ação, facilitando o avanço e o retrocesso.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="shiny.html#cb82-1" tabindex="-1"></a><span class="co"># Interface do usuário</span></span>
+<span id="cb82-2"><a href="shiny.html#cb82-2" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb82-3"><a href="shiny.html#cb82-3" tabindex="-1"></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb82-4"><a href="shiny.html#cb82-4" tabindex="-1"></a>  <span class="co"># ID do tabset, usado para controlar qual aba está ativa</span></span>
+<span id="cb82-5"><a href="shiny.html#cb82-5" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;wizard&quot;</span>,      </span>
+<span id="cb82-6"><a href="shiny.html#cb82-6" tabindex="-1"></a>  <span class="co"># Esconde as abas (mostra apenas o conteúdo)</span></span>
+<span id="cb82-7"><a href="shiny.html#cb82-7" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;hidden&quot;</span>,    </span>
+<span id="cb82-8"><a href="shiny.html#cb82-8" tabindex="-1"></a></span>
+<span id="cb82-9"><a href="shiny.html#cb82-9" tabindex="-1"></a>  <span class="co"># Primeira &quot;página&quot;</span></span>
+<span id="cb82-10"><a href="shiny.html#cb82-10" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">&quot;page_1&quot;</span>, <span class="st">&quot;Bem-vindo!&quot;</span>,     </span>
+<span id="cb82-11"><a href="shiny.html#cb82-11" tabindex="-1"></a>    <span class="fu">actionButton</span>(<span class="st">&quot;page_12&quot;</span>, <span class="st">&quot;next&quot;</span>) </span>
+<span id="cb82-12"><a href="shiny.html#cb82-12" tabindex="-1"></a>    <span class="co"># Botão para ir para a próxima página</span></span>
+<span id="cb82-13"><a href="shiny.html#cb82-13" tabindex="-1"></a>  ),</span>
+<span id="cb82-14"><a href="shiny.html#cb82-14" tabindex="-1"></a></span>
+<span id="cb82-15"><a href="shiny.html#cb82-15" tabindex="-1"></a>  <span class="co"># Segunda página</span></span>
+<span id="cb82-16"><a href="shiny.html#cb82-16" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">&quot;page_2&quot;</span>, <span class="st">&quot;Falta só uma página&quot;</span>,       </span>
+<span id="cb82-17"><a href="shiny.html#cb82-17" tabindex="-1"></a>    <span class="fu">actionButton</span>(<span class="st">&quot;page_21&quot;</span>, <span class="st">&quot;prev&quot;</span>), </span>
+<span id="cb82-18"><a href="shiny.html#cb82-18" tabindex="-1"></a>    <span class="co"># Botão para voltar para a página 1</span></span>
+<span id="cb82-19"><a href="shiny.html#cb82-19" tabindex="-1"></a>    <span class="fu">actionButton</span>(<span class="st">&quot;page_23&quot;</span>, <span class="st">&quot;next&quot;</span>) </span>
+<span id="cb82-20"><a href="shiny.html#cb82-20" tabindex="-1"></a>    <span class="co"># Botão para ir para a página 3</span></span>
+<span id="cb82-21"><a href="shiny.html#cb82-21" tabindex="-1"></a>  ),</span>
+<span id="cb82-22"><a href="shiny.html#cb82-22" tabindex="-1"></a></span>
+<span id="cb82-23"><a href="shiny.html#cb82-23" tabindex="-1"></a>  <span class="co"># Terceira (última) página</span></span>
+<span id="cb82-24"><a href="shiny.html#cb82-24" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">&quot;page_3&quot;</span>, <span class="st">&quot;Pronto!&quot;</span>,</span>
+<span id="cb82-25"><a href="shiny.html#cb82-25" tabindex="-1"></a>    <span class="fu">actionButton</span>(<span class="st">&quot;page_32&quot;</span>, <span class="st">&quot;prev&quot;</span>) </span>
+<span id="cb82-26"><a href="shiny.html#cb82-26" tabindex="-1"></a>    <span class="co"># Botão para voltar para a página 2</span></span>
+<span id="cb82-27"><a href="shiny.html#cb82-27" tabindex="-1"></a>  )</span>
+<span id="cb82-28"><a href="shiny.html#cb82-28" tabindex="-1"></a>  )</span>
+<span id="cb82-29"><a href="shiny.html#cb82-29" tabindex="-1"></a>)</span>
+<span id="cb82-30"><a href="shiny.html#cb82-30" tabindex="-1"></a></span>
+<span id="cb82-31"><a href="shiny.html#cb82-31" tabindex="-1"></a><span class="co"># Função do servidor</span></span>
+<span id="cb82-32"><a href="shiny.html#cb82-32" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb82-33"><a href="shiny.html#cb82-33" tabindex="-1"></a>  </span>
+<span id="cb82-34"><a href="shiny.html#cb82-34" tabindex="-1"></a>  <span class="co"># Função auxiliar que recebe um número e ativa a aba correspondente</span></span>
+<span id="cb82-35"><a href="shiny.html#cb82-35" tabindex="-1"></a>  switch_page <span class="ot">&lt;-</span> <span class="cf">function</span>(i) {</span>
+<span id="cb82-36"><a href="shiny.html#cb82-36" tabindex="-1"></a>    <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">&quot;wizard&quot;</span>, </span>
+<span id="cb82-37"><a href="shiny.html#cb82-37" tabindex="-1"></a>    <span class="at">selected =</span> <span class="fu">paste0</span>(<span class="st">&quot;page_&quot;</span>, i))</span>
+<span id="cb82-38"><a href="shiny.html#cb82-38" tabindex="-1"></a>  }</span>
+<span id="cb82-39"><a href="shiny.html#cb82-39" tabindex="-1"></a></span>
+<span id="cb82-40"><a href="shiny.html#cb82-40" tabindex="-1"></a>  <span class="co"># Observadores: quando um botão é clicado, chama a função switch_page()</span></span>
+<span id="cb82-41"><a href="shiny.html#cb82-41" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>page_12, <span class="fu">switch_page</span>(<span class="dv">2</span>))  <span class="co"># Página 1 → 2</span></span>
+<span id="cb82-42"><a href="shiny.html#cb82-42" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>page_21, <span class="fu">switch_page</span>(<span class="dv">1</span>))  <span class="co"># Página 2 → 1</span></span>
+<span id="cb82-43"><a href="shiny.html#cb82-43" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>page_23, <span class="fu">switch_page</span>(<span class="dv">3</span>))  <span class="co"># Página 2 → 3</span></span>
+<span id="cb82-44"><a href="shiny.html#cb82-44" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>page_32, <span class="fu">switch_page</span>(<span class="dv">2</span>))  <span class="co"># Página 3 → 2</span></span>
+<span id="cb82-45"><a href="shiny.html#cb82-45" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Esse app simula um “wizard” (um fluxo de páginas passo-a-passo), muito comum em formulários ou tutoriais.</li>
+<li>O <code>tabsetPanel(type = "hidden")</code> permite criar várias telas (abas), mas sem mostrar as guias.</li>
+<li>Cada página é representada por um <code>tabPanel()</code>, e os botões de navegação chamam <code>updateTabsetPanel()</code> para mudar de página.</li>
+<li>A função <code>switch_page(i)</code> constrói o nome da aba a ativar com <code>paste0("page_", i)</code>, por exemplo “page_2”.</li>
+</ul>
+<p>O resultado pode ser visualizado em: <a href="https://hadley.shinyapps.io/ms-wizard" class="uri">https://hadley.shinyapps.io/ms-wizard</a></p>
+</div>
+</div>
+<div id="exercícios-30" class="section level3 unnumbered hasAnchor">
+<h3>Exercícios<a href="shiny.html#exercícios-30" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1.</strong> Crie uma UI em que o usuário escolha uma categoria (por ex., “Carro”, “Moto”, “Bicicleta”), e o app mostre campos específicos para essa categoria, usando abas escondidas.</p>
+<ul>
+<li>Um <code>selectInput("veiculo", "Tipo de veículo", choices = ...)</code></li>
+<li>Um <code>tabsetPanel(type = "hidden")</code> com uma aba para cada tipo de veículo.</li>
+<li>No servidor, troque para a aba correspondente com <code>updateTabsetPanel()</code>.</li>
+</ul>
+<div style="display: flex; justify-content: center;">
+<p><img src="figs/shiny_ui11.png" style="width: 32%; margin-right: 1px;">
+<img src="figs/shiny_ui12.png" style="width: 32%; margin-right: 1px;">
+<img src="figs/shiny_ui13.png" style="width: 32%;"></p>
+</div>
+<p><strong>2.</strong> Crie um formulário multi-etapas para coletar o nome e a idade do usuário em duas páginas separadas.</p>
+<ul>
+<li>Página 1: <code>textInput("name", "Seu nome:")</code> + botão “Próximo”</li>
+<li>Página 2: <code>numericInput("age", "Sua idade:", value = NA)</code> + botões “Voltar” e “Próximo”</li>
+<li>Página 3: Exiba um texto com <code>paste("Olá", input$name, "de", input$age, "anos!")</code> + botão “Reiniciar” que volta para página 1.</li>
+</ul>
+<div style="display: flex; justify-content: center;">
+<p><img src="figs/shiny_ui21.png" style="width: 35%; margin-right: 1px;">
+<img src="figs/shiny_ui22.png" style="width: 35%; margin-right: 1px;">
+<img src="figs/shiny_ui23.png" style="width: 23%;"></p>
+</div>
+<p><strong>3.</strong> Crie um mini-quiz com duas perguntas de múltipla escolha.</p>
+<ul>
+<li>Página 1: Pergunta 1 (radioButtons) + botão “Próximo”</li>
+<li>Página 2: Pergunta 2 (radioButtons) + botão “Ver Resultado”</li>
+<li>Página 3: Mostrar pontuação com <code>renderText()</code> com base nas respostas corretas e um botão “Tentar novamente” que reinicia o quiz na página 1.</li>
+</ul>
+<div style="display: flex; justify-content: center;">
+<p><img src="figs/shiny_ui31.png" style="width: 32%; margin-right: 1px;">
+<img src="figs/shiny_ui32.png" style="width: 32%; margin-right: 1px;">
+<img src="figs/shiny_ui33.png" style="width: 32%;"></p>
+</div>
+</div>
+<div id="protectedContent10" style="display:none;">
+<div id="respostas-37" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="shiny.html#respostas-37" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="shiny.html#cb83-1" tabindex="-1"></a><span class="do">## 1.</span></span>
+<span id="cb83-2"><a href="shiny.html#cb83-2" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb83-3"><a href="shiny.html#cb83-3" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;veiculo&quot;</span>, <span class="st">&quot;Tipo de veículo:&quot;</span>,</span>
+<span id="cb83-4"><a href="shiny.html#cb83-4" tabindex="-1"></a>              <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;carro&quot;</span>, <span class="st">&quot;moto&quot;</span>, <span class="st">&quot;bicicleta&quot;</span>)),</span>
+<span id="cb83-5"><a href="shiny.html#cb83-5" tabindex="-1"></a>        <span class="fu">tabsetPanel</span>(</span>
+<span id="cb83-6"><a href="shiny.html#cb83-6" tabindex="-1"></a>          <span class="at">id =</span> <span class="st">&quot;veiculo_tabs&quot;</span>,</span>
+<span id="cb83-7"><a href="shiny.html#cb83-7" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">&quot;hidden&quot;</span>,</span>
+<span id="cb83-8"><a href="shiny.html#cb83-8" tabindex="-1"></a>          <span class="fu">tabPanel</span>(<span class="st">&quot;carro&quot;</span>,</span>
+<span id="cb83-9"><a href="shiny.html#cb83-9" tabindex="-1"></a>                  <span class="fu">numericInput</span>(<span class="st">&quot;portas&quot;</span>, <span class="st">&quot;Número de portas:&quot;</span>, </span>
+<span id="cb83-10"><a href="shiny.html#cb83-10" tabindex="-1"></a>                  <span class="at">value =</span> <span class="dv">4</span>)</span>
+<span id="cb83-11"><a href="shiny.html#cb83-11" tabindex="-1"></a>          ),</span>
+<span id="cb83-12"><a href="shiny.html#cb83-12" tabindex="-1"></a>          <span class="fu">tabPanel</span>(<span class="st">&quot;moto&quot;</span>,</span>
+<span id="cb83-13"><a href="shiny.html#cb83-13" tabindex="-1"></a>                  <span class="fu">numericInput</span>(<span class="st">&quot;ano&quot;</span>, <span class="st">&quot;Ano de fabricação:&quot;</span>, </span>
+<span id="cb83-14"><a href="shiny.html#cb83-14" tabindex="-1"></a>                  <span class="at">value =</span> <span class="dv">1990</span>)</span>
+<span id="cb83-15"><a href="shiny.html#cb83-15" tabindex="-1"></a>          ),</span>
+<span id="cb83-16"><a href="shiny.html#cb83-16" tabindex="-1"></a>          <span class="fu">tabPanel</span>(<span class="st">&quot;bicicleta&quot;</span>,</span>
+<span id="cb83-17"><a href="shiny.html#cb83-17" tabindex="-1"></a>                  <span class="fu">selectInput</span>(<span class="st">&quot;tipo_bike&quot;</span>, <span class="st">&quot;Tipo:&quot;</span>,</span>
+<span id="cb83-18"><a href="shiny.html#cb83-18" tabindex="-1"></a>                  <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;urbana&quot;</span>, <span class="st">&quot;mountain bike&quot;</span>, <span class="st">&quot;estrada&quot;</span>))</span>
+<span id="cb83-19"><a href="shiny.html#cb83-19" tabindex="-1"></a>          )</span>
+<span id="cb83-20"><a href="shiny.html#cb83-20" tabindex="-1"></a>        )</span>
+<span id="cb83-21"><a href="shiny.html#cb83-21" tabindex="-1"></a>)</span>
+<span id="cb83-22"><a href="shiny.html#cb83-22" tabindex="-1"></a></span>
+<span id="cb83-23"><a href="shiny.html#cb83-23" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb83-24"><a href="shiny.html#cb83-24" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>veiculo, {</span>
+<span id="cb83-25"><a href="shiny.html#cb83-25" tabindex="-1"></a>    <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">&quot;veiculo_tabs&quot;</span>, </span>
+<span id="cb83-26"><a href="shiny.html#cb83-26" tabindex="-1"></a>    <span class="at">selected =</span> input<span class="sc">$</span>veiculo)</span>
+<span id="cb83-27"><a href="shiny.html#cb83-27" tabindex="-1"></a>  })</span>
+<span id="cb83-28"><a href="shiny.html#cb83-28" tabindex="-1"></a>}</span>
+<span id="cb83-29"><a href="shiny.html#cb83-29" tabindex="-1"></a></span>
+<span id="cb83-30"><a href="shiny.html#cb83-30" tabindex="-1"></a><span class="do">## 2.</span></span>
+<span id="cb83-31"><a href="shiny.html#cb83-31" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb83-32"><a href="shiny.html#cb83-32" tabindex="-1"></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb83-33"><a href="shiny.html#cb83-33" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">&quot;wizard&quot;</span>,</span>
+<span id="cb83-34"><a href="shiny.html#cb83-34" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;hidden&quot;</span>,</span>
+<span id="cb83-35"><a href="shiny.html#cb83-35" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">&quot;page_1&quot;</span>,</span>
+<span id="cb83-36"><a href="shiny.html#cb83-36" tabindex="-1"></a>             <span class="fu">textInput</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;Seu nome:&quot;</span>),</span>
+<span id="cb83-37"><a href="shiny.html#cb83-37" tabindex="-1"></a>             <span class="fu">actionButton</span>(<span class="st">&quot;to2&quot;</span>, <span class="st">&quot;Próximo&quot;</span>)</span>
+<span id="cb83-38"><a href="shiny.html#cb83-38" tabindex="-1"></a>    ),</span>
+<span id="cb83-39"><a href="shiny.html#cb83-39" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">&quot;page_2&quot;</span>,</span>
+<span id="cb83-40"><a href="shiny.html#cb83-40" tabindex="-1"></a>             <span class="fu">numericInput</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;Sua idade:&quot;</span>, <span class="at">value =</span> <span class="cn">NA</span>),</span>
+<span id="cb83-41"><a href="shiny.html#cb83-41" tabindex="-1"></a>             <span class="fu">actionButton</span>(<span class="st">&quot;back1&quot;</span>, <span class="st">&quot;Voltar&quot;</span>),</span>
+<span id="cb83-42"><a href="shiny.html#cb83-42" tabindex="-1"></a>             <span class="fu">actionButton</span>(<span class="st">&quot;to3&quot;</span>, <span class="st">&quot;Próximo&quot;</span>)</span>
+<span id="cb83-43"><a href="shiny.html#cb83-43" tabindex="-1"></a>    ),</span>
+<span id="cb83-44"><a href="shiny.html#cb83-44" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">&quot;page_3&quot;</span>,</span>
+<span id="cb83-45"><a href="shiny.html#cb83-45" tabindex="-1"></a>             <span class="fu">textOutput</span>(<span class="st">&quot;summary&quot;</span>),</span>
+<span id="cb83-46"><a href="shiny.html#cb83-46" tabindex="-1"></a>             <span class="fu">actionButton</span>(<span class="st">&quot;restart&quot;</span>, <span class="st">&quot;Reiniciar&quot;</span>)</span>
+<span id="cb83-47"><a href="shiny.html#cb83-47" tabindex="-1"></a>    )</span>
+<span id="cb83-48"><a href="shiny.html#cb83-48" tabindex="-1"></a>  )</span>
+<span id="cb83-49"><a href="shiny.html#cb83-49" tabindex="-1"></a>)</span>
+<span id="cb83-50"><a href="shiny.html#cb83-50" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb83-51"><a href="shiny.html#cb83-51" tabindex="-1"></a>  switch_page <span class="ot">&lt;-</span> <span class="cf">function</span>(i) {</span>
+<span id="cb83-52"><a href="shiny.html#cb83-52" tabindex="-1"></a>    <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">&quot;wizard&quot;</span>, </span>
+<span id="cb83-53"><a href="shiny.html#cb83-53" tabindex="-1"></a>    <span class="at">selected =</span> <span class="fu">paste0</span>(<span class="st">&quot;page_&quot;</span>, i))</span>
+<span id="cb83-54"><a href="shiny.html#cb83-54" tabindex="-1"></a>  }</span>
+<span id="cb83-55"><a href="shiny.html#cb83-55" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>to2, {</span>
+<span id="cb83-56"><a href="shiny.html#cb83-56" tabindex="-1"></a>               <span class="fu">req</span>(input<span class="sc">$</span>name)</span>
+<span id="cb83-57"><a href="shiny.html#cb83-57" tabindex="-1"></a>               <span class="fu">switch_page</span>(<span class="dv">2</span>)})</span>
+<span id="cb83-58"><a href="shiny.html#cb83-58" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>back1, <span class="fu">switch_page</span>(<span class="dv">1</span>))</span>
+<span id="cb83-59"><a href="shiny.html#cb83-59" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>to3, {</span>
+<span id="cb83-60"><a href="shiny.html#cb83-60" tabindex="-1"></a>               <span class="fu">req</span>(input<span class="sc">$</span>age)</span>
+<span id="cb83-61"><a href="shiny.html#cb83-61" tabindex="-1"></a>               <span class="fu">switch_page</span>(<span class="dv">3</span>)})</span>
+<span id="cb83-62"><a href="shiny.html#cb83-62" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>restart, <span class="fu">switch_page</span>(<span class="dv">1</span>))</span>
+<span id="cb83-63"><a href="shiny.html#cb83-63" tabindex="-1"></a>  output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb83-64"><a href="shiny.html#cb83-64" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;Olá&quot;</span>, input<span class="sc">$</span>name, <span class="st">&quot;de&quot;</span>, input<span class="sc">$</span>age, <span class="st">&quot;anos!&quot;</span>)</span>
+<span id="cb83-65"><a href="shiny.html#cb83-65" tabindex="-1"></a>  })</span>
+<span id="cb83-66"><a href="shiny.html#cb83-66" tabindex="-1"></a>}</span>
+<span id="cb83-67"><a href="shiny.html#cb83-67" tabindex="-1"></a></span>
+<span id="cb83-68"><a href="shiny.html#cb83-68" tabindex="-1"></a><span class="do">## 3.</span></span>
+<span id="cb83-69"><a href="shiny.html#cb83-69" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb83-70"><a href="shiny.html#cb83-70" tabindex="-1"></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb83-71"><a href="shiny.html#cb83-71" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">&quot;wizard&quot;</span>,</span>
+<span id="cb83-72"><a href="shiny.html#cb83-72" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;hidden&quot;</span>,</span>
+<span id="cb83-73"><a href="shiny.html#cb83-73" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">&quot;page_1&quot;</span>,</span>
+<span id="cb83-74"><a href="shiny.html#cb83-74" tabindex="-1"></a>             <span class="fu">radioButtons</span>(<span class="st">&quot;q1&quot;</span>, <span class="st">&quot;Quanto é 2 + 2?&quot;</span>, </span>
+<span id="cb83-75"><a href="shiny.html#cb83-75" tabindex="-1"></a>                          <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>)),</span>
+<span id="cb83-76"><a href="shiny.html#cb83-76" tabindex="-1"></a>             <span class="fu">actionButton</span>(<span class="st">&quot;nextq1&quot;</span>, <span class="st">&quot;Próxima&quot;</span>)</span>
+<span id="cb83-77"><a href="shiny.html#cb83-77" tabindex="-1"></a>    ),</span>
+<span id="cb83-78"><a href="shiny.html#cb83-78" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">&quot;page_2&quot;</span>,</span>
+<span id="cb83-79"><a href="shiny.html#cb83-79" tabindex="-1"></a>             <span class="fu">radioButtons</span>(<span class="st">&quot;q2&quot;</span>, <span class="st">&quot;Quanto é 3 * 3?&quot;</span>,</span>
+<span id="cb83-80"><a href="shiny.html#cb83-80" tabindex="-1"></a>                          <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;6&quot;</span>, <span class="st">&quot;9&quot;</span>, <span class="st">&quot;12&quot;</span>)),</span>
+<span id="cb83-81"><a href="shiny.html#cb83-81" tabindex="-1"></a>             <span class="fu">actionButton</span>(<span class="st">&quot;result&quot;</span>, <span class="st">&quot;Ver resultado&quot;</span>),</span>
+<span id="cb83-82"><a href="shiny.html#cb83-82" tabindex="-1"></a>             <span class="fu">actionButton</span>(<span class="st">&quot;backq1&quot;</span>, <span class="st">&quot;Voltar&quot;</span>)</span>
+<span id="cb83-83"><a href="shiny.html#cb83-83" tabindex="-1"></a>    ),</span>
+<span id="cb83-84"><a href="shiny.html#cb83-84" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">&quot;page_3&quot;</span>,</span>
+<span id="cb83-85"><a href="shiny.html#cb83-85" tabindex="-1"></a>             <span class="fu">textOutput</span>(<span class="st">&quot;score&quot;</span>),</span>
+<span id="cb83-86"><a href="shiny.html#cb83-86" tabindex="-1"></a>             <span class="fu">actionButton</span>(<span class="st">&quot;retry&quot;</span>, <span class="st">&quot;Tentar novamente&quot;</span>)</span>
+<span id="cb83-87"><a href="shiny.html#cb83-87" tabindex="-1"></a>    )</span>
+<span id="cb83-88"><a href="shiny.html#cb83-88" tabindex="-1"></a>  )</span>
+<span id="cb83-89"><a href="shiny.html#cb83-89" tabindex="-1"></a>)</span>
+<span id="cb83-90"><a href="shiny.html#cb83-90" tabindex="-1"></a></span>
+<span id="cb83-91"><a href="shiny.html#cb83-91" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb83-92"><a href="shiny.html#cb83-92" tabindex="-1"></a>  <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">&quot;wizard&quot;</span>, <span class="at">selected =</span> <span class="st">&quot;page_1&quot;</span>)</span>
+<span id="cb83-93"><a href="shiny.html#cb83-93" tabindex="-1"></a>  </span>
+<span id="cb83-94"><a href="shiny.html#cb83-94" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>nextq1, {</span>
+<span id="cb83-95"><a href="shiny.html#cb83-95" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>q1)</span>
+<span id="cb83-96"><a href="shiny.html#cb83-96" tabindex="-1"></a>    <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">&quot;wizard&quot;</span>, <span class="at">selected =</span> <span class="st">&quot;page_2&quot;</span>)</span>
+<span id="cb83-97"><a href="shiny.html#cb83-97" tabindex="-1"></a>  })</span>
+<span id="cb83-98"><a href="shiny.html#cb83-98" tabindex="-1"></a>  </span>
+<span id="cb83-99"><a href="shiny.html#cb83-99" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>backq1, {</span>
+<span id="cb83-100"><a href="shiny.html#cb83-100" tabindex="-1"></a>    <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">&quot;wizard&quot;</span>, <span class="at">selected =</span> <span class="st">&quot;page_1&quot;</span>)</span>
+<span id="cb83-101"><a href="shiny.html#cb83-101" tabindex="-1"></a>  })</span>
+<span id="cb83-102"><a href="shiny.html#cb83-102" tabindex="-1"></a>  </span>
+<span id="cb83-103"><a href="shiny.html#cb83-103" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>result, {</span>
+<span id="cb83-104"><a href="shiny.html#cb83-104" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>q2)</span>
+<span id="cb83-105"><a href="shiny.html#cb83-105" tabindex="-1"></a>    <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">&quot;wizard&quot;</span>, <span class="at">selected =</span> <span class="st">&quot;page_3&quot;</span>)</span>
+<span id="cb83-106"><a href="shiny.html#cb83-106" tabindex="-1"></a>  })</span>
+<span id="cb83-107"><a href="shiny.html#cb83-107" tabindex="-1"></a>  </span>
+<span id="cb83-108"><a href="shiny.html#cb83-108" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>retry, {</span>
+<span id="cb83-109"><a href="shiny.html#cb83-109" tabindex="-1"></a>    <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">&quot;wizard&quot;</span>, <span class="at">selected =</span> <span class="st">&quot;page_1&quot;</span>)</span>
+<span id="cb83-110"><a href="shiny.html#cb83-110" tabindex="-1"></a>  })</span>
+<span id="cb83-111"><a href="shiny.html#cb83-111" tabindex="-1"></a>  </span>
+<span id="cb83-112"><a href="shiny.html#cb83-112" tabindex="-1"></a>  output<span class="sc">$</span>score <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb83-113"><a href="shiny.html#cb83-113" tabindex="-1"></a>    score <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb83-114"><a href="shiny.html#cb83-114" tabindex="-1"></a>    <span class="cf">if</span> (input<span class="sc">$</span>q1 <span class="sc">==</span> <span class="st">&quot;4&quot;</span>) score <span class="ot">&lt;-</span> score <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb83-115"><a href="shiny.html#cb83-115" tabindex="-1"></a>    <span class="cf">if</span> (input<span class="sc">$</span>q2 <span class="sc">==</span> <span class="st">&quot;9&quot;</span>) score <span class="ot">&lt;-</span> score <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb83-116"><a href="shiny.html#cb83-116" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;Você acertou&quot;</span>, score, <span class="st">&quot;de 2 perguntas.&quot;</span>)</span>
+<span id="cb83-117"><a href="shiny.html#cb83-117" tabindex="-1"></a>  })</span>
+<span id="cb83-118"><a href="shiny.html#cb83-118" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput10" placeholder="Digite a senha">
+<button id="submitButton10">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton10").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput10").value;
+  var correctPassword = "09878";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent10").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+<div id="usando-uioutput-e-renderui" class="section level3 hasAnchor" number="8.5.3">
+<h3><span class="header-section-number">8.5.3</span> Usando <code>uiOutput()</code> e <code>renderUI()</code><a href="shiny.html#usando-uioutput-e-renderui" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Essa técnica permite criar e modificar a interface de usuário enquanto o aplicativo está em execução. Essa solução tem duas partes:</p>
+<ul>
+<li><code>uiOutput()</code>: insere um espaço reservado no seu ui. Isso deixa um “buraco” que o código do seu servidor pode preencher posteriormente.</li>
+<li><code>renderUI()</code> é chamado <code>server()</code> para preencher o espaço reservado com a interface do usuário gerada dinamicamente.</li>
+</ul>
+<div id="exemplo-criando-dinamicamente-um-controle-de-entrada" class="section level5 unnumbered hasAnchor">
+<h5>Exemplo: Criando dinamicamente um controle de entrada<a href="shiny.html#exemplo-criando-dinamicamente-um-controle-de-entrada" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="shiny.html#cb84-1" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb84-2"><a href="shiny.html#cb84-2" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">&quot;label&quot;</span>, <span class="st">&quot;Rótulo&quot;</span>),</span>
+<span id="cb84-3"><a href="shiny.html#cb84-3" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;type&quot;</span>, <span class="st">&quot;Tipo&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;slider&quot;</span>, <span class="st">&quot;numerico&quot;</span>)),</span>
+<span id="cb84-4"><a href="shiny.html#cb84-4" tabindex="-1"></a>  <span class="fu">uiOutput</span>(<span class="st">&quot;controle&quot;</span>)</span>
+<span id="cb84-5"><a href="shiny.html#cb84-5" tabindex="-1"></a>)</span>
+<span id="cb84-6"><a href="shiny.html#cb84-6" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb84-7"><a href="shiny.html#cb84-7" tabindex="-1"></a>  output<span class="sc">$</span>controle <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb84-8"><a href="shiny.html#cb84-8" tabindex="-1"></a>    <span class="cf">if</span> (input<span class="sc">$</span>type <span class="sc">==</span> <span class="st">&quot;slider&quot;</span>) {</span>
+<span id="cb84-9"><a href="shiny.html#cb84-9" tabindex="-1"></a>      <span class="fu">sliderInput</span>(<span class="st">&quot;dynamic&quot;</span>, input<span class="sc">$</span>label, <span class="at">value =</span> <span class="dv">0</span>, <span class="at">min =</span> <span class="dv">0</span>, </span>
+<span id="cb84-10"><a href="shiny.html#cb84-10" tabindex="-1"></a>      <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb84-11"><a href="shiny.html#cb84-11" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb84-12"><a href="shiny.html#cb84-12" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;dynamic&quot;</span>, input<span class="sc">$</span>label, <span class="at">value =</span> <span class="dv">0</span>, <span class="at">min =</span> <span class="dv">0</span>, </span>
+<span id="cb84-13"><a href="shiny.html#cb84-13" tabindex="-1"></a>      <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb84-14"><a href="shiny.html#cb84-14" tabindex="-1"></a>    }</span>
+<span id="cb84-15"><a href="shiny.html#cb84-15" tabindex="-1"></a>  })</span>
+<span id="cb84-16"><a href="shiny.html#cb84-16" tabindex="-1"></a>}</span></code></pre></div>
+<p>Embora mais personalizável, uma das desvantagens de <code>renderUI()</code> é que ele pode deixar o aplicativo mais lento. Assim, recomenda-se manter a maior parte possível da interface do usuário fixa, usando as técnicas descritas anteriormente.</p>
+</div>
+</div>
+<div id="exercícios-31" class="section level3 unnumbered hasAnchor">
+<h3>Exercícios<a href="shiny.html#exercícios-31" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1.</strong> Usando <code>uiOutput()</code> e <code>renderUI()</code></p>
+<ol style="list-style-type: lower-alpha">
+<li>Crie um app que mostre um tipo diferente de controle de entrada (<code>textInput</code>, <code>numericInput</code> ou <code>sliderInput</code>) dependendo da opção escolhida pelo usuário.</li>
+</ol>
+<div style="display: flex; justify-content: center;">
+<p><img src="figs/shiny_ui41.png" style="width: 34%; margin-right: 1px;">
+<img src="figs/shiny_ui42.png" style="width: 32%; margin-right: 1px;">
+<img src="figs/shiny_ui43.png" style="width: 30%;"></p>
+</div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Crie um app que pergunte ao usuário quantos nomes deseja informar (de 1 a 5) e mostre dinamicamente esse número de caixas de texto para preencher os nomes.</li>
+</ol>
+<div style="display: flex; justify-content: center;">
+<p><img src="figs/shiny_ui51.png" style="width: 34%; margin-right: 1px;">
+<img src="figs/shiny_ui52.png" style="width: 32%; margin-right: 1px;">
+<img src="figs/shiny_ui53.png" style="width: 30%;"></p>
+</div>
+</div>
+<div id="protectedContent11" style="display:none;">
+<div id="respostas-38" class="section level3 unnumbered hasAnchor">
+<h3>Respostas<a href="shiny.html#respostas-38" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="shiny.html#cb85-1" tabindex="-1"></a><span class="do">## a.</span></span>
+<span id="cb85-2"><a href="shiny.html#cb85-2" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb85-3"><a href="shiny.html#cb85-3" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;tipo&quot;</span>, <span class="st">&quot;Tipo de entrada:&quot;</span>,</span>
+<span id="cb85-4"><a href="shiny.html#cb85-4" tabindex="-1"></a>              <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;texto&quot;</span>, <span class="st">&quot;número&quot;</span>, <span class="st">&quot;slider&quot;</span>)),</span>
+<span id="cb85-5"><a href="shiny.html#cb85-5" tabindex="-1"></a>  <span class="fu">uiOutput</span>(<span class="st">&quot;entrada&quot;</span>),</span>
+<span id="cb85-6"><a href="shiny.html#cb85-6" tabindex="-1"></a>  <span class="fu">verbatimTextOutput</span>(<span class="st">&quot;resposta&quot;</span>)</span>
+<span id="cb85-7"><a href="shiny.html#cb85-7" tabindex="-1"></a>)</span>
+<span id="cb85-8"><a href="shiny.html#cb85-8" tabindex="-1"></a></span>
+<span id="cb85-9"><a href="shiny.html#cb85-9" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb85-10"><a href="shiny.html#cb85-10" tabindex="-1"></a>  </span>
+<span id="cb85-11"><a href="shiny.html#cb85-11" tabindex="-1"></a>  output<span class="sc">$</span>entrada <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb85-12"><a href="shiny.html#cb85-12" tabindex="-1"></a>    <span class="cf">if</span> (input<span class="sc">$</span>tipo <span class="sc">==</span> <span class="st">&quot;texto&quot;</span>) {</span>
+<span id="cb85-13"><a href="shiny.html#cb85-13" tabindex="-1"></a>      <span class="fu">textInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Digite algo:&quot;</span>)</span>
+<span id="cb85-14"><a href="shiny.html#cb85-14" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (input<span class="sc">$</span>tipo <span class="sc">==</span> <span class="st">&quot;número&quot;</span>) {</span>
+<span id="cb85-15"><a href="shiny.html#cb85-15" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Informe um número:&quot;</span>, <span class="at">value =</span> <span class="dv">0</span>)</span>
+<span id="cb85-16"><a href="shiny.html#cb85-16" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (input<span class="sc">$</span>tipo <span class="sc">==</span> <span class="st">&quot;slider&quot;</span>) {</span>
+<span id="cb85-17"><a href="shiny.html#cb85-17" tabindex="-1"></a>      <span class="fu">sliderInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Escolha um valor:&quot;</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>,</span>
+<span id="cb85-18"><a href="shiny.html#cb85-18" tabindex="-1"></a>      <span class="at">value =</span> <span class="dv">50</span>)</span>
+<span id="cb85-19"><a href="shiny.html#cb85-19" tabindex="-1"></a>    }</span>
+<span id="cb85-20"><a href="shiny.html#cb85-20" tabindex="-1"></a>  })</span>
+<span id="cb85-21"><a href="shiny.html#cb85-21" tabindex="-1"></a>  </span>
+<span id="cb85-22"><a href="shiny.html#cb85-22" tabindex="-1"></a>  output<span class="sc">$</span>resposta <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb85-23"><a href="shiny.html#cb85-23" tabindex="-1"></a>    input<span class="sc">$</span>valor</span>
+<span id="cb85-24"><a href="shiny.html#cb85-24" tabindex="-1"></a>  })</span>
+<span id="cb85-25"><a href="shiny.html#cb85-25" tabindex="-1"></a>}</span>
+<span id="cb85-26"><a href="shiny.html#cb85-26" tabindex="-1"></a><span class="do">## ou </span></span>
+<span id="cb85-27"><a href="shiny.html#cb85-27" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb85-28"><a href="shiny.html#cb85-28" tabindex="-1"></a>  output<span class="sc">$</span>entrada <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb85-29"><a href="shiny.html#cb85-29" tabindex="-1"></a>    <span class="cf">switch</span>(input<span class="sc">$</span>tipo,</span>
+<span id="cb85-30"><a href="shiny.html#cb85-30" tabindex="-1"></a>           <span class="st">&quot;texto&quot;</span> <span class="ot">=</span> <span class="fu">textInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Digite algo:&quot;</span>),</span>
+<span id="cb85-31"><a href="shiny.html#cb85-31" tabindex="-1"></a>           <span class="st">&quot;número&quot;</span> <span class="ot">=</span> <span class="fu">numericInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Informe um número:&quot;</span>, </span>
+<span id="cb85-32"><a href="shiny.html#cb85-32" tabindex="-1"></a>           <span class="at">value =</span> <span class="dv">0</span>),</span>
+<span id="cb85-33"><a href="shiny.html#cb85-33" tabindex="-1"></a>           <span class="st">&quot;slider&quot;</span> <span class="ot">=</span> <span class="fu">sliderInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Escolha um valor:&quot;</span>, </span>
+<span id="cb85-34"><a href="shiny.html#cb85-34" tabindex="-1"></a>           <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">value =</span> <span class="dv">50</span>)</span>
+<span id="cb85-35"><a href="shiny.html#cb85-35" tabindex="-1"></a>    )</span>
+<span id="cb85-36"><a href="shiny.html#cb85-36" tabindex="-1"></a>  })</span>
+<span id="cb85-37"><a href="shiny.html#cb85-37" tabindex="-1"></a>  output<span class="sc">$</span>resposta <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb85-38"><a href="shiny.html#cb85-38" tabindex="-1"></a>    input<span class="sc">$</span>valor</span>
+<span id="cb85-39"><a href="shiny.html#cb85-39" tabindex="-1"></a>  })</span>
+<span id="cb85-40"><a href="shiny.html#cb85-40" tabindex="-1"></a>}</span>
+<span id="cb85-41"><a href="shiny.html#cb85-41" tabindex="-1"></a></span>
+<span id="cb85-42"><a href="shiny.html#cb85-42" tabindex="-1"></a><span class="do">## b.</span></span>
+<span id="cb85-43"><a href="shiny.html#cb85-43" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb85-44"><a href="shiny.html#cb85-44" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="st">&quot;n&quot;</span>, <span class="st">&quot;Quantos nomes?&quot;</span>, <span class="at">value =</span> <span class="dv">1</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">5</span>),</span>
+<span id="cb85-45"><a href="shiny.html#cb85-45" tabindex="-1"></a>  <span class="fu">uiOutput</span>(<span class="st">&quot;nomes&quot;</span>)</span>
+<span id="cb85-46"><a href="shiny.html#cb85-46" tabindex="-1"></a>)</span>
+<span id="cb85-47"><a href="shiny.html#cb85-47" tabindex="-1"></a></span>
+<span id="cb85-48"><a href="shiny.html#cb85-48" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb85-49"><a href="shiny.html#cb85-49" tabindex="-1"></a>  output<span class="sc">$</span>nomes <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb85-50"><a href="shiny.html#cb85-50" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>n)</span>
+<span id="cb85-51"><a href="shiny.html#cb85-51" tabindex="-1"></a>    <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>input<span class="sc">$</span>n, <span class="cf">function</span>(i) {</span>
+<span id="cb85-52"><a href="shiny.html#cb85-52" tabindex="-1"></a>      <span class="fu">textInput</span>(<span class="at">inputId =</span> <span class="fu">paste0</span>(<span class="st">&quot;nome&quot;</span>, i), <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;Nome&quot;</span>, i))</span>
+<span id="cb85-53"><a href="shiny.html#cb85-53" tabindex="-1"></a>    })</span>
+<span id="cb85-54"><a href="shiny.html#cb85-54" tabindex="-1"></a>  })</span>
+<span id="cb85-55"><a href="shiny.html#cb85-55" tabindex="-1"></a><span class="co"># função lapply: aplica uma função a cada elemento de uma lista, </span></span>
+<span id="cb85-56"><a href="shiny.html#cb85-56" tabindex="-1"></a><span class="co"># ou de vetor, retornando lista.</span></span>
+<span id="cb85-57"><a href="shiny.html#cb85-57" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="cf">function</span>(i) i<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb85-58"><a href="shiny.html#cb85-58" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb85-59"><a href="shiny.html#cb85-59" tabindex="-1"></a><span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(i) i<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+</div>
+</div>
+<p><input type="password" id="passwordInput11" placeholder="Digite a senha">
+<button id="submitButton11">Acesso Professor</button></p>
+<script>
+
+document.getElementById("submitButton11").addEventListener("click", function() 
+{
+  var password = document.getElementById("passwordInput11").value;
+  var correctPassword = "09878";
+  
+  if (password === correctPassword) 
+  {
+    document.getElementById("protectedContent11").style.display = "block";
+  }else 
+  {
+    alert("Senha incorreta! Tente novamente.");
+  }
+});
+</script>
+</div>
+<div id="exercícios-do-capítulo-8-entregar-na-lista-2" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Exercícios do Capítulo 8 <span style="color:red">(Entregar na lista 2)</span><a href="shiny.html#exercícios-do-capítulo-8-entregar-na-lista-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>1.</strong> Pesquise a definição das funções <code>req()</code> e <code>isolate()</code> e dê exemplos simples da utilização de cada uma delas.</p>
+<p><strong>2.</strong> Crie uma UI em que o usuário escolha uma categoria (por ex., “Carro”, “Moto”, “Bicicleta”), e o app mostre campos específicos para essa categoria, usando abas escondidas. Além disso, que o app exiba no painel principal um resumo com o tipo e a informação específica do veículo (nº de portas, ano, tipo de bicicleta).</p>
+<ul>
+<li>Um selectInput(“veiculo”, “Tipo de veículo”, choices = …)</li>
+<li>Um tabsetPanel(type = “hidden”) com uma aba para cada tipo de veículo.</li>
+<li>No servidor, troque para a aba correspondente com updateTabsetPanel().</li>
+</ul>
+<p><strong>3.</strong> Crie um aplicativo que plote, <code>ggplot(diamonds, aes(carat))</code> mas permita que o usuário escolha qual geom usar: <code>geom_histogram()</code>, <code>geom_freqpoly()</code>, ou <code>geom_density()</code>. Use um conjunto de guias oculto para permitir que o usuário selecione argumentos diferentes dependendo do geom: <code>geom_histogram()</code> e <code>geom_freqpoly()</code> tenha um argumento binwidth; <code>geom_density()</code> tenha um argumento bw.</p>
+<p><strong>4.</strong> Construa um app Shiny que:</p>
+<ul>
+<li>Permita ao usuário escolher um conjunto de dados entre <code>mtcars</code>, <code>iris</code> e <code>ToothGrowth.</code></li>
+<li>Mostre uma tabela com os dados e um resumo estatístico.</li>
+<li>Permita ao usuário selecionar uma variável quantitativa para plotar um histograma.</li>
+<li>O número de classes (bins) do histograma deve ser ajustável por um sliderInput().</li>
+<li>Ao escolher um dataset, os inputs de escolha de variável devem ser atualizados dinamicamente por meio da família update*() de funções.</li>
+<li>O layout deve ser organizado com fluidRow() e column().</li>
+</ul>
+<p><strong>5</strong> Publique pelo menos um dos aplicativos criados nesta seção no <code>shinyapps.io</code> usando sua conta (plano gratuito) e encaminhe o link da URL do app publicado.</p>
 
 </div>
 </div>

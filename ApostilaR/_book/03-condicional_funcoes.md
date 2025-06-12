@@ -1182,7 +1182,7 @@ document.getElementById("submitButton5").addEventListener("click", function()
 
 
 
-#### Exercícios do Capítulo 3 <span style="color:red">(Entregar na lista 1)</span>  {-}
+## Exercícios do Capítulo 3 <span style="color:red">(Entregar na lista 1)</span>  
 
 **1.** Considere o dataframe com as colunas a seguir. Crie uma função `filtra_dados()` com os argumentos `dados`, `variável` e `filtro`, de modo que o usuário consiga definir um conjunto de valores no `filtro`, para alguma `variavel` especificada. Trate a possível situação de erro no caso do usuário entrar com outros nomes que não estão no conjunto de dados.
 

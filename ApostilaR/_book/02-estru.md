@@ -1819,7 +1819,7 @@ document.getElementById("submitButton6").addEventListener("click", function()
 
 <br>
 
-#### Exercícios do Capítulo 2 <span style="color:red">(Entregar na lista 1)</span>  {-}
+## Exercícios do Capítulo 2 <span style="color:red">(Entregar na lista 1)</span>  
 
 
 **1.** Crie uma matriz M de dimensão 4x4 contendo números de 1 a 16 preenchidos por linha.
