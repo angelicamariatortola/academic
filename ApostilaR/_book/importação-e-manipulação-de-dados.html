@@ -262,6 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.2" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#testes-de-hipóteses"><i class="fa fa-check"></i><b>5.3.2</b> Testes de Hipóteses</a></li>
 <li class="chapter" data-level="" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#respostas-22"><i class="fa fa-check"></i>Respostas</a></li>
 </ul></li>
+<li class="chapter" data-level="5.4" data-path="análises-estatísticas-básicas.html"><a href="análises-estatísticas-básicas.html#exercícios-do-capítulo-5-entregar-na-lista-1"><i class="fa fa-check"></i><b>5.4</b> Exercícios do Capítulo 5 <span style="color:red">(Entregar na lista 1)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="gráficos-e-visualização-de-dados.html"><a href="gráficos-e-visualização-de-dados.html"><i class="fa fa-check"></i><b>6</b> Gráficos e visualização de dados</a>
 <ul>
@@ -342,7 +343,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#exercícios-31"><i class="fa fa-check"></i>Exercícios</a></li>
 <li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#respostas-38"><i class="fa fa-check"></i>Respostas</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="shiny.html"><a href="shiny.html#exercícios-do-capítulo-8-entregar-na-lista-2"><i class="fa fa-check"></i><b>8.6</b> Exercícios do Capítulo 8 <span style="color:red">(Entregar na lista 2)</span></a></li>
+<li class="chapter" data-level="8.6" data-path="shiny.html"><a href="shiny.html#publicando-aplicativo-em-shinyapps.io"><i class="fa fa-check"></i><b>8.6</b> Publicando aplicativo em shinyapps.io</a>
+<ul>
+<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#exercício"><i class="fa fa-check"></i>Exercício:</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="shiny.html"><a href="shiny.html#exercícios-do-capítulo-8-entregar-na-lista-2"><i class="fa fa-check"></i><b>8.7</b> Exercícios do Capítulo 8 <span style="color:red">(Entregar na lista 2)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html"><i class="fa fa-check"></i><b>9</b> Websites com RMarkdown</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html#criando-um-novo-projeto"><i class="fa fa-check"></i><b>9.1</b> Criando um novo projeto</a></li>
+<li class="chapter" data-level="9.2" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html#estrutura-do-arquivo-_site.yml"><i class="fa fa-check"></i><b>9.2</b> Estrutura do arquivo <code>_site.yml</code></a></li>
+<li class="chapter" data-level="9.3" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html#editar-os-arquivos-.rmd"><i class="fa fa-check"></i><b>9.3</b> Editar os arquivos .Rmd</a></li>
+<li class="chapter" data-level="9.4" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html#renderizar-o-site"><i class="fa fa-check"></i><b>9.4</b> Renderizar o site</a></li>
+<li class="chapter" data-level="9.5" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html#publicando-no-github"><i class="fa fa-check"></i><b>9.5</b> Publicando no GitHub</a></li>
+<li class="chapter" data-level="9.6" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html#ativar-o-github-pages"><i class="fa fa-check"></i><b>9.6</b> Ativar o GitHub Pages</a></li>
+<li class="chapter" data-level="9.7" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html#deletando-um-repositório"><i class="fa fa-check"></i><b>9.7</b> Deletando um repositório</a>
+<ul>
+<li class="chapter" data-level="" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html#referências"><i class="fa fa-check"></i>Referências</a></li>
+<li class="chapter" data-level="" data-path="websites-com-rmarkdown.html"><a href="websites-com-rmarkdown.html#exercício-1"><i class="fa fa-check"></i>Exercício</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -384,30 +403,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Para identificar o diretório de trabalho da sessão R usamos <code>getwd()</code>. Para definir outro diretório usar <code>setwd("caminho_do_seu_diretorio")</code>.</p>
 <p>Aqui vamos utilizar o diretório de trabalho:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="importação-e-manipulação-de-dados.html#cb1-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/</span></span>
-<span id="cb1-2"><a href="importação-e-manipulação-de-dados.html#cb1-2" tabindex="-1"></a><span class="st">Capitulo 3 - Importacao&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="importação-e-manipulação-de-dados.html#cb298-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/</span></span>
+<span id="cb298-2"><a href="importação-e-manipulação-de-dados.html#cb298-2" tabindex="-1"></a><span class="st">Capitulo 3 - Importacao&quot;</span>)</span></code></pre></div>
 <div id="usando-funções-básicas-do-r" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Usando funções básicas do R<a href="importação-e-manipulação-de-dados.html#usando-funções-básicas-do-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="importando-dados-de-pacotes" class="section level4 unnumbered hasAnchor">
 <h4>Importando dados de pacotes<a href="importação-e-manipulação-de-dados.html#importando-dados-de-pacotes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Para visualizar os dados de pacotes instalados no R:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="importação-e-manipulação-de-dados.html#cb2-1" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="fu">.packages</span>(<span class="at">all.available =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="importação-e-manipulação-de-dados.html#cb299-1" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="fu">.packages</span>(<span class="at">all.available =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <p>Para visualizar dados específicos de algum pacote:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="importação-e-manipulação-de-dados.html#cb3-1" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">&quot;carData&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="importação-e-manipulação-de-dados.html#cb300-1" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">&quot;carData&quot;</span>) </span></code></pre></div>
 <p>Para importar algum conjunto de dados de um pacote:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="importação-e-manipulação-de-dados.html#cb4-1" tabindex="-1"></a><span class="co"># Carregando o conjunto &quot;Adler&quot; do pacote &quot;carData&quot;</span></span>
-<span id="cb4-2"><a href="importação-e-manipulação-de-dados.html#cb4-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Adler&quot;</span>, <span class="at">package =</span> <span class="st">&quot;carData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="importação-e-manipulação-de-dados.html#cb301-1" tabindex="-1"></a><span class="co"># Carregando o conjunto &quot;Adler&quot; do pacote &quot;carData&quot;</span></span>
+<span id="cb301-2"><a href="importação-e-manipulação-de-dados.html#cb301-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Adler&quot;</span>, <span class="at">package =</span> <span class="st">&quot;carData&quot;</span>)</span></code></pre></div>
 <p>Trabalhando com os dados importados:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="importação-e-manipulação-de-dados.html#cb5-1" tabindex="-1"></a><span class="co"># Acessando variáveis destes dados:</span></span>
-<span id="cb5-2"><a href="importação-e-manipulação-de-dados.html#cb5-2" tabindex="-1"></a>Adler<span class="sc">$</span>instruction </span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="importação-e-manipulação-de-dados.html#cb6-1" tabindex="-1"></a><span class="co"># Visualizando a estrutura dos dados:</span></span>
-<span id="cb6-2"><a href="importação-e-manipulação-de-dados.html#cb6-2" tabindex="-1"></a><span class="fu">str</span>(Adler)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="importação-e-manipulação-de-dados.html#cb302-1" tabindex="-1"></a><span class="co"># Acessando variáveis destes dados:</span></span>
+<span id="cb302-2"><a href="importação-e-manipulação-de-dados.html#cb302-2" tabindex="-1"></a>Adler<span class="sc">$</span>instruction </span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="importação-e-manipulação-de-dados.html#cb303-1" tabindex="-1"></a><span class="co"># Visualizando a estrutura dos dados:</span></span>
+<span id="cb303-2"><a href="importação-e-manipulação-de-dados.html#cb303-2" tabindex="-1"></a><span class="fu">str</span>(Adler)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    108 obs. of  3 variables:
 ##  $ instruction: Factor w/ 3 levels &quot;good&quot;,&quot;none&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ expectation: Factor w/ 2 levels &quot;high&quot;,&quot;low&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ rating     : int  25 0 -16 5 11 -6 42 -2 -13 14 ...</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="importação-e-manipulação-de-dados.html#cb8-1" tabindex="-1"></a><span class="co"># Visualizando as primeiras linhas dos dados:</span></span>
-<span id="cb8-2"><a href="importação-e-manipulação-de-dados.html#cb8-2" tabindex="-1"></a><span class="fu">head</span>(Adler)</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="importação-e-manipulação-de-dados.html#cb305-1" tabindex="-1"></a><span class="co"># Visualizando as primeiras linhas dos dados:</span></span>
+<span id="cb305-2"><a href="importação-e-manipulação-de-dados.html#cb305-2" tabindex="-1"></a><span class="fu">head</span>(Adler)</span></code></pre></div>
 <pre><code>##   instruction expectation rating
 ## 1        good        high     25
 ## 2        good        high      0
@@ -418,21 +437,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="exportando-dados-do-r-para-algum-diretório" class="section level4 unnumbered hasAnchor">
 <h4>Exportando dados do R para algum diretório<a href="importação-e-manipulação-de-dados.html#exportando-dados-do-r-para-algum-diretório" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="importação-e-manipulação-de-dados.html#cb10-1" tabindex="-1"></a><span class="do">## Exportando arquivos CSV</span></span>
-<span id="cb10-2"><a href="importação-e-manipulação-de-dados.html#cb10-2" tabindex="-1"></a><span class="fu">write.csv</span>(Adler, <span class="at">file =</span> <span class="st">&quot;dados_adler.csv&quot;</span>, </span>
-<span id="cb10-3"><a href="importação-e-manipulação-de-dados.html#cb10-3" tabindex="-1"></a>          <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-4"><a href="importação-e-manipulação-de-dados.html#cb10-4" tabindex="-1"></a><span class="do">## Exportando arquivos TXT</span></span>
-<span id="cb10-5"><a href="importação-e-manipulação-de-dados.html#cb10-5" tabindex="-1"></a><span class="fu">write.table</span>(Adler, <span class="at">file =</span> <span class="st">&quot;dados_adler.txt&quot;</span>, </span>
-<span id="cb10-6"><a href="importação-e-manipulação-de-dados.html#cb10-6" tabindex="-1"></a>            <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="importação-e-manipulação-de-dados.html#cb307-1" tabindex="-1"></a><span class="do">## Exportando arquivos CSV</span></span>
+<span id="cb307-2"><a href="importação-e-manipulação-de-dados.html#cb307-2" tabindex="-1"></a><span class="fu">write.csv</span>(Adler, <span class="at">file =</span> <span class="st">&quot;dados_adler.csv&quot;</span>, </span>
+<span id="cb307-3"><a href="importação-e-manipulação-de-dados.html#cb307-3" tabindex="-1"></a>          <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb307-4"><a href="importação-e-manipulação-de-dados.html#cb307-4" tabindex="-1"></a><span class="do">## Exportando arquivos TXT</span></span>
+<span id="cb307-5"><a href="importação-e-manipulação-de-dados.html#cb307-5" tabindex="-1"></a><span class="fu">write.table</span>(Adler, <span class="at">file =</span> <span class="st">&quot;dados_adler.txt&quot;</span>, </span>
+<span id="cb307-6"><a href="importação-e-manipulação-de-dados.html#cb307-6" tabindex="-1"></a>            <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="importando-dados-de-arquivos-locais" class="section level4 unnumbered hasAnchor">
 <h4>Importando dados de arquivos locais<a href="importação-e-manipulação-de-dados.html#importando-dados-de-arquivos-locais" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="importação-e-manipulação-de-dados.html#cb11-1" tabindex="-1"></a><span class="do">## Arquivos CSV</span></span>
-<span id="cb11-2"><a href="importação-e-manipulação-de-dados.html#cb11-2" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;dados.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-3"><a href="importação-e-manipulação-de-dados.html#cb11-3" tabindex="-1"></a><span class="do">## Arquivos TSV</span></span>
-<span id="cb11-4"><a href="importação-e-manipulação-de-dados.html#cb11-4" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;dados.tsv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-5"><a href="importação-e-manipulação-de-dados.html#cb11-5" tabindex="-1"></a><span class="do">## Arquivos TXT</span></span>
-<span id="cb11-6"><a href="importação-e-manipulação-de-dados.html#cb11-6" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;dados.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="importação-e-manipulação-de-dados.html#cb308-1" tabindex="-1"></a><span class="do">## Arquivos CSV</span></span>
+<span id="cb308-2"><a href="importação-e-manipulação-de-dados.html#cb308-2" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;dados.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb308-3"><a href="importação-e-manipulação-de-dados.html#cb308-3" tabindex="-1"></a><span class="do">## Arquivos TSV</span></span>
+<span id="cb308-4"><a href="importação-e-manipulação-de-dados.html#cb308-4" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;dados.tsv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb308-5"><a href="importação-e-manipulação-de-dados.html#cb308-5" tabindex="-1"></a><span class="do">## Arquivos TXT</span></span>
+<span id="cb308-6"><a href="importação-e-manipulação-de-dados.html#cb308-6" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;dados.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><strong>Argumentos:</strong></p>
 <ul>
 <li>sep → Define o separador de colunas.</li>
@@ -445,23 +464,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>read.delim() → Arquivos .tsv (tabulação “).</li>
 <li>read.table() → Arquivos .txt. Função mais genérica. Importa arquivos gerais</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="importação-e-manipulação-de-dados.html#cb12-1" tabindex="-1"></a><span class="co"># Exemplo:</span></span>
-<span id="cb12-2"><a href="importação-e-manipulação-de-dados.html#cb12-2" tabindex="-1"></a><span class="co"># Dados Adler - extensão txt</span></span>
-<span id="cb12-3"><a href="importação-e-manipulação-de-dados.html#cb12-3" tabindex="-1"></a>dados_adler_txt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;dados_adler.txt&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb12-4"><a href="importação-e-manipulação-de-dados.html#cb12-4" tabindex="-1"></a><span class="co"># Dados Adler - extensão csv</span></span>
-<span id="cb12-5"><a href="importação-e-manipulação-de-dados.html#cb12-5" tabindex="-1"></a>dados_adler_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;dados_adler.csv&quot;</span>,  <span class="at">header =</span> T)</span>
-<span id="cb12-6"><a href="importação-e-manipulação-de-dados.html#cb12-6" tabindex="-1"></a><span class="co"># Dados Adler - extensão tsv</span></span>
-<span id="cb12-7"><a href="importação-e-manipulação-de-dados.html#cb12-7" tabindex="-1"></a>dados_adler_tsv <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;dados_adler.tsv&quot;</span>,  <span class="at">header =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="importação-e-manipulação-de-dados.html#cb309-1" tabindex="-1"></a><span class="co"># Exemplo:</span></span>
+<span id="cb309-2"><a href="importação-e-manipulação-de-dados.html#cb309-2" tabindex="-1"></a><span class="co"># Dados Adler - extensão txt</span></span>
+<span id="cb309-3"><a href="importação-e-manipulação-de-dados.html#cb309-3" tabindex="-1"></a>dados_adler_txt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;dados_adler.txt&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb309-4"><a href="importação-e-manipulação-de-dados.html#cb309-4" tabindex="-1"></a><span class="co"># Dados Adler - extensão csv</span></span>
+<span id="cb309-5"><a href="importação-e-manipulação-de-dados.html#cb309-5" tabindex="-1"></a>dados_adler_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;dados_adler.csv&quot;</span>,  <span class="at">header =</span> T)</span>
+<span id="cb309-6"><a href="importação-e-manipulação-de-dados.html#cb309-6" tabindex="-1"></a><span class="co"># Dados Adler - extensão tsv</span></span>
+<span id="cb309-7"><a href="importação-e-manipulação-de-dados.html#cb309-7" tabindex="-1"></a>dados_adler_tsv <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;dados_adler.tsv&quot;</span>,  <span class="at">header =</span> T)</span></code></pre></div>
 </div>
 <div id="importando-dados-da-web" class="section level4 unnumbered hasAnchor">
 <h4>Importando dados da Web<a href="importação-e-manipulação-de-dados.html#importando-dados-da-web" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Podemos usar as funções <code>read.table</code> e <code>read.csv</code> também para importar dados da web:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="importação-e-manipulação-de-dados.html#cb13-1" tabindex="-1"></a><span class="do">## Extensão txt</span></span>
-<span id="cb13-2"><a href="importação-e-manipulação-de-dados.html#cb13-2" tabindex="-1"></a>dados_web_txt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://angelicamariatortola.github.io/academic/</span></span>
-<span id="cb13-3"><a href="importação-e-manipulação-de-dados.html#cb13-3" tabindex="-1"></a><span class="st">figs/dados_adler.txt&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb13-4"><a href="importação-e-manipulação-de-dados.html#cb13-4" tabindex="-1"></a><span class="do">## Extensão csv</span></span>
-<span id="cb13-5"><a href="importação-e-manipulação-de-dados.html#cb13-5" tabindex="-1"></a>dados_web_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://angelicamariatortola.github.io/academic/</span></span>
-<span id="cb13-6"><a href="importação-e-manipulação-de-dados.html#cb13-6" tabindex="-1"></a><span class="st">figs/dados_adler.csv&quot;</span>, <span class="at">header =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="importação-e-manipulação-de-dados.html#cb310-1" tabindex="-1"></a><span class="do">## Extensão txt</span></span>
+<span id="cb310-2"><a href="importação-e-manipulação-de-dados.html#cb310-2" tabindex="-1"></a>dados_web_txt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://angelicamariatortola.github.io/academic/</span></span>
+<span id="cb310-3"><a href="importação-e-manipulação-de-dados.html#cb310-3" tabindex="-1"></a><span class="st">figs/dados_adler.txt&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb310-4"><a href="importação-e-manipulação-de-dados.html#cb310-4" tabindex="-1"></a><span class="do">## Extensão csv</span></span>
+<span id="cb310-5"><a href="importação-e-manipulação-de-dados.html#cb310-5" tabindex="-1"></a>dados_web_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://angelicamariatortola.github.io/academic/</span></span>
+<span id="cb310-6"><a href="importação-e-manipulação-de-dados.html#cb310-6" tabindex="-1"></a><span class="st">figs/dados_adler.csv&quot;</span>, <span class="at">header =</span> T)</span></code></pre></div>
 </div>
 <div id="exercícios-10" class="section level4 unnumbered hasAnchor">
 <h4>Exercícios<a href="importação-e-manipulação-de-dados.html#exercícios-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -474,22 +493,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Quantas linhas e colunas tem cada um destes conjuntos de dados?</li>
 </ol>
 <p><strong>2.</strong> Crie um arquivo chamado “dados.txt” com o seguinte conteúdo (salve no seu diretório de trabalho):</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="importação-e-manipulação-de-dados.html#cb14-1" tabindex="-1"></a>Nome Idade Altura</span>
-<span id="cb14-2"><a href="importação-e-manipulação-de-dados.html#cb14-2" tabindex="-1"></a>Ana <span class="dv">25</span> <span class="fl">1.68</span></span>
-<span id="cb14-3"><a href="importação-e-manipulação-de-dados.html#cb14-3" tabindex="-1"></a>João <span class="dv">30</span> <span class="fl">1.75</span></span>
-<span id="cb14-4"><a href="importação-e-manipulação-de-dados.html#cb14-4" tabindex="-1"></a>Carlos <span class="dv">22</span> <span class="fl">1.80</span></span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="importação-e-manipulação-de-dados.html#cb311-1" tabindex="-1"></a>Nome Idade Altura</span>
+<span id="cb311-2"><a href="importação-e-manipulação-de-dados.html#cb311-2" tabindex="-1"></a>Ana <span class="dv">25</span> <span class="fl">1.68</span></span>
+<span id="cb311-3"><a href="importação-e-manipulação-de-dados.html#cb311-3" tabindex="-1"></a>João <span class="dv">30</span> <span class="fl">1.75</span></span>
+<span id="cb311-4"><a href="importação-e-manipulação-de-dados.html#cb311-4" tabindex="-1"></a>Carlos <span class="dv">22</span> <span class="fl">1.80</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>Importe esse arquivo usando <code>read.table()</code>, definindo corretamente os argumentos.</li>
 <li>Verifique se o dataset foi carregado corretamente printando seus valores e verificando a sua estrutura.</li>
 </ol>
 <p><strong>3.</strong> Crie um arquivo chamado “dados.csv” com o seguinte conteúdo:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="importação-e-manipulação-de-dados.html#cb15-1" tabindex="-1"></a>Nome,Idade,Altura</span>
-<span id="cb15-2"><a href="importação-e-manipulação-de-dados.html#cb15-2" tabindex="-1"></a>Ana,<span class="dv">25</span>,<span class="fl">1.68</span></span>
-<span id="cb15-3"><a href="importação-e-manipulação-de-dados.html#cb15-3" tabindex="-1"></a>João,<span class="dv">30</span>,<span class="fl">1.75</span></span>
-<span id="cb15-4"><a href="importação-e-manipulação-de-dados.html#cb15-4" tabindex="-1"></a>Carlos,<span class="dv">22</span>,<span class="fl">1.80</span></span>
-<span id="cb15-5"><a href="importação-e-manipulação-de-dados.html#cb15-5" tabindex="-1"></a>Maria,<span class="dv">35</span>,<span class="fl">1.60</span></span>
-<span id="cb15-6"><a href="importação-e-manipulação-de-dados.html#cb15-6" tabindex="-1"></a>Bia,<span class="dv">24</span>,<span class="fl">1.65</span></span>
-<span id="cb15-7"><a href="importação-e-manipulação-de-dados.html#cb15-7" tabindex="-1"></a>Joana,<span class="dv">26</span>,<span class="fl">1.72</span></span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="importação-e-manipulação-de-dados.html#cb312-1" tabindex="-1"></a>Nome,Idade,Altura</span>
+<span id="cb312-2"><a href="importação-e-manipulação-de-dados.html#cb312-2" tabindex="-1"></a>Ana,<span class="dv">25</span>,<span class="fl">1.68</span></span>
+<span id="cb312-3"><a href="importação-e-manipulação-de-dados.html#cb312-3" tabindex="-1"></a>João,<span class="dv">30</span>,<span class="fl">1.75</span></span>
+<span id="cb312-4"><a href="importação-e-manipulação-de-dados.html#cb312-4" tabindex="-1"></a>Carlos,<span class="dv">22</span>,<span class="fl">1.80</span></span>
+<span id="cb312-5"><a href="importação-e-manipulação-de-dados.html#cb312-5" tabindex="-1"></a>Maria,<span class="dv">35</span>,<span class="fl">1.60</span></span>
+<span id="cb312-6"><a href="importação-e-manipulação-de-dados.html#cb312-6" tabindex="-1"></a>Bia,<span class="dv">24</span>,<span class="fl">1.65</span></span>
+<span id="cb312-7"><a href="importação-e-manipulação-de-dados.html#cb312-7" tabindex="-1"></a>Joana,<span class="dv">26</span>,<span class="fl">1.72</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>Carregue esse arquivo no R usando <code>read.csv()</code>.</li>
 <li>Exiba as primeiras 4 linhas do dataset.</li>
@@ -501,39 +520,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="protectedContent1" style="display:none;">
 <div id="respostas-14" class="section level3 unnumbered hasAnchor">
 <h3>Respostas<a href="importação-e-manipulação-de-dados.html#respostas-14" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="importação-e-manipulação-de-dados.html#cb16-1" tabindex="-1"></a><span class="co"># 1.</span></span>
-<span id="cb16-2"><a href="importação-e-manipulação-de-dados.html#cb16-2" tabindex="-1"></a><span class="co"># a.</span></span>
-<span id="cb16-3"><a href="importação-e-manipulação-de-dados.html#cb16-3" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">&quot;datasets&quot;</span>)</span>
-<span id="cb16-4"><a href="importação-e-manipulação-de-dados.html#cb16-4" tabindex="-1"></a><span class="co"># b.</span></span>
-<span id="cb16-5"><a href="importação-e-manipulação-de-dados.html#cb16-5" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb16-6"><a href="importação-e-manipulação-de-dados.html#cb16-6" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span>
-<span id="cb16-7"><a href="importação-e-manipulação-de-dados.html#cb16-7" tabindex="-1"></a><span class="co"># c.</span></span>
-<span id="cb16-8"><a href="importação-e-manipulação-de-dados.html#cb16-8" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb16-9"><a href="importação-e-manipulação-de-dados.html#cb16-9" tabindex="-1"></a><span class="fu">str</span>(iris)</span>
-<span id="cb16-10"><a href="importação-e-manipulação-de-dados.html#cb16-10" tabindex="-1"></a><span class="co"># d.</span></span>
-<span id="cb16-11"><a href="importação-e-manipulação-de-dados.html#cb16-11" tabindex="-1"></a><span class="fu">names</span>(mtcars)</span>
-<span id="cb16-12"><a href="importação-e-manipulação-de-dados.html#cb16-12" tabindex="-1"></a><span class="fu">names</span>(iris)</span>
-<span id="cb16-13"><a href="importação-e-manipulação-de-dados.html#cb16-13" tabindex="-1"></a><span class="co"># e.</span></span>
-<span id="cb16-14"><a href="importação-e-manipulação-de-dados.html#cb16-14" tabindex="-1"></a><span class="fu">nrow</span>(mtcars); <span class="fu">ncol</span>(mtcars)</span>
-<span id="cb16-15"><a href="importação-e-manipulação-de-dados.html#cb16-15" tabindex="-1"></a><span class="fu">nrow</span>(iris); <span class="fu">ncol</span>(iris)</span>
-<span id="cb16-16"><a href="importação-e-manipulação-de-dados.html#cb16-16" tabindex="-1"></a><span class="co"># 2.</span></span>
-<span id="cb16-17"><a href="importação-e-manipulação-de-dados.html#cb16-17" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/</span></span>
-<span id="cb16-18"><a href="importação-e-manipulação-de-dados.html#cb16-18" tabindex="-1"></a><span class="st">Capitulo 3 - Importacao&quot;</span>)</span>
-<span id="cb16-19"><a href="importação-e-manipulação-de-dados.html#cb16-19" tabindex="-1"></a><span class="co"># a.</span></span>
-<span id="cb16-20"><a href="importação-e-manipulação-de-dados.html#cb16-20" tabindex="-1"></a>dados_txt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;dados.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb16-21"><a href="importação-e-manipulação-de-dados.html#cb16-21" tabindex="-1"></a><span class="co"># b.</span></span>
-<span id="cb16-22"><a href="importação-e-manipulação-de-dados.html#cb16-22" tabindex="-1"></a><span class="fu">str</span>(dados_txt)</span>
-<span id="cb16-23"><a href="importação-e-manipulação-de-dados.html#cb16-23" tabindex="-1"></a><span class="co"># 3.</span></span>
-<span id="cb16-24"><a href="importação-e-manipulação-de-dados.html#cb16-24" tabindex="-1"></a><span class="co"># a.</span></span>
-<span id="cb16-25"><a href="importação-e-manipulação-de-dados.html#cb16-25" tabindex="-1"></a>dados_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;dados.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb16-26"><a href="importação-e-manipulação-de-dados.html#cb16-26" tabindex="-1"></a><span class="fu">str</span>(dados_csv)</span>
-<span id="cb16-27"><a href="importação-e-manipulação-de-dados.html#cb16-27" tabindex="-1"></a><span class="co"># b.</span></span>
-<span id="cb16-28"><a href="importação-e-manipulação-de-dados.html#cb16-28" tabindex="-1"></a><span class="fu">head</span>(dados_csv, <span class="dv">4</span>)</span>
-<span id="cb16-29"><a href="importação-e-manipulação-de-dados.html#cb16-29" tabindex="-1"></a><span class="co"># c.</span></span>
-<span id="cb16-30"><a href="importação-e-manipulação-de-dados.html#cb16-30" tabindex="-1"></a><span class="fu">names</span>(dados_csv) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;nome&quot;</span>, <span class="st">&quot;idade&quot;</span>, <span class="st">&quot;alt&quot;</span>)</span>
-<span id="cb16-31"><a href="importação-e-manipulação-de-dados.html#cb16-31" tabindex="-1"></a><span class="co"># 4.</span></span>
-<span id="cb16-32"><a href="importação-e-manipulação-de-dados.html#cb16-32" tabindex="-1"></a><span class="fu">write.table</span>(<span class="fu">head</span>(mtcars, <span class="dv">10</span>), <span class="st">&quot;mtcars.txt&quot;</span>,</span>
-<span id="cb16-33"><a href="importação-e-manipulação-de-dados.html#cb16-33" tabindex="-1"></a>            <span class="at">row.names =</span> F, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="importação-e-manipulação-de-dados.html#cb313-1" tabindex="-1"></a><span class="co"># 1.</span></span>
+<span id="cb313-2"><a href="importação-e-manipulação-de-dados.html#cb313-2" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb313-3"><a href="importação-e-manipulação-de-dados.html#cb313-3" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">&quot;datasets&quot;</span>)</span>
+<span id="cb313-4"><a href="importação-e-manipulação-de-dados.html#cb313-4" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb313-5"><a href="importação-e-manipulação-de-dados.html#cb313-5" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb313-6"><a href="importação-e-manipulação-de-dados.html#cb313-6" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span>
+<span id="cb313-7"><a href="importação-e-manipulação-de-dados.html#cb313-7" tabindex="-1"></a><span class="co"># c.</span></span>
+<span id="cb313-8"><a href="importação-e-manipulação-de-dados.html#cb313-8" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb313-9"><a href="importação-e-manipulação-de-dados.html#cb313-9" tabindex="-1"></a><span class="fu">str</span>(iris)</span>
+<span id="cb313-10"><a href="importação-e-manipulação-de-dados.html#cb313-10" tabindex="-1"></a><span class="co"># d.</span></span>
+<span id="cb313-11"><a href="importação-e-manipulação-de-dados.html#cb313-11" tabindex="-1"></a><span class="fu">names</span>(mtcars)</span>
+<span id="cb313-12"><a href="importação-e-manipulação-de-dados.html#cb313-12" tabindex="-1"></a><span class="fu">names</span>(iris)</span>
+<span id="cb313-13"><a href="importação-e-manipulação-de-dados.html#cb313-13" tabindex="-1"></a><span class="co"># e.</span></span>
+<span id="cb313-14"><a href="importação-e-manipulação-de-dados.html#cb313-14" tabindex="-1"></a><span class="fu">nrow</span>(mtcars); <span class="fu">ncol</span>(mtcars)</span>
+<span id="cb313-15"><a href="importação-e-manipulação-de-dados.html#cb313-15" tabindex="-1"></a><span class="fu">nrow</span>(iris); <span class="fu">ncol</span>(iris)</span>
+<span id="cb313-16"><a href="importação-e-manipulação-de-dados.html#cb313-16" tabindex="-1"></a><span class="co"># 2.</span></span>
+<span id="cb313-17"><a href="importação-e-manipulação-de-dados.html#cb313-17" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/</span></span>
+<span id="cb313-18"><a href="importação-e-manipulação-de-dados.html#cb313-18" tabindex="-1"></a><span class="st">Capitulo 3 - Importacao&quot;</span>)</span>
+<span id="cb313-19"><a href="importação-e-manipulação-de-dados.html#cb313-19" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb313-20"><a href="importação-e-manipulação-de-dados.html#cb313-20" tabindex="-1"></a>dados_txt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;dados.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb313-21"><a href="importação-e-manipulação-de-dados.html#cb313-21" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb313-22"><a href="importação-e-manipulação-de-dados.html#cb313-22" tabindex="-1"></a><span class="fu">str</span>(dados_txt)</span>
+<span id="cb313-23"><a href="importação-e-manipulação-de-dados.html#cb313-23" tabindex="-1"></a><span class="co"># 3.</span></span>
+<span id="cb313-24"><a href="importação-e-manipulação-de-dados.html#cb313-24" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb313-25"><a href="importação-e-manipulação-de-dados.html#cb313-25" tabindex="-1"></a>dados_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;dados.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb313-26"><a href="importação-e-manipulação-de-dados.html#cb313-26" tabindex="-1"></a><span class="fu">str</span>(dados_csv)</span>
+<span id="cb313-27"><a href="importação-e-manipulação-de-dados.html#cb313-27" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb313-28"><a href="importação-e-manipulação-de-dados.html#cb313-28" tabindex="-1"></a><span class="fu">head</span>(dados_csv, <span class="dv">4</span>)</span>
+<span id="cb313-29"><a href="importação-e-manipulação-de-dados.html#cb313-29" tabindex="-1"></a><span class="co"># c.</span></span>
+<span id="cb313-30"><a href="importação-e-manipulação-de-dados.html#cb313-30" tabindex="-1"></a><span class="fu">names</span>(dados_csv) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;nome&quot;</span>, <span class="st">&quot;idade&quot;</span>, <span class="st">&quot;alt&quot;</span>)</span>
+<span id="cb313-31"><a href="importação-e-manipulação-de-dados.html#cb313-31" tabindex="-1"></a><span class="co"># 4.</span></span>
+<span id="cb313-32"><a href="importação-e-manipulação-de-dados.html#cb313-32" tabindex="-1"></a><span class="fu">write.table</span>(<span class="fu">head</span>(mtcars, <span class="dv">10</span>), <span class="st">&quot;mtcars.txt&quot;</span>,</span>
+<span id="cb313-33"><a href="importação-e-manipulação-de-dados.html#cb313-33" tabindex="-1"></a>            <span class="at">row.names =</span> F, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <p><input type="password" id="passwordInput1" placeholder="Digite a senha">
@@ -565,23 +584,23 @@ document.getElementById("submitButton1").addEventListener("click", function()
 O argumento <code>delim=</code> indica qual caractere separa cada coluna no arquivo de texto.</li>
 <li>read_table(): arquivos de texto tabular com colunas separadas por espaço.</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="importação-e-manipulação-de-dados.html#cb17-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb17-2"><a href="importação-e-manipulação-de-dados.html#cb17-2" tabindex="-1"></a>dados_readr_delim <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;dados_adler.txt&quot;</span>, <span class="at">col_names =</span> T, </span>
-<span id="cb17-3"><a href="importação-e-manipulação-de-dados.html#cb17-3" tabindex="-1"></a>                                <span class="at">delim =</span> <span class="st">&quot; &quot;</span>)</span>
-<span id="cb17-4"><a href="importação-e-manipulação-de-dados.html#cb17-4" tabindex="-1"></a><span class="co"># delim = &quot;\t&quot; para arquivo separação por tabulação</span></span>
-<span id="cb17-5"><a href="importação-e-manipulação-de-dados.html#cb17-5" tabindex="-1"></a>dados_readr_csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;dados_adler.csv&quot;</span>, <span class="at">col_names =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="importação-e-manipulação-de-dados.html#cb314-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb314-2"><a href="importação-e-manipulação-de-dados.html#cb314-2" tabindex="-1"></a>dados_readr_delim <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;dados_adler.txt&quot;</span>, <span class="at">col_names =</span> T, </span>
+<span id="cb314-3"><a href="importação-e-manipulação-de-dados.html#cb314-3" tabindex="-1"></a>                                <span class="at">delim =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb314-4"><a href="importação-e-manipulação-de-dados.html#cb314-4" tabindex="-1"></a><span class="co"># delim = &quot;\t&quot; para arquivo separação por tabulação</span></span>
+<span id="cb314-5"><a href="importação-e-manipulação-de-dados.html#cb314-5" tabindex="-1"></a>dados_readr_csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;dados_adler.csv&quot;</span>, <span class="at">col_names =</span> T)</span></code></pre></div>
 </div>
 <div id="usando-funções-do-pacote-readxl" class="section level3 hasAnchor" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> Usando funções do pacote readxl<a href="importação-e-manipulação-de-dados.html#usando-funções-do-pacote-readxl" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para ler planilhas do Excel (arquivos .xlsx ou .xls), basta utilizarmos a função <code>read_excel()</code> do pacote <code>readxl</code></p>
 <p><strong>Exemplo:</strong> Fazer o download dos dados disponíveis no link:
 <a href="https://github.com/curso-r/livro-material/raw/master/assets/data/imdb.zip" class="uri">https://github.com/curso-r/livro-material/raw/master/assets/data/imdb.zip</a></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="importação-e-manipulação-de-dados.html#cb18-1" tabindex="-1"></a><span class="co"># install.packages(&quot;readxl&quot;)</span></span>
-<span id="cb18-2"><a href="importação-e-manipulação-de-dados.html#cb18-2" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb18-3"><a href="importação-e-manipulação-de-dados.html#cb18-3" tabindex="-1"></a>imdb <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;imdb/imdb.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span>
-<span id="cb18-4"><a href="importação-e-manipulação-de-dados.html#cb18-4" tabindex="-1"></a><span class="fu">View</span>(imdb)</span>
-<span id="cb18-5"><a href="importação-e-manipulação-de-dados.html#cb18-5" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">&quot;imdb/imdb.xlsx&quot;</span>) <span class="co"># planilhas dos dados imdb</span></span>
-<span id="cb18-6"><a href="importação-e-manipulação-de-dados.html#cb18-6" tabindex="-1"></a><span class="fu">colnames</span>(imdb)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="importação-e-manipulação-de-dados.html#cb315-1" tabindex="-1"></a><span class="co"># install.packages(&quot;readxl&quot;)</span></span>
+<span id="cb315-2"><a href="importação-e-manipulação-de-dados.html#cb315-2" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb315-3"><a href="importação-e-manipulação-de-dados.html#cb315-3" tabindex="-1"></a>imdb <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;imdb/imdb.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span>
+<span id="cb315-4"><a href="importação-e-manipulação-de-dados.html#cb315-4" tabindex="-1"></a><span class="fu">View</span>(imdb)</span>
+<span id="cb315-5"><a href="importação-e-manipulação-de-dados.html#cb315-5" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">&quot;imdb/imdb.xlsx&quot;</span>) <span class="co"># planilhas dos dados imdb</span></span>
+<span id="cb315-6"><a href="importação-e-manipulação-de-dados.html#cb315-6" tabindex="-1"></a><span class="fu">colnames</span>(imdb)</span></code></pre></div>
 <div id="exercícios-11" class="section level4 unnumbered hasAnchor">
 <h4>Exercícios<a href="importação-e-manipulação-de-dados.html#exercícios-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Para os exercícios a seguir, baixe os arquivos de dados no link abaixo e salve-os em alguma pasta do seu computador.</p>
@@ -606,22 +625,22 @@ O argumento <code>delim=</code> indica qual caractere separa cada coluna no arqu
 <div id="protectedContent2" style="display:none;">
 <div id="respostas-15" class="section level3 unnumbered hasAnchor">
 <h3>Respostas<a href="importação-e-manipulação-de-dados.html#respostas-15" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="importação-e-manipulação-de-dados.html#cb19-1" tabindex="-1"></a><span class="co"># 1.</span></span>
-<span id="cb19-2"><a href="importação-e-manipulação-de-dados.html#cb19-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb19-3"><a href="importação-e-manipulação-de-dados.html#cb19-3" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/</span></span>
-<span id="cb19-4"><a href="importação-e-manipulação-de-dados.html#cb19-4" tabindex="-1"></a><span class="st">ApostilaR/data&quot;</span>)</span>
-<span id="cb19-5"><a href="importação-e-manipulação-de-dados.html#cb19-5" tabindex="-1"></a>df_alunos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;exercicios_importacao_r/alunos.csv&quot;</span>)</span>
-<span id="cb19-6"><a href="importação-e-manipulação-de-dados.html#cb19-6" tabindex="-1"></a>df_vendas <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">&quot;exercicios_importacao_r/vendas.csv&quot;</span>)</span>
-<span id="cb19-7"><a href="importação-e-manipulação-de-dados.html#cb19-7" tabindex="-1"></a>df_pipe <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;exercicios_importacao_r/dados.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;|&quot;</span>)</span>
-<span id="cb19-8"><a href="importação-e-manipulação-de-dados.html#cb19-8" tabindex="-1"></a>df_tsv <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;exercicios_importacao_r/tabela.tsv&quot;</span>)</span>
-<span id="cb19-9"><a href="importação-e-manipulação-de-dados.html#cb19-9" tabindex="-1"></a><span class="co"># 2.</span></span>
-<span id="cb19-10"><a href="importação-e-manipulação-de-dados.html#cb19-10" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb19-11"><a href="importação-e-manipulação-de-dados.html#cb19-11" tabindex="-1"></a>df_notas <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;exercicios_importacao_r/notas.xlsx&quot;</span>)</span>
-<span id="cb19-12"><a href="importação-e-manipulação-de-dados.html#cb19-12" tabindex="-1"></a>df_financeiro <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;exercicios_importacao_r/financeiro.xlsx&quot;</span>, </span>
-<span id="cb19-13"><a href="importação-e-manipulação-de-dados.html#cb19-13" tabindex="-1"></a><span class="at">sheet =</span> <span class="st">&quot;2025&quot;</span>)</span>
-<span id="cb19-14"><a href="importação-e-manipulação-de-dados.html#cb19-14" tabindex="-1"></a>df_relatorio <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;exercicios_importacao_r/relatorio.xlsx&quot;</span>, </span>
-<span id="cb19-15"><a href="importação-e-manipulação-de-dados.html#cb19-15" tabindex="-1"></a><span class="at">range =</span> <span class="st">&quot;B2:D10&quot;</span>)</span>
-<span id="cb19-16"><a href="importação-e-manipulação-de-dados.html#cb19-16" tabindex="-1"></a>abas <span class="ot">&lt;-</span> <span class="fu">excel_sheets</span>(<span class="st">&quot;exercicios_importacao_r/multiaba.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="importação-e-manipulação-de-dados.html#cb316-1" tabindex="-1"></a><span class="co"># 1.</span></span>
+<span id="cb316-2"><a href="importação-e-manipulação-de-dados.html#cb316-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb316-3"><a href="importação-e-manipulação-de-dados.html#cb316-3" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/home/angelica/Dropbox/UTFPR/Ensino/Estatistica Computacional com o R/</span></span>
+<span id="cb316-4"><a href="importação-e-manipulação-de-dados.html#cb316-4" tabindex="-1"></a><span class="st">ApostilaR/data&quot;</span>)</span>
+<span id="cb316-5"><a href="importação-e-manipulação-de-dados.html#cb316-5" tabindex="-1"></a>df_alunos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;exercicios_importacao_r/alunos.csv&quot;</span>)</span>
+<span id="cb316-6"><a href="importação-e-manipulação-de-dados.html#cb316-6" tabindex="-1"></a>df_vendas <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">&quot;exercicios_importacao_r/vendas.csv&quot;</span>)</span>
+<span id="cb316-7"><a href="importação-e-manipulação-de-dados.html#cb316-7" tabindex="-1"></a>df_pipe <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;exercicios_importacao_r/dados.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;|&quot;</span>)</span>
+<span id="cb316-8"><a href="importação-e-manipulação-de-dados.html#cb316-8" tabindex="-1"></a>df_tsv <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;exercicios_importacao_r/tabela.tsv&quot;</span>)</span>
+<span id="cb316-9"><a href="importação-e-manipulação-de-dados.html#cb316-9" tabindex="-1"></a><span class="co"># 2.</span></span>
+<span id="cb316-10"><a href="importação-e-manipulação-de-dados.html#cb316-10" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb316-11"><a href="importação-e-manipulação-de-dados.html#cb316-11" tabindex="-1"></a>df_notas <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;exercicios_importacao_r/notas.xlsx&quot;</span>)</span>
+<span id="cb316-12"><a href="importação-e-manipulação-de-dados.html#cb316-12" tabindex="-1"></a>df_financeiro <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;exercicios_importacao_r/financeiro.xlsx&quot;</span>, </span>
+<span id="cb316-13"><a href="importação-e-manipulação-de-dados.html#cb316-13" tabindex="-1"></a><span class="at">sheet =</span> <span class="st">&quot;2025&quot;</span>)</span>
+<span id="cb316-14"><a href="importação-e-manipulação-de-dados.html#cb316-14" tabindex="-1"></a>df_relatorio <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;exercicios_importacao_r/relatorio.xlsx&quot;</span>, </span>
+<span id="cb316-15"><a href="importação-e-manipulação-de-dados.html#cb316-15" tabindex="-1"></a><span class="at">range =</span> <span class="st">&quot;B2:D10&quot;</span>)</span>
+<span id="cb316-16"><a href="importação-e-manipulação-de-dados.html#cb316-16" tabindex="-1"></a>abas <span class="ot">&lt;-</span> <span class="fu">excel_sheets</span>(<span class="st">&quot;exercicios_importacao_r/multiaba.xlsx&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <p><input type="password" id="passwordInput2" placeholder="Digite a senha">
@@ -650,11 +669,11 @@ document.getElementById("submitButton2").addEventListener("click", function()
 <div id="tibbles" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Tibbles<a href="importação-e-manipulação-de-dados.html#tibbles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Tibbles são estruturas de dados mais “amigáveis”.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="importação-e-manipulação-de-dados.html#cb20-1" tabindex="-1"></a><span class="co"># Para instalar e carregar</span></span>
-<span id="cb20-2"><a href="importação-e-manipulação-de-dados.html#cb20-2" tabindex="-1"></a><span class="co"># install.packages(&quot;tibble&quot;)</span></span>
-<span id="cb20-3"><a href="importação-e-manipulação-de-dados.html#cb20-3" tabindex="-1"></a><span class="fu">library</span>(tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="importação-e-manipulação-de-dados.html#cb317-1" tabindex="-1"></a><span class="co"># Para instalar e carregar</span></span>
+<span id="cb317-2"><a href="importação-e-manipulação-de-dados.html#cb317-2" tabindex="-1"></a><span class="co"># install.packages(&quot;tibble&quot;)</span></span>
+<span id="cb317-3"><a href="importação-e-manipulação-de-dados.html#cb317-3" tabindex="-1"></a><span class="fu">library</span>(tibble)</span></code></pre></div>
 <p>Para criar um tibble com a função <code>as_tibble</code>:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="importação-e-manipulação-de-dados.html#cb21-1" tabindex="-1"></a><span class="fu">as_tibble</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="importação-e-manipulação-de-dados.html#cb318-1" tabindex="-1"></a><span class="fu">as_tibble</span>(mtcars)</span></code></pre></div>
 <pre><code>## # A tibble: 32 × 11
 ##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -671,12 +690,12 @@ document.getElementById("submitButton2").addEventListener("click", function()
 ## # ℹ 22 more rows</code></pre>
 <p>Ele mostra apenas as primeiras linhas e oculta as colunas que não cabem na largura da tela.</p>
 <p>Para criar um tibble com a função <code>tibble()</code>:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="importação-e-manipulação-de-dados.html#cb23-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb23-2"><a href="importação-e-manipulação-de-dados.html#cb23-2" tabindex="-1"></a>  <span class="at">coluna1 =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>),</span>
-<span id="cb23-3"><a href="importação-e-manipulação-de-dados.html#cb23-3" tabindex="-1"></a>  <span class="at">coluna2 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb23-4"><a href="importação-e-manipulação-de-dados.html#cb23-4" tabindex="-1"></a>  <span class="at">coluna3 =</span> coluna2 <span class="sc">^</span> <span class="dv">2</span>,</span>
-<span id="cb23-5"><a href="importação-e-manipulação-de-dados.html#cb23-5" tabindex="-1"></a>  <span class="at">coluna4 =</span> <span class="dv">0</span></span>
-<span id="cb23-6"><a href="importação-e-manipulação-de-dados.html#cb23-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="importação-e-manipulação-de-dados.html#cb320-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb320-2"><a href="importação-e-manipulação-de-dados.html#cb320-2" tabindex="-1"></a>  <span class="at">coluna1 =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>),</span>
+<span id="cb320-3"><a href="importação-e-manipulação-de-dados.html#cb320-3" tabindex="-1"></a>  <span class="at">coluna2 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb320-4"><a href="importação-e-manipulação-de-dados.html#cb320-4" tabindex="-1"></a>  <span class="at">coluna3 =</span> coluna2 <span class="sc">^</span> <span class="dv">2</span>,</span>
+<span id="cb320-5"><a href="importação-e-manipulação-de-dados.html#cb320-5" tabindex="-1"></a>  <span class="at">coluna4 =</span> <span class="dv">0</span></span>
+<span id="cb320-6"><a href="importação-e-manipulação-de-dados.html#cb320-6" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 4
 ##   coluna1 coluna2 coluna3 coluna4
 ##   &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -695,9 +714,9 @@ document.getElementById("submitButton2").addEventListener("click", function()
 <li><code>add_column()</code>: para adicionar colunas a uma tibble;</li>
 </ul>
 <p><strong>Exemplo:</strong></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="importação-e-manipulação-de-dados.html#cb25-1" tabindex="-1"></a>mtcars_tibble <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>)])</span>
-<span id="cb25-2"><a href="importação-e-manipulação-de-dados.html#cb25-2" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="importação-e-manipulação-de-dados.html#cb25-3" tabindex="-1"></a><span class="fu">add_row</span>(mtcars_tibble, <span class="at">mpg =</span> <span class="dv">2</span>, <span class="at">cyl =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="importação-e-manipulação-de-dados.html#cb322-1" tabindex="-1"></a>mtcars_tibble <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>)])</span>
+<span id="cb322-2"><a href="importação-e-manipulação-de-dados.html#cb322-2" tabindex="-1"></a></span>
+<span id="cb322-3"><a href="importação-e-manipulação-de-dados.html#cb322-3" tabindex="-1"></a><span class="fu">add_row</span>(mtcars_tibble, <span class="at">mpg =</span> <span class="dv">2</span>, <span class="at">cyl =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 2
 ##     mpg   cyl
 ##   &lt;dbl&gt; &lt;dbl&gt;
@@ -707,7 +726,7 @@ document.getElementById("submitButton2").addEventListener("click", function()
 ## 4  21.4     6
 ## 5  18.7     8
 ## 6   2       3</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="importação-e-manipulação-de-dados.html#cb27-1" tabindex="-1"></a><span class="fu">add_column</span>(mtcars_tibble, <span class="at">mpg2 =</span> mtcars_tibble<span class="sc">$</span>mpg<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="importação-e-manipulação-de-dados.html#cb324-1" tabindex="-1"></a><span class="fu">add_column</span>(mtcars_tibble, <span class="at">mpg2 =</span> mtcars_tibble<span class="sc">$</span>mpg<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##     mpg   cyl  mpg2
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -721,28 +740,28 @@ document.getElementById("submitButton2").addEventListener("click", function()
 <h3><span class="header-section-number">4.2.2</span> O Operador Pipe (<code>%&gt;%</code>)<a href="importação-e-manipulação-de-dados.html#o-operador-pipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>É uma ferramenta útil para deixar o código mais legível, encadeado e natural, especialmente quando você está aplicando várias funções uma após a outra. A ideia do operador pipe é bem simples: usar o valor resultante da expressão do lado esquerdo como primeiro argumento da função do lado direito.</p>
 <p><strong>Exemplo:</strong> Vamos calcular a raiz quadrada da soma dos valores de 1 a 4.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="importação-e-manipulação-de-dados.html#cb29-1" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb29-2"><a href="importação-e-manipulação-de-dados.html#cb29-2" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="importação-e-manipulação-de-dados.html#cb29-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb29-4"><a href="importação-e-manipulação-de-dados.html#cb29-4" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="importação-e-manipulação-de-dados.html#cb29-5" tabindex="-1"></a><span class="co"># Sem o Pipe:</span></span>
-<span id="cb29-6"><a href="importação-e-manipulação-de-dados.html#cb29-6" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(x))</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="importação-e-manipulação-de-dados.html#cb326-1" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb326-2"><a href="importação-e-manipulação-de-dados.html#cb326-2" tabindex="-1"></a></span>
+<span id="cb326-3"><a href="importação-e-manipulação-de-dados.html#cb326-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb326-4"><a href="importação-e-manipulação-de-dados.html#cb326-4" tabindex="-1"></a></span>
+<span id="cb326-5"><a href="importação-e-manipulação-de-dados.html#cb326-5" tabindex="-1"></a><span class="co"># Sem o Pipe:</span></span>
+<span id="cb326-6"><a href="importação-e-manipulação-de-dados.html#cb326-6" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(x))</span></code></pre></div>
 <pre><code>## [1] 3.162278</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="importação-e-manipulação-de-dados.html#cb31-1" tabindex="-1"></a><span class="co"># Com o Pipe:</span></span>
-<span id="cb31-2"><a href="importação-e-manipulação-de-dados.html#cb31-2" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
-<span id="cb31-3"><a href="importação-e-manipulação-de-dados.html#cb31-3" tabindex="-1"></a>  <span class="fu">sum</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb31-4"><a href="importação-e-manipulação-de-dados.html#cb31-4" tabindex="-1"></a>  <span class="fu">sqrt</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="importação-e-manipulação-de-dados.html#cb328-1" tabindex="-1"></a><span class="co"># Com o Pipe:</span></span>
+<span id="cb328-2"><a href="importação-e-manipulação-de-dados.html#cb328-2" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb328-3"><a href="importação-e-manipulação-de-dados.html#cb328-3" tabindex="-1"></a>  <span class="fu">sum</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb328-4"><a href="importação-e-manipulação-de-dados.html#cb328-4" tabindex="-1"></a>  <span class="fu">sqrt</span>()</span></code></pre></div>
 <pre><code>## [1] 3.162278</code></pre>
 <p><strong>Exemplo:</strong> Vamos transpor uma matriz (t()) e calcular a soma de suas colunas (colSums()).</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="importação-e-manipulação-de-dados.html#cb33-1" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb33-2"><a href="importação-e-manipulação-de-dados.html#cb33-2" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="importação-e-manipulação-de-dados.html#cb33-3" tabindex="-1"></a><span class="co"># Sem o Pipe:</span></span>
-<span id="cb33-4"><a href="importação-e-manipulação-de-dados.html#cb33-4" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">t</span>(mat))</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="importação-e-manipulação-de-dados.html#cb330-1" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb330-2"><a href="importação-e-manipulação-de-dados.html#cb330-2" tabindex="-1"></a></span>
+<span id="cb330-3"><a href="importação-e-manipulação-de-dados.html#cb330-3" tabindex="-1"></a><span class="co"># Sem o Pipe:</span></span>
+<span id="cb330-4"><a href="importação-e-manipulação-de-dados.html#cb330-4" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">t</span>(mat))</span></code></pre></div>
 <pre><code>## [1]  6 15 24</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="importação-e-manipulação-de-dados.html#cb35-1" tabindex="-1"></a><span class="co"># Com o Pipe:</span></span>
-<span id="cb35-2"><a href="importação-e-manipulação-de-dados.html#cb35-2" tabindex="-1"></a>mat <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a href="importação-e-manipulação-de-dados.html#cb35-3" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb35-4"><a href="importação-e-manipulação-de-dados.html#cb35-4" tabindex="-1"></a>  <span class="fu">colSums</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="importação-e-manipulação-de-dados.html#cb332-1" tabindex="-1"></a><span class="co"># Com o Pipe:</span></span>
+<span id="cb332-2"><a href="importação-e-manipulação-de-dados.html#cb332-2" tabindex="-1"></a>mat <span class="sc">%&gt;%</span></span>
+<span id="cb332-3"><a href="importação-e-manipulação-de-dados.html#cb332-3" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb332-4"><a href="importação-e-manipulação-de-dados.html#cb332-4" tabindex="-1"></a>  <span class="fu">colSums</span>()</span></code></pre></div>
 <pre><code>## [1]  6 15 24</code></pre>
 <div id="exercícios-12" class="section level4 unnumbered hasAnchor">
 <h4>Exercícios<a href="importação-e-manipulação-de-dados.html#exercícios-12" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -758,23 +777,23 @@ document.getElementById("submitButton2").addEventListener("click", function()
 <div id="protectedContent3" style="display:none;">
 <div id="respostas-16" class="section level3 unnumbered hasAnchor">
 <h3>Respostas<a href="importação-e-manipulação-de-dados.html#respostas-16" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="importação-e-manipulação-de-dados.html#cb37-1" tabindex="-1"></a><span class="co"># a.</span></span>
-<span id="cb37-2"><a href="importação-e-manipulação-de-dados.html#cb37-2" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-3"><a href="importação-e-manipulação-de-dados.html#cb37-3" tabindex="-1"></a>  <span class="st">`</span><span class="at">*</span><span class="st">`</span>(<span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-4"><a href="importação-e-manipulação-de-dados.html#cb37-4" tabindex="-1"></a>  <span class="fu">mean</span>()</span>
-<span id="cb37-5"><a href="importação-e-manipulação-de-dados.html#cb37-5" tabindex="-1"></a><span class="co"># b.</span></span>
-<span id="cb37-6"><a href="importação-e-manipulação-de-dados.html#cb37-6" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-7"><a href="importação-e-manipulação-de-dados.html#cb37-7" tabindex="-1"></a>  <span class="fu">abs</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb37-8"><a href="importação-e-manipulação-de-dados.html#cb37-8" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">1</span>)</span>
-<span id="cb37-9"><a href="importação-e-manipulação-de-dados.html#cb37-9" tabindex="-1"></a><span class="co"># c.</span></span>
-<span id="cb37-10"><a href="importação-e-manipulação-de-dados.html#cb37-10" tabindex="-1"></a>mat2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
-<span id="cb37-11"><a href="importação-e-manipulação-de-dados.html#cb37-11" tabindex="-1"></a>mat2 <span class="sc">%&gt;%</span></span>
-<span id="cb37-12"><a href="importação-e-manipulação-de-dados.html#cb37-12" tabindex="-1"></a>  <span class="fu">apply</span>(<span class="dv">1</span>, sum) <span class="sc">%&gt;%</span></span>
-<span id="cb37-13"><a href="importação-e-manipulação-de-dados.html#cb37-13" tabindex="-1"></a>  <span class="st">`</span><span class="at">^</span><span class="st">`</span>(<span class="dv">2</span>)</span>
-<span id="cb37-14"><a href="importação-e-manipulação-de-dados.html#cb37-14" tabindex="-1"></a><span class="co"># d.</span></span>
-<span id="cb37-15"><a href="importação-e-manipulação-de-dados.html#cb37-15" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-16"><a href="importação-e-manipulação-de-dados.html#cb37-16" tabindex="-1"></a>  <span class="st">`</span><span class="at">*</span><span class="st">`</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-17"><a href="importação-e-manipulação-de-dados.html#cb37-17" tabindex="-1"></a><span class="fu">colMeans</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="importação-e-manipulação-de-dados.html#cb334-1" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb334-2"><a href="importação-e-manipulação-de-dados.html#cb334-2" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb334-3"><a href="importação-e-manipulação-de-dados.html#cb334-3" tabindex="-1"></a>  <span class="st">`</span><span class="at">*</span><span class="st">`</span>(<span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb334-4"><a href="importação-e-manipulação-de-dados.html#cb334-4" tabindex="-1"></a>  <span class="fu">mean</span>()</span>
+<span id="cb334-5"><a href="importação-e-manipulação-de-dados.html#cb334-5" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb334-6"><a href="importação-e-manipulação-de-dados.html#cb334-6" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb334-7"><a href="importação-e-manipulação-de-dados.html#cb334-7" tabindex="-1"></a>  <span class="fu">abs</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb334-8"><a href="importação-e-manipulação-de-dados.html#cb334-8" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb334-9"><a href="importação-e-manipulação-de-dados.html#cb334-9" tabindex="-1"></a><span class="co"># c.</span></span>
+<span id="cb334-10"><a href="importação-e-manipulação-de-dados.html#cb334-10" tabindex="-1"></a>mat2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb334-11"><a href="importação-e-manipulação-de-dados.html#cb334-11" tabindex="-1"></a>mat2 <span class="sc">%&gt;%</span></span>
+<span id="cb334-12"><a href="importação-e-manipulação-de-dados.html#cb334-12" tabindex="-1"></a>  <span class="fu">apply</span>(<span class="dv">1</span>, sum) <span class="sc">%&gt;%</span></span>
+<span id="cb334-13"><a href="importação-e-manipulação-de-dados.html#cb334-13" tabindex="-1"></a>  <span class="st">`</span><span class="at">^</span><span class="st">`</span>(<span class="dv">2</span>)</span>
+<span id="cb334-14"><a href="importação-e-manipulação-de-dados.html#cb334-14" tabindex="-1"></a><span class="co"># d.</span></span>
+<span id="cb334-15"><a href="importação-e-manipulação-de-dados.html#cb334-15" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb334-16"><a href="importação-e-manipulação-de-dados.html#cb334-16" tabindex="-1"></a>  <span class="st">`</span><span class="at">*</span><span class="st">`</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb334-17"><a href="importação-e-manipulação-de-dados.html#cb334-17" tabindex="-1"></a><span class="fu">colMeans</span>()</span></code></pre></div>
 </div>
 </div>
 <p><input type="password" id="passwordInput3" placeholder="Digite a senha">
@@ -820,13 +839,13 @@ document.getElementById("submitButton3").addEventListener("click", function()
 <li>É possível trabalhar com diferentes fontes de dados.</li>
 </ul>
 <p>Primeiramente instalar e carregar o pacote:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="importação-e-manipulação-de-dados.html#cb38-1" tabindex="-1"></a><span class="co"># install.packages(&quot;dplyr&quot;)</span></span>
-<span id="cb38-2"><a href="importação-e-manipulação-de-dados.html#cb38-2" tabindex="-1"></a><span class="co"># library(dplyr)</span></span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="importação-e-manipulação-de-dados.html#cb335-1" tabindex="-1"></a><span class="co"># install.packages(&quot;dplyr&quot;)</span></span>
+<span id="cb335-2"><a href="importação-e-manipulação-de-dados.html#cb335-2" tabindex="-1"></a><span class="co"># library(dplyr)</span></span></code></pre></div>
 <p><strong>Exemplos:</strong> Para ilustrar o pacote <code>dplyr</code>, vamos usar os dados do imdb, disponíveis no link: <a href="https://github.com/curso-r/livro-material/raw/master/assets/data/imdb.zip" class="uri">https://github.com/curso-r/livro-material/raw/master/assets/data/imdb.zip</a></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="importação-e-manipulação-de-dados.html#cb39-1" tabindex="-1"></a><span class="co"># library(readr)</span></span>
-<span id="cb39-2"><a href="importação-e-manipulação-de-dados.html#cb39-2" tabindex="-1"></a>data_imdb <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/imdb/imdb.csv&quot;</span>,</span>
-<span id="cb39-3"><a href="importação-e-manipulação-de-dados.html#cb39-3" tabindex="-1"></a>                      <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb39-4"><a href="importação-e-manipulação-de-dados.html#cb39-4" tabindex="-1"></a><span class="fu">head</span>(data_imdb)</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="importação-e-manipulação-de-dados.html#cb336-1" tabindex="-1"></a><span class="co"># library(readr)</span></span>
+<span id="cb336-2"><a href="importação-e-manipulação-de-dados.html#cb336-2" tabindex="-1"></a>data_imdb <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/imdb/imdb.csv&quot;</span>,</span>
+<span id="cb336-3"><a href="importação-e-manipulação-de-dados.html#cb336-3" tabindex="-1"></a>                      <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb336-4"><a href="importação-e-manipulação-de-dados.html#cb336-4" tabindex="-1"></a><span class="fu">head</span>(data_imdb)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 20
 ##   id_filme  titulo    ano data_lancamento generos duracao pais  idioma orcamento
 ##   &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -842,9 +861,9 @@ document.getElementById("submitButton3").addEventListener("click", function()
 ## #   num_criticas_critica &lt;dbl&gt;</code></pre>
 <div id="função-select-seleciona-colunas" class="section level4 unnumbered hasAnchor">
 <h4>Função <code>select</code> (seleciona colunas)<a href="importação-e-manipulação-de-dados.html#função-select-seleciona-colunas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="importação-e-manipulação-de-dados.html#cb41-1" tabindex="-1"></a><span class="do">## Selecionando a coluna título:</span></span>
-<span id="cb41-2"><a href="importação-e-manipulação-de-dados.html#cb41-2" tabindex="-1"></a><span class="co"># Sem o operador Pipe:</span></span>
-<span id="cb41-3"><a href="importação-e-manipulação-de-dados.html#cb41-3" tabindex="-1"></a><span class="fu">select</span>(data_imdb, titulo)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="importação-e-manipulação-de-dados.html#cb338-1" tabindex="-1"></a><span class="do">## Selecionando a coluna título:</span></span>
+<span id="cb338-2"><a href="importação-e-manipulação-de-dados.html#cb338-2" tabindex="-1"></a><span class="co"># Sem o operador Pipe:</span></span>
+<span id="cb338-3"><a href="importação-e-manipulação-de-dados.html#cb338-3" tabindex="-1"></a><span class="fu">select</span>(data_imdb, titulo)</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 1
 ##    titulo                           
 ##    &lt;chr&gt;                            
@@ -859,12 +878,12 @@ document.getElementById("submitButton3").addEventListener("click", function()
 ##  9 Some Kind of Wonderful           
 ## 10 The Family That Preys            
 ## # ℹ 11,330 more rows</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="importação-e-manipulação-de-dados.html#cb43-1" tabindex="-1"></a><span class="co"># Com o operador Pipe:</span></span>
-<span id="cb43-2"><a href="importação-e-manipulação-de-dados.html#cb43-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a href="importação-e-manipulação-de-dados.html#cb43-3" tabindex="-1"></a>  <span class="fu">select</span>(titulo)</span></code></pre></div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="importação-e-manipulação-de-dados.html#cb44-1" tabindex="-1"></a><span class="do">## Selecionando as colunas título, ano e orcamento:</span></span>
-<span id="cb44-2"><a href="importação-e-manipulação-de-dados.html#cb44-2" tabindex="-1"></a><span class="co"># Sem o operador Pipe:</span></span>
-<span id="cb44-3"><a href="importação-e-manipulação-de-dados.html#cb44-3" tabindex="-1"></a><span class="fu">select</span>(data_imdb, titulo, ano, orcamento)</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="importação-e-manipulação-de-dados.html#cb340-1" tabindex="-1"></a><span class="co"># Com o operador Pipe:</span></span>
+<span id="cb340-2"><a href="importação-e-manipulação-de-dados.html#cb340-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb340-3"><a href="importação-e-manipulação-de-dados.html#cb340-3" tabindex="-1"></a>  <span class="fu">select</span>(titulo)</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="importação-e-manipulação-de-dados.html#cb341-1" tabindex="-1"></a><span class="do">## Selecionando as colunas título, ano e orcamento:</span></span>
+<span id="cb341-2"><a href="importação-e-manipulação-de-dados.html#cb341-2" tabindex="-1"></a><span class="co"># Sem o operador Pipe:</span></span>
+<span id="cb341-3"><a href="importação-e-manipulação-de-dados.html#cb341-3" tabindex="-1"></a><span class="fu">select</span>(data_imdb, titulo, ano, orcamento)</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 3
 ##    titulo                              ano orcamento
 ##    &lt;chr&gt;                             &lt;dbl&gt;     &lt;dbl&gt;
@@ -879,11 +898,11 @@ document.getElementById("submitButton3").addEventListener("click", function()
 ##  9 Some Kind of Wonderful             1987        NA
 ## 10 The Family That Preys              2008        NA
 ## # ℹ 11,330 more rows</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="importação-e-manipulação-de-dados.html#cb46-1" tabindex="-1"></a><span class="co"># Com o operador Pipe:</span></span>
-<span id="cb46-2"><a href="importação-e-manipulação-de-dados.html#cb46-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb46-3"><a href="importação-e-manipulação-de-dados.html#cb46-3" tabindex="-1"></a>  <span class="fu">select</span>(titulo, ano, orcamento)</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="importação-e-manipulação-de-dados.html#cb343-1" tabindex="-1"></a><span class="co"># Com o operador Pipe:</span></span>
+<span id="cb343-2"><a href="importação-e-manipulação-de-dados.html#cb343-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb343-3"><a href="importação-e-manipulação-de-dados.html#cb343-3" tabindex="-1"></a>  <span class="fu">select</span>(titulo, ano, orcamento)</span></code></pre></div>
 <p>Selecionando uma sequencia de colunas dos dados</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="importação-e-manipulação-de-dados.html#cb47-1" tabindex="-1"></a><span class="fu">select</span>(data_imdb, titulo<span class="sc">:</span>generos)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="importação-e-manipulação-de-dados.html#cb344-1" tabindex="-1"></a><span class="fu">select</span>(data_imdb, titulo<span class="sc">:</span>generos)</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 4
 ##    titulo                              ano data_lancamento generos              
 ##    &lt;chr&gt;                             &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;                
@@ -898,8 +917,8 @@ document.getElementById("submitButton3").addEventListener("click", function()
 ##  9 Some Kind of Wonderful             1987 1988-01-13      Drama, Romance       
 ## 10 The Family That Preys              2008 2008-09-12      Drama                
 ## # ℹ 11,330 more rows</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="importação-e-manipulação-de-dados.html#cb49-1" tabindex="-1"></a><span class="co"># ou</span></span>
-<span id="cb49-2"><a href="importação-e-manipulação-de-dados.html#cb49-2" tabindex="-1"></a><span class="co"># select(data_imdb, 2:5)</span></span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="importação-e-manipulação-de-dados.html#cb346-1" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb346-2"><a href="importação-e-manipulação-de-dados.html#cb346-2" tabindex="-1"></a><span class="co"># select(data_imdb, 2:5)</span></span></code></pre></div>
 <p>Funções úteis que podem ser usadas com a função <code>select()</code>:</p>
 <ul>
 <li><code>starts_with()</code>: colunas que começam com um texto especificado</li>
@@ -907,8 +926,8 @@ document.getElementById("submitButton3").addEventListener("click", function()
 <li><code>contains()</code>: colunas que contêm um texto especificado</li>
 </ul>
 <p><strong>Exemplos:</strong></p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="importação-e-manipulação-de-dados.html#cb50-1" tabindex="-1"></a><span class="do">## Selecionando colunas que começam com o texto &quot;num&quot;.</span></span>
-<span id="cb50-2"><a href="importação-e-manipulação-de-dados.html#cb50-2" tabindex="-1"></a><span class="fu">select</span>(data_imdb, <span class="fu">starts_with</span>(<span class="st">&quot;num&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="importação-e-manipulação-de-dados.html#cb347-1" tabindex="-1"></a><span class="do">## Selecionando colunas que começam com o texto &quot;num&quot;.</span></span>
+<span id="cb347-2"><a href="importação-e-manipulação-de-dados.html#cb347-2" tabindex="-1"></a><span class="fu">select</span>(data_imdb, <span class="fu">starts_with</span>(<span class="st">&quot;num&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 3
 ##    num_avaliacoes num_criticas_publico num_criticas_critica
 ##             &lt;dbl&gt;                &lt;dbl&gt;                &lt;dbl&gt;
@@ -923,8 +942,8 @@ document.getElementById("submitButton3").addEventListener("click", function()
 ##  9          27065                  145                   55
 ## 10           6703                   52                   29
 ## # ℹ 11,330 more rows</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="importação-e-manipulação-de-dados.html#cb52-1" tabindex="-1"></a><span class="do">## Selecionando colunas que terminam com o texto &quot;cao&quot;.</span></span>
-<span id="cb52-2"><a href="importação-e-manipulação-de-dados.html#cb52-2" tabindex="-1"></a><span class="fu">select</span>(data_imdb, <span class="fu">ends_with</span>(<span class="st">&quot;cao&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="importação-e-manipulação-de-dados.html#cb349-1" tabindex="-1"></a><span class="do">## Selecionando colunas que terminam com o texto &quot;cao&quot;.</span></span>
+<span id="cb349-2"><a href="importação-e-manipulação-de-dados.html#cb349-2" tabindex="-1"></a><span class="fu">select</span>(data_imdb, <span class="fu">ends_with</span>(<span class="st">&quot;cao&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 4
 ##    duracao direcao                        producao                     descricao
 ##      &lt;dbl&gt; &lt;chr&gt;                          &lt;chr&gt;                        &lt;chr&gt;    
@@ -939,8 +958,8 @@ document.getElementById("submitButton3").addEventListener("click", function()
 ##  9      95 Howard Deutch                  Hughes Entertainment         When Kei…
 ## 10     111 Tyler Perry                    Louisiana Producers Film So… Two fami…
 ## # ℹ 11,330 more rows</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="importação-e-manipulação-de-dados.html#cb54-1" tabindex="-1"></a><span class="do">## Selecionando colunas que contém &quot;_&quot;.</span></span>
-<span id="cb54-2"><a href="importação-e-manipulação-de-dados.html#cb54-2" tabindex="-1"></a><span class="fu">select</span>(data_imdb, <span class="fu">contains</span>(<span class="st">&quot;_&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="importação-e-manipulação-de-dados.html#cb351-1" tabindex="-1"></a><span class="do">## Selecionando colunas que contém &quot;_&quot;.</span></span>
+<span id="cb351-2"><a href="importação-e-manipulação-de-dados.html#cb351-2" tabindex="-1"></a><span class="fu">select</span>(data_imdb, <span class="fu">contains</span>(<span class="st">&quot;_&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 7
 ##    id_filme  data_lancamento receita_eua nota_imdb num_avaliacoes
 ##    &lt;chr&gt;     &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt;
@@ -957,7 +976,7 @@ document.getElementById("submitButton3").addEventListener("click", function()
 ## # ℹ 11,330 more rows
 ## # ℹ 2 more variables: num_criticas_publico &lt;dbl&gt;, num_criticas_critica &lt;dbl&gt;</code></pre>
 <p>Para remover colunas, adicionar “-” antes dos nomes:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="importação-e-manipulação-de-dados.html#cb56-1" tabindex="-1"></a><span class="fu">select</span>(data_imdb, <span class="sc">-</span><span class="fu">c</span>(ano, direcao))</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="importação-e-manipulação-de-dados.html#cb353-1" tabindex="-1"></a><span class="fu">select</span>(data_imdb, <span class="sc">-</span><span class="fu">c</span>(ano, direcao))</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 18
 ##    id_filme  titulo       data_lancamento generos duracao pais  idioma orcamento
 ##    &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -978,8 +997,8 @@ document.getElementById("submitButton3").addEventListener("click", function()
 </div>
 <div id="função-arrange-ordena-a-base" class="section level4 unnumbered hasAnchor">
 <h4>Função <code>arrange</code> (ordena a base)<a href="importação-e-manipulação-de-dados.html#função-arrange-ordena-a-base" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="importação-e-manipulação-de-dados.html#cb58-1" tabindex="-1"></a><span class="do">## Ordenando os dados (crescente) pelo orcamento</span></span>
-<span id="cb58-2"><a href="importação-e-manipulação-de-dados.html#cb58-2" tabindex="-1"></a><span class="fu">arrange</span>(data_imdb, orcamento)</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="importação-e-manipulação-de-dados.html#cb355-1" tabindex="-1"></a><span class="do">## Ordenando os dados (crescente) pelo orcamento</span></span>
+<span id="cb355-2"><a href="importação-e-manipulação-de-dados.html#cb355-2" tabindex="-1"></a><span class="fu">arrange</span>(data_imdb, orcamento)</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 20
 ##    id_filme  titulo   ano data_lancamento generos duracao pais  idioma orcamento
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -998,8 +1017,8 @@ document.getElementById("submitButton3").addEventListener("click", function()
 ## #   num_avaliacoes &lt;dbl&gt;, direcao &lt;chr&gt;, roteiro &lt;chr&gt;, producao &lt;chr&gt;,
 ## #   elenco &lt;chr&gt;, descricao &lt;chr&gt;, num_criticas_publico &lt;dbl&gt;,
 ## #   num_criticas_critica &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="importação-e-manipulação-de-dados.html#cb60-1" tabindex="-1"></a><span class="co"># Ordenando os dados (decrescente) pelo orcamento</span></span>
-<span id="cb60-2"><a href="importação-e-manipulação-de-dados.html#cb60-2" tabindex="-1"></a><span class="fu">arrange</span>(data_imdb, <span class="fu">desc</span>(orcamento))</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="importação-e-manipulação-de-dados.html#cb357-1" tabindex="-1"></a><span class="co"># Ordenando os dados (decrescente) pelo orcamento</span></span>
+<span id="cb357-2"><a href="importação-e-manipulação-de-dados.html#cb357-2" tabindex="-1"></a><span class="fu">arrange</span>(data_imdb, <span class="fu">desc</span>(orcamento))</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 20
 ##    id_filme  titulo   ano data_lancamento generos duracao pais  idioma orcamento
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -1018,8 +1037,8 @@ document.getElementById("submitButton3").addEventListener("click", function()
 ## #   num_avaliacoes &lt;dbl&gt;, direcao &lt;chr&gt;, roteiro &lt;chr&gt;, producao &lt;chr&gt;,
 ## #   elenco &lt;chr&gt;, descricao &lt;chr&gt;, num_criticas_publico &lt;dbl&gt;,
 ## #   num_criticas_critica &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="importação-e-manipulação-de-dados.html#cb62-1" tabindex="-1"></a><span class="co"># Ordenando em relação a duas ou mais colunas.</span></span>
-<span id="cb62-2"><a href="importação-e-manipulação-de-dados.html#cb62-2" tabindex="-1"></a><span class="fu">arrange</span>(data_imdb, <span class="fu">desc</span>(ano), <span class="fu">desc</span>(orcamento))</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="importação-e-manipulação-de-dados.html#cb359-1" tabindex="-1"></a><span class="co"># Ordenando em relação a duas ou mais colunas.</span></span>
+<span id="cb359-2"><a href="importação-e-manipulação-de-dados.html#cb359-2" tabindex="-1"></a><span class="fu">arrange</span>(data_imdb, <span class="fu">desc</span>(ano), <span class="fu">desc</span>(orcamento))</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 20
 ##    id_filme  titulo   ano data_lancamento generos duracao pais  idioma orcamento
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -1064,20 +1083,20 @@ document.getElementById("submitButton3").addEventListener("click", function()
 <div id="protectedContent4" style="display:none;">
 <div id="respostas-17" class="section level3 unnumbered hasAnchor">
 <h3>Respostas<a href="importação-e-manipulação-de-dados.html#respostas-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="importação-e-manipulação-de-dados.html#cb64-1" tabindex="-1"></a><span class="co"># 1. </span></span>
-<span id="cb64-2"><a href="importação-e-manipulação-de-dados.html#cb64-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;d&quot;</span>))</span>
-<span id="cb64-3"><a href="importação-e-manipulação-de-dados.html#cb64-3" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">&quot;t&quot;</span>))</span>
-<span id="cb64-4"><a href="importação-e-manipulação-de-dados.html#cb64-4" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;a&quot;</span>))</span>
-<span id="cb64-5"><a href="importação-e-manipulação-de-dados.html#cb64-5" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">&quot;c&quot;</span>))</span>
-<span id="cb64-6"><a href="importação-e-manipulação-de-dados.html#cb64-6" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;ar&quot;</span>))</span>
-<span id="cb64-7"><a href="importação-e-manipulação-de-dados.html#cb64-7" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(mpg)</span>
-<span id="cb64-8"><a href="importação-e-manipulação-de-dados.html#cb64-8" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(hp))</span>
-<span id="cb64-9"><a href="importação-e-manipulação-de-dados.html#cb64-9" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(cyl, mpg)</span>
-<span id="cb64-10"><a href="importação-e-manipulação-de-dados.html#cb64-10" tabindex="-1"></a><span class="co"># 2.</span></span>
-<span id="cb64-11"><a href="importação-e-manipulação-de-dados.html#cb64-11" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;Length&quot;</span>))</span>
-<span id="cb64-12"><a href="importação-e-manipulação-de-dados.html#cb64-12" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">ends_with</span>(<span class="st">&quot;Width&quot;</span>))</span>
-<span id="cb64-13"><a href="importação-e-manipulação-de-dados.html#cb64-13" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Sepal.Length))</span>
-<span id="cb64-14"><a href="importação-e-manipulação-de-dados.html#cb64-14" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Species, Petal.Width)</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="importação-e-manipulação-de-dados.html#cb361-1" tabindex="-1"></a><span class="co"># 1. </span></span>
+<span id="cb361-2"><a href="importação-e-manipulação-de-dados.html#cb361-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;d&quot;</span>))</span>
+<span id="cb361-3"><a href="importação-e-manipulação-de-dados.html#cb361-3" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">&quot;t&quot;</span>))</span>
+<span id="cb361-4"><a href="importação-e-manipulação-de-dados.html#cb361-4" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;a&quot;</span>))</span>
+<span id="cb361-5"><a href="importação-e-manipulação-de-dados.html#cb361-5" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">&quot;c&quot;</span>))</span>
+<span id="cb361-6"><a href="importação-e-manipulação-de-dados.html#cb361-6" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;ar&quot;</span>))</span>
+<span id="cb361-7"><a href="importação-e-manipulação-de-dados.html#cb361-7" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(mpg)</span>
+<span id="cb361-8"><a href="importação-e-manipulação-de-dados.html#cb361-8" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(hp))</span>
+<span id="cb361-9"><a href="importação-e-manipulação-de-dados.html#cb361-9" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(cyl, mpg)</span>
+<span id="cb361-10"><a href="importação-e-manipulação-de-dados.html#cb361-10" tabindex="-1"></a><span class="co"># 2.</span></span>
+<span id="cb361-11"><a href="importação-e-manipulação-de-dados.html#cb361-11" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;Length&quot;</span>))</span>
+<span id="cb361-12"><a href="importação-e-manipulação-de-dados.html#cb361-12" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">ends_with</span>(<span class="st">&quot;Width&quot;</span>))</span>
+<span id="cb361-13"><a href="importação-e-manipulação-de-dados.html#cb361-13" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Sepal.Length))</span>
+<span id="cb361-14"><a href="importação-e-manipulação-de-dados.html#cb361-14" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Species, Petal.Width)</span></code></pre></div>
 </div>
 </div>
 <p><input type="password" id="passwordInput4" placeholder="Digite a senha">
@@ -1101,8 +1120,8 @@ document.getElementById("submitButton4").addEventListener("click", function()
 <div id="função-filter-filtra-linhas" class="section level4 unnumbered hasAnchor">
 <h4>Função <code>filter</code> (filtra linhas)<a href="importação-e-manipulação-de-dados.html#função-filter-filtra-linhas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Filtrando linhas para uma coluna:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="importação-e-manipulação-de-dados.html#cb65-1" tabindex="-1"></a><span class="co"># Notas maiores do que 9:</span></span>
-<span id="cb65-2"><a href="importação-e-manipulação-de-dados.html#cb65-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(nota_imdb <span class="sc">&gt;</span> <span class="dv">9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="importação-e-manipulação-de-dados.html#cb362-1" tabindex="-1"></a><span class="co"># Notas maiores do que 9:</span></span>
+<span id="cb362-2"><a href="importação-e-manipulação-de-dados.html#cb362-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(nota_imdb <span class="sc">&gt;</span> <span class="dv">9</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 8
 ##   id_filme   titulo          ano data_lancamento generos duracao pais  nota_imdb
 ##   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
@@ -1112,9 +1131,9 @@ document.getElementById("submitButton4").addEventListener("click", function()
 ## 4 tt0068646  The Godfather  1972 1972-09-21      Crime,…     175 USA         9.2
 ## 5 tt5980638  The Transcen…  2018 2020-06-19      Music,…      96 USA         9.2</code></pre>
 <p>Usando o filtro para mais de uma coluna:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="importação-e-manipulação-de-dados.html#cb67-1" tabindex="-1"></a><span class="co"># Ano maior do que 2010 e nota maior do que 8.5</span></span>
-<span id="cb67-2"><a href="importação-e-manipulação-de-dados.html#cb67-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ano <span class="sc">&gt;</span> <span class="dv">2010</span>, nota_imdb <span class="sc">&gt;</span> <span class="fl">8.5</span>)</span>
-<span id="cb67-3"><a href="importação-e-manipulação-de-dados.html#cb67-3" tabindex="-1"></a><span class="co"># cada coluna é separada por vírgula</span></span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="importação-e-manipulação-de-dados.html#cb364-1" tabindex="-1"></a><span class="co"># Ano maior do que 2010 e nota maior do que 8.5</span></span>
+<span id="cb364-2"><a href="importação-e-manipulação-de-dados.html#cb364-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ano <span class="sc">&gt;</span> <span class="dv">2010</span>, nota_imdb <span class="sc">&gt;</span> <span class="fl">8.5</span>)</span>
+<span id="cb364-3"><a href="importação-e-manipulação-de-dados.html#cb364-3" tabindex="-1"></a><span class="co"># cada coluna é separada por vírgula</span></span></code></pre></div>
 <pre><code>## # A tibble: 8 × 8
 ##   id_filme   titulo          ano data_lancamento generos duracao pais  nota_imdb
 ##   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
@@ -1127,10 +1146,10 @@ document.getElementById("submitButton4").addEventListener("click", function()
 ## 7 tt2170667  Wheels         2014 2017-02-01      Drama       115 USA         8.8
 ## 8 tt5980638  The Transcen…  2018 2020-06-19      Music,…      96 USA         9.2</code></pre>
 <p>Combinando as funções <code>select()</code> e <code>filter()</code></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="importação-e-manipulação-de-dados.html#cb69-1" tabindex="-1"></a><span class="co"># Notas maiores do que 9 e selecionando as colunas titulo e nota_imdb</span></span>
-<span id="cb69-2"><a href="importação-e-manipulação-de-dados.html#cb69-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb69-3"><a href="importação-e-manipulação-de-dados.html#cb69-3" tabindex="-1"></a>  <span class="fu">filter</span>(nota_imdb <span class="sc">&gt;</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb69-4"><a href="importação-e-manipulação-de-dados.html#cb69-4" tabindex="-1"></a>  <span class="fu">select</span>(titulo, nota_imdb)</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="importação-e-manipulação-de-dados.html#cb366-1" tabindex="-1"></a><span class="co"># Notas maiores do que 9 e selecionando as colunas titulo e nota_imdb</span></span>
+<span id="cb366-2"><a href="importação-e-manipulação-de-dados.html#cb366-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb366-3"><a href="importação-e-manipulação-de-dados.html#cb366-3" tabindex="-1"></a>  <span class="fu">filter</span>(nota_imdb <span class="sc">&gt;</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb366-4"><a href="importação-e-manipulação-de-dados.html#cb366-4" tabindex="-1"></a>  <span class="fu">select</span>(titulo, nota_imdb)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 2
 ##   titulo                   nota_imdb
 ##   &lt;chr&gt;                        &lt;dbl&gt;
@@ -1140,11 +1159,11 @@ document.getElementById("submitButton4").addEventListener("click", function()
 ## 4 The Godfather                  9.2
 ## 5 The Transcendents              9.2</code></pre>
 <p>Combinando a função <code>filter()</code> com o operador <code>%in%</code>:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="importação-e-manipulação-de-dados.html#cb71-1" tabindex="-1"></a><span class="co"># Filtrando os filmes de direção de Tarantino e Spielberg</span></span>
-<span id="cb71-2"><a href="importação-e-manipulação-de-dados.html#cb71-2" tabindex="-1"></a><span class="co"># e que tenham nota maior do que 8</span></span>
-<span id="cb71-3"><a href="importação-e-manipulação-de-dados.html#cb71-3" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb71-4"><a href="importação-e-manipulação-de-dados.html#cb71-4" tabindex="-1"></a>  <span class="fu">filter</span>(direcao <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Quentin Tarantino&quot;</span>, <span class="st">&quot;Steven Spielberg&quot;</span>),</span>
-<span id="cb71-5"><a href="importação-e-manipulação-de-dados.html#cb71-5" tabindex="-1"></a>         nota_imdb <span class="sc">&gt;</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="importação-e-manipulação-de-dados.html#cb368-1" tabindex="-1"></a><span class="co"># Filtrando os filmes de direção de Tarantino e Spielberg</span></span>
+<span id="cb368-2"><a href="importação-e-manipulação-de-dados.html#cb368-2" tabindex="-1"></a><span class="co"># e que tenham nota maior do que 8</span></span>
+<span id="cb368-3"><a href="importação-e-manipulação-de-dados.html#cb368-3" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb368-4"><a href="importação-e-manipulação-de-dados.html#cb368-4" tabindex="-1"></a>  <span class="fu">filter</span>(direcao <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Quentin Tarantino&quot;</span>, <span class="st">&quot;Steven Spielberg&quot;</span>),</span>
+<span id="cb368-5"><a href="importação-e-manipulação-de-dados.html#cb368-5" tabindex="-1"></a>         nota_imdb <span class="sc">&gt;</span> <span class="dv">8</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 7
 ##   id_filme  titulo                 ano data_lancamento generos direcao nota_imdb
 ##   &lt;chr&gt;     &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;
@@ -1158,15 +1177,15 @@ document.getElementById("submitButton4").addEventListener("click", function()
 ## 8 tt1853728 Django Unchained      2012 2013-01-17      Drama,… Quenti…       8.4
 ## 9 tt0107290 Jurassic Park         1993 1993-09-17      Action… Steven…       8.1</code></pre>
 <p>Para filtrar strings contidas nos valores de alguma variável carater, podemos usar a função <code>str_detect()</code> do pacote <code>stringr</code>. Esta função serve para verificar se cada string de um vetor de caracteres contém um determinado padrão de texto.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="importação-e-manipulação-de-dados.html#cb73-1" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb73-2"><a href="importação-e-manipulação-de-dados.html#cb73-2" tabindex="-1"></a><span class="co"># Para visualizar a estrutura da variável &quot;generos&quot;:</span></span>
-<span id="cb73-3"><a href="importação-e-manipulação-de-dados.html#cb73-3" tabindex="-1"></a><span class="fu">str</span>(data_imdb<span class="sc">$</span>generos)</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="importação-e-manipulação-de-dados.html#cb370-1" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb370-2"><a href="importação-e-manipulação-de-dados.html#cb370-2" tabindex="-1"></a><span class="co"># Para visualizar a estrutura da variável &quot;generos&quot;:</span></span>
+<span id="cb370-3"><a href="importação-e-manipulação-de-dados.html#cb370-3" tabindex="-1"></a><span class="fu">str</span>(data_imdb<span class="sc">$</span>generos)</span></code></pre></div>
 <pre><code>##  chr [1:11340] &quot;Comedy, Drama, Romance&quot; &quot;Comedy, Crime, Mystery&quot; &quot;Comedy&quot; ...</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="importação-e-manipulação-de-dados.html#cb75-1" tabindex="-1"></a><span class="co"># Filtrando os filmes que contém genero &quot;Drama&quot;:</span></span>
-<span id="cb75-2"><a href="importação-e-manipulação-de-dados.html#cb75-2" tabindex="-1"></a><span class="fu">head</span>(</span>
-<span id="cb75-3"><a href="importação-e-manipulação-de-dados.html#cb75-3" tabindex="-1"></a>  data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb75-4"><a href="importação-e-manipulação-de-dados.html#cb75-4" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="at">string =</span> generos, <span class="at">pattern =</span> <span class="st">&quot;Drama&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb75-5"><a href="importação-e-manipulação-de-dados.html#cb75-5" tabindex="-1"></a>    <span class="fu">select</span>(titulo, generos))</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="importação-e-manipulação-de-dados.html#cb372-1" tabindex="-1"></a><span class="co"># Filtrando os filmes que contém genero &quot;Drama&quot;:</span></span>
+<span id="cb372-2"><a href="importação-e-manipulação-de-dados.html#cb372-2" tabindex="-1"></a><span class="fu">head</span>(</span>
+<span id="cb372-3"><a href="importação-e-manipulação-de-dados.html#cb372-3" tabindex="-1"></a>  data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb372-4"><a href="importação-e-manipulação-de-dados.html#cb372-4" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="at">string =</span> generos, <span class="at">pattern =</span> <span class="st">&quot;Drama&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb372-5"><a href="importação-e-manipulação-de-dados.html#cb372-5" tabindex="-1"></a>    <span class="fu">select</span>(titulo, generos))</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 2
 ##   titulo                        generos               
 ##   &lt;chr&gt;                         &lt;chr&gt;                 
@@ -1176,12 +1195,12 @@ document.getElementById("submitButton4").addEventListener("click", function()
 ## 4 No Way Out                    Action, Crime, Drama  
 ## 5 Some Kind of Wonderful        Drama, Romance        
 ## 6 The Family That Preys         Drama</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="importação-e-manipulação-de-dados.html#cb77-1" tabindex="-1"></a><span class="co"># Se não usássemos a função str_detect, ele retornaria apenas as linhas</span></span>
-<span id="cb77-2"><a href="importação-e-manipulação-de-dados.html#cb77-2" tabindex="-1"></a><span class="co"># que contém exatamente a palavra &quot;Drama&quot;:</span></span>
-<span id="cb77-3"><a href="importação-e-manipulação-de-dados.html#cb77-3" tabindex="-1"></a><span class="fu">head</span>(</span>
-<span id="cb77-4"><a href="importação-e-manipulação-de-dados.html#cb77-4" tabindex="-1"></a>  data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb77-5"><a href="importação-e-manipulação-de-dados.html#cb77-5" tabindex="-1"></a>    <span class="fu">filter</span>(generos <span class="sc">==</span> <span class="st">&quot;Drama&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb77-6"><a href="importação-e-manipulação-de-dados.html#cb77-6" tabindex="-1"></a>    <span class="fu">select</span>(titulo, generos))</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="importação-e-manipulação-de-dados.html#cb374-1" tabindex="-1"></a><span class="co"># Se não usássemos a função str_detect, ele retornaria apenas as linhas</span></span>
+<span id="cb374-2"><a href="importação-e-manipulação-de-dados.html#cb374-2" tabindex="-1"></a><span class="co"># que contém exatamente a palavra &quot;Drama&quot;:</span></span>
+<span id="cb374-3"><a href="importação-e-manipulação-de-dados.html#cb374-3" tabindex="-1"></a><span class="fu">head</span>(</span>
+<span id="cb374-4"><a href="importação-e-manipulação-de-dados.html#cb374-4" tabindex="-1"></a>  data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb374-5"><a href="importação-e-manipulação-de-dados.html#cb374-5" tabindex="-1"></a>    <span class="fu">filter</span>(generos <span class="sc">==</span> <span class="st">&quot;Drama&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb374-6"><a href="importação-e-manipulação-de-dados.html#cb374-6" tabindex="-1"></a>    <span class="fu">select</span>(titulo, generos))</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 2
 ##   titulo                                                generos
 ##   &lt;chr&gt;                                                 &lt;chr&gt;  
@@ -1195,10 +1214,10 @@ document.getElementById("submitButton4").addEventListener("click", function()
 <div id="função-mutate" class="section level4 unnumbered hasAnchor">
 <h4>Função <code>mutate</code><a href="importação-e-manipulação-de-dados.html#função-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Usado para modificar uma coluna existente ou criar uma nova coluna.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="importação-e-manipulação-de-dados.html#cb79-1" tabindex="-1"></a><span class="co"># Transformando a variável duracao de minutos para horas:</span></span>
-<span id="cb79-2"><a href="importação-e-manipulação-de-dados.html#cb79-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">duracao =</span> duracao<span class="sc">/</span><span class="dv">60</span>)</span>
-<span id="cb79-3"><a href="importação-e-manipulação-de-dados.html#cb79-3" tabindex="-1"></a><span class="co"># Ou criando uma nova variável:</span></span>
-<span id="cb79-4"><a href="importação-e-manipulação-de-dados.html#cb79-4" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">duracao_horas =</span> duracao<span class="sc">/</span><span class="dv">60</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="importação-e-manipulação-de-dados.html#cb376-1" tabindex="-1"></a><span class="co"># Transformando a variável duracao de minutos para horas:</span></span>
+<span id="cb376-2"><a href="importação-e-manipulação-de-dados.html#cb376-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">duracao =</span> duracao<span class="sc">/</span><span class="dv">60</span>)</span>
+<span id="cb376-3"><a href="importação-e-manipulação-de-dados.html#cb376-3" tabindex="-1"></a><span class="co"># Ou criando uma nova variável:</span></span>
+<span id="cb376-4"><a href="importação-e-manipulação-de-dados.html#cb376-4" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">duracao_horas =</span> duracao<span class="sc">/</span><span class="dv">60</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 11,340 × 6
 ##    id_filme  titulo                          ano data_lancamento generos duracao
 ##    &lt;chr&gt;     &lt;chr&gt;                         &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     &lt;dbl&gt;
@@ -1228,11 +1247,11 @@ document.getElementById("submitButton4").addEventListener("click", function()
 ## 10 tt1142798 The Family Tha…  2008 2008-09-12      Drama       111          1.85
 ## # ℹ 11,330 more rows</code></pre>
 <p>Aplicando <code>mutate()</code> com mais colunas:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="importação-e-manipulação-de-dados.html#cb82-1" tabindex="-1"></a><span class="co"># Criando a variável lucro e modificando pais de USA para Estados Unidos</span></span>
-<span id="cb82-2"><a href="importação-e-manipulação-de-dados.html#cb82-2" tabindex="-1"></a>data_imdb_lucro_pais <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span> </span>
-<span id="cb82-3"><a href="importação-e-manipulação-de-dados.html#cb82-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lucro =</span> receita <span class="sc">-</span> orcamento, <span class="at">pais =</span> <span class="st">&quot;Estados Unidos&quot;</span>)</span>
-<span id="cb82-4"><a href="importação-e-manipulação-de-dados.html#cb82-4" tabindex="-1"></a></span>
-<span id="cb82-5"><a href="importação-e-manipulação-de-dados.html#cb82-5" tabindex="-1"></a><span class="fu">head</span>(data_imdb <span class="sc">%&gt;%</span> <span class="fu">select</span>(pais))</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="importação-e-manipulação-de-dados.html#cb379-1" tabindex="-1"></a><span class="co"># Criando a variável lucro e modificando pais de USA para Estados Unidos</span></span>
+<span id="cb379-2"><a href="importação-e-manipulação-de-dados.html#cb379-2" tabindex="-1"></a>data_imdb_lucro_pais <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span> </span>
+<span id="cb379-3"><a href="importação-e-manipulação-de-dados.html#cb379-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lucro =</span> receita <span class="sc">-</span> orcamento, <span class="at">pais =</span> <span class="st">&quot;Estados Unidos&quot;</span>)</span>
+<span id="cb379-4"><a href="importação-e-manipulação-de-dados.html#cb379-4" tabindex="-1"></a></span>
+<span id="cb379-5"><a href="importação-e-manipulação-de-dados.html#cb379-5" tabindex="-1"></a><span class="fu">head</span>(data_imdb <span class="sc">%&gt;%</span> <span class="fu">select</span>(pais))</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 1
 ##   pais 
 ##   &lt;chr&gt;
@@ -1242,7 +1261,7 @@ document.getElementById("submitButton4").addEventListener("click", function()
 ## 4 USA  
 ## 5 USA  
 ## 6 USA</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="importação-e-manipulação-de-dados.html#cb84-1" tabindex="-1"></a><span class="fu">head</span>(data_imdb_lucro_pais <span class="sc">%&gt;%</span> <span class="fu">select</span>(lucro, pais))</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="importação-e-manipulação-de-dados.html#cb381-1" tabindex="-1"></a><span class="fu">head</span>(data_imdb_lucro_pais <span class="sc">%&gt;%</span> <span class="fu">select</span>(lucro, pais))</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 2
 ##      lucro pais          
 ##      &lt;dbl&gt; &lt;chr&gt;         
@@ -1288,49 +1307,49 @@ document.getElementById("submitButton4").addEventListener("click", function()
 <div id="protectedContent5" style="display:none;">
 <div id="respostas-18" class="section level3 unnumbered hasAnchor">
 <h3>Respostas<a href="importação-e-manipulação-de-dados.html#respostas-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="importação-e-manipulação-de-dados.html#cb86-1" tabindex="-1"></a><span class="co"># 1.</span></span>
-<span id="cb86-2"><a href="importação-e-manipulação-de-dados.html#cb86-2" tabindex="-1"></a><span class="co"># a.</span></span>
-<span id="cb86-3"><a href="importação-e-manipulação-de-dados.html#cb86-3" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">25</span>)</span>
-<span id="cb86-4"><a href="importação-e-manipulação-de-dados.html#cb86-4" tabindex="-1"></a><span class="co"># b.</span></span>
-<span id="cb86-5"><a href="importação-e-manipulação-de-dados.html#cb86-5" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hp <span class="sc">&gt;</span> <span class="dv">150</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb86-6"><a href="importação-e-manipulação-de-dados.html#cb86-6" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, wt)</span>
-<span id="cb86-7"><a href="importação-e-manipulação-de-dados.html#cb86-7" tabindex="-1"></a><span class="co"># c.</span></span>
-<span id="cb86-8"><a href="importação-e-manipulação-de-dados.html#cb86-8" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(cyl <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>))</span>
-<span id="cb86-9"><a href="importação-e-manipulação-de-dados.html#cb86-9" tabindex="-1"></a><span class="co"># d.</span></span>
-<span id="cb86-10"><a href="importação-e-manipulação-de-dados.html#cb86-10" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb86-11"><a href="importação-e-manipulação-de-dados.html#cb86-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">peso_relativo =</span> wt <span class="sc">/</span> <span class="fu">max</span>(wt))</span>
-<span id="cb86-12"><a href="importação-e-manipulação-de-dados.html#cb86-12" tabindex="-1"></a><span class="co"># 2.</span></span>
-<span id="cb86-13"><a href="importação-e-manipulação-de-dados.html#cb86-13" tabindex="-1"></a><span class="co"># a.</span></span>
-<span id="cb86-14"><a href="importação-e-manipulação-de-dados.html#cb86-14" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
-<span id="cb86-15"><a href="importação-e-manipulação-de-dados.html#cb86-15" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Species, <span class="st">&quot;set&quot;</span>))</span>
-<span id="cb86-16"><a href="importação-e-manipulação-de-dados.html#cb86-16" tabindex="-1"></a><span class="co"># b.</span></span>
-<span id="cb86-17"><a href="importação-e-manipulação-de-dados.html#cb86-17" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
-<span id="cb86-18"><a href="importação-e-manipulação-de-dados.html#cb86-18" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Species, <span class="st">&quot;ver&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb86-19"><a href="importação-e-manipulação-de-dados.html#cb86-19" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;Length&quot;</span>))</span>
-<span id="cb86-20"><a href="importação-e-manipulação-de-dados.html#cb86-20" tabindex="-1"></a><span class="co"># 3.</span></span>
-<span id="cb86-21"><a href="importação-e-manipulação-de-dados.html#cb86-21" tabindex="-1"></a><span class="co"># a.</span></span>
-<span id="cb86-22"><a href="importação-e-manipulação-de-dados.html#cb86-22" tabindex="-1"></a>filmes_ordenados <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb86-23"><a href="importação-e-manipulação-de-dados.html#cb86-23" tabindex="-1"></a>  <span class="fu">arrange</span>(ano, <span class="fu">desc</span>(receita))</span>
-<span id="cb86-24"><a href="importação-e-manipulação-de-dados.html#cb86-24" tabindex="-1"></a><span class="co"># b. </span></span>
-<span id="cb86-25"><a href="importação-e-manipulação-de-dados.html#cb86-25" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb86-26"><a href="importação-e-manipulação-de-dados.html#cb86-26" tabindex="-1"></a>  <span class="fu">select</span>(titulo, orcamento) <span class="sc">%&gt;%</span></span>
-<span id="cb86-27"><a href="importação-e-manipulação-de-dados.html#cb86-27" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(orcamento))</span>
-<span id="cb86-28"><a href="importação-e-manipulação-de-dados.html#cb86-28" tabindex="-1"></a><span class="co"># c.</span></span>
-<span id="cb86-29"><a href="importação-e-manipulação-de-dados.html#cb86-29" tabindex="-1"></a>imdb_prejuizo <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb86-30"><a href="importação-e-manipulação-de-dados.html#cb86-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prejuizo =</span> orcamento <span class="sc">-</span> receita) <span class="sc">%&gt;%</span></span>
-<span id="cb86-31"><a href="importação-e-manipulação-de-dados.html#cb86-31" tabindex="-1"></a>  <span class="fu">filter</span>(prejuizo <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb86-32"><a href="importação-e-manipulação-de-dados.html#cb86-32" tabindex="-1"></a>  <span class="fu">arrange</span>(prejuizo)</span>
-<span id="cb86-33"><a href="importação-e-manipulação-de-dados.html#cb86-33" tabindex="-1"></a><span class="co"># d.</span></span>
-<span id="cb86-34"><a href="importação-e-manipulação-de-dados.html#cb86-34" tabindex="-1"></a>data_imdb <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb86-35"><a href="importação-e-manipulação-de-dados.html#cb86-35" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb86-36"><a href="importação-e-manipulação-de-dados.html#cb86-36" tabindex="-1"></a>    <span class="at">lucro =</span> receita <span class="sc">-</span> orcamento,</span>
-<span id="cb86-37"><a href="importação-e-manipulação-de-dados.html#cb86-37" tabindex="-1"></a>    <span class="at">lucro_medio =</span> <span class="fu">mean</span>(lucro, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb86-38"><a href="importação-e-manipulação-de-dados.html#cb86-38" tabindex="-1"></a>    <span class="at">lucro_relativo =</span> (lucro <span class="sc">-</span> lucro_medio) <span class="sc">/</span> lucro_medio,</span>
-<span id="cb86-39"><a href="importação-e-manipulação-de-dados.html#cb86-39" tabindex="-1"></a>    <span class="at">houve_lucro =</span> <span class="fu">if_else</span>(lucro <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;sim&quot;</span>, <span class="st">&quot;não&quot;</span>)</span>
-<span id="cb86-40"><a href="importação-e-manipulação-de-dados.html#cb86-40" tabindex="-1"></a>  )</span>
-<span id="cb86-41"><a href="importação-e-manipulação-de-dados.html#cb86-41" tabindex="-1"></a><span class="co"># e.</span></span>
-<span id="cb86-42"><a href="importação-e-manipulação-de-dados.html#cb86-42" tabindex="-1"></a>data_imdb <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb86-43"><a href="importação-e-manipulação-de-dados.html#cb86-43" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classificacao =</span> <span class="fu">if_else</span>(ano <span class="sc">&gt;</span> <span class="dv">2000</span>, <span class="st">&quot;recente&quot;</span>, <span class="st">&quot;antigo&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="importação-e-manipulação-de-dados.html#cb383-1" tabindex="-1"></a><span class="co"># 1.</span></span>
+<span id="cb383-2"><a href="importação-e-manipulação-de-dados.html#cb383-2" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb383-3"><a href="importação-e-manipulação-de-dados.html#cb383-3" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">25</span>)</span>
+<span id="cb383-4"><a href="importação-e-manipulação-de-dados.html#cb383-4" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb383-5"><a href="importação-e-manipulação-de-dados.html#cb383-5" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hp <span class="sc">&gt;</span> <span class="dv">150</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb383-6"><a href="importação-e-manipulação-de-dados.html#cb383-6" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, wt)</span>
+<span id="cb383-7"><a href="importação-e-manipulação-de-dados.html#cb383-7" tabindex="-1"></a><span class="co"># c.</span></span>
+<span id="cb383-8"><a href="importação-e-manipulação-de-dados.html#cb383-8" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(cyl <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>))</span>
+<span id="cb383-9"><a href="importação-e-manipulação-de-dados.html#cb383-9" tabindex="-1"></a><span class="co"># d.</span></span>
+<span id="cb383-10"><a href="importação-e-manipulação-de-dados.html#cb383-10" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb383-11"><a href="importação-e-manipulação-de-dados.html#cb383-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">peso_relativo =</span> wt <span class="sc">/</span> <span class="fu">max</span>(wt))</span>
+<span id="cb383-12"><a href="importação-e-manipulação-de-dados.html#cb383-12" tabindex="-1"></a><span class="co"># 2.</span></span>
+<span id="cb383-13"><a href="importação-e-manipulação-de-dados.html#cb383-13" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb383-14"><a href="importação-e-manipulação-de-dados.html#cb383-14" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb383-15"><a href="importação-e-manipulação-de-dados.html#cb383-15" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Species, <span class="st">&quot;set&quot;</span>))</span>
+<span id="cb383-16"><a href="importação-e-manipulação-de-dados.html#cb383-16" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb383-17"><a href="importação-e-manipulação-de-dados.html#cb383-17" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb383-18"><a href="importação-e-manipulação-de-dados.html#cb383-18" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Species, <span class="st">&quot;ver&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb383-19"><a href="importação-e-manipulação-de-dados.html#cb383-19" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;Length&quot;</span>))</span>
+<span id="cb383-20"><a href="importação-e-manipulação-de-dados.html#cb383-20" tabindex="-1"></a><span class="co"># 3.</span></span>
+<span id="cb383-21"><a href="importação-e-manipulação-de-dados.html#cb383-21" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb383-22"><a href="importação-e-manipulação-de-dados.html#cb383-22" tabindex="-1"></a>filmes_ordenados <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb383-23"><a href="importação-e-manipulação-de-dados.html#cb383-23" tabindex="-1"></a>  <span class="fu">arrange</span>(ano, <span class="fu">desc</span>(receita))</span>
+<span id="cb383-24"><a href="importação-e-manipulação-de-dados.html#cb383-24" tabindex="-1"></a><span class="co"># b. </span></span>
+<span id="cb383-25"><a href="importação-e-manipulação-de-dados.html#cb383-25" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb383-26"><a href="importação-e-manipulação-de-dados.html#cb383-26" tabindex="-1"></a>  <span class="fu">select</span>(titulo, orcamento) <span class="sc">%&gt;%</span></span>
+<span id="cb383-27"><a href="importação-e-manipulação-de-dados.html#cb383-27" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(orcamento))</span>
+<span id="cb383-28"><a href="importação-e-manipulação-de-dados.html#cb383-28" tabindex="-1"></a><span class="co"># c.</span></span>
+<span id="cb383-29"><a href="importação-e-manipulação-de-dados.html#cb383-29" tabindex="-1"></a>imdb_prejuizo <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb383-30"><a href="importação-e-manipulação-de-dados.html#cb383-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prejuizo =</span> orcamento <span class="sc">-</span> receita) <span class="sc">%&gt;%</span></span>
+<span id="cb383-31"><a href="importação-e-manipulação-de-dados.html#cb383-31" tabindex="-1"></a>  <span class="fu">filter</span>(prejuizo <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb383-32"><a href="importação-e-manipulação-de-dados.html#cb383-32" tabindex="-1"></a>  <span class="fu">arrange</span>(prejuizo)</span>
+<span id="cb383-33"><a href="importação-e-manipulação-de-dados.html#cb383-33" tabindex="-1"></a><span class="co"># d.</span></span>
+<span id="cb383-34"><a href="importação-e-manipulação-de-dados.html#cb383-34" tabindex="-1"></a>data_imdb <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb383-35"><a href="importação-e-manipulação-de-dados.html#cb383-35" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb383-36"><a href="importação-e-manipulação-de-dados.html#cb383-36" tabindex="-1"></a>    <span class="at">lucro =</span> receita <span class="sc">-</span> orcamento,</span>
+<span id="cb383-37"><a href="importação-e-manipulação-de-dados.html#cb383-37" tabindex="-1"></a>    <span class="at">lucro_medio =</span> <span class="fu">mean</span>(lucro, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb383-38"><a href="importação-e-manipulação-de-dados.html#cb383-38" tabindex="-1"></a>    <span class="at">lucro_relativo =</span> (lucro <span class="sc">-</span> lucro_medio) <span class="sc">/</span> lucro_medio,</span>
+<span id="cb383-39"><a href="importação-e-manipulação-de-dados.html#cb383-39" tabindex="-1"></a>    <span class="at">houve_lucro =</span> <span class="fu">if_else</span>(lucro <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;sim&quot;</span>, <span class="st">&quot;não&quot;</span>)</span>
+<span id="cb383-40"><a href="importação-e-manipulação-de-dados.html#cb383-40" tabindex="-1"></a>  )</span>
+<span id="cb383-41"><a href="importação-e-manipulação-de-dados.html#cb383-41" tabindex="-1"></a><span class="co"># e.</span></span>
+<span id="cb383-42"><a href="importação-e-manipulação-de-dados.html#cb383-42" tabindex="-1"></a>data_imdb <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb383-43"><a href="importação-e-manipulação-de-dados.html#cb383-43" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classificacao =</span> <span class="fu">if_else</span>(ano <span class="sc">&gt;</span> <span class="dv">2000</span>, <span class="st">&quot;recente&quot;</span>, <span class="st">&quot;antigo&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 <p><input type="password" id="passwordInput5" placeholder="Digite a senha">
@@ -1354,74 +1373,74 @@ document.getElementById("submitButton5").addEventListener("click", function()
 <div id="funções-summarise-group_by-e-count" class="section level4 unnumbered hasAnchor">
 <h4>Funções <code>summarise</code>, <code>group_by</code> e <code>count</code><a href="importação-e-manipulação-de-dados.html#funções-summarise-group_by-e-count" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Para ilustrar estas funções considere os dados:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="importação-e-manipulação-de-dados.html#cb87-1" tabindex="-1"></a>filmes <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
-<span id="cb87-2"><a href="importação-e-manipulação-de-dados.html#cb87-2" tabindex="-1"></a>  <span class="at">titulo =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;J&quot;</span>),</span>
-<span id="cb87-3"><a href="importação-e-manipulação-de-dados.html#cb87-3" tabindex="-1"></a>  <span class="at">ano =</span> <span class="fu">c</span>(<span class="dv">2020</span>, <span class="dv">2021</span>, <span class="dv">2020</span>, <span class="dv">2021</span>, <span class="dv">2021</span>, <span class="dv">2022</span>, <span class="dv">2022</span>, <span class="dv">2020</span>, <span class="dv">2022</span>, <span class="dv">2021</span>),</span>
-<span id="cb87-4"><a href="importação-e-manipulação-de-dados.html#cb87-4" tabindex="-1"></a>  <span class="at">genero =</span> <span class="fu">c</span>(<span class="st">&quot;Ação&quot;</span>, <span class="st">&quot;Comédia&quot;</span>, <span class="st">&quot;Ação&quot;</span>, <span class="st">&quot;Comédia&quot;</span>, <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Ação&quot;</span>, </span>
-<span id="cb87-5"><a href="importação-e-manipulação-de-dados.html#cb87-5" tabindex="-1"></a>             <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Ação&quot;</span>, <span class="st">&quot;Comédia&quot;</span>, <span class="st">&quot;Drama&quot;</span>),</span>
-<span id="cb87-6"><a href="importação-e-manipulação-de-dados.html#cb87-6" tabindex="-1"></a>  <span class="at">receita =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">150</span>, <span class="dv">180</span>, <span class="dv">90</span>, <span class="dv">300</span>, <span class="dv">120</span>, <span class="dv">80</span>, <span class="dv">220</span>, <span class="dv">70</span>),</span>
-<span id="cb87-7"><a href="importação-e-manipulação-de-dados.html#cb87-7" tabindex="-1"></a>  <span class="at">orcamento =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">60</span>, <span class="dv">90</span>, <span class="dv">40</span>, <span class="dv">80</span>, <span class="dv">50</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">35</span>),</span>
-<span id="cb87-8"><a href="importação-e-manipulação-de-dados.html#cb87-8" tabindex="-1"></a>  <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">7.5</span>, <span class="fl">8.2</span>, <span class="fl">7.0</span>, <span class="fl">6.8</span>, <span class="fl">7.9</span>, <span class="fl">8.5</span>, <span class="fl">7.2</span>, <span class="fl">6.5</span>, <span class="fl">8.0</span>, <span class="fl">7.4</span>)</span>
-<span id="cb87-9"><a href="importação-e-manipulação-de-dados.html#cb87-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="importação-e-manipulação-de-dados.html#cb384-1" tabindex="-1"></a>filmes <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb384-2"><a href="importação-e-manipulação-de-dados.html#cb384-2" tabindex="-1"></a>  <span class="at">titulo =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;J&quot;</span>),</span>
+<span id="cb384-3"><a href="importação-e-manipulação-de-dados.html#cb384-3" tabindex="-1"></a>  <span class="at">ano =</span> <span class="fu">c</span>(<span class="dv">2020</span>, <span class="dv">2021</span>, <span class="dv">2020</span>, <span class="dv">2021</span>, <span class="dv">2021</span>, <span class="dv">2022</span>, <span class="dv">2022</span>, <span class="dv">2020</span>, <span class="dv">2022</span>, <span class="dv">2021</span>),</span>
+<span id="cb384-4"><a href="importação-e-manipulação-de-dados.html#cb384-4" tabindex="-1"></a>  <span class="at">genero =</span> <span class="fu">c</span>(<span class="st">&quot;Ação&quot;</span>, <span class="st">&quot;Comédia&quot;</span>, <span class="st">&quot;Ação&quot;</span>, <span class="st">&quot;Comédia&quot;</span>, <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Ação&quot;</span>, </span>
+<span id="cb384-5"><a href="importação-e-manipulação-de-dados.html#cb384-5" tabindex="-1"></a>             <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Ação&quot;</span>, <span class="st">&quot;Comédia&quot;</span>, <span class="st">&quot;Drama&quot;</span>),</span>
+<span id="cb384-6"><a href="importação-e-manipulação-de-dados.html#cb384-6" tabindex="-1"></a>  <span class="at">receita =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">150</span>, <span class="dv">180</span>, <span class="dv">90</span>, <span class="dv">300</span>, <span class="dv">120</span>, <span class="dv">80</span>, <span class="dv">220</span>, <span class="dv">70</span>),</span>
+<span id="cb384-7"><a href="importação-e-manipulação-de-dados.html#cb384-7" tabindex="-1"></a>  <span class="at">orcamento =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">60</span>, <span class="dv">90</span>, <span class="dv">40</span>, <span class="dv">80</span>, <span class="dv">50</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">35</span>),</span>
+<span id="cb384-8"><a href="importação-e-manipulação-de-dados.html#cb384-8" tabindex="-1"></a>  <span class="at">nota =</span> <span class="fu">c</span>(<span class="fl">7.5</span>, <span class="fl">8.2</span>, <span class="fl">7.0</span>, <span class="fl">6.8</span>, <span class="fl">7.9</span>, <span class="fl">8.5</span>, <span class="fl">7.2</span>, <span class="fl">6.5</span>, <span class="fl">8.0</span>, <span class="fl">7.4</span>)</span>
+<span id="cb384-9"><a href="importação-e-manipulação-de-dados.html#cb384-9" tabindex="-1"></a>)</span></code></pre></div>
 <p>A função <code>summarise</code> possibilita calcular medidas resumo para os dados:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="importação-e-manipulação-de-dados.html#cb88-1" tabindex="-1"></a><span class="co"># Calculando a média dos orcamentos:</span></span>
-<span id="cb88-2"><a href="importação-e-manipulação-de-dados.html#cb88-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">media_receita =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="importação-e-manipulação-de-dados.html#cb385-1" tabindex="-1"></a><span class="co"># Calculando a média dos orcamentos:</span></span>
+<span id="cb385-2"><a href="importação-e-manipulação-de-dados.html#cb385-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">media_receita =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
 ##   media_receita
 ##           &lt;dbl&gt;
 ## 1           151</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="importação-e-manipulação-de-dados.html#cb90-1" tabindex="-1"></a><span class="co"># Calculando a mediana dos orcamentos:</span></span>
-<span id="cb90-2"><a href="importação-e-manipulação-de-dados.html#cb90-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">mediana_receita =</span> <span class="fu">median</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="importação-e-manipulação-de-dados.html#cb387-1" tabindex="-1"></a><span class="co"># Calculando a mediana dos orcamentos:</span></span>
+<span id="cb387-2"><a href="importação-e-manipulação-de-dados.html#cb387-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">mediana_receita =</span> <span class="fu">median</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
 ##   mediana_receita
 ##             &lt;dbl&gt;
 ## 1             135</code></pre>
 <p>Calculando várias medidas para a mesma variável:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="importação-e-manipulação-de-dados.html#cb92-1" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
-<span id="cb92-2"><a href="importação-e-manipulação-de-dados.html#cb92-2" tabindex="-1"></a>  <span class="at">media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb92-3"><a href="importação-e-manipulação-de-dados.html#cb92-3" tabindex="-1"></a>  <span class="at">mediana =</span> <span class="fu">median</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb92-4"><a href="importação-e-manipulação-de-dados.html#cb92-4" tabindex="-1"></a>  <span class="at">minimo =</span> <span class="fu">min</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb92-5"><a href="importação-e-manipulação-de-dados.html#cb92-5" tabindex="-1"></a>  <span class="at">maximo =</span> <span class="fu">max</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb92-6"><a href="importação-e-manipulação-de-dados.html#cb92-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="importação-e-manipulação-de-dados.html#cb389-1" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb389-2"><a href="importação-e-manipulação-de-dados.html#cb389-2" tabindex="-1"></a>  <span class="at">media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb389-3"><a href="importação-e-manipulação-de-dados.html#cb389-3" tabindex="-1"></a>  <span class="at">mediana =</span> <span class="fu">median</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb389-4"><a href="importação-e-manipulação-de-dados.html#cb389-4" tabindex="-1"></a>  <span class="at">minimo =</span> <span class="fu">min</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb389-5"><a href="importação-e-manipulação-de-dados.html#cb389-5" tabindex="-1"></a>  <span class="at">maximo =</span> <span class="fu">max</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb389-6"><a href="importação-e-manipulação-de-dados.html#cb389-6" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 4
 ##   media mediana minimo maximo
 ##   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1   151     135     70    300</code></pre>
 <p>Calculando medidas para variáveis distintas:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="importação-e-manipulação-de-dados.html#cb94-1" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(</span>
-<span id="cb94-2"><a href="importação-e-manipulação-de-dados.html#cb94-2" tabindex="-1"></a>  <span class="at">media_orcamento =</span> <span class="fu">mean</span>(orcamento, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb94-3"><a href="importação-e-manipulação-de-dados.html#cb94-3" tabindex="-1"></a>  <span class="at">media_receita =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb94-4"><a href="importação-e-manipulação-de-dados.html#cb94-4" tabindex="-1"></a>  <span class="at">media_nota =</span> <span class="fu">mean</span>(nota, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb94-5"><a href="importação-e-manipulação-de-dados.html#cb94-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="importação-e-manipulação-de-dados.html#cb391-1" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(</span>
+<span id="cb391-2"><a href="importação-e-manipulação-de-dados.html#cb391-2" tabindex="-1"></a>  <span class="at">media_orcamento =</span> <span class="fu">mean</span>(orcamento, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb391-3"><a href="importação-e-manipulação-de-dados.html#cb391-3" tabindex="-1"></a>  <span class="at">media_receita =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb391-4"><a href="importação-e-manipulação-de-dados.html#cb391-4" tabindex="-1"></a>  <span class="at">media_nota =</span> <span class="fu">mean</span>(nota, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb391-5"><a href="importação-e-manipulação-de-dados.html#cb391-5" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 3
 ##   media_orcamento media_receita media_nota
 ##             &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
 ## 1            63.5           151        7.5</code></pre>
 <p>A função <code>group_by</code>, possibilita aplicar o <code>summarise</code> para uma variável por categorias de uma ou mais variáveis.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="importação-e-manipulação-de-dados.html#cb96-1" tabindex="-1"></a><span class="co"># Calculando a receita média dos filmes por ano.</span></span>
-<span id="cb96-2"><a href="importação-e-manipulação-de-dados.html#cb96-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb96-3"><a href="importação-e-manipulação-de-dados.html#cb96-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span> </span>
-<span id="cb96-4"><a href="importação-e-manipulação-de-dados.html#cb96-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">receita_media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="importação-e-manipulação-de-dados.html#cb393-1" tabindex="-1"></a><span class="co"># Calculando a receita média dos filmes por ano.</span></span>
+<span id="cb393-2"><a href="importação-e-manipulação-de-dados.html#cb393-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb393-3"><a href="importação-e-manipulação-de-dados.html#cb393-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span> </span>
+<span id="cb393-4"><a href="importação-e-manipulação-de-dados.html#cb393-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">receita_media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##     ano receita_media
 ##   &lt;dbl&gt;         &lt;dbl&gt;
 ## 1  2020          110 
 ## 2  2021          135 
 ## 3  2022          213.</code></pre>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="importação-e-manipulação-de-dados.html#cb98-1" tabindex="-1"></a><span class="co"># Calculando a receita média dos filmes por genero.</span></span>
-<span id="cb98-2"><a href="importação-e-manipulação-de-dados.html#cb98-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb98-3"><a href="importação-e-manipulação-de-dados.html#cb98-3" tabindex="-1"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
-<span id="cb98-4"><a href="importação-e-manipulação-de-dados.html#cb98-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">receita_media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="importação-e-manipulação-de-dados.html#cb395-1" tabindex="-1"></a><span class="co"># Calculando a receita média dos filmes por genero.</span></span>
+<span id="cb395-2"><a href="importação-e-manipulação-de-dados.html#cb395-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb395-3"><a href="importação-e-manipulação-de-dados.html#cb395-3" tabindex="-1"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb395-4"><a href="importação-e-manipulação-de-dados.html#cb395-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">receita_media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   genero  receita_media
 ##   &lt;chr&gt;           &lt;dbl&gt;
 ## 1 Ação            158. 
 ## 2 Comédia         200  
 ## 3 Drama            93.3</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="importação-e-manipulação-de-dados.html#cb100-1" tabindex="-1"></a><span class="co"># Calculando a receita média dos filmes por ano e genero.</span></span>
-<span id="cb100-2"><a href="importação-e-manipulação-de-dados.html#cb100-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb100-3"><a href="importação-e-manipulação-de-dados.html#cb100-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ano, genero) <span class="sc">%&gt;%</span> </span>
-<span id="cb100-4"><a href="importação-e-manipulação-de-dados.html#cb100-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">receita_media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="importação-e-manipulação-de-dados.html#cb397-1" tabindex="-1"></a><span class="co"># Calculando a receita média dos filmes por ano e genero.</span></span>
+<span id="cb397-2"><a href="importação-e-manipulação-de-dados.html#cb397-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb397-3"><a href="importação-e-manipulação-de-dados.html#cb397-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ano, genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb397-4"><a href="importação-e-manipulação-de-dados.html#cb397-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">receita_media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;ano&#39;. You can override using the `.groups`
 ## argument.</code></pre>
 <pre><code>## # A tibble: 6 × 3
@@ -1435,30 +1454,30 @@ document.getElementById("submitButton5").addEventListener("click", function()
 ## 5  2022 Comédia           220
 ## 6  2022 Drama             120</code></pre>
 <p>A função <code>group_by</code> em conjunto com <code>summarise</code> também permite contar o número de observações.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="importação-e-manipulação-de-dados.html#cb103-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por ano.</span></span>
-<span id="cb103-2"><a href="importação-e-manipulação-de-dados.html#cb103-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb103-3"><a href="importação-e-manipulação-de-dados.html#cb103-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span> </span>
-<span id="cb103-4"><a href="importação-e-manipulação-de-dados.html#cb103-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="importação-e-manipulação-de-dados.html#cb400-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por ano.</span></span>
+<span id="cb400-2"><a href="importação-e-manipulação-de-dados.html#cb400-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb400-3"><a href="importação-e-manipulação-de-dados.html#cb400-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span> </span>
+<span id="cb400-4"><a href="importação-e-manipulação-de-dados.html#cb400-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##     ano     n
 ##   &lt;dbl&gt; &lt;int&gt;
 ## 1  2020     3
 ## 2  2021     4
 ## 3  2022     3</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="importação-e-manipulação-de-dados.html#cb105-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por genero</span></span>
-<span id="cb105-2"><a href="importação-e-manipulação-de-dados.html#cb105-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb105-3"><a href="importação-e-manipulação-de-dados.html#cb105-3" tabindex="-1"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
-<span id="cb105-4"><a href="importação-e-manipulação-de-dados.html#cb105-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="importação-e-manipulação-de-dados.html#cb402-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por genero</span></span>
+<span id="cb402-2"><a href="importação-e-manipulação-de-dados.html#cb402-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb402-3"><a href="importação-e-manipulação-de-dados.html#cb402-3" tabindex="-1"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb402-4"><a href="importação-e-manipulação-de-dados.html#cb402-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   genero      n
 ##   &lt;chr&gt;   &lt;int&gt;
 ## 1 Ação        4
 ## 2 Comédia     3
 ## 3 Drama       3</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="importação-e-manipulação-de-dados.html#cb107-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por ano e genero</span></span>
-<span id="cb107-2"><a href="importação-e-manipulação-de-dados.html#cb107-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb107-3"><a href="importação-e-manipulação-de-dados.html#cb107-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ano, genero) <span class="sc">%&gt;%</span> </span>
-<span id="cb107-4"><a href="importação-e-manipulação-de-dados.html#cb107-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="importação-e-manipulação-de-dados.html#cb404-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por ano e genero</span></span>
+<span id="cb404-2"><a href="importação-e-manipulação-de-dados.html#cb404-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb404-3"><a href="importação-e-manipulação-de-dados.html#cb404-3" tabindex="-1"></a>  <span class="fu">group_by</span>(ano, genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb404-4"><a href="importação-e-manipulação-de-dados.html#cb404-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;ano&#39;. You can override using the `.groups`
 ## argument.</code></pre>
 <pre><code>## # A tibble: 6 × 3
@@ -1472,24 +1491,24 @@ document.getElementById("submitButton5").addEventListener("click", function()
 ## 5  2022 Comédia     1
 ## 6  2022 Drama       1</code></pre>
 <p>Para contagem de observações, a função <code>count</code> também pode ser usada:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="importação-e-manipulação-de-dados.html#cb110-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por ano.</span></span>
-<span id="cb110-2"><a href="importação-e-manipulação-de-dados.html#cb110-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(ano)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="importação-e-manipulação-de-dados.html#cb407-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por ano.</span></span>
+<span id="cb407-2"><a href="importação-e-manipulação-de-dados.html#cb407-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(ano)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##     ano     n
 ##   &lt;dbl&gt; &lt;int&gt;
 ## 1  2020     3
 ## 2  2021     4
 ## 3  2022     3</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="importação-e-manipulação-de-dados.html#cb112-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por genero</span></span>
-<span id="cb112-2"><a href="importação-e-manipulação-de-dados.html#cb112-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="importação-e-manipulação-de-dados.html#cb409-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por genero</span></span>
+<span id="cb409-2"><a href="importação-e-manipulação-de-dados.html#cb409-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   genero      n
 ##   &lt;chr&gt;   &lt;int&gt;
 ## 1 Ação        4
 ## 2 Comédia     3
 ## 3 Drama       3</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="importação-e-manipulação-de-dados.html#cb114-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por ano e por genero</span></span>
-<span id="cb114-2"><a href="importação-e-manipulação-de-dados.html#cb114-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(ano, genero)</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="importação-e-manipulação-de-dados.html#cb411-1" tabindex="-1"></a><span class="co"># Calculando o total de filmes por ano e por genero</span></span>
+<span id="cb411-2"><a href="importação-e-manipulação-de-dados.html#cb411-2" tabindex="-1"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(ano, genero)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##     ano genero      n
 ##   &lt;dbl&gt; &lt;chr&gt;   &lt;int&gt;
@@ -1514,37 +1533,37 @@ document.getElementById("submitButton5").addEventListener("click", function()
 <div id="protectedContent6" style="display:none;">
 <div id="respostas-19" class="section level3 unnumbered hasAnchor">
 <h3>Respostas<a href="importação-e-manipulação-de-dados.html#respostas-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="importação-e-manipulação-de-dados.html#cb116-1" tabindex="-1"></a><span class="co"># a.</span></span>
-<span id="cb116-2"><a href="importação-e-manipulação-de-dados.html#cb116-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> </span>
-<span id="cb116-3"><a href="importação-e-manipulação-de-dados.html#cb116-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb116-4"><a href="importação-e-manipulação-de-dados.html#cb116-4" tabindex="-1"></a>    <span class="at">duracao_media =</span> <span class="fu">mean</span>(duracao, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb116-5"><a href="importação-e-manipulação-de-dados.html#cb116-5" tabindex="-1"></a>    <span class="at">duracao_mediana =</span> <span class="fu">median</span>(duracao, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb116-6"><a href="importação-e-manipulação-de-dados.html#cb116-6" tabindex="-1"></a>  )</span>
-<span id="cb116-7"><a href="importação-e-manipulação-de-dados.html#cb116-7" tabindex="-1"></a><span class="co"># b.</span></span>
-<span id="cb116-8"><a href="importação-e-manipulação-de-dados.html#cb116-8" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> </span>
-<span id="cb116-9"><a href="importação-e-manipulação-de-dados.html#cb116-9" tabindex="-1"></a>  <span class="fu">filter</span>(duracao <span class="sc">&gt;</span> <span class="dv">120</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb116-10"><a href="importação-e-manipulação-de-dados.html#cb116-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lucro =</span> receita <span class="sc">-</span> orcamento) <span class="sc">%&gt;%</span></span>
-<span id="cb116-11"><a href="importação-e-manipulação-de-dados.html#cb116-11" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">lucro_medio =</span> <span class="fu">mean</span>(lucro, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb116-12"><a href="importação-e-manipulação-de-dados.html#cb116-12" tabindex="-1"></a><span class="co"># c.</span></span>
-<span id="cb116-13"><a href="importação-e-manipulação-de-dados.html#cb116-13" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb116-14"><a href="importação-e-manipulação-de-dados.html#cb116-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lucro =</span> receita <span class="sc">-</span> orcamento,</span>
-<span id="cb116-15"><a href="importação-e-manipulação-de-dados.html#cb116-15" tabindex="-1"></a>         <span class="at">grupo_duracao =</span> <span class="fu">ifelse</span>(duracao <span class="sc">&lt;</span> <span class="dv">120</span>, <span class="st">&quot;&lt; 120 min&quot;</span>, </span>
-<span id="cb116-16"><a href="importação-e-manipulação-de-dados.html#cb116-16" tabindex="-1"></a>         <span class="st">&quot;≥ 120 min&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb116-17"><a href="importação-e-manipulação-de-dados.html#cb116-17" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo_duracao) <span class="sc">%&gt;%</span></span>
-<span id="cb116-18"><a href="importação-e-manipulação-de-dados.html#cb116-18" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">lucro_medio =</span> <span class="fu">mean</span>(lucro, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb116-19"><a href="importação-e-manipulação-de-dados.html#cb116-19" tabindex="-1"></a><span class="co"># d</span></span>
-<span id="cb116-20"><a href="importação-e-manipulação-de-dados.html#cb116-20" tabindex="-1"></a>notas_por_ano <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb116-21"><a href="importação-e-manipulação-de-dados.html#cb116-21" tabindex="-1"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span></span>
-<span id="cb116-22"><a href="importação-e-manipulação-de-dados.html#cb116-22" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">nota_media =</span> <span class="fu">mean</span>(nota_imdb, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb116-23"><a href="importação-e-manipulação-de-dados.html#cb116-23" tabindex="-1"></a>  <span class="fu">arrange</span>(ano)</span>
-<span id="cb116-24"><a href="importação-e-manipulação-de-dados.html#cb116-24" tabindex="-1"></a><span class="co"># e.</span></span>
-<span id="cb116-25"><a href="importação-e-manipulação-de-dados.html#cb116-25" tabindex="-1"></a>receita_por_ano <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
-<span id="cb116-26"><a href="importação-e-manipulação-de-dados.html#cb116-26" tabindex="-1"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span></span>
-<span id="cb116-27"><a href="importação-e-manipulação-de-dados.html#cb116-27" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb116-28"><a href="importação-e-manipulação-de-dados.html#cb116-28" tabindex="-1"></a>    <span class="at">receita_media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb116-29"><a href="importação-e-manipulação-de-dados.html#cb116-29" tabindex="-1"></a>    <span class="at">receita_mediana =</span> <span class="fu">median</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb116-30"><a href="importação-e-manipulação-de-dados.html#cb116-30" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(ano)  <span class="sc">%&gt;%</span></span>
-<span id="cb116-31"><a href="importação-e-manipulação-de-dados.html#cb116-31" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(receita_media), <span class="sc">!</span><span class="fu">is.na</span>(receita_mediana))</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="importação-e-manipulação-de-dados.html#cb413-1" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb413-2"><a href="importação-e-manipulação-de-dados.html#cb413-2" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> </span>
+<span id="cb413-3"><a href="importação-e-manipulação-de-dados.html#cb413-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb413-4"><a href="importação-e-manipulação-de-dados.html#cb413-4" tabindex="-1"></a>    <span class="at">duracao_media =</span> <span class="fu">mean</span>(duracao, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb413-5"><a href="importação-e-manipulação-de-dados.html#cb413-5" tabindex="-1"></a>    <span class="at">duracao_mediana =</span> <span class="fu">median</span>(duracao, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb413-6"><a href="importação-e-manipulação-de-dados.html#cb413-6" tabindex="-1"></a>  )</span>
+<span id="cb413-7"><a href="importação-e-manipulação-de-dados.html#cb413-7" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb413-8"><a href="importação-e-manipulação-de-dados.html#cb413-8" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span> </span>
+<span id="cb413-9"><a href="importação-e-manipulação-de-dados.html#cb413-9" tabindex="-1"></a>  <span class="fu">filter</span>(duracao <span class="sc">&gt;</span> <span class="dv">120</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb413-10"><a href="importação-e-manipulação-de-dados.html#cb413-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lucro =</span> receita <span class="sc">-</span> orcamento) <span class="sc">%&gt;%</span></span>
+<span id="cb413-11"><a href="importação-e-manipulação-de-dados.html#cb413-11" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">lucro_medio =</span> <span class="fu">mean</span>(lucro, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb413-12"><a href="importação-e-manipulação-de-dados.html#cb413-12" tabindex="-1"></a><span class="co"># c.</span></span>
+<span id="cb413-13"><a href="importação-e-manipulação-de-dados.html#cb413-13" tabindex="-1"></a>data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb413-14"><a href="importação-e-manipulação-de-dados.html#cb413-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lucro =</span> receita <span class="sc">-</span> orcamento,</span>
+<span id="cb413-15"><a href="importação-e-manipulação-de-dados.html#cb413-15" tabindex="-1"></a>         <span class="at">grupo_duracao =</span> <span class="fu">ifelse</span>(duracao <span class="sc">&lt;</span> <span class="dv">120</span>, <span class="st">&quot;&lt; 120 min&quot;</span>, </span>
+<span id="cb413-16"><a href="importação-e-manipulação-de-dados.html#cb413-16" tabindex="-1"></a>         <span class="st">&quot;≥ 120 min&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb413-17"><a href="importação-e-manipulação-de-dados.html#cb413-17" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo_duracao) <span class="sc">%&gt;%</span></span>
+<span id="cb413-18"><a href="importação-e-manipulação-de-dados.html#cb413-18" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">lucro_medio =</span> <span class="fu">mean</span>(lucro, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb413-19"><a href="importação-e-manipulação-de-dados.html#cb413-19" tabindex="-1"></a><span class="co"># d</span></span>
+<span id="cb413-20"><a href="importação-e-manipulação-de-dados.html#cb413-20" tabindex="-1"></a>notas_por_ano <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb413-21"><a href="importação-e-manipulação-de-dados.html#cb413-21" tabindex="-1"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span></span>
+<span id="cb413-22"><a href="importação-e-manipulação-de-dados.html#cb413-22" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">nota_media =</span> <span class="fu">mean</span>(nota_imdb, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb413-23"><a href="importação-e-manipulação-de-dados.html#cb413-23" tabindex="-1"></a>  <span class="fu">arrange</span>(ano)</span>
+<span id="cb413-24"><a href="importação-e-manipulação-de-dados.html#cb413-24" tabindex="-1"></a><span class="co"># e.</span></span>
+<span id="cb413-25"><a href="importação-e-manipulação-de-dados.html#cb413-25" tabindex="-1"></a>receita_por_ano <span class="ot">&lt;-</span> data_imdb <span class="sc">%&gt;%</span></span>
+<span id="cb413-26"><a href="importação-e-manipulação-de-dados.html#cb413-26" tabindex="-1"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span></span>
+<span id="cb413-27"><a href="importação-e-manipulação-de-dados.html#cb413-27" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb413-28"><a href="importação-e-manipulação-de-dados.html#cb413-28" tabindex="-1"></a>    <span class="at">receita_media =</span> <span class="fu">mean</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb413-29"><a href="importação-e-manipulação-de-dados.html#cb413-29" tabindex="-1"></a>    <span class="at">receita_mediana =</span> <span class="fu">median</span>(receita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb413-30"><a href="importação-e-manipulação-de-dados.html#cb413-30" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(ano)  <span class="sc">%&gt;%</span></span>
+<span id="cb413-31"><a href="importação-e-manipulação-de-dados.html#cb413-31" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(receita_media), <span class="sc">!</span><span class="fu">is.na</span>(receita_mediana))</span></code></pre></div>
 </div>
 </div>
 <p><input type="password" id="passwordInput6" placeholder="Digite a senha">

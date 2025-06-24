@@ -1583,14 +1583,11 @@ shinyApp(ui, server)
 ```r
 library(shiny)
 
-# Selecionar apenas variáveis numéricas de mtcars
-numeric_vars <- names(mtcars)[sapply(mtcars, is.numeric)]
-
-# ou usando dplyr
-library(dplyr)
-numeric_vars <- mtcars %>%
-  select(where(is.numeric)) %>%
-  names()
+<!-- # Selecionando numericas (se necessário) -->
+<!-- library(dplyr) -->
+<!-- numeric_vars <- mtcars %>% -->
+<!--   select(where(is.numeric)) %>% -->
+<!--   names() -->
 
 ui <- fluidPage(
   titlePanel("Histograma e Boxplot"),
@@ -1599,11 +1596,11 @@ ui <- fluidPage(
   fluidRow(
     column(6,
            selectInput("var1", "Variável para histograma:",
-                       choices = numeric_vars, selected = "mpg")
+                       choices = names(mtcars), selected = "mpg")
     ),
     column(6,
            selectInput("var2", "Variável para boxplot:",
-                       choices = numeric_vars, selected = "hp")
+                       choices = names(mtcars), selected = "hp")
     )
   ),
   
@@ -2353,11 +2350,11 @@ Este aplicativo está disponível em: https://hadley.shinyapps.io/ms-update-nest
 
 ### Exercícios {-}
 
-**1.** Atualizar rótulo de slider com valor atual.
+**1.** Crie um aplicativo com um `sliderInput` que possibilite ao usuário selecionar um número e um botão de ação que, ao clicado, atualize o label desse slider para o número atual selecionado.
 
-**2.** Atualizar opções de `selectInput()` com botão.
+**2.** Crie um aplicativo com um botão de ação nomeado "trocar" e um `selectInput` com 3 letras do alfabeto. O objetivo é que ao clicar no botão "trocar" as opções de letras do alfabeto sejam atualizadas para outras letras aleatórias.
 
-**3.** Atualizar valor do slider para a média.
+**3.** Crie um aplicativo com 2 inputs numéricos e um slider cujo valor seja atualizado com a média destes inputs, conforme eles forem modificados.
 
 **4.** Complete a interface de usuário abaixo com uma função de servidor que atualiza as opções de `input$county` com base em `input$state`.
 ```r
@@ -2383,7 +2380,6 @@ ui <- fluidPage(
   tableOutput("data")
 )
 ```
-
 
 <div id="protectedContent9" style="display:none;">
   
@@ -2512,8 +2508,8 @@ shinyApp(ui, server)
 
 </div>
   
-  <input type="password" id="passwordInput8" placeholder="Digite a senha">
-  <button id="submitButton8">Acesso Professor</button>
+  <input type="password" id="passwordInput9" placeholder="Digite a senha">
+  <button id="submitButton9">Acesso Professor</button>
   
   
 <script>
@@ -3019,6 +3015,89 @@ document.getElementById("submitButton11").addEventListener("click", function()
   }
 });
 </script>
+
+
+## Publicando aplicativo em shinyapps.io
+
+#### 1. Instalar o pacote `rsconnect` no R {-}
+
+Abra o R ou RStudio e execute:
+
+```r
+install.packages("rsconnect")
+```
+
+#### 2. Criar uma conta no shinyapps.io {-}
+
+1. Acesse: https://www.shinyapps.io
+2. Crie uma conta gratuira e faça login
+3. Após o login, vá até a aba **Account > Tokens > Show > Show secret > Copy**
+5. Copiar o código
+
+
+#### 3. Configurar sua conta e Publicar o App{-}
+
+1. Abra o seu aplicativo no R
+2. Clique no ícone azul: "Publish the application"
+3. Clique em Conectar conta com shinyapps.io
+4. Cole o código copiado no campo especificado
+5. Selecione os arquivos da pasta que serão enviados para o app.
+6. Dê um nome para o app em "Title"
+7. Clique em "Publish"
+8. Se tudo estiver ok, o RStudio vai abrir o link do app na web, uma URL como:
+
+```
+https://seu-usuario.shinyapps.io/nome-do-app/
+```
+
+Esse é o link público do seu app!
+
+#### 4. Compartilhando o app {-}
+
+Copie o link gerado e envie para quem quiser acessar — não é necessário instalar nada!
+
+
+#### 5. Atualizações do app {-}
+
+Sempre que fizer alterações no código, basta clucar no simbolo azul de publicação e fazer o envio novamente na conta conectada. O app será sobrescrito com a nova versão.
+
+
+
+**Observações:**
+
+- Certifique-se de que seu app está salvo em uma pasta, contendo: Um único arquivo chamado `app.R` **ou** dois arquivos: `ui.R` e `server.R`  
+- Todos os arquivos adicionais (por exemplo, imagens, CSVs) também devem estar nessa mesma pasta.
+- Para deletar o app ne sua conta acessar o app em shinyapps.io, arquivar e depois deletar.
+
+
+### Exercício: {-}
+
+Crie uma conta no shinyapps.io e publique o aplicativo a seguir:
+
+```r
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("Meu Primeiro App"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("var", "Variável:", 
+      choices = names(mtcars))
+    ),
+    mainPanel(
+      plotOutput("grafico")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$grafico <- renderPlot({
+    hist(mtcars[[input$var]], main = input$var)
+  })
+}
+
+shinyApp(ui, server)
+```
 
 
 
