@@ -154,13 +154,13 @@ O aplicativo se comporta de forma idêntica, mas funciona um pouco mais eficient
 **1.** Crie um aplicativo que cumprimente o usuário pelo nome. Considerando as funções abaixo, organize e identifique quais delas serão necessárias para esta finalidade.
 
 ```r
-tableOutput("mortgage")
-output$greeting <- renderText({
-  paste0("Hello ", input$name)
+tableOutput("hipoteca")
+output$saudacao <- renderText({
+  paste0("Olá ", input$nome)
 })
-numericInput("age", "How old are you?", value = NA)
-textInput("name", "What's your name?")
-textOutput("greeting")
+numericInput("idade", "Quantos anos você tem?", value = NA)
+textInput("nome", "Qual é o seu nome?")
+textOutput("saudacao")
 output$histogram <- renderPlot({
   hist(rnorm(1000))
 }, res = 96)
@@ -173,13 +173,13 @@ output$histogram <- renderPlot({
 library(shiny)
 
 ui <- fluidPage(
-  sliderInput("x", label = "If x is", min = 1, max = 50, value = 30),
-  "then x times 5 is",
-  textOutput("product")
+  sliderInput("x", label = "Se x é", min = 1, max = 50, value = 30),
+  "então x vezes 5 é",
+  textOutput("produto")
 )
 
 server <- function(input, output, session) {
-  output$product <- renderText({ 
+  output$produto <- renderText({ 
     x * 5
   })
 }
@@ -191,8 +191,11 @@ Mas infelizmente tem um erro. Você pode ajudá-lo a encontrar e corrigir o erro
 
 **3.** Expanda o aplicativo do exercício anterior para permitir que o usuário defina o valor do multiplicador, y, para que o aplicativo produza o valor de x * y. O resultado final deve ser semelhante a este:
 
+<!-- <p align="center"> -->
+<!--   <img src="figs/shiny_ex3.png" width="300"> -->
+<!-- </p> -->
 
-<img src="figs/shiny_ex3.png" width="170" style="display: block; margin: auto;" />
+<img src="figs/shiny_ex3.png" width="300px" style="display: block; margin: auto;" />
 
 
 **4.** Considere o aplicativo a seguir, que adiciona algumas funcionalidades adicionais ao aplicativo descrito no exercício anterior. O que há de novo? Como você poderia reduzir a quantidade de código duplicado no aplicativo usando uma expressão reativa?
@@ -201,25 +204,25 @@ Mas infelizmente tem um erro. Você pode ajudá-lo a encontrar e corrigir o erro
 library(shiny)
 
 ui <- fluidPage(
-  sliderInput("x", "If x is", min = 1, max = 50, value = 30),
-  sliderInput("y", "and y is", min = 1, max = 50, value = 5),
-  "then, (x * y) is", textOutput("product"),
-  "and, (x * y) + 5 is", textOutput("product_plus5"),
-  "and (x * y) + 10 is", textOutput("product_plus10")
+  sliderInput("x", "Se x é", min = 1, max = 50, value = 30),
+  sliderInput("y", "e y é", min = 1, max = 50, value = 5),
+  "então, (x * y) é", textOutput("produto"),
+  "e, (x * y) + 5 é", textOutput("produto_mais5"),
+  "e (x * y) + 10 é", textOutput("produto_mais10")
 )
 
 server <- function(input, output, session) {
-  output$product <- renderText({ 
-    product <- input$x * input$y
-    product
+  output$produto <- renderText({ 
+    prod <- input$x * input$y
+    prod
   })
-  output$product_plus5 <- renderText({ 
-    product <- input$x * input$y
-    product + 5
+  output$produto_mais5 <- renderText({ 
+    prod <- input$x * input$y
+    prod + 5
   })
-  output$product_plus10 <- renderText({ 
-    product <- input$x * input$y
-    product + 10
+  output$produto_mais10 <- renderText({ 
+    prod <- input$x * input$y
+    prod + 10
   })
 }
 
@@ -234,8 +237,8 @@ library(ggplot2)
 
 datasets <- c("economics", "faithfuld", "seals")
 ui <- fluidPage(
-  selectInput("dataset", "Dataset", choices = datasets),
-  verbatimTextOutput("summary"),
+  selectInput("dataset", "Conjunto de dados:", choices = datasets),
+  verbatimTextOutput("resumo"),
   tableOutput("plot")
 )
 
@@ -243,7 +246,7 @@ server <- function(input, output, session) {
   dataset <- reactive({
     get(input$dataset, "package:ggplot2")
   })
-  output$summmry <- renderPrint({
+  output$resummo <- renderPrint({
     summary(dataset())
   })
   output$plot <- renderPlot({
@@ -264,12 +267,12 @@ shinyApp(ui, server)
 ## 1.
 library(shiny)
 ui <- fluidPage(
-  textInput("name", "What's your name?"),
-  textOutput("greeting")
+  textInput("nome", "Qual é o seu nome?"),
+  textOutput("saudacao")
 )
 server <- function(input, output, session) {
-  output$greeting <- renderText({
-    paste0("Hello ", input$name)
+  output$saudacao <- renderText({
+    paste0("Olá ", input$nome)
   })
 }
 shinyApp(ui, server)
@@ -277,46 +280,44 @@ shinyApp(ui, server)
 O erro aqui surge porque, no lado do servidor, precisamos escrever 
 input$x em vez de x.
 ## 3.
-Vamos adicionar outro sliderInput com ID y e usar ambos input$x e input$y 
-para calcular output$product.
+Vamos adicionar outro sliderInput com ID y e usar ambos input$x e input$y para calcular output$product.
 library(shiny)
 ui <- fluidPage(
-  sliderInput("x", label = "If x is", min = 1, max = 50, value = 30),
-  sliderInput("y", label = "and y is", min = 1, max = 50, value = 30),
-  "then x multiplied by y is",
-  textOutput("product")
+  sliderInput("x", label = "Se x é", min = 1, max = 50, value = 30),
+  sliderInput("y", label = "e y é", min = 1, max = 50, value = 30),
+  "então x multiplicado por y é",
+  textOutput("produto")
 )
 server <- function(input, output, session) {
-  output$product <- renderText({ 
+  output$produto <- renderText({ 
     input$x * input$y
   })
 }
 shinyApp(ui, server)
 ## 4.
-# A novidade é o cálculo adicional em que 5 e 10 foram adicionados
-# ao produto e as saídas renderizadas como texto.
+# A novidade é o cálculo adicional em que 5 e 10 foram adicionados ao produto. 
+# Reduzindo códido com expressão reativa:
 library(shiny)
 ui <- fluidPage(
-    sliderInput("x", "If x is", min = 1, max = 50, value = 30),
-    sliderInput("y", "and y is", min = 1, max = 50, value = 5),
-    "then, (x * y) is", textOutput("product"),
-    "and, (x * y) + 5 is", textOutput("product_plus5"),
-    "and (x * y) + 10 is", textOutput("product_plus10")
+  sliderInput("x", "Se x é", min = 1, max = 50, value = 30),
+  sliderInput("y", "e y é", min = 1, max = 50, value = 5),
+  "então, (x * y) é", textOutput("produto"),
+  "e, (x * y) + 5 é", textOutput("produto_mais5"),
+  "e (x * y) + 10 é", textOutput("produto_mais10")
 )
 server <- function(input, output, session) {
-    # Add this reactive expression to reduce 
-    # amount of duplicated code
-    product <- reactive({
+    # Expressão reativa
+    prod <- reactive({
         input$x * input$y
     })
-    output$product <- renderText({ 
-        product()
+    output$produto <- renderText({ 
+        prod()
     })
-    output$product_plus5 <- renderText({ 
-        product() + 5
+    output$produto_mais5 <- renderText({ 
+        prod() + 5
     })
-    output$product_plus10 <- renderText({ 
-        product() + 10
+    output$produto_mais10 <- renderText({ 
+        prod() + 10
     })
 }
 shinyApp(ui, server)
@@ -325,7 +326,7 @@ shinyApp(ui, server)
 # 1º erro:
 # trocar tableOutput("plot") por plotOutput("plot") -> renderPlot
 # 2º erro:
-# summary esta escrito errado em output$summmry
+# resumo esta escrito errado em output$resummo
 # 3º erro:
 # trocar plot(dataset) por plot(dataset()) para usar a expressão reativa
 ```
@@ -379,14 +380,14 @@ Permite coletar pequenas quantidades de texto com `textInput()`, senhas com `pas
 
 ```r
 ui <- fluidPage(
-  textInput("name", "Qual é o seu nome?"),
-  passwordInput("password", "Qual é a sua senha?"),
-  textAreaInput("story", "Fale sobre você", rows = 3)
+  textInput("nome", "Qual é o seu nome?"),
+  passwordInput("senha", "Qual é a sua senha?"),
+  textAreaInput("historia", "Fale sobre você", rows = 3)
 )
 ```
 
 
-<img src="figs/shiny1.png" width="282" style="display: block; margin: auto;" />
+<img src="figs/shiny1.png" width="300px" style="display: block; margin: auto;" />
 
 
 **2. Entradas numéricas** 
@@ -397,12 +398,12 @@ Para valores numéricos: caixa de texto restrita com `numericInput()` ou um cont
 ui <- fluidPage(
   numericInput("num", "Número um", value = 0, min = 0, max = 100),
   sliderInput("num2", "Número dois", value = 50, min = 0, max = 100),
-  sliderInput("rng", "Intervalo", value = c(10, 20), min = 0, max = 100)
+  sliderInput("inter", "Intervalo", value = c(10, 20), min = 0, max = 100)
 )
 ```
 
 
-<img src="figs/shiny2.png" width="273" style="display: block; margin: auto;" />
+<img src="figs/shiny2.png" width="300px" style="display: block; margin: auto;" />
 
 **3. Datas** 
 
@@ -410,12 +411,13 @@ Para coletar um único dia: `dateInput()`; ou um intervalo de dias: `dateRangeIn
 
 ```r
 ui <- fluidPage(
-  dateInput("dob", "Quando você nasceu?"),
-  dateRangeInput("holiday", "Quando você quer tirar as próximas férias?")
+  dateInput("nascimento", "Quando você nasceu?"),
+  dateRangeInput("ferias", 
+  "Quando você quer tirar as próximas férias?")
 )
 ```
 
-<img src="figs/shiny3.png" width="284" style="display: block; margin: auto;" />
+<img src="figs/shiny3.png" width="300px" style="display: block; margin: auto;" />
 
 
 **4. Escolhas limitadas**
@@ -427,12 +429,13 @@ animais <- c("cachorro", "gato", "rato", "pássaro", "outro", "nenhum")
 estados <- c("PR", "SC", "SP", "RJ")
 
 ui <- fluidPage(
-  selectInput("estado", "Qual é o seu estado favorito?", estados),
+  selectInput("estado", "Qual é o seu estado favorito?",
+  estados),
   radioButtons("animal", "Qual é o seu animal favorito?", animais)
 )
 ```
 
-<img src="figs/shiny4.png" width="196" style="display: block; margin: auto;" />
+<img src="figs/shiny4.png" width="300px" style="display: block; margin: auto;" />
 
 - Os botões de opção (`radioButtons()`) têm dois recursos interessantes: eles mostram todas as opções possíveis, tornando-os adequados para listas curtas.
 
@@ -442,13 +445,14 @@ Você também pode configurar `multiple = TRUE`para permitir que o usuário sele
 
 ```r
 ui <- fluidPage(
-  selectInput("estado", "Qual é o seu estado favorito?", estados,
+  selectInput("estado", "Qual é o seu estado favorito?",
+  estados,
               multiple = TRUE)
 )
 ```
 
 
-<img src="figs/shiny5.png" width="288" style="display: block; margin: auto;" />
+<img src="figs/shiny5.png" width="300px" style="display: block; margin: auto;" />
 
 
 **5. Botões de ação**
@@ -457,12 +461,12 @@ Para executar ações: `actionButton()` ou `actionLink()`.
 
 ```r
 ui <- fluidPage(
-  actionButton("click", "Clique aqui!"),
-  actionButton("drink", "Beba-me!", icon = icon("cocktail"))
+  actionButton("clique", "Clique aqui!"),
+  actionButton("beba", "Beba-me!", icon = icon("cocktail"))
 )
 ```
 
-<img src="figs/shiny6.png" width="188" style="display: block; margin: auto;" />
+<img src="figs/shiny6.png" width="300px" style="display: block; margin: auto;" />
 
 - Links e botões de ação são mais naturalmente pareados com `observeEvent()` ou `eventReactive()` na sua função de servidor. 
 
@@ -475,8 +479,8 @@ ui <- fluidPage(
 ```r
 ui <- fluidPage(
   fluidRow(
-    actionButton("click", "Clique aqui!", class = "btn-danger"),
-    actionButton("drink", "Beba-me!", class = "btn-lg btn-success")
+    actionButton("clique", "Clique aqui!", class = "btn-danger"),
+    actionButton("beba", "Beba-me!", class = "btn-lg btn-success")
   ),
   fluidRow(
     actionButton("resp", "Respostas!", class = "btn-block")
@@ -484,28 +488,28 @@ ui <- fluidPage(
 )
 ```
 
-<img src="figs/shiny7.png" width="455" style="display: block; margin: auto;" />
+<img src="figs/shiny7.png" width="300px" style="display: block; margin: auto;" />
 
 
 
 ### Exercícios - Seção 8.2.1 {-}
 
 
-**1.** Quando o espaço é limitado, é útil rotular as caixas de texto com um espaço reservado que aparece dentro da área de entrada de texto. Como você chamaria `textInput()` para gerar a IU abaixo?
+**1.** Quando o espaço é limitado, é útil rotular as caixas de texto com um espaço reservado que aparece dentro da área de entrada de texto. Como você chamaria a função `textInput()` para gerar a IU abaixo?
 <div>
-  <input type="text" placeholder="Your name" style="padding: 8px; width: 200px;">
+  <input type="text" placeholder="Seu nome" style="padding: 8px; width: 200px;">
 </div>
 
 **2.** Leia atentamente a documentação de `sliderInput()` e tente descobrir como criar um controle deslizante de data, conforme mostrado abaixo.
 
-<img src="figs/shiny_2.2.3.2.png" width="288" style="display: block; margin: auto;" />
+<img src="figs/shiny_2.2.3.2.png" width="300px" style="display: block; margin: auto;" />
 
 
 **3.** No seu aplicativo Shiny, crie um controle deslizante que permita ao usuário escolher um número entre 0 e 100, variando de 5 em 5. Em seguida, adicione uma funcionalidade de animação, de forma que, ao clicar em um botão de "play", o controle avance automaticamente pelos valores disponíveis, como se estivesse passando por eles em sequência. **Dica:** existe um argumento do controle deslizante que permite ativar esse tipo de animação automaticamente.
 
 **4.** Quando uma lista de opções em um menu suspenso (`selectInput()`) é muito longa, pode ser útil organizá-la em grupos com rótulos — como se fossem seções ou categorias dentro da lista. Explore como criar esse tipo de organização usando `selectInput()` no Shiny. Crie um exemplo com pelo menos dois grupos e algumas opções dentro de cada grupo (como o exemplo a seguir).
 
-<img src="figs/shiny_2.2.8.4.png" width="274" style="display: block; margin: auto;" />
+<img src="figs/shiny_2.2.8.4.png" width="300px" style="display: block; margin: auto;" />
 
 
 <div id="protectedContent2" style="display:none;">
@@ -515,18 +519,18 @@ ui <- fluidPage(
 
 ``` r
 ##1
-textInput(inputId = "text", label = "", placeholder = "Your name")
+textInput(inputId = "texto", label = "", placeholder = "Seu nome")
 ##2
 # ?sliderInput -> ?Date -> as.Date
 sliderInput(
-  "dates",
+  "datas",
   "Quando devemos entregar?",
   min = as.Date("2025-03-10"),
   max = as.Date("2025-03-20"),
   value = as.Date("2025-03-12")
 )
 ##3
-sliderInput("number", "Selecione um número:",
+sliderInput("num", "Selecione um número:",
               min = 0, max = 100, value = 0, 
               step = 5, animate = TRUE)
 ##4
@@ -581,13 +585,13 @@ library(shiny)
 
 ui <- fluidPage(
   textOutput("texto"),
-  verbatimTextOutput("code")
+  verbatimTextOutput("codigo")
 )
 server <- function(input, output, session) {
   output$texto <- renderText({ 
     "Olá, bem vindo! A seguir um resumo de dados:" 
   })
-  output$code <- renderPrint({ 
+  output$codigo <- renderPrint({ 
     summary(1:10) 
   })
 }
@@ -605,11 +609,11 @@ Observe que há duas funções de renderização que se comportam de maneira lig
 ```r
 ui <- fluidPage(
   textOutput("texto"),
-  verbatimTextOutput("print")
+  verbatimTextOutput("imprime")
 )
 server <- function(input, output, session) {
   output$texto <- renderText("Texto com renderText.")
-  output$print <- renderPrint(cat("Texto com renderPrint."))
+  output$imprime <- renderPrint(cat("Texto com renderPrint."))
 }
 ```
 
@@ -623,14 +627,14 @@ Há duas opções para exibir quadros de dados em tabelas:
 
 ```r
 ui <- fluidPage(
-  tableOutput("statica"),
+  tableOutput("estatica"),
   dataTableOutput("dinamica")
 )
 
 server <- function(input, output, session) {
-  output$statica <- renderTable(head(mtcars))
+  output$estatica <- renderTable(head(mtcars))
   output$dinamica <- renderDataTable(mtcars, 
-                                     options = list(pageLength = 5))
+        options = list(pageLength = 5))
 }
 ```
 
@@ -641,14 +645,14 @@ library(shiny)
 library(DT)
 
 ui <- fluidPage(
-  tableOutput("statica"),
+  tableOutput("estatica"),
   DTOutput("dinamica")
 )
 
 server <- function(input, output, session) {
-  output$statica <- renderTable(head(mtcars))
+  output$estatica <- renderTable(head(mtcars))
   output$dinamica <- renderDT(mtcars, 
-                              options = list(pageLength = 5))
+         options = list(pageLength = 5))
 }
 shinyApp(ui, server)
 ```
@@ -678,9 +682,8 @@ server <- function(input, output, session) {
 **1.** As funções `textOutput()` e `verbatimTextOutput()` devem ser pareadas com qual(is) função(ões) de renderização abaixo:
 
 a. `renderPrint(summary(mtcars))`
-b. `renderText("Good morning!")`
+b. `renderText("Bom dia!")`
 c. `renderPrint(t.test(1:5, 2:6))`
-d. `renderText(str(lm(mpg ~ wt, data = mtcars)))`
 
 **2.** Recrie o aplicativo a seguir, definindo a altura como 300px e a largura como 700px.
 ```r
@@ -699,10 +702,10 @@ https://datatables.net/reference/option/
 
 ```r
 ui <- fluidPage(
-  dataTableOutput("table")
+  dataTableOutput("tabela")
 )
 server <- function(input, output, session) {
-  output$table <- renderDataTable(mtcars, 
+  output$tabela <- renderDataTable(mtcars, 
                   options = list(pageLength = 5))
 }
 ```
@@ -719,8 +722,6 @@ renderPrint(summary(mtcars)) -> verbatimTextOutput (console)
 renderText("Good morning!") -> textOutput
 # c. 
 renderPrint(t.test(1:5, 2:6)) -> verbatimTextOutput (console)
-# d.
-renderText(str(lm(mpg ~ wt, data = mtcars))) -> verbatimTextOutput (console)
 ## 2.
 library(shiny)
 ui <- fluidPage(
@@ -733,10 +734,10 @@ shinyApp(ui, server)
 ## 3.
 library(shiny)
 ui <- fluidPage(
-  dataTableOutput("table")
+  dataTableOutput("tabela")
 )
 server <- function(input, output, session) {
-  output$table <- renderDataTable(mtcars, 
+  output$tabela <- renderDataTable(mtcars, 
                   options = list(ordering = FALSE, 
                                  searching = FALSE))
 }
@@ -775,11 +776,12 @@ As funções de servidor recebem três parâmetros: `input`, `output` e `session
 
 #### Entradas (input) {-}
 
-O input é um objeto em forma de lista que contém todos os dados de entrada enviados pelo navegador, nomeados de acordo com o ID de entrada. Por exemplo, se sua interface contiver um controle de entrada numérico com um ID `count`, então você pode acessar o valor dessa entrada com `input$count`.
+O input é um objeto em forma de lista que contém todos os dados de entrada enviados pelo navegador, nomeados de acordo com o ID de entrada. Por exemplo, se sua interface contiver um controle de entrada numérico com um ID `contagem`, então você pode acessar o valor dessa entrada com `input$contagem`.
 
 ```r
 ui <- fluidPage(
-  numericInput("count", label = "Number of values", value = 100)
+  numericInput("contagem", label = "Number of values",
+  value = 100)
 )
 ```
 Inicialmente, ele conterá o valor 100 e será atualizado automaticamente conforme o usuário altera o valor no navegador.
@@ -787,23 +789,23 @@ Inicialmente, ele conterá o valor 100 e será atualizado automaticamente confor
 Ao contrário de uma lista típica, objetos de input são somente leitura. Se você tentar modificar uma entrada dentro da função do servidor, receberá um erro:
 ```r
 server <- function(input, output, session) {
-  input$count <- 10
+  input$contagem <- 10
 }
 shinyApp(ui, server)
-#> Error: Can't modify read-only reactive value 'count'
+#> Error: Can't modify read-only reactive value 'contagem'
 ```
 
 
-Este erro ocorre porque input reflete o que está acontecendo no navegador, e o navegador é a "única fonte de verdade" do Shiny.
+Este erro ocorre porque o input reflete o que está acontecendo no navegador, e o navegador é a "única fonte de verdade" do Shiny.
 
 Além disso, para ler um input no servidor é necessário estar em um contexto reativo criado por uma função como `renderText()` ou `reactive()`. Isso permite que as saídas sejam atualizadas automaticamente quando uma entrada muda. Este código ilustra o erro que você verá se cometer este erro:
 
 ```r
 server <- function(input, output, session) {
-  message("The value of input$count is ", input$count)
+  message("O valor de input$contagem é", input$contagem)
 }
 shinyApp(ui, server)
-#> Error: Can't access reactive value 'count' outside of reactive consumer.
+#> Error: Can't access reactive value 'contagem' outside of reactive consumer.
 #> ℹ Do you need to wrap inside reactive() or observer()?
 ```
 
@@ -813,11 +815,11 @@ A saída (`output`) também é um objeto do tipo lista, nomeado de acordo com o 
 
 ```r
 ui <- fluidPage(
-  textOutput("greeting")
+  textOutput("saudacao")
 )
 
 server <- function(input, output, session) {
-  output$greeting <- renderText("Hello human!")
+  output$saudacao <- renderText("Olá humano!")
 }
 ```
 
@@ -826,10 +828,10 @@ Assim como o `input`, o `output` é exigente quanto à forma como você o utiliz
 - Esquecer a função `render`.
 ```r
 server <- function(input, output, session) {
-  output$greeting <- "Hello human"
+  output$saudacao <- "Olá humano!"
 }
 shinyApp(ui, server)
-#> Error: Unexpected character object for output$greeting
+#> Error: Unexpected character object for output$saudacao
 #> ℹ Did you forget to use a render function?
 ```
 
@@ -837,7 +839,7 @@ shinyApp(ui, server)
 
 ```r
 server <- function(input, output, session) {
-  message("The greeting is ", output$greeting)
+  message("A saudação é ", output$saudacao)
 }
 shinyApp(ui, server)
 #> Error: Reading from shinyoutput object is not allowed.
@@ -851,13 +853,13 @@ Um aplicativo será bem chato se tiver apenas entradas ou apenas saídas. A verd
 ```r
 library(shiny)
 ui <- fluidPage(
-  textInput("name", "What's your name?"),
-  textOutput("greeting")
+  textInput("nome", "Qual é o seu nome?"),
+  textOutput("saudacao")
 )
 
 server <- function(input, output, session) {
-  output$greeting <- renderText({
-    paste0("Hello ", input$name, "!")
+  output$saudacao <- renderText({
+    paste0("Olá ", input$nome, "!")
   })
 }
 shinyApp(ui, server)
@@ -870,12 +872,12 @@ Um dos pontos fortes da programação em Shiny é que ela permite que os aplicat
 ```r
 library(shiny)
 ui <- fluidPage(
-  textInput("name", "What's your name?"),
-  textOutput("greeting")
+  textInput("nome", "Qual é o seu nome?"),
+  textOutput("saudacao")
 )
 server <- function(input, output, session) {
-  output$greting <- renderText({
-    paste0("Hello ", input$name, "!")
+  output$saudacaoo <- renderText({
+    paste0("Olá ", input$nome, "!")
   })
 }
 shinyApp(ui, server)
@@ -883,7 +885,7 @@ shinyApp(ui, server)
 
 <br> 
 
-Se você observar atentamente, poderá notar que está escrito `greting` em vez de `greeting.` Isso não gerará um erro no Shiny, mas não fará o que você deseja. A saída `greting` não existe, então o código em `renderText()` nunca será executado.
+Se você observar atentamente, poderá notar que está escrito `saudacaoo` em vez de `saudacao`. Isso não gerará um erro no Shiny, mas não fará o que você deseja. A saída `saudacaoo` não existe, então o código em `renderText()` nunca será executado.
 
 **Importante:** Verificar se sua interface de usuário e funções de servidor estão usando os mesmos nomes de identificadores.
 
@@ -897,23 +899,22 @@ Para o exemplo:
 ```r
 library(shiny)
 ui <- fluidPage(
-  textInput("name", "What's your name?"),
-  textOutput("greeting")
+  textInput("nome", "Qual é o seu nome?"),
+  textOutput("saudacao")
 )
-
 server <- function(input, output, session) {
-  output$greeting <- renderText({
-    paste0("Hello ", input$name, "!")
+  output$saudacao <- renderText({
+    paste0("Olá ", input$nome, "!")
   })
 }
 shinyApp(ui, server)
 ```
 O gráfico reativo fica:
 
-<img src="figs/shiny8.png" width="146" style="display: block; margin: auto;" />
+<img src="figs/shiny8.png" width="212" style="display: block; margin: auto;" />
 
 
-O gráfico reativo contém um símbolo para cada entrada e saída, e conectamos uma entrada a uma saída sempre que a saída acessa a entrada. Este gráfico informa que `greeting` precisará ser recomputado sempre que `name` for alterado. Frequentemente descreveremos essa relação como `greeting` tendo uma dependência reativa em `name`.
+O gráfico reativo contém um símbolo para cada entrada e saída, e conectamos uma entrada a uma saída sempre que a saída acessa a entrada. Este gráfico informa que `saudacao` precisará ser recomputado sempre que `nome` for alterado. Frequentemente descreveremos essa relação como `saudacao` tendo uma dependência reativa em `nome`.
 
 
 O gráfico reativo é uma ferramenta poderosa para entender como seu aplicativo funciona. À medida que seu aplicativo se torna mais complexo, muitas vezes é útil fazer um esboço rápido e detalhado do gráfico reativo para lembrar como todas as peças se encaixam. 
@@ -924,19 +925,19 @@ Exemplo:
 ```r
 library(shiny)
 ui <- fluidPage(
-  textInput("name", "What's your name?"),
-  textOutput("greeting")
+  textInput("nome", "Qual é o seu nome?"),
+  textOutput("saudacao")
 )
 server <- function(input, output, session) {
-  string <- reactive(paste0("Hello ", input$name, "!"))
-  output$greeting <- renderText(string())
+  frase <- reactive(paste0("Olá ", input$nome, "!"))
+  output$saudacao <- renderText(frase())
 }
 shinyApp(ui, server)
 ```
 
 Neste caso, o gráfico reativo fica:
 
-<img src="figs/shiny9.png" width="224" style="display: block; margin: auto;" />
+<img src="figs/shiny9.png" width="336" style="display: block; margin: auto;" />
 
 
 Uma expressão reativa é desenhada com ângulos em ambos os lados porque conecta entradas a saídas.
@@ -946,23 +947,23 @@ Uma expressão reativa é desenhada com ângulos em ambos os lados porque conect
 **1.** Dada esta UI:
 ```r
 ui <- fluidPage(
-  textInput("name", "What's your name?"),
-  textOutput("greeting")
+  textInput("nome", "Qual é o seu nome?"),
+  textOutput("saudacao")
 )
 ```
 Corrija os erros encontrados em cada uma das três funções de servidor abaixo. Primeiro, tente identificar o problema apenas lendo o código; depois, execute o código para garantir que o corrigiu.
 ```r
 server1 <- function(input, output, server) {
-  input$greeting <- renderText(paste0("Hello ", name))
+  input$saudacao <- renderText(paste0("Olá ", nome))
 }
 
 server2 <- function(input, output, server) {
-  greeting <- paste0("Hello ", input$name)
-  output$greeting <- renderText(greeting)
+  saudacao <- paste0("Olá ", input$nome)
+  output$saudacao <- renderText(saudacao)
 }
 
 server3 <- function(input, output, server) {
-  output$greting <- paste0("Hello", input$name)
+  output$saudacaoo <- paste0("Olá", input$nome)
 }
 ```
 
@@ -1012,27 +1013,29 @@ Por que `range()` e `var()` são nomes ruins para reativos? Apresente o código 
 **1.**
 ```r
 # Servidor 1:
-- input$greeting –> output$greeting
-- Dentro renderText, name –> input$name
+- input$saudacao –> output$saudacao
+- Dentro renderText, nome –> input$nome
 Código corrigido:
 server1 <- function(input, output, server) {
-  output$greeting <- renderText(paste0("Hello ", input$name))
+  output$saudacao <- renderText(paste0("Olá ", input$nome))
 }
 # Servidor 2:
-- Faça greeting um reativo: greeting <- reactive(paste0("Hello ", input$name))
-- Como greeting agora é reativo, adicione parênteses ao redor dele:
-output$greeting <- renderText(greeting())
+- Faça saudacao um reativo: 
+saudacao <- reactive(paste0("Olá ", input$nome))
+- Como saudacao agora é reativo, adicione parênteses ao redor dele:
+output$saudacao <- renderText(saudacao())
 Código corrigido:
 server2 <- function(input, output, server) {
-  greeting <- reactive(paste0("Hello ", input$name))
-  output$greeting <- renderText(greeting())
+  saudacao <- reactive(paste0("Olá ", input$nome))
+  output$saudacao <- renderText(saudacao())
 }
 # Servidor 3:
-- Erro de ortografia: output$greting –> output$greeting
+- Erro de ortografia: 
+output$saudacaoo –> output$saudacao
 - renderText() ausente.
 Código corrigido:
 server3 <- function(input, output, server) {
-  output$greeting <- renderText(paste0("Hello ", input$name))
+  output$saudacao <- renderText(paste0("Olá ", input$nome))
 }
 ```
 
@@ -1256,7 +1259,7 @@ shinyApp(ui, server)
 - Um `textOutput()` que exibe algo como: "Olá [nome], sua comida favorita é [comida]."
 
 
-<img src="figs/app_comida.png" width="236" style="display: block; margin: auto;" />
+<img src="figs/app_comida.png" width="300px" style="display: block; margin: auto;" />
 
 **3.** Crie um app com:
 
@@ -1267,7 +1270,7 @@ shinyApp(ui, server)
 **Dica:** Use `eventReactive()`.
 
 
-<img src="figs/app_calcular_soma.png" width="234" style="display: block; margin: auto;" />
+<img src="figs/app_calcular_soma.png" width="300px" style="display: block; margin: auto;" />
 
 **4.** Crie um app com:
 
@@ -1278,7 +1281,7 @@ shinyApp(ui, server)
 **Dica:** Use `renderPlot()`.
 
 
-<img src="figs/app_bins_hist.png" width="415" style="display: block; margin: auto;" />
+<img src="figs/app_bins_hist.png" width="300px" style="display: block; margin: auto;" />
 
 **5.** Crie um app com:
 
@@ -1289,7 +1292,7 @@ shinyApp(ui, server)
 **Dica:** Use `eventReactive()`.
 
 
-<img src="figs/app_gerar_hist.png" width="412" style="display: block; margin: auto;" />
+<img src="figs/app_gerar_hist.png" width="300px" style="display: block; margin: auto;" />
 
 <div id="protectedContent5" style="display:none;">
   
@@ -1321,7 +1324,7 @@ ui <- fluidPage(
 )
 server <- function(input, output, session) {
   output$mensagem <- renderText({
-    paste("Olá", input$nome, "- sua comida favorita é", input$comida)
+    paste("Olá ", input$nome, ", sua comida favorita é", input$comida)
   })
 }
 shinyApp(ui, server)
@@ -1402,8 +1405,6 @@ document.getElementById("submitButton5").addEventListener("click", function()
 ## Layout, temas, HTML
 
 O Shiny fornece diversas funções para organizar a aparência dos aplicativos.
-
-
 
 ### Layouts 
 
@@ -1686,7 +1687,7 @@ ui <- fluidPage(
 ```
 
 
-<img src="figs/shiny_layout5.png" width="266" style="display: block; margin: auto;" />
+<img src="figs/shiny_layout5.png" width="300px" style="display: block; margin: auto;" />
 
 Se quiser saber qual aba um usuário selecionou, você pode fornecer o argumento id para `tabsetPanel()` e ele se tornará uma entrada.
 
@@ -1718,7 +1719,7 @@ shinyApp(ui, server)
 
 
 
-<img src="figs/shiny_layout6.png" width="152" style="display: block; margin: auto;" />
+<img src="figs/shiny_layout6.png" width="300px" style="display: block; margin: auto;" />
 
 Se `value` for omitido e `tabsetPanel` tiver um ID, o título será usado.
 
@@ -1743,7 +1744,7 @@ ui <- fluidPage(
 ```
 
 
-<img src="figs/shiny_layout7.png" width="265" style="display: block; margin: auto;" />
+<img src="figs/shiny_layout7.png" width="300px" style="display: block; margin: auto;" />
 
 - `navbarPage()`: exibe os títulos das abas horizontalmente, mas você pode usar `navbarMenu()` para adicionar menus suspensos com um nível adicional de hierarquia.
 
@@ -1759,7 +1760,7 @@ ui <- navbarPage(
 )
 ```
 
-<img src="figs/shiny_layout8.png" width="247" style="display: block; margin: auto;" />
+<img src="figs/shiny_layout8.png" width="300px" style="display: block; margin: auto;" />
 
 
 ### Exercícios {-}
@@ -1937,15 +1938,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
  
-Outros temas disponíveis:
-- cosmo
-- cyborg
-- darkly
-- flatly
-- journal
-- lumen
-- paper
-- readable
+Outros temas disponíveis: cosmo, cyborg, darkly, flatly, journal, lumen, paper, readable
 
 #### Customização avançada com bslib (Bootstrap themes) {-}
 
@@ -2033,15 +2026,15 @@ Todas as funções de entrada, saída e layout do shiny: apenas geram HTML. Voc�
 ```r
 # Código no console
 fluidPage(
-  textInput("name", "What's your name?")
+  textInput("nome", "Qual é o seu nome?")
 )
 # Saída
 <div class="container-fluid">
   <div class="form-group shiny-input-container">
-    <label class="control-label" id="name-label" for="name">What's your name?
-    </label>
-    <input id="name" type="text" class="shiny-input-text form-control" value=""
-    />
+    <label class="control-label" id="nome-label"
+    for="nome">Qual é o seu nome?</label>
+    <input id="nome" type="text" 
+    class="shiny-input-text form-control" value=""/>
   </div>
 </div>
 ```
@@ -2050,11 +2043,11 @@ fluidPage(
 ```r
 ui <- fluidPage(
   HTML(r"(
-    <h1>This is a heading</h1>
-    <p class="my-class">This is some text!</p>
+    <h1>Este é um título</h1>
+    <p>Este é um texto!</p>
     <ul>
-      <li>First bullet</li>
-      <li>Second bullet</li>
+      <li>Primeiro item</li>
+      <li>Segundo item</li>
     </ul>
   )")
 )
@@ -2063,12 +2056,12 @@ ui <- fluidPage(
 Outra opção é usar o auxiliar HTML fornecido pelo Shiny. Existem funções regulares para os elementos mais importantes, como `h1()` e `p()`, e outros podem ser acessados por meio de tags auxiliares. Recriando o HTML acima:
 
 ```r
-ui <- fluidPage(
-  h1("This is a heading"),
-  p("This is some text!", class = "my-class"),
+                    ui <- fluidPage(
+  h1("Este é um título"),
+  p("Este é um texto!", class = "minha-classe"),
   tags$ul(
-    tags$li("First bullet"), 
-    tags$li("Second bullet")
+    tags$li("Primeiro item"),
+    tags$li("Segundo item")
   )
 )
 ```
@@ -2207,7 +2200,7 @@ ui <- fluidPage(
   sliderInput("x1", "x1", 0, min = -10, max = 10),
   sliderInput("x2", "x2", 0, min = -10, max = 10),
   sliderInput("x3", "x3", 0, min = -10, max = 10),
-  actionButton("reset", "Reset")
+  actionButton("reset", "Resetar")
 )
 
 server <- function(input, output, session) {
@@ -2223,14 +2216,15 @@ server <- function(input, output, session) {
 
 ```r
 ui <- fluidPage(
-  numericInput("n", "Simulations", 10),
-  actionButton("simulate", "Simulate")
+  numericInput("n", "Simulações", 10),
+  actionButton("simula", "Simular")
 )
 
 server <- function(input, output, session) {
   observeEvent(input$n, {
-    label <- paste0("Simulate ", input$n, " times")
-    updateActionButton(inputId = "simulate", label = label)
+    texto_botao <- paste0("Simular ", input$n, " vezes")
+    updateActionButton(inputId = "simula",
+    label = texto_botao)
   })
 }
 ```
@@ -2239,106 +2233,136 @@ server <- function(input, output, session) {
 
 Uma aplicação particularmente importante é facilitar a seleção em uma longa lista de opções possíveis, por meio da filtragem passo a passo.
 
-Considere o conjunto de dados para um painel de vendas, obtidos de https://www.kaggle.com/kyanyoga/sample-sales-data.
+Considere o conjunto de dados simulado a seguir:
 
-```r
-library(dplyr)
-## Lendo os dados:
-sales <- readr::read_csv("figs/sales_data_sample.csv", col_types = cols(),
-na = "")
-sales %>%
-  select(TERRITORY, CUSTOMERNAME, ORDERNUMBER, everything()) %>%
-  arrange(ORDERNUMBER)
+
+``` r
+dados <- data.frame(
+  Cidade = c("Curitiba", "Curitiba", "Curitiba",
+             "Londrina", "Londrina", "Londrina",
+             "Maringá", "Maringá"),
+  Escola = c("GP", "GP", "CM",
+             "RM", "RM", "MA",
+             "BJ", "BJ"),
+  Turma = as.integer(c(2, 3, 2,
+            1, 2, 3,
+            1, 2))
+)
+```
+
+Aplicando alguns filtros a estes dados:
+
+
+
+
+``` r
+# library(dplyr)
+# Filtando a Cidade de Curitiba
+cidade_curi <- filter(dados, Cidade == "Curitiba")
+cidade_curi
+```
+
+```
+##     Cidade Escola Turma
+## 1 Curitiba     GP     2
+## 2 Curitiba     GP     3
+## 3 Curitiba     CM     2
+```
+
+``` r
+# Escolas de Curitiba
+unique(cidade_curi$Escola)
+```
+
+```
+## [1] "GP" "CM"
+```
+
+``` r
+# Filtrando uma escola para Curitiba
+escola_curi <- filter(cidade_curi, Escola == "GP")
+escola_curi
+```
+
+```
+##     Cidade Escola Turma
+## 1 Curitiba     GP     2
+## 2 Curitiba     GP     3
 ```
 
 Neste caso, os dados tem uma hierarquia natural:
 
-- Cada território (TERRITORY) contém clientes (CUSTOMERNAME).
-- Cada cliente (CUSTOMERNAME) tem vários pedidos (ORDERNUMBER).
-- Cada pedido (ORDERNUMBER) contém linhas.
+- Cada **Cidade** contém **Escolas**.
+- Cada **Escola** contém **Turmas**
 
 Vamos criar uma interface de usuário onde você possa:
 
-- Selecionar um território para ver todos os clientes.
-- Selecionar um cliente para ver todos os pedidos.
-- Selecionar um pedido para ver as linhas subjacentes.
+- Selecionar um **Cidade** para ver todas as **Escolas**.
+- Selecionar uma **Escola** para ver todas as **Turmas**.
 
-A essência da UI é simples: três caixas de seleção e uma tabela de saída. As opções para as caixas de seleção `customername` e `ordernumber` serão geradas dinamicamente, então usamos `choices = NULL`.
+A essência da UI é simples: duas caixas de seleção e uma tabela de saída. As opções para a caixa de seleção `Escola` serão geradas dinamicamente, então usamos `choices = NULL`.
 
 Na função de servidor:
 
-- É criado um reativo, `territory()`, que contém as linhas das vendas que correspondem ao território selecionado. 
-- Sempre que `territory()` muda, a lista `choices` na caixa de seleção `input$customername` é atualizada.
-- É criado outro reativo, `customer()`, que contém as linhas de `territory()` que correspondem ao cliente selecionado.
-- Sempre que `customer()` muda, a lista `choices` na caixa de seleção `input$ordernumber` é atualizada.
-- Os pedidos selecionados são exibidos em `output$data`.
+- É criado um reativo, `cidade()`, que contém as linhas das escolas e turmas que correspondem à cidade selecionada. 
+- Sempre que `cidade()` muda, a lista `choices` na caixa de seleção `input$escola` é atualizada.
+- É criado outro reativo, `escola()`, que contém as linhas de `cidade()` que correspondem à escola selecionada.
+- Os dados contendo a Cidade e Escola selecionados são exibidos em `output$dados_filtrados`.
 
-Neste caso, o territory e customer foram considerados reativos, por terem sido utilizados em mais de um lugar. Em casos mais simples, isso não seria necessário.
+Neste caso, o `cidade` e `escola` foram considerados reativos, por terem sido utilizados em mais de um lugar. Em casos mais simples, isso não seria necessário.
 
 ```r
+library(shiny)
+
 # Interface do usuário
 ui <- fluidPage(
-  # Menu suspenso para selecionar o território
-  # (usa os valores únicos da coluna TERRITORY)
-  selectInput("territory", "Território", choices = unique(sales$TERRITORY)),
-  
-  # Menu suspenso para selecionar o cliente 
+  # Menu suspenso para selecionar o Cidade
+  # (usa os valores únicos da coluna Cidade)
+  selectInput("cidade", "Escolha uma Cidade:", 
+              choices = unique(dados$Cidade)),
+  # Menu suspenso para selecionar a Escola 
   # (inicialmente vazio, será preenchido dinamicamente)
-  selectInput("customername", "Cliente", choices = NULL),
-  
-  # Menu suspenso para selecionar o número do pedido
-  # (também vazio no início)
-  selectInput("ordernumber", "Pedido", choices = NULL),
-  
+  selectInput("escola", "Escolha uma Escola:", 
+              choices = NULL),
   # Local onde será exibida a tabela com os dados filtrados
-  tableOutput("data")
+  tableOutput("dados_filtrados")
 )
 
 # Lógica do servidor
 server <- function(input, output, session) {
-
-  # Expressão reativa que filtra os dados com base no território selecionado
-  territory <- reactive({
-    filter(sales, TERRITORY == input$territory)
+  # Expressão reativa que filtra os dados 
+  # com base na Cidade selecionada
+  cidade <- reactive({
+    filter(dados, Cidade == input$cidade)
   })
-
-  # Quando o território mudar, atualiza a lista de clientes disponíveis
-  observeEvent(territory(), {
-    # clientes únicos do território filtrado
-    choices <- unique(territory()$CUSTOMERNAME)  
-    # atualiza o selectInput de cliente
-    updateSelectInput(inputId = "customername", choices = choices)  
+  # Quando a cidade mudar, 
+  # atualiza a lista de escolas disponíveis
+  observeEvent(cidade(), {
+    # escolas únicas da Cidade filtrada
+    choices <- unique(cidade()$Escola)  
+    # atualiza o selectInput de escola
+    updateSelectInput(inputId = "escola", choices = choices)  
   })
-  
-  # Expressão reativa que filtra os dados com base no cliente selecionado
-  customer <- reactive({
-    req(input$customername)  # garante que o cliente foi selecionado
-    filter(territory(), CUSTOMERNAME == input$customername)
+  # Expressão reativa que filtra os dados 
+  # com base na escola selecionada
+  escola <- reactive({
+    req(input$escola)  # garante que a escola foi selecionada
+    filter(cidade(), Escola == input$escola)
   })
-
-  # Quando o cliente mudar, atualiza a lista de pedidos disponíveis
-  observeEvent(customer(), {
-    # pedidos únicos do cliente filtrado
-    choices <- unique(customer()$ORDERNUMBER) 
-    # atualiza o selectInput de pedido
-    updateSelectInput(inputId = "ordernumber", choices = choices)  
-  })
-  
-  # Renderiza a tabela com os dados filtrados pelo pedido selecionado
-  output$data <- renderTable({
-    req(input$ordernumber)  # garante que um pedido foi selecionado
-    customer() %>%
-      # filtra pelo pedido selecionado
-      filter(ORDERNUMBER == input$ordernumber) %>%  
+  # Renderiza a tabela com os dados filtrados
+  output$dados_filtrados <- renderTable({
+    escola() %>%
       # seleciona as colunas a serem exibidas
-      select(QUANTITYORDERED, PRICEEACH, PRODUCTCODE)  
+      select(Cidade, Escola, Turma)  
   })
 }
+
+shinyApp(ui, server)
 ```
 
 
 
-Este aplicativo está disponível em: https://hadley.shinyapps.io/ms-update-nested/
+<!-- Este aplicativo está disponível em: https://hadley.shinyapps.io/ms-update-nested/ -->
 
 
 <!-- - Congelamento de entradas reativas -->
