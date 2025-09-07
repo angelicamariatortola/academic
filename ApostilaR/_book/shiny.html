@@ -342,6 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5.3" data-path="shiny.html"><a href="shiny.html#usando-uioutput-e-renderui"><i class="fa fa-check"></i><b>8.5.3</b> Usando <code>uiOutput()</code> e <code>renderUI()</code></a></li>
 <li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#exercícios-31"><i class="fa fa-check"></i>Exercícios</a></li>
 <li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#respostas-38"><i class="fa fa-check"></i>Respostas</a></li>
+<li class="chapter" data-level="8.5.4" data-path="shiny.html"><a href="shiny.html#inclusão-de-fórmulas-no-shiny"><i class="fa fa-check"></i><b>8.5.4</b> Inclusão de fórmulas no Shiny</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="shiny.html"><a href="shiny.html#publicando-aplicativo-em-shinyapps.io"><i class="fa fa-check"></i><b>8.6</b> Publicando aplicativo em shinyapps.io</a>
 <ul>
@@ -2803,11 +2804,11 @@ document.getElementById("submitButton10").addEventListener("click", function()
 <span id="cb90-6"><a href="shiny.html#cb90-6" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb90-7"><a href="shiny.html#cb90-7" tabindex="-1"></a>  output<span class="sc">$</span>controle <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
 <span id="cb90-8"><a href="shiny.html#cb90-8" tabindex="-1"></a>    <span class="cf">if</span> (input<span class="sc">$</span>type <span class="sc">==</span> <span class="st">&quot;slider&quot;</span>) {</span>
-<span id="cb90-9"><a href="shiny.html#cb90-9" tabindex="-1"></a>      <span class="fu">sliderInput</span>(<span class="st">&quot;dynamic&quot;</span>, input<span class="sc">$</span>label, <span class="at">value =</span> <span class="dv">0</span>, <span class="at">min =</span> <span class="dv">0</span>, </span>
-<span id="cb90-10"><a href="shiny.html#cb90-10" tabindex="-1"></a>      <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb90-9"><a href="shiny.html#cb90-9" tabindex="-1"></a>      <span class="fu">sliderInput</span>(<span class="st">&quot;dynamic&quot;</span>, input<span class="sc">$</span>label, <span class="at">value =</span> <span class="dv">0</span>, </span>
+<span id="cb90-10"><a href="shiny.html#cb90-10" tabindex="-1"></a>      <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
 <span id="cb90-11"><a href="shiny.html#cb90-11" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb90-12"><a href="shiny.html#cb90-12" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;dynamic&quot;</span>, input<span class="sc">$</span>label, <span class="at">value =</span> <span class="dv">0</span>, <span class="at">min =</span> <span class="dv">0</span>, </span>
-<span id="cb90-13"><a href="shiny.html#cb90-13" tabindex="-1"></a>      <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb90-12"><a href="shiny.html#cb90-12" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;dynamic&quot;</span>, input<span class="sc">$</span>label, <span class="at">value =</span> <span class="dv">0</span>, </span>
+<span id="cb90-13"><a href="shiny.html#cb90-13" tabindex="-1"></a>      <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
 <span id="cb90-14"><a href="shiny.html#cb90-14" tabindex="-1"></a>    }</span>
 <span id="cb90-15"><a href="shiny.html#cb90-15" tabindex="-1"></a>  })</span>
 <span id="cb90-16"><a href="shiny.html#cb90-16" tabindex="-1"></a>}</span></code></pre></div>
@@ -2851,51 +2852,57 @@ document.getElementById("submitButton10").addEventListener("click", function()
 <span id="cb91-12"><a href="shiny.html#cb91-12" tabindex="-1"></a>    <span class="cf">if</span> (input<span class="sc">$</span>tipo <span class="sc">==</span> <span class="st">&quot;texto&quot;</span>) {</span>
 <span id="cb91-13"><a href="shiny.html#cb91-13" tabindex="-1"></a>      <span class="fu">textInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Digite algo:&quot;</span>)</span>
 <span id="cb91-14"><a href="shiny.html#cb91-14" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (input<span class="sc">$</span>tipo <span class="sc">==</span> <span class="st">&quot;número&quot;</span>) {</span>
-<span id="cb91-15"><a href="shiny.html#cb91-15" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Informe um número:&quot;</span>, <span class="at">value =</span> <span class="dv">0</span>)</span>
-<span id="cb91-16"><a href="shiny.html#cb91-16" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (input<span class="sc">$</span>tipo <span class="sc">==</span> <span class="st">&quot;slider&quot;</span>) {</span>
-<span id="cb91-17"><a href="shiny.html#cb91-17" tabindex="-1"></a>      <span class="fu">sliderInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Escolha um valor:&quot;</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>,</span>
-<span id="cb91-18"><a href="shiny.html#cb91-18" tabindex="-1"></a>      <span class="at">value =</span> <span class="dv">50</span>)</span>
-<span id="cb91-19"><a href="shiny.html#cb91-19" tabindex="-1"></a>    }</span>
-<span id="cb91-20"><a href="shiny.html#cb91-20" tabindex="-1"></a>  })</span>
-<span id="cb91-21"><a href="shiny.html#cb91-21" tabindex="-1"></a>  </span>
-<span id="cb91-22"><a href="shiny.html#cb91-22" tabindex="-1"></a>  output<span class="sc">$</span>resposta <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
-<span id="cb91-23"><a href="shiny.html#cb91-23" tabindex="-1"></a>    input<span class="sc">$</span>valor</span>
-<span id="cb91-24"><a href="shiny.html#cb91-24" tabindex="-1"></a>  })</span>
-<span id="cb91-25"><a href="shiny.html#cb91-25" tabindex="-1"></a>}</span>
-<span id="cb91-26"><a href="shiny.html#cb91-26" tabindex="-1"></a><span class="do">## ou </span></span>
-<span id="cb91-27"><a href="shiny.html#cb91-27" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb91-28"><a href="shiny.html#cb91-28" tabindex="-1"></a>  output<span class="sc">$</span>entrada <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
-<span id="cb91-29"><a href="shiny.html#cb91-29" tabindex="-1"></a>    <span class="cf">switch</span>(input<span class="sc">$</span>tipo,</span>
-<span id="cb91-30"><a href="shiny.html#cb91-30" tabindex="-1"></a>           <span class="st">&quot;texto&quot;</span> <span class="ot">=</span> <span class="fu">textInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Digite algo:&quot;</span>),</span>
-<span id="cb91-31"><a href="shiny.html#cb91-31" tabindex="-1"></a>           <span class="st">&quot;número&quot;</span> <span class="ot">=</span> <span class="fu">numericInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Informe um número:&quot;</span>, </span>
-<span id="cb91-32"><a href="shiny.html#cb91-32" tabindex="-1"></a>           <span class="at">value =</span> <span class="dv">0</span>),</span>
-<span id="cb91-33"><a href="shiny.html#cb91-33" tabindex="-1"></a>           <span class="st">&quot;slider&quot;</span> <span class="ot">=</span> <span class="fu">sliderInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Escolha um valor:&quot;</span>, </span>
-<span id="cb91-34"><a href="shiny.html#cb91-34" tabindex="-1"></a>           <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">value =</span> <span class="dv">50</span>)</span>
-<span id="cb91-35"><a href="shiny.html#cb91-35" tabindex="-1"></a>    )</span>
-<span id="cb91-36"><a href="shiny.html#cb91-36" tabindex="-1"></a>  })</span>
-<span id="cb91-37"><a href="shiny.html#cb91-37" tabindex="-1"></a>  output<span class="sc">$</span>resposta <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
-<span id="cb91-38"><a href="shiny.html#cb91-38" tabindex="-1"></a>    input<span class="sc">$</span>valor</span>
-<span id="cb91-39"><a href="shiny.html#cb91-39" tabindex="-1"></a>  })</span>
-<span id="cb91-40"><a href="shiny.html#cb91-40" tabindex="-1"></a>}</span>
-<span id="cb91-41"><a href="shiny.html#cb91-41" tabindex="-1"></a></span>
-<span id="cb91-42"><a href="shiny.html#cb91-42" tabindex="-1"></a><span class="do">## b.</span></span>
-<span id="cb91-43"><a href="shiny.html#cb91-43" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb91-44"><a href="shiny.html#cb91-44" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="st">&quot;n&quot;</span>, <span class="st">&quot;Quantos nomes?&quot;</span>, <span class="at">value =</span> <span class="dv">1</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">5</span>),</span>
-<span id="cb91-45"><a href="shiny.html#cb91-45" tabindex="-1"></a>  <span class="fu">uiOutput</span>(<span class="st">&quot;nomes&quot;</span>)</span>
-<span id="cb91-46"><a href="shiny.html#cb91-46" tabindex="-1"></a>)</span>
-<span id="cb91-47"><a href="shiny.html#cb91-47" tabindex="-1"></a></span>
-<span id="cb91-48"><a href="shiny.html#cb91-48" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb91-49"><a href="shiny.html#cb91-49" tabindex="-1"></a>  output<span class="sc">$</span>nomes <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
-<span id="cb91-50"><a href="shiny.html#cb91-50" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>n)</span>
-<span id="cb91-51"><a href="shiny.html#cb91-51" tabindex="-1"></a>    <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>input<span class="sc">$</span>n, <span class="cf">function</span>(i) {</span>
-<span id="cb91-52"><a href="shiny.html#cb91-52" tabindex="-1"></a>      <span class="fu">textInput</span>(<span class="at">inputId =</span> <span class="fu">paste0</span>(<span class="st">&quot;nome&quot;</span>, i), <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;Nome&quot;</span>, i))</span>
-<span id="cb91-53"><a href="shiny.html#cb91-53" tabindex="-1"></a>    })</span>
-<span id="cb91-54"><a href="shiny.html#cb91-54" tabindex="-1"></a>  })</span>
-<span id="cb91-55"><a href="shiny.html#cb91-55" tabindex="-1"></a><span class="co"># função lapply: aplica uma função a cada elemento de uma lista, </span></span>
-<span id="cb91-56"><a href="shiny.html#cb91-56" tabindex="-1"></a><span class="co"># ou de vetor, retornando lista.</span></span>
-<span id="cb91-57"><a href="shiny.html#cb91-57" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="cf">function</span>(i) i<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb91-58"><a href="shiny.html#cb91-58" tabindex="-1"></a><span class="co"># ou</span></span>
-<span id="cb91-59"><a href="shiny.html#cb91-59" tabindex="-1"></a><span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(i) i<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<span id="cb91-15"><a href="shiny.html#cb91-15" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Informe um número:&quot;</span>, </span>
+<span id="cb91-16"><a href="shiny.html#cb91-16" tabindex="-1"></a>      <span class="at">value =</span> <span class="dv">0</span>)</span>
+<span id="cb91-17"><a href="shiny.html#cb91-17" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (input<span class="sc">$</span>tipo <span class="sc">==</span> <span class="st">&quot;slider&quot;</span>) {</span>
+<span id="cb91-18"><a href="shiny.html#cb91-18" tabindex="-1"></a>      <span class="fu">sliderInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Escolha um valor:&quot;</span>, </span>
+<span id="cb91-19"><a href="shiny.html#cb91-19" tabindex="-1"></a>      <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>,</span>
+<span id="cb91-20"><a href="shiny.html#cb91-20" tabindex="-1"></a>      <span class="at">value =</span> <span class="dv">50</span>)</span>
+<span id="cb91-21"><a href="shiny.html#cb91-21" tabindex="-1"></a>    }</span>
+<span id="cb91-22"><a href="shiny.html#cb91-22" tabindex="-1"></a>  })</span>
+<span id="cb91-23"><a href="shiny.html#cb91-23" tabindex="-1"></a>  </span>
+<span id="cb91-24"><a href="shiny.html#cb91-24" tabindex="-1"></a>  output<span class="sc">$</span>resposta <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb91-25"><a href="shiny.html#cb91-25" tabindex="-1"></a>    input<span class="sc">$</span>valor</span>
+<span id="cb91-26"><a href="shiny.html#cb91-26" tabindex="-1"></a>  })</span>
+<span id="cb91-27"><a href="shiny.html#cb91-27" tabindex="-1"></a>}</span>
+<span id="cb91-28"><a href="shiny.html#cb91-28" tabindex="-1"></a><span class="do">## ou </span></span>
+<span id="cb91-29"><a href="shiny.html#cb91-29" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb91-30"><a href="shiny.html#cb91-30" tabindex="-1"></a>  output<span class="sc">$</span>entrada <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb91-31"><a href="shiny.html#cb91-31" tabindex="-1"></a>    <span class="cf">switch</span>(input<span class="sc">$</span>tipo,</span>
+<span id="cb91-32"><a href="shiny.html#cb91-32" tabindex="-1"></a>       <span class="st">&quot;texto&quot;</span> <span class="ot">=</span> <span class="fu">textInput</span>(<span class="st">&quot;valor&quot;</span>, <span class="st">&quot;Digite algo:&quot;</span>),</span>
+<span id="cb91-33"><a href="shiny.html#cb91-33" tabindex="-1"></a>       <span class="st">&quot;número&quot;</span> <span class="ot">=</span> <span class="fu">numericInput</span>(<span class="st">&quot;valor&quot;</span>, </span>
+<span id="cb91-34"><a href="shiny.html#cb91-34" tabindex="-1"></a>       <span class="st">&quot;Informe um número:&quot;</span>, </span>
+<span id="cb91-35"><a href="shiny.html#cb91-35" tabindex="-1"></a>       <span class="at">value =</span> <span class="dv">0</span>),</span>
+<span id="cb91-36"><a href="shiny.html#cb91-36" tabindex="-1"></a>       <span class="st">&quot;slider&quot;</span> <span class="ot">=</span> <span class="fu">sliderInput</span>(<span class="st">&quot;valor&quot;</span>, </span>
+<span id="cb91-37"><a href="shiny.html#cb91-37" tabindex="-1"></a>       <span class="st">&quot;Escolha um valor:&quot;</span>, </span>
+<span id="cb91-38"><a href="shiny.html#cb91-38" tabindex="-1"></a>       <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">value =</span> <span class="dv">50</span>)</span>
+<span id="cb91-39"><a href="shiny.html#cb91-39" tabindex="-1"></a>    )</span>
+<span id="cb91-40"><a href="shiny.html#cb91-40" tabindex="-1"></a>  })</span>
+<span id="cb91-41"><a href="shiny.html#cb91-41" tabindex="-1"></a>  output<span class="sc">$</span>resposta <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb91-42"><a href="shiny.html#cb91-42" tabindex="-1"></a>    input<span class="sc">$</span>valor</span>
+<span id="cb91-43"><a href="shiny.html#cb91-43" tabindex="-1"></a>  })</span>
+<span id="cb91-44"><a href="shiny.html#cb91-44" tabindex="-1"></a>}</span>
+<span id="cb91-45"><a href="shiny.html#cb91-45" tabindex="-1"></a></span>
+<span id="cb91-46"><a href="shiny.html#cb91-46" tabindex="-1"></a><span class="do">## b.</span></span>
+<span id="cb91-47"><a href="shiny.html#cb91-47" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb91-48"><a href="shiny.html#cb91-48" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="st">&quot;n&quot;</span>, <span class="st">&quot;Quantos nomes?&quot;</span>, <span class="at">value =</span> <span class="dv">1</span>, </span>
+<span id="cb91-49"><a href="shiny.html#cb91-49" tabindex="-1"></a>  <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">5</span>),</span>
+<span id="cb91-50"><a href="shiny.html#cb91-50" tabindex="-1"></a>  <span class="fu">uiOutput</span>(<span class="st">&quot;nomes&quot;</span>)</span>
+<span id="cb91-51"><a href="shiny.html#cb91-51" tabindex="-1"></a>)</span>
+<span id="cb91-52"><a href="shiny.html#cb91-52" tabindex="-1"></a></span>
+<span id="cb91-53"><a href="shiny.html#cb91-53" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb91-54"><a href="shiny.html#cb91-54" tabindex="-1"></a>  output<span class="sc">$</span>nomes <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb91-55"><a href="shiny.html#cb91-55" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>n)</span>
+<span id="cb91-56"><a href="shiny.html#cb91-56" tabindex="-1"></a>    <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>input<span class="sc">$</span>n, <span class="cf">function</span>(i) {</span>
+<span id="cb91-57"><a href="shiny.html#cb91-57" tabindex="-1"></a>      <span class="fu">textInput</span>(<span class="at">inputId =</span> <span class="fu">paste0</span>(<span class="st">&quot;nome&quot;</span>, i), </span>
+<span id="cb91-58"><a href="shiny.html#cb91-58" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;Nome&quot;</span>, i))</span>
+<span id="cb91-59"><a href="shiny.html#cb91-59" tabindex="-1"></a>    })</span>
+<span id="cb91-60"><a href="shiny.html#cb91-60" tabindex="-1"></a>  })</span>
+<span id="cb91-61"><a href="shiny.html#cb91-61" tabindex="-1"></a><span class="co"># função lapply: aplica uma função a cada elemento de uma lista, </span></span>
+<span id="cb91-62"><a href="shiny.html#cb91-62" tabindex="-1"></a><span class="co"># ou de vetor, retornando lista.</span></span>
+<span id="cb91-63"><a href="shiny.html#cb91-63" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="cf">function</span>(i) i<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb91-64"><a href="shiny.html#cb91-64" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb91-65"><a href="shiny.html#cb91-65" tabindex="-1"></a><span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(i) i<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 </div>
 </div>
 <p><input type="password" id="passwordInput11" placeholder="Digite a senha">
@@ -2916,13 +2923,235 @@ document.getElementById("submitButton11").addEventListener("click", function()
   }
 });
 </script>
+<div id="inclusão-de-fórmulas-no-shiny" class="section level3 hasAnchor" number="8.5.4">
+<h3><span class="header-section-number">8.5.4</span> Inclusão de fórmulas no Shiny<a href="shiny.html#inclusão-de-fórmulas-no-shiny" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="introdução" class="section level4 unnumbered hasAnchor">
+<h4>1. Introdução<a href="shiny.html#introdução" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>O <strong>Shiny</strong> permite inserir fórmulas matemáticas usando <strong>LaTeX</strong> com o auxílio do <a href="https://www.mathjax.org/">MathJax</a>. Para habilitar o recurso, basta incluir a função <code>withMathJax()</code>.</p>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="shiny.html#cb92-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb92-2"><a href="shiny.html#cb92-2" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb92-3"><a href="shiny.html#cb92-3" tabindex="-1"></a>  <span class="co"># Título do app</span></span>
+<span id="cb92-4"><a href="shiny.html#cb92-4" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;Equação de segundo grau&quot;</span>),</span>
+<span id="cb92-5"><a href="shiny.html#cb92-5" tabindex="-1"></a>  <span class="co"># Fórmula em LaTeX</span></span>
+<span id="cb92-6"><a href="shiny.html#cb92-6" tabindex="-1"></a>  <span class="fu">withMathJax</span>(<span class="st">&quot;$$x = </span><span class="sc">\\</span><span class="st">frac{-b </span><span class="sc">\\</span><span class="st">pm </span><span class="sc">\\</span><span class="st">sqrt{b^2 - 4ac}}{2a}$$&quot;</span>)</span>
+<span id="cb92-7"><a href="shiny.html#cb92-7" tabindex="-1"></a>)</span>
+<span id="cb92-8"><a href="shiny.html#cb92-8" tabindex="-1"></a></span>
+<span id="cb92-9"><a href="shiny.html#cb92-9" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {}</span>
+<span id="cb92-10"><a href="shiny.html#cb92-10" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p><strong>Observação:</strong> Observe a barra dupla antes das funções do <code>LaTeX</code>. No Latex, a fórmula ficaria:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="shiny.html#cb93-1" tabindex="-1"></a>x <span class="ot">=</span> \frac{<span class="sc">-</span>b \pm \sqrt{b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> 4ac}}{2a}</span></code></pre></div>
+</div>
+<div id="fórmula-fixa" class="section level4 unnumbered hasAnchor">
+<h4>2. Fórmula fixa<a href="shiny.html#fórmula-fixa" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A fórmula fica sempre igual, sem depender dos inputs.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="shiny.html#cb94-1" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb94-2"><a href="shiny.html#cb94-2" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;Energia cinética&quot;</span>),</span>
+<span id="cb94-3"><a href="shiny.html#cb94-3" tabindex="-1"></a>  <span class="fu">withMathJax</span>(<span class="st">&quot;$$E_c = </span><span class="sc">\\</span><span class="st">dfrac{1}{2} m v^2$$&quot;</span>)</span>
+<span id="cb94-4"><a href="shiny.html#cb94-4" tabindex="-1"></a>)</span></code></pre></div>
+<p><strong>Observação:</strong> Observe a barra dupla antes das funções do <code>LaTeX</code>. No Latex, a fórmula ficaria:</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="shiny.html#cb95-1" tabindex="-1"></a>E_c <span class="ot">=</span> \dfrac{<span class="dv">1</span>}{<span class="dv">2</span>} m v<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+</div>
+<div id="fórmula-dinâmica-alterados-pelos-inputs-do-usuário" class="section level4 unnumbered hasAnchor">
+<h4>3. Fórmula dinâmica (alterados pelos inputs do usuário)<a href="shiny.html#fórmula-dinâmica-alterados-pelos-inputs-do-usuário" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Podemos substituir os valores inseridos pelo usuário diretamente na fórmula.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="shiny.html#cb96-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb96-2"><a href="shiny.html#cb96-2" tabindex="-1"></a></span>
+<span id="cb96-3"><a href="shiny.html#cb96-3" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb96-4"><a href="shiny.html#cb96-4" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;Energia cinética dinâmica&quot;</span>),</span>
+<span id="cb96-5"><a href="shiny.html#cb96-5" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb96-6"><a href="shiny.html#cb96-6" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb96-7"><a href="shiny.html#cb96-7" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;massa&quot;</span>, <span class="st">&quot;Massa (kg):&quot;</span>, <span class="dv">1000</span>, <span class="at">min =</span> <span class="dv">0</span>),</span>
+<span id="cb96-8"><a href="shiny.html#cb96-8" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;vel&quot;</span>, <span class="st">&quot;Velocidade (m/s):&quot;</span>, <span class="dv">20</span>, <span class="at">min =</span> <span class="dv">0</span>)</span>
+<span id="cb96-9"><a href="shiny.html#cb96-9" tabindex="-1"></a>    ),</span>
+<span id="cb96-10"><a href="shiny.html#cb96-10" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb96-11"><a href="shiny.html#cb96-11" tabindex="-1"></a>      <span class="fu">h4</span>(<span class="st">&quot;Cálculo com substituição:&quot;</span>),</span>
+<span id="cb96-12"><a href="shiny.html#cb96-12" tabindex="-1"></a>      <span class="fu">uiOutput</span>(<span class="st">&quot;formulaSubst&quot;</span>)</span>
+<span id="cb96-13"><a href="shiny.html#cb96-13" tabindex="-1"></a>    )</span>
+<span id="cb96-14"><a href="shiny.html#cb96-14" tabindex="-1"></a>  )</span>
+<span id="cb96-15"><a href="shiny.html#cb96-15" tabindex="-1"></a>)</span>
+<span id="cb96-16"><a href="shiny.html#cb96-16" tabindex="-1"></a></span>
+<span id="cb96-17"><a href="shiny.html#cb96-17" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb96-18"><a href="shiny.html#cb96-18" tabindex="-1"></a>  output<span class="sc">$</span>formulaSubst <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb96-19"><a href="shiny.html#cb96-19" tabindex="-1"></a>    E <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">*</span> input<span class="sc">$</span>massa <span class="sc">*</span> input<span class="sc">$</span>vel<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb96-20"><a href="shiny.html#cb96-20" tabindex="-1"></a>    <span class="fu">withMathJax</span>(</span>
+<span id="cb96-21"><a href="shiny.html#cb96-21" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">&quot;$$E_c = </span><span class="sc">\\</span><span class="st">dfrac{1}{2} </span><span class="sc">\\</span><span class="st">times %s </span><span class="sc">\\</span><span class="st">times %s^2 = %.2f</span><span class="sc">\\</span><span class="st"> </span><span class="sc">\\</span><span class="st">text{J}$$&quot;</span>,</span>
+<span id="cb96-22"><a href="shiny.html#cb96-22" tabindex="-1"></a>              input<span class="sc">$</span>massa, input<span class="sc">$</span>vel, E)</span>
+<span id="cb96-23"><a href="shiny.html#cb96-23" tabindex="-1"></a>    )</span>
+<span id="cb96-24"><a href="shiny.html#cb96-24" tabindex="-1"></a>  })</span>
+<span id="cb96-25"><a href="shiny.html#cb96-25" tabindex="-1"></a>}</span>
+<span id="cb96-26"><a href="shiny.html#cb96-26" tabindex="-1"></a></span>
+<span id="cb96-27"><a href="shiny.html#cb96-27" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p><strong>Observações:</strong></p>
+<ul>
+<li>Os símbolos <code>%s</code>, <code>%.2f</code>, etc, aparecem porque usamos a função <code>sprintf()</code> no R. Ela serve para montar strings formatadas, ou seja, construir um texto onde você “encaixa” valores em lugares específicos.</li>
+<li>No exemplo anterior, apareceram os símbolos <code>%s</code>, <code>%s^2</code> e <code>%.2f</code>, os quais serão substituídos respectivamente pelas entradas: <code>input$massa</code>, <code>input$vel^2</code> e <code>E</code>.</li>
+</ul>
+<p>Principais marcadores usados:</p>
+<ul>
+<li><code>%s</code> → insere um valor como string (texto).
+Exemplo:</li>
+</ul>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="shiny.html#cb97-1" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">&quot;massa = %s kg&quot;</span>, <span class="dv">1000</span>)</span>
+<span id="cb97-2"><a href="shiny.html#cb97-2" tabindex="-1"></a><span class="co"># &quot;massa = 1000 kg&quot;</span></span></code></pre></div>
+<ul>
+<li><code>%f</code> → insere um número no formato decimal.
+Exemplo:</li>
+</ul>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="shiny.html#cb98-1" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">&quot;energia = %f J&quot;</span>, <span class="dv">200000</span>)</span>
+<span id="cb98-2"><a href="shiny.html#cb98-2" tabindex="-1"></a><span class="co"># &quot;energia = 200000.000000 J&quot;</span></span></code></pre></div>
+<ul>
+<li><code>%.2f</code> → insere um número decimal com 2 casas decimais.
+Exemplo:</li>
+</ul>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="shiny.html#cb99-1" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">&quot;energia = %.2f J&quot;</span>, <span class="dv">200000</span>)</span>
+<span id="cb99-2"><a href="shiny.html#cb99-2" tabindex="-1"></a><span class="co"># &quot;energia = 200000.00 J&quot;</span></span></code></pre></div>
+<p>Para outras casas decimais, alterar o número antes do f:</p>
+<ul>
+<li><code>%.0f</code> → arredonda para inteiro.</li>
+<li><code>%.3f</code> → mostra 3 casas decimais.</li>
+</ul>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="shiny.html#cb100-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb100-2"><a href="shiny.html#cb100-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb100-3"><a href="shiny.html#cb100-3" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">*</span> m <span class="sc">*</span> v<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb100-4"><a href="shiny.html#cb100-4" tabindex="-1"></a></span>
+<span id="cb100-5"><a href="shiny.html#cb100-5" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">&quot;$$E_c = </span><span class="sc">\\</span><span class="st">tfrac{1}{2} </span><span class="sc">\\</span><span class="st">times %s </span><span class="sc">\\</span><span class="st">times %s^2 = %.2f </span><span class="sc">\\</span><span class="st"> J$$&quot;</span>,</span>
+<span id="cb100-6"><a href="shiny.html#cb100-6" tabindex="-1"></a>         m, v, E)</span></code></pre></div>
+<p>Saída (renderizada pelo LaTeX):
+<span class="math display">\[E_c = \dfrac{1}{2} \times 1000 \times 20^2 = 200000.00 \ J\]</span></p>
+<p><strong>Tabela de formatação <code>sprintf()</code> em R:</strong></p>
+<table style="width:100%;">
+<colgroup>
+<col width="8%" />
+<col width="33%" />
+<col width="38%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Marcador</th>
+<th>Significado</th>
+<th>Exemplo</th>
+<th>Saída</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%s</code></td>
+<td>String/texto</td>
+<td><code>sprintf("Nome: %s", "Alice")</code></td>
+<td><code>"Nome: Alice"</code></td>
+</tr>
+<tr class="even">
+<td><code>%d</code></td>
+<td>Número inteiro</td>
+<td><code>sprintf("Idade: %d", 25)</code></td>
+<td><code>"Idade: 25"</code></td>
+</tr>
+<tr class="odd">
+<td><code>%f</code></td>
+<td>Número decimal</td>
+<td><code>sprintf("Valor: %f", 3.14159)</code></td>
+<td><code>"Valor: 3.141590"</code></td>
+</tr>
+<tr class="even">
+<td><code>%.2f</code></td>
+<td>Decimal com 2 casas</td>
+<td><code>sprintf("Valor: %.2f", 3.14159)</code></td>
+<td><code>"Valor: 3.14"</code></td>
+</tr>
+<tr class="odd">
+<td><code>%e</code></td>
+<td>Notação científica (exponencial)</td>
+<td><code>sprintf("Valor: %e", 12345)</code></td>
+<td><code>"Valor: 1.234500e+04"</code></td>
+</tr>
+<tr class="even">
+<td><code>%g</code></td>
+<td>Mais compacto (decimal ou científica)</td>
+<td><code>sprintf("Valor: %g", 12345)</code></td>
+<td><code>"12345"</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Outros Exemplos:</strong></p>
+<p><strong>a)</strong> Lei de Ohm: <span class="math display">\[V=R.I\]</span></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="shiny.html#cb101-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb101-2"><a href="shiny.html#cb101-2" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb101-3"><a href="shiny.html#cb101-3" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;Lei de Ohm&quot;</span>),</span>
+<span id="cb101-4"><a href="shiny.html#cb101-4" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb101-5"><a href="shiny.html#cb101-5" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb101-6"><a href="shiny.html#cb101-6" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;Resistência (Ω):&quot;</span>, <span class="dv">10</span>, <span class="at">min =</span> <span class="dv">0</span>),</span>
+<span id="cb101-7"><a href="shiny.html#cb101-7" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;Corrente (A):&quot;</span>, <span class="dv">2</span>, <span class="at">min =</span> <span class="dv">0</span>)</span>
+<span id="cb101-8"><a href="shiny.html#cb101-8" tabindex="-1"></a>    ),</span>
+<span id="cb101-9"><a href="shiny.html#cb101-9" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb101-10"><a href="shiny.html#cb101-10" tabindex="-1"></a>      <span class="fu">uiOutput</span>(<span class="st">&quot;leiOhm&quot;</span>)</span>
+<span id="cb101-11"><a href="shiny.html#cb101-11" tabindex="-1"></a>    )</span>
+<span id="cb101-12"><a href="shiny.html#cb101-12" tabindex="-1"></a>  )</span>
+<span id="cb101-13"><a href="shiny.html#cb101-13" tabindex="-1"></a>)</span>
+<span id="cb101-14"><a href="shiny.html#cb101-14" tabindex="-1"></a></span>
+<span id="cb101-15"><a href="shiny.html#cb101-15" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb101-16"><a href="shiny.html#cb101-16" tabindex="-1"></a>  output<span class="sc">$</span>leiOhm <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb101-17"><a href="shiny.html#cb101-17" tabindex="-1"></a>    V <span class="ot">&lt;-</span> input<span class="sc">$</span>R <span class="sc">*</span> input<span class="sc">$</span>I</span>
+<span id="cb101-18"><a href="shiny.html#cb101-18" tabindex="-1"></a>    <span class="fu">withMathJax</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span></span>
+<span id="cb101-19"><a href="shiny.html#cb101-19" tabindex="-1"></a><span class="st">      $$</span><span class="sc">\\</span><span class="st">large{</span><span class="sc">\\</span><span class="st">text{A equação é:}}$$</span></span>
+<span id="cb101-20"><a href="shiny.html#cb101-20" tabindex="-1"></a><span class="st">      $$V = R </span><span class="sc">\\</span><span class="st">cdot I$$</span></span>
+<span id="cb101-21"><a href="shiny.html#cb101-21" tabindex="-1"></a><span class="st">      $$</span><span class="sc">\\</span><span class="st">text{Substituindo os valores:}$$</span></span>
+<span id="cb101-22"><a href="shiny.html#cb101-22" tabindex="-1"></a><span class="st">      $$V = %s </span><span class="sc">\\</span><span class="st">times %s = %.2f</span><span class="sc">\\</span><span class="st"> </span><span class="sc">\\</span><span class="st">text{V}$$&quot;</span>,</span>
+<span id="cb101-23"><a href="shiny.html#cb101-23" tabindex="-1"></a>      input<span class="sc">$</span>R, input<span class="sc">$</span>I, V))</span>
+<span id="cb101-24"><a href="shiny.html#cb101-24" tabindex="-1"></a>  })</span>
+<span id="cb101-25"><a href="shiny.html#cb101-25" tabindex="-1"></a>}</span>
+<span id="cb101-26"><a href="shiny.html#cb101-26" tabindex="-1"></a></span>
+<span id="cb101-27"><a href="shiny.html#cb101-27" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Equação de Torricelli</li>
+</ol>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="shiny.html#cb102-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb102-2"><a href="shiny.html#cb102-2" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb102-3"><a href="shiny.html#cb102-3" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;Equação de Torricelli&quot;</span>),</span>
+<span id="cb102-4"><a href="shiny.html#cb102-4" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb102-5"><a href="shiny.html#cb102-5" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb102-6"><a href="shiny.html#cb102-6" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;v0&quot;</span>, <span class="st">&quot;Velocidade inicial (m/s):&quot;</span>, <span class="dv">0</span>),</span>
+<span id="cb102-7"><a href="shiny.html#cb102-7" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;Aceleração (m/s²):&quot;</span>, <span class="dv">10</span>),</span>
+<span id="cb102-8"><a href="shiny.html#cb102-8" tabindex="-1"></a>      <span class="fu">numericInput</span>(<span class="st">&quot;s&quot;</span>, <span class="st">&quot;Deslocamento (m):&quot;</span>, <span class="dv">5</span>)</span>
+<span id="cb102-9"><a href="shiny.html#cb102-9" tabindex="-1"></a>    ),</span>
+<span id="cb102-10"><a href="shiny.html#cb102-10" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb102-11"><a href="shiny.html#cb102-11" tabindex="-1"></a>      <span class="fu">uiOutput</span>(<span class="st">&quot;torricelli&quot;</span>)</span>
+<span id="cb102-12"><a href="shiny.html#cb102-12" tabindex="-1"></a>    )</span>
+<span id="cb102-13"><a href="shiny.html#cb102-13" tabindex="-1"></a>  )</span>
+<span id="cb102-14"><a href="shiny.html#cb102-14" tabindex="-1"></a>)</span>
+<span id="cb102-15"><a href="shiny.html#cb102-15" tabindex="-1"></a></span>
+<span id="cb102-16"><a href="shiny.html#cb102-16" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb102-17"><a href="shiny.html#cb102-17" tabindex="-1"></a>  output<span class="sc">$</span>torricelli <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb102-18"><a href="shiny.html#cb102-18" tabindex="-1"></a>    v <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(input<span class="sc">$</span>v0<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> input<span class="sc">$</span>a <span class="sc">*</span> input<span class="sc">$</span>s)</span>
+<span id="cb102-19"><a href="shiny.html#cb102-19" tabindex="-1"></a>    </span>
+<span id="cb102-20"><a href="shiny.html#cb102-20" tabindex="-1"></a>    <span class="fu">withMathJax</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span></span>
+<span id="cb102-21"><a href="shiny.html#cb102-21" tabindex="-1"></a><span class="st">      $$</span><span class="sc">\\</span><span class="st">large{</span><span class="sc">\\</span><span class="st">textbf{A equação é:}}$$</span></span>
+<span id="cb102-22"><a href="shiny.html#cb102-22" tabindex="-1"></a><span class="st">      $$v^2 = v_0^2 + 2a</span><span class="sc">\\</span><span class="st">Delta s$$</span></span>
+<span id="cb102-23"><a href="shiny.html#cb102-23" tabindex="-1"></a><span class="st">      $$</span><span class="sc">\\</span><span class="st">textbf{Substituindo os valores:}$$</span></span>
+<span id="cb102-24"><a href="shiny.html#cb102-24" tabindex="-1"></a><span class="st">      $$v^2 = %s^2 + 2 </span><span class="sc">\\</span><span class="st">times %s </span><span class="sc">\\</span><span class="st">times %s = %.2f^2$$</span></span>
+<span id="cb102-25"><a href="shiny.html#cb102-25" tabindex="-1"></a><span class="st">      &quot;</span>,</span>
+<span id="cb102-26"><a href="shiny.html#cb102-26" tabindex="-1"></a>      input<span class="sc">$</span>v0, input<span class="sc">$</span>a, input<span class="sc">$</span>s, v))</span>
+<span id="cb102-27"><a href="shiny.html#cb102-27" tabindex="-1"></a>  })</span>
+<span id="cb102-28"><a href="shiny.html#cb102-28" tabindex="-1"></a>}</span>
+<span id="cb102-29"><a href="shiny.html#cb102-29" tabindex="-1"></a></span>
+<span id="cb102-30"><a href="shiny.html#cb102-30" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p><strong>Observações:</strong></p>
+<ul>
+<li>Fómulas do Latex devem ser incluidas em <code>$$...$$</code> e com barra dupla antes de suas funções.</li>
+<li>A função <code>withMathJax()</code> deve ser usada para fórmulas.</li>
+<li>Para valores dinâmicos, utilizar <code>renderUI() + sprintf()</code> para construir a string LaTeX.</li>
+<li>Valores dinâmicos devem ser especificados usando: <code>%s</code>, <code>%d</code>, <code>%.nf</code> ou <code>%g</code>, de acordo com a sua formatação numérica específica.</li>
+</ul>
+</div>
+</div>
 </div>
 <div id="publicando-aplicativo-em-shinyapps.io" class="section level2 hasAnchor" number="8.6">
 <h2><span class="header-section-number">8.6</span> Publicando aplicativo em shinyapps.io<a href="shiny.html#publicando-aplicativo-em-shinyapps.io" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="instalar-o-pacote-rsconnect-no-r" class="section level4 unnumbered hasAnchor">
 <h4>1. Instalar o pacote <code>rsconnect</code> no R<a href="shiny.html#instalar-o-pacote-rsconnect-no-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Abra o R ou RStudio e execute:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="shiny.html#cb92-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rsconnect&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="shiny.html#cb103-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rsconnect&quot;</span>)</span></code></pre></div>
 </div>
 <div id="criar-uma-conta-no-shinyapps.io" class="section level4 unnumbered hasAnchor">
 <h4>2. Criar uma conta no shinyapps.io<a href="shiny.html#criar-uma-conta-no-shinyapps.io" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -2966,28 +3195,28 @@ document.getElementById("submitButton11").addEventListener("click", function()
 <div id="exercício" class="section level3 unnumbered hasAnchor">
 <h3>Exercício:<a href="shiny.html#exercício" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Crie uma conta no shinyapps.io e publique o aplicativo a seguir:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="shiny.html#cb94-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb94-2"><a href="shiny.html#cb94-2" tabindex="-1"></a></span>
-<span id="cb94-3"><a href="shiny.html#cb94-3" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb94-4"><a href="shiny.html#cb94-4" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;Meu Primeiro App&quot;</span>),</span>
-<span id="cb94-5"><a href="shiny.html#cb94-5" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb94-6"><a href="shiny.html#cb94-6" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb94-7"><a href="shiny.html#cb94-7" tabindex="-1"></a>      <span class="fu">selectInput</span>(<span class="st">&quot;var&quot;</span>, <span class="st">&quot;Variável:&quot;</span>, </span>
-<span id="cb94-8"><a href="shiny.html#cb94-8" tabindex="-1"></a>      <span class="at">choices =</span> <span class="fu">names</span>(mtcars))</span>
-<span id="cb94-9"><a href="shiny.html#cb94-9" tabindex="-1"></a>    ),</span>
-<span id="cb94-10"><a href="shiny.html#cb94-10" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb94-11"><a href="shiny.html#cb94-11" tabindex="-1"></a>      <span class="fu">plotOutput</span>(<span class="st">&quot;grafico&quot;</span>)</span>
-<span id="cb94-12"><a href="shiny.html#cb94-12" tabindex="-1"></a>    )</span>
-<span id="cb94-13"><a href="shiny.html#cb94-13" tabindex="-1"></a>  )</span>
-<span id="cb94-14"><a href="shiny.html#cb94-14" tabindex="-1"></a>)</span>
-<span id="cb94-15"><a href="shiny.html#cb94-15" tabindex="-1"></a></span>
-<span id="cb94-16"><a href="shiny.html#cb94-16" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb94-17"><a href="shiny.html#cb94-17" tabindex="-1"></a>  output<span class="sc">$</span>grafico <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb94-18"><a href="shiny.html#cb94-18" tabindex="-1"></a>    <span class="fu">hist</span>(mtcars[[input<span class="sc">$</span>var]], <span class="at">main =</span> input<span class="sc">$</span>var)</span>
-<span id="cb94-19"><a href="shiny.html#cb94-19" tabindex="-1"></a>  })</span>
-<span id="cb94-20"><a href="shiny.html#cb94-20" tabindex="-1"></a>}</span>
-<span id="cb94-21"><a href="shiny.html#cb94-21" tabindex="-1"></a></span>
-<span id="cb94-22"><a href="shiny.html#cb94-22" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="shiny.html#cb105-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb105-2"><a href="shiny.html#cb105-2" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="shiny.html#cb105-3" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb105-4"><a href="shiny.html#cb105-4" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;Meu Primeiro App&quot;</span>),</span>
+<span id="cb105-5"><a href="shiny.html#cb105-5" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb105-6"><a href="shiny.html#cb105-6" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb105-7"><a href="shiny.html#cb105-7" tabindex="-1"></a>      <span class="fu">selectInput</span>(<span class="st">&quot;var&quot;</span>, <span class="st">&quot;Variável:&quot;</span>, </span>
+<span id="cb105-8"><a href="shiny.html#cb105-8" tabindex="-1"></a>      <span class="at">choices =</span> <span class="fu">names</span>(mtcars))</span>
+<span id="cb105-9"><a href="shiny.html#cb105-9" tabindex="-1"></a>    ),</span>
+<span id="cb105-10"><a href="shiny.html#cb105-10" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb105-11"><a href="shiny.html#cb105-11" tabindex="-1"></a>      <span class="fu">plotOutput</span>(<span class="st">&quot;grafico&quot;</span>)</span>
+<span id="cb105-12"><a href="shiny.html#cb105-12" tabindex="-1"></a>    )</span>
+<span id="cb105-13"><a href="shiny.html#cb105-13" tabindex="-1"></a>  )</span>
+<span id="cb105-14"><a href="shiny.html#cb105-14" tabindex="-1"></a>)</span>
+<span id="cb105-15"><a href="shiny.html#cb105-15" tabindex="-1"></a></span>
+<span id="cb105-16"><a href="shiny.html#cb105-16" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb105-17"><a href="shiny.html#cb105-17" tabindex="-1"></a>  output<span class="sc">$</span>grafico <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb105-18"><a href="shiny.html#cb105-18" tabindex="-1"></a>    <span class="fu">hist</span>(mtcars[[input<span class="sc">$</span>var]], <span class="at">main =</span> input<span class="sc">$</span>var)</span>
+<span id="cb105-19"><a href="shiny.html#cb105-19" tabindex="-1"></a>  })</span>
+<span id="cb105-20"><a href="shiny.html#cb105-20" tabindex="-1"></a>}</span>
+<span id="cb105-21"><a href="shiny.html#cb105-21" tabindex="-1"></a></span>
+<span id="cb105-22"><a href="shiny.html#cb105-22" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
 </div>
 </div>
 <div id="exercícios-do-capítulo-8-entregar-na-lista-2" class="section level2 hasAnchor" number="8.7">

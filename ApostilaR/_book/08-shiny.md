@@ -2694,11 +2694,7 @@ server <- function(input, output, session) {
 - Cada página é representada por um `tabPanel()`, e os botões de navegação chamam `updateTabsetPanel()` para mudar de página.
 - A função `switch_page(i)` constrói o nome da aba a ativar com `paste0("page_", i)`, por exemplo "page_2".
 
-
-
 O resultado pode ser visualizado em: https://hadley.shinyapps.io/ms-wizard
-
-
 
 ### Exercícios {-}
 
@@ -2914,11 +2910,11 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   output$controle <- renderUI({
     if (input$type == "slider") {
-      sliderInput("dynamic", input$label, value = 0, min = 0, 
-      max = 10)
+      sliderInput("dynamic", input$label, value = 0, 
+      min = 0, max = 10)
     } else {
-      numericInput("dynamic", input$label, value = 0, min = 0, 
-      max = 10)
+      numericInput("dynamic", input$label, value = 0, 
+      min = 0, max = 10)
     }
   })
 }
@@ -2933,7 +2929,6 @@ Embora mais personalizável, uma das desvantagens de `renderUI()` é que ele pod
 
 a. Crie um app que mostre um tipo diferente de controle de entrada (`textInput`, `numericInput` ou `sliderInput`) dependendo da opção escolhida pelo usuário.
 
-
 <div style="display: flex; justify-content: center;">
   <img src="figs/shiny_ui41.png" style="width: 34%; margin-right: 1px;">
   <img src="figs/shiny_ui42.png" style="width: 32%; margin-right: 1px;">
@@ -2947,7 +2942,6 @@ b. Crie um app que pergunte ao usuário quantos nomes deseja informar (de 1 a 5)
   <img src="figs/shiny_ui52.png" style="width: 32%; margin-right: 1px;">
   <img src="figs/shiny_ui53.png" style="width: 30%;">
 </div>
-
 
 
 <div id="protectedContent11" style="display:none;">
@@ -2969,9 +2963,11 @@ server <- function(input, output, session) {
     if (input$tipo == "texto") {
       textInput("valor", "Digite algo:")
     } else if (input$tipo == "número") {
-      numericInput("valor", "Informe um número:", value = 0)
+      numericInput("valor", "Informe um número:", 
+      value = 0)
     } else if (input$tipo == "slider") {
-      sliderInput("valor", "Escolha um valor:", min = 0, max = 100,
+      sliderInput("valor", "Escolha um valor:", 
+      min = 0, max = 100,
       value = 50)
     }
   })
@@ -2984,11 +2980,13 @@ server <- function(input, output, session) {
 server <- function(input, output, session) {
   output$entrada <- renderUI({
     switch(input$tipo,
-           "texto" = textInput("valor", "Digite algo:"),
-           "número" = numericInput("valor", "Informe um número:", 
-           value = 0),
-           "slider" = sliderInput("valor", "Escolha um valor:", 
-           min = 0, max = 100, value = 50)
+       "texto" = textInput("valor", "Digite algo:"),
+       "número" = numericInput("valor", 
+       "Informe um número:", 
+       value = 0),
+       "slider" = sliderInput("valor", 
+       "Escolha um valor:", 
+       min = 0, max = 100, value = 50)
     )
   })
   output$resposta <- renderPrint({
@@ -2998,7 +2996,8 @@ server <- function(input, output, session) {
 
 ## b.
 ui <- fluidPage(
-  numericInput("n", "Quantos nomes?", value = 1, min = 1, max = 5),
+  numericInput("n", "Quantos nomes?", value = 1, 
+  min = 1, max = 5),
   uiOutput("nomes")
 )
 
@@ -3006,7 +3005,8 @@ server <- function(input, output, session) {
   output$nomes <- renderUI({
     req(input$n)
     lapply(1:input$n, function(i) {
-      textInput(inputId = paste0("nome", i), label = paste("Nome", i))
+      textInput(inputId = paste0("nome", i), 
+      label = paste("Nome", i))
     })
   })
 # função lapply: aplica uma função a cada elemento de uma lista, 
@@ -3039,6 +3039,224 @@ document.getElementById("submitButton11").addEventListener("click", function()
   }
 });
 </script>
+
+
+### Inclusão de fórmulas no Shiny
+
+#### 1. Introdução {-}
+
+O **Shiny** permite inserir fórmulas matemáticas usando **LaTeX** com o auxílio do [MathJax](https://www.mathjax.org/). Para habilitar o recurso, basta incluir a função `withMathJax()`.
+
+**Exemplo:**
+
+```r
+library(shiny)
+ui <- fluidPage(
+  # Título do app
+  titlePanel("Equação de segundo grau"),
+  # Fórmula em LaTeX
+  withMathJax("$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$")
+)
+
+server <- function(input, output, session) {}
+shinyApp(ui, server)
+``` 
+
+**Observação:** Observe a barra dupla antes das funções do `LaTeX`. No Latex, a fórmula ficaria: 
+```r
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+```
+
+
+#### 2. Fórmula fixa {-}
+
+A fórmula fica sempre igual, sem depender dos inputs.
+
+```r
+ui <- fluidPage(
+  titlePanel("Energia cinética"),
+  withMathJax("$$E_c = \\dfrac{1}{2} m v^2$$")
+)
+```
+
+**Observação:** Observe a barra dupla antes das funções do `LaTeX`. No Latex, a fórmula ficaria: 
+```r
+E_c = \dfrac{1}{2} m v^2
+```
+
+
+#### 3. Fórmula dinâmica (alterados pelos inputs do usuário) {-}
+
+Podemos substituir os valores inseridos pelo usuário diretamente na fórmula.
+
+```r
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("Energia cinética dinâmica"),
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("massa", "Massa (kg):", 1000, min = 0),
+      numericInput("vel", "Velocidade (m/s):", 20, min = 0)
+    ),
+    mainPanel(
+      h4("Cálculo com substituição:"),
+      uiOutput("formulaSubst")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$formulaSubst <- renderUI({
+    E <- 0.5 * input$massa * input$vel^2
+    withMathJax(
+      sprintf("$$E_c = \\dfrac{1}{2} \\times %s \\times %s^2 = %.2f\\ \\text{J}$$",
+              input$massa, input$vel, E)
+    )
+  })
+}
+
+shinyApp(ui, server)
+```
+
+
+
+**Observações:** 
+
+- Os símbolos `%s`, `%.2f`, etc, aparecem porque usamos a função `sprintf()` no R. Ela serve para montar strings formatadas, ou seja, construir um texto onde você "encaixa" valores em lugares específicos.
+- No exemplo anterior, apareceram os símbolos `%s`, `%s^2` e `%.2f`, os quais serão substituídos respectivamente pelas entradas: `input$massa`, `input$vel^2` e `E`.
+
+Principais marcadores usados:
+
+- `%s` → insere um valor como string (texto).
+Exemplo:
+```r
+sprintf("massa = %s kg", 1000)
+# "massa = 1000 kg"
+```
+- `%f` → insere um número no formato decimal.
+Exemplo:
+```r
+sprintf("energia = %f J", 200000)
+# "energia = 200000.000000 J"
+```
+- `%.2f` → insere um número decimal com 2 casas decimais.
+Exemplo:
+```r
+sprintf("energia = %.2f J", 200000)
+# "energia = 200000.00 J"
+```
+
+Para outras casas decimais, alterar o número antes do f:
+
+- `%.0f` → arredonda para inteiro.
+- `%.3f` → mostra 3 casas decimais.
+```r
+m <- 1000
+v <- 20
+E <- 0.5 * m * v^2
+
+sprintf("$$E_c = \\tfrac{1}{2} \\times %s \\times %s^2 = %.2f \\ J$$",
+         m, v, E)
+```
+
+Saída (renderizada pelo LaTeX):
+$$E_c = \dfrac{1}{2} \times 1000 \times 20^2 = 200000.00 \ J$$
+
+**Tabela de formatação `sprintf()` em R:**
+
+| Marcador | Significado                          | Exemplo                                   | Saída                |
+|----------|--------------------------------------|-------------------------------------------|----------------------|
+| `%s`| String/texto | `sprintf("Nome: %s", "Alice")`| `"Nome: Alice"`  |
+| `%d`| Número inteiro  | `sprintf("Idade: %d", 25)` | `"Idade: 25"` |
+| `%f`| Número decimal  | `sprintf("Valor: %f", 3.14159)`| `"Valor: 3.141590"` |
+| `%.2f`   | Decimal com 2 casas  | `sprintf("Valor: %.2f", 3.14159)` | `"Valor: 3.14"` |
+| `%e`| Notação científica (exponencial) | `sprintf("Valor: %e", 12345)`| `"Valor: 1.234500e+04"` |
+| `%g` | Mais compacto (decimal ou científica)| `sprintf("Valor: %g", 12345)` | `"12345"`  |
+
+
+**Outros Exemplos:**
+
+**a)** Lei de Ohm: $$V=R.I$$
+
+```r
+library(shiny)
+ui <- fluidPage(
+  titlePanel("Lei de Ohm"),
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("R", "Resistência (Ω):", 10, min = 0),
+      numericInput("I", "Corrente (A):", 2, min = 0)
+    ),
+    mainPanel(
+      uiOutput("leiOhm")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$leiOhm <- renderUI({
+    V <- input$R * input$I
+    withMathJax(sprintf("
+      $$\\large{\\text{A equação é:}}$$
+      $$V = R \\cdot I$$
+      $$\\text{Substituindo os valores:}$$
+      $$V = %s \\times %s = %.2f\\ \\text{V}$$",
+      input$R, input$I, V))
+  })
+}
+
+shinyApp(ui, server)
+```
+
+
+b) Equação de Torricelli
+
+```r
+library(shiny)
+ui <- fluidPage(
+  titlePanel("Equação de Torricelli"),
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("v0", "Velocidade inicial (m/s):", 0),
+      numericInput("a", "Aceleração (m/s²):", 10),
+      numericInput("s", "Deslocamento (m):", 5)
+    ),
+    mainPanel(
+      uiOutput("torricelli")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$torricelli <- renderUI({
+    v <- sqrt(input$v0^2 + 2 * input$a * input$s)
+    
+    withMathJax(sprintf("
+      $$\\large{\\textbf{A equação é:}}$$
+      $$v^2 = v_0^2 + 2a\\Delta s$$
+      $$\\textbf{Substituindo os valores:}$$
+      $$v^2 = %s^2 + 2 \\times %s \\times %s = %.2f^2$$
+      ",
+      input$v0, input$a, input$s, v))
+  })
+}
+
+shinyApp(ui, server)
+
+```
+
+
+
+**Observações:**
+
+- Fómulas do Latex devem ser incluidas em `$$...$$` e com barra dupla antes de suas funções.
+- A função `withMathJax()` deve ser usada para fórmulas.
+- Para valores dinâmicos, utilizar `renderUI() + sprintf()` para construir a string LaTeX.
+- Valores dinâmicos devem ser especificados usando: `%s`, `%d`, `%.nf` ou `%g`, de acordo com a sua formatação numérica específica.
+
+
+
 
 
 ## Publicando aplicativo em shinyapps.io

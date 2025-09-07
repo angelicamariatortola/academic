@@ -89,3 +89,5 @@ renderizar-o-site
 publicando-no-github
 ativar-o-github-pages
 deletando-um-repositório
+inclusão-de-fórmulas-shiny
+inclusão-de-fórmulas-no-shiny
