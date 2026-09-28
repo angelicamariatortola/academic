@@ -19,7 +19,7 @@
 <body>
 
 <header class="topo">
-  <a class="voltar" href="../index.html" title="Voltar para a apostila">← Apostila</a>
+  <a class="voltar" href="#" onclick="history.back(); return false;">Voltar</a>
   <h1>Editor de R</h1>
   <span id="status" class="status carregando" role="status">Carregando o R…</span>
 </header>
@@ -32,6 +32,7 @@
       <button id="btn-executar-tudo" title="Executa o script inteiro (Ctrl+Shift+Enter)">Executar tudo</button>
       <button id="btn-parar" title="Interrompe a execução (Esc)" disabled>■ Parar</button>
       <span class="espaco"></span>
+      <button id="btn-novo" title="Limpa o editor para começar um script do zero">Novo</button>
       <select id="sel-exemplos" aria-label="Carregar um exemplo">
         <option value="">Exemplos…</option>
       </select>
@@ -116,14 +117,15 @@
           executar a linha do cursor (ou o trecho selecionado). Um comando que ocupa
           várias linhas é executado inteiro.</li>
         <li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> executa o script todo.</li>
+        <li>O botão <strong>Novo</strong> limpa o editor para começar do zero; em
+          <strong>Exemplos…</strong> há códigos prontos para testar.</li>
         <li><kbd>Alt</kbd>+<kbd>-</kbd> insere <code>&lt;-</code>;
           <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd> comenta ou descomenta linhas.</li>
         <li>No campo abaixo do console dá para digitar comandos avulsos. As setas
           <kbd>↑</kbd> <kbd>↓</kbd> recuperam os comandos anteriores.</li>
       </ul>
-      <h2>Dados do curso</h2>
-      <p>Os arquivos da apostila já estão na pasta de trabalho, com os mesmos caminhos
-        usados nos capítulos, por exemplo
+      <h2>Dados de exemplo</h2>
+      <p>Alguns arquivos de dados de exemplo já estão na pasta de trabalho, por exemplo
         <code>read.csv("data/processed/alunos_2023_limpo.csv")</code>. Veja a lista na
         aba <strong>Arquivos</strong>, onde também dá para enviar seus próprios arquivos
         e baixar os que o R criar (com <code>write.csv()</code>, por exemplo).</p>

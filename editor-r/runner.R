@@ -19,7 +19,7 @@ local({
   }
 
   # "Erro em f(x): mensagem", como no console do R. Chamadas feitas pelo
-  # próprio editor (eval) são omitidas, para não confundir o aluno.
+  # próprio editor (eval) são omitidas, para não confundir quem usa o editor.
   descrever <- function(cond, rotulo) {
     msg <- sub("\n$", "", conditionMessage(cond))
     chamada <- conditionCall(cond)

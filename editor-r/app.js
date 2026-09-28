@@ -1,6 +1,5 @@
 // ============================================================
-// Editor de R do curso — roda o R no navegador com o webR.
-// Mesma versão do webR usada pela extensão quarto-live da apostila.
+// Editor de R — roda o R no navegador com o webR.
 // ============================================================
 
 import { WebR, ChannelType } from 'https://webr.r-wasm.org/v0.6.0/webr.mjs';
@@ -10,8 +9,8 @@ const CHAVE_CODIGO = 'editor-r-seed:codigo';  // localStorage
 const LIMITE_LINHAS_CONSOLE = 5000;
 const LIMITE_GRAFICOS = 30;
 
-// Arquivos da apostila copiados para o R, com os mesmos caminhos dos capítulos
-const DADOS_CURSO = [
+// Dados de exemplo da pasta data/ do editor, copiados para a pasta de trabalho do R
+const DADOS_EXEMPLO = [
   'data/processed/alunos_2023_limpo.csv',
   'data/raw/alunos_2023.csv',
   'data/raw/censo_escolar_pr.csv',
@@ -22,8 +21,11 @@ const DADOS_CURSO = [
 
 const LER_ALUNOS = 'alunos <- read.csv("data/processed/alunos_2023_limpo.csv", fileEncoding = "UTF-8")';
 
-const CODIGO_INICIAL = `# Bem-vindo ao Editor de R do curso!
+const CODIGO_INICIAL = `# Bem-vindo ao Editor de R!
 # Coloque o cursor em uma linha e aperte Ctrl+Enter para executá-la.
+# Para começar do zero, clique em "Novo".
+
+# Exemplo com os dados da pasta data/
 
 ${LER_ALUNOS}
 head(alunos)
@@ -142,7 +144,7 @@ const DICAS = [
   [/there is no package called [‘'"]([^’'"]+)[’'"]/,
     (m) => `O pacote <code>${esc(m[1])}</code> não está instalado nesta sessão. Rode <code>install.packages("${esc(m[1])}")</code> e depois o <code>library()</code> de novo.`],
   [/cannot open file '([^']+)'|cannot open the connection|does not exist/,
-    () => 'O arquivo não foi encontrado. Veja os nomes disponíveis na aba <strong>Arquivos</strong>: os dados do curso ficam em <code>data/raw/</code> e <code>data/processed/</code>.'],
+    () => 'O arquivo não foi encontrado. Veja os nomes disponíveis na aba <strong>Arquivos</strong>: os dados de exemplo ficam em <code>data/raw/</code> e <code>data/processed/</code>.'],
   [/unexpected end of input|INCOMPLETE_STRING/,
     () => 'Parece que faltou fechar um parêntese, colchete, chave ou aspas.'],
   [/unexpected (symbol|numeric constant|string constant)/,
@@ -501,11 +503,11 @@ async function criarPastas(caminho) {
   }
 }
 
-async function carregarDadosCurso() {
+async function carregarDadosExemplo() {
   let carregados = 0;
-  await Promise.all(DADOS_CURSO.map(async (caminho) => {
+  await Promise.all(DADOS_EXEMPLO.map(async (caminho) => {
     try {
-      const resp = await fetch(new URL(`../${caminho}`, location.href));
+      const resp = await fetch(new URL(caminho, location.href));
       if (!resp.ok) return;
       const dados = new Uint8Array(await resp.arrayBuffer());
       await criarPastas(caminho);
@@ -597,17 +599,25 @@ $('btn-limpar').addEventListener('click', limparConsole);
 
 const selExemplos = $('sel-exemplos');
 EXEMPLOS.forEach((ex, i) => selExemplos.add(new Option(ex.titulo, String(i))));
+// Pede confirmação antes de descartar um código que não seja o inicial nem um exemplo
+function podeSubstituir(pergunta) {
+  const atual = editor.getValue().trim();
+  return !atual || atual === CODIGO_INICIAL.trim() || EXEMPLOS.some((e) => e.codigo.trim() === atual)
+    || window.confirm(`${pergunta} (Salve antes se quiser guardá-lo.)`);
+}
+
 selExemplos.addEventListener('change', () => {
   const ex = EXEMPLOS[Number(selExemplos.value)];
   selExemplos.value = '';
-  if (!ex) return;
-  const atual = editor.getValue().trim();
-  if (atual && !EXEMPLOS.some((e) => e.codigo.trim() === atual)
-      && !window.confirm('Substituir o código do editor pelo exemplo? (Salve antes se quiser guardá-lo.)')) {
-    return;
-  }
+  if (!ex || !podeSubstituir('Substituir o código do editor pelo exemplo?')) return;
   editor.setValue(ex.codigo);
   editor.setCursor({ line: 0, ch: 0 });
+  editor.focus();
+});
+
+$('btn-novo').addEventListener('click', () => {
+  if (!podeSubstituir('Apagar o código do editor e começar em branco?')) return;
+  editor.setValue('');
   editor.focus();
 });
 
@@ -704,16 +714,16 @@ async function iniciar() {
     webR = r;
     lerSaidas();
     await webR.evalRVoid(await (await fetch('runner.R')).text());
-    const nDados = await carregarDadosCurso();
+    const nDados = await carregarDadosExemplo();
     versaoR = await webR.evalRString('R.version.string');
     mostrarSaidaAvulsa = true;
 
     limparConsole();
     escreverHtml(`<strong>${esc(versaoR)}</strong> pronto. Coloque o cursor em uma linha do editor e aperte
       <kbd>Ctrl</kbd>+<kbd>Enter</kbd>.`, 'sistema');
-    escreverHtml(nDados > 0
-      ? `Os ${nDados} arquivos de dados do curso estão na pasta <code>data/</code> (veja a aba Arquivos).`
-      : 'Os dados do curso não foram encontrados: abra o editor pelo link da apostila publicada.', 'sistema');
+    if (nDados > 0) {
+      escreverHtml(`Há ${nDados} arquivos de dados de exemplo na pasta <code>data/</code> (veja a aba Arquivos).`, 'sistema');
+    }
     if (!isolado) {
       escreverHtml('Modo compatível: o botão Parar não está disponível. Se um código travar, recarregue a página.', 'sistema');
     }

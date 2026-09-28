@@ -1,0 +1,421 @@
+id_anonimo,cod_escola,escola,municipio,localizacao,serie,turno,idade,nota_mat,nota_por,faltas
+ALU0001,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,9º Ano,Matutino,14,7,7.3,11
+ALU0002,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,6º Ano,Matutino,11,7.3,7.9,36
+ALU0003,41900301,Colégio Estadual Primavera,Maringá,Urbana,6º Ano,Vespertino,11,6,6.7,1
+ALU0004,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,2ª EM,Matutino,17,7.4,7.1,2
+ALU0005,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,8º Ano,Noturno,14,4,5.6,21
+ALU0006,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,6º Ano,Vespertino,11,6.5,7.5,1
+ALU0007,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,8º Ano,Vespertino,13,6.7,7,1
+ALU0008,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,2ª EM,Noturno,16,6.9,6.2,4
+ALU0009,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,1ª EM,Matutino,15,4,6.4,15
+ALU0010,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,2ª EM,Vespertino,16,7.8,7.6,2
+ALU0011,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Matutino,14,5.4,6.1,7
+ALU0012,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,7º Ano,Matutino,12,6.4,6.9,7
+ALU0013,41900101,Colégio Estadual Araucária,Curitiba,Urbana,6º Ano,Noturno,11,4.8,5.3,14
+ALU0014,41900101,Colégio Estadual Araucária,Curitiba,Urbana,9º Ano,Vespertino,14,6.7,6.5,2
+ALU0015,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,7º Ano,Matutino,12,6.3,7.2,4
+ALU0016,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,9º Ano,Matutino,14,7.7,6.5,14
+ALU0017,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,3ª EM,Matutino,17,5.6,4.8,3
+ALU0018,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Noturno,15,5,6,17
+ALU0019,41900101,Colégio Estadual Araucária,Curitiba,Urbana,3ª EM,Matutino,17,5.9,NA,19
+ALU0020,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,9º Ano,Noturno,14,5.9,7.2,15
+ALU0021,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,8º Ano,Vespertino,13,6.7,5.8,2
+ALU0022,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,1ª EM,Vespertino,16,6,6.7,10
+ALU0023,41900301,Colégio Estadual Primavera,Maringá,Urbana,8º Ano,Matutino,13,5.5,5.9,3
+ALU0024,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,6º Ano,Matutino,12,6.1,5.4,11
+ALU0025,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,9º Ano,Vespertino,14,5.7,7,11
+ALU0026,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,2ª EM,Matutino,16,NA,5.9,8
+ALU0027,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,2ª EM,Noturno,16,NA,6.4,17
+ALU0028,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,6º Ano,Noturno,11,6.7,7.5,5
+ALU0029,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,8º Ano,Matutino,13,7,7.7,6
+ALU0030,41900301,Colégio Estadual Primavera,Maringá,Urbana,6º Ano,Vespertino,12,5.4,6.1,0
+ALU0031,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,2ª EM,Matutino,17,7,6.5,14
+ALU0032,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,8º Ano,Vespertino,13,7.7,8.7,0
+ALU0033,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,8º Ano,Matutino,13,6,5.8,2
+ALU0034,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,2ª EM,Vespertino,16,5.3,6.7,16
+ALU0035,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,7º Ano,Matutino,12,7.1,8.8,7
+ALU0036,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,8º Ano,Vespertino,14,5.3,6.1,4
+ALU0037,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,7º Ano,Vespertino,12,5.6,7.2,3
+ALU0038,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,2ª EM,Matutino,17,3.9,3.4,5
+ALU0039,41900101,Colégio Estadual Araucária,Curitiba,Urbana,8º Ano,Vespertino,13,5.8,5.6,6
+ALU0040,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,8º Ano,Matutino,13,6.3,6.7,10
+ALU0041,41900101,Colégio Estadual Araucária,Curitiba,Urbana,1ª EM,Noturno,16,4.1,6.2,6
+ALU0042,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,8º Ano,Vespertino,13,5.5,6.5,4
+ALU0043,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,2ª EM,Vespertino,16,4.5,5.8,0
+ALU0044,41900301,Colégio Estadual Primavera,Maringá,Urbana,3ª EM,Vespertino,18,7.1,6.1,4
+ALU0045,41900301,Colégio Estadual Primavera,Maringá,Urbana,1ª EM,Matutino,16,5.6,5.7,7
+ALU0046,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,2ª EM,Matutino,16,6.3,7.4,9
+ALU0047,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Matutino,14,6.4,7,5
+ALU0048,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,2ª EM,Noturno,16,5.7,7,6
+ALU0049,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,6º Ano,Matutino,11,8.1,6,12
+ALU0050,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,8º Ano,Matutino,14,5.1,6.8,9
+ALU0051,41900101,Colégio Estadual Araucária,Curitiba,Urbana,2ª EM,Matutino,16,6.3,6.1,11
+ALU0052,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,9º Ano,Matutino,15,5.9,5.7,6
+ALU0053,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,8º Ano,Matutino,13,7.6,6.6,4
+ALU0054,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,2ª EM,Matutino,16,6.3,6.8,13
+ALU0055,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,2ª EM,Vespertino,16,4.7,5.6,2
+ALU0056,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,1ª EM,Matutino,15,4.1,4.4,4
+ALU0057,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,6º Ano,Noturno,11,4.6,4.8,18
+ALU0058,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,1ª EM,Matutino,15,7.6,7.7,10
+ALU0059,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,7º Ano,Matutino,13,4.8,6.8,3
+ALU0060,41900101,Colégio Estadual Araucária,Curitiba,Urbana,2ª EM,Noturno,16,5,6.5,0
+ALU0061,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Matutino,16,4.3,4.1,1
+ALU0062,41900301,Colégio Estadual Primavera,Maringá,Urbana,6º Ano,Matutino,11,7.7,9.8,0
+ALU0063,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Matutino,17,7.1,6.4,1
+ALU0064,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,8º Ano,Vespertino,14,6.3,5.9,1
+ALU0065,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,2ª EM,Vespertino,16,5.8,6,1
+ALU0066,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,3ª EM,Matutino,18,7.2,8.5,2
+ALU0067,41900301,Colégio Estadual Primavera,Maringá,Urbana,8º Ano,Vespertino,13,3.6,5.6,4
+ALU0068,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Noturno,14,6.1,7.5,2
+ALU0069,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,8º Ano,Matutino,13,4.2,5.2,7
+ALU0070,41900101,Colégio Estadual Araucária,Curitiba,Urbana,1ª EM,Noturno,16,6.3,6,5
+ALU0071,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,3ª EM,Noturno,17,10,9.1,5
+ALU0072,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,6º Ano,Vespertino,11,6.6,6.1,13
+ALU0073,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,7º Ano,Matutino,13,5.8,5.2,3
+ALU0074,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,2ª EM,Matutino,16,8.6,8.4,1
+ALU0075,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,3ª EM,Vespertino,17,4.4,6.1,6
+ALU0076,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Noturno,14,5.5,5,2
+ALU0077,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,7º Ano,Matutino,12,6.8,8.4,2
+ALU0078,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,6º Ano,Matutino,12,4.2,6.3,20
+ALU0079,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,9º Ano,Vespertino,14,5.9,7.3,11
+ALU0080,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,6º Ano,Matutino,11,5.6,5.6,2
+ALU0081,41900101,Colégio Estadual Araucária,Curitiba,Urbana,3ª EM,Matutino,17,6.3,7.8,2
+ALU0082,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,7º Ano,Matutino,12,7.1,8,5
+ALU0083,41900301,Colégio Estadual Primavera,Maringá,Urbana,2ª EM,Noturno,17,5.1,6.3,5
+ALU0084,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,7º Ano,Matutino,13,8.5,9,3
+ALU0085,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,6º Ano,Vespertino,12,5.6,7.3,6
+ALU0086,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,3ª EM,Matutino,17,5.9,NA,10
+ALU0087,41900101,Colégio Estadual Araucária,Curitiba,Urbana,8º Ano,Matutino,13,8.2,4.7,6
+ALU0088,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,6º Ano,Matutino,11,4.8,6.1,4
+ALU0089,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,7º Ano,Vespertino,13,6,6.5,9
+ALU0090,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,6º Ano,Matutino,11,6.9,7.7,9
+ALU0091,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,8º Ano,Matutino,13,8.4,9.3,6
+ALU0092,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,7º Ano,Matutino,12,6.2,8.6,2
+ALU0093,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,2ª EM,Vespertino,16,6.5,6.8,13
+ALU0094,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,9º Ano,Matutino,14,4.9,5.9,4
+ALU0095,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,9º Ano,Vespertino,15,6.2,6.6,2
+ALU0096,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,7º Ano,Matutino,12,5.5,5.2,5
+ALU0097,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,6º Ano,Vespertino,11,7.4,8.7,4
+ALU0098,41900101,Colégio Estadual Araucária,Curitiba,Urbana,2ª EM,Matutino,16,8.5,8.1,4
+ALU0099,41900101,Colégio Estadual Araucária,Curitiba,Urbana,8º Ano,Vespertino,13,7.2,7.3,1
+ALU0100,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,6º Ano,Matutino,12,6.8,7.3,0
+ALU0101,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,7º Ano,Matutino,13,6.9,7.2,15
+ALU0102,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Matutino,16,8.7,7.4,4
+ALU0103,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,8º Ano,Vespertino,13,6.6,5.6,8
+ALU0104,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,1ª EM,Matutino,16,5.7,6.5,0
+ALU0105,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,1ª EM,Vespertino,16,8.5,7.1,3
+ALU0106,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,8º Ano,Vespertino,13,5.6,5.9,30
+ALU0107,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,7º Ano,Vespertino,12,4.9,5.4,2
+ALU0108,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,3ª EM,Vespertino,17,5.6,6.5,3
+ALU0109,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,8º Ano,Noturno,14,5.1,5.8,10
+ALU0110,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Vespertino,14,6.6,7.2,1
+ALU0111,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,7º Ano,Vespertino,12,7.1,8,12
+ALU0112,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,8º Ano,Vespertino,13,5.5,6.5,4
+ALU0113,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,6º Ano,Matutino,11,7.1,6.5,4
+ALU0114,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,6º Ano,Matutino,11,5.1,5.2,23
+ALU0115,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,6º Ano,Matutino,12,6.8,6.3,7
+ALU0116,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,2ª EM,Matutino,16,6.1,5.9,3
+ALU0117,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,3ª EM,Matutino,17,5.6,6.8,4
+ALU0118,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,9º Ano,Vespertino,15,4.9,7,6
+ALU0119,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Matutino,14,6.6,6.8,3
+ALU0120,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,6º Ano,Vespertino,12,6.3,7,0
+ALU0121,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,7º Ano,Matutino,12,6.8,8.6,2
+ALU0122,41900101,Colégio Estadual Araucária,Curitiba,Urbana,1ª EM,Vespertino,15,5.5,5.9,6
+ALU0123,41900101,Colégio Estadual Araucária,Curitiba,Urbana,7º Ano,Noturno,12,5.8,5.9,7
+ALU0124,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,3ª EM,Matutino,17,7.6,9.1,0
+ALU0125,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,1ª EM,Matutino,15,7.1,8.2,1
+ALU0126,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,7º Ano,Matutino,12,6,7,2
+ALU0127,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,7º Ano,Matutino,13,8.1,7,1
+ALU0128,41900101,Colégio Estadual Araucária,Curitiba,Urbana,9º Ano,Vespertino,14,5.1,5.9,6
+ALU0129,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,6º Ano,Matutino,11,5.1,5.9,17
+ALU0130,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,1ª EM,Noturno,16,6.7,5.4,3
+ALU0131,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,6º Ano,Vespertino,12,6.4,6.1,4
+ALU0132,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,9º Ano,Vespertino,14,6.1,7.2,4
+ALU0133,41900101,Colégio Estadual Araucária,Curitiba,Urbana,9º Ano,Vespertino,14,6.2,6.2,24
+ALU0134,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,6º Ano,Matutino,11,5.5,5.1,26
+ALU0135,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,7º Ano,Vespertino,13,8.4,8.3,2
+ALU0136,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,9º Ano,Matutino,15,7.7,6.1,7
+ALU0137,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,9º Ano,Vespertino,14,5.1,7,11
+ALU0138,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,7º Ano,Matutino,13,4.6,5,7
+ALU0139,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,8º Ano,Vespertino,14,6.8,7.5,2
+ALU0140,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,2ª EM,Matutino,17,6.1,6.2,1
+ALU0141,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Matutino,14,6.2,NA,13
+ALU0142,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,3ª EM,Matutino,18,4.8,7.9,9
+ALU0143,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,3ª EM,Vespertino,17,7.1,7.2,4
+ALU0144,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,3ª EM,Vespertino,17,9.2,8.9,10
+ALU0145,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,2ª EM,Vespertino,16,6,6.9,5
+ALU0146,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,6º Ano,Matutino,11,6.8,6.2,8
+ALU0147,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,6º Ano,Matutino,11,4.8,7.1,6
+ALU0148,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,6º Ano,Matutino,11,6.2,6.6,9
+ALU0149,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,3ª EM,Matutino,18,4.8,5.2,3
+ALU0150,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,8º Ano,Vespertino,13,3.7,5.3,12
+ALU0151,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,6º Ano,Vespertino,12,6.6,8,4
+ALU0152,41900301,Colégio Estadual Primavera,Maringá,Urbana,8º Ano,Vespertino,13,6.4,7.8,2
+ALU0153,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,3ª EM,Vespertino,17,7.8,8.1,1
+ALU0154,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,9º Ano,Matutino,15,7.5,7.8,6
+ALU0155,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,9º Ano,Noturno,14,4.2,6.1,9
+ALU0156,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,6º Ano,Matutino,11,7.6,9,2
+ALU0157,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,6º Ano,Matutino,11,5,5.6,6
+ALU0158,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,1ª EM,Matutino,15,6.7,6.9,24
+ALU0159,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,8º Ano,Vespertino,14,8.5,8.2,3
+ALU0160,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,1ª EM,Vespertino,16,6.3,7.1,3
+ALU0161,41900101,Colégio Estadual Araucária,Curitiba,Urbana,6º Ano,Vespertino,11,5.9,4.5,2
+ALU0162,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,2ª EM,Matutino,16,5.9,6,23
+ALU0163,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,9º Ano,Noturno,14,6,5.6,1
+ALU0164,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,2ª EM,Noturno,16,5.2,6.3,1
+ALU0165,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,6º Ano,Matutino,11,10,7.6,0
+ALU0166,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Matutino,17,3.2,4.3,2
+ALU0167,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,9º Ano,Vespertino,14,4.8,5.9,10
+ALU0168,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,6º Ano,Matutino,11,7.7,7.9,3
+ALU0169,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,7º Ano,Noturno,12,6.6,6.2,5
+ALU0170,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,2ª EM,Matutino,16,5.3,5.6,2
+ALU0171,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,7º Ano,Vespertino,12,7.3,7.1,6
+ALU0172,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,6º Ano,Vespertino,13,7,7.3,2
+ALU0173,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,2ª EM,Matutino,16,7.1,7.3,0
+ALU0174,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,1ª EM,Matutino,15,6.6,7.9,2
+ALU0175,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,7º Ano,Matutino,12,6.8,6.7,18
+ALU0176,41900101,Colégio Estadual Araucária,Curitiba,Urbana,1ª EM,Matutino,15,4.3,6.2,11
+ALU0177,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,1ª EM,Matutino,16,5.3,5,20
+ALU0178,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,6º Ano,Vespertino,11,6.2,6.6,9
+ALU0179,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,3ª EM,Matutino,17,4.2,6.5,0
+ALU0180,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,7º Ano,Vespertino,12,3.7,4.4,11
+ALU0181,41900101,Colégio Estadual Araucária,Curitiba,Urbana,6º Ano,Matutino,11,6.9,7.2,8
+ALU0182,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,8º Ano,Vespertino,14,4.5,6.6,4
+ALU0183,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,6º Ano,Vespertino,12,7.4,8,3
+ALU0184,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,7º Ano,Noturno,12,5,7.9,2
+ALU0185,41900301,Colégio Estadual Primavera,Maringá,Urbana,1ª EM,Matutino,15,5.1,5.3,4
+ALU0186,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,3ª EM,Vespertino,17,7.2,6.3,2
+ALU0187,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,8º Ano,Matutino,13,9,9.4,10
+ALU0188,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,3ª EM,Matutino,17,5.7,6.1,8
+ALU0189,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,7º Ano,Matutino,12,5.5,5.8,9
+ALU0190,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,3ª EM,Vespertino,17,6.1,6.3,1
+ALU0191,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,8º Ano,Noturno,13,6.6,6.8,10
+ALU0192,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,8º Ano,Vespertino,13,9.9,8.1,1
+ALU0193,41900101,Colégio Estadual Araucária,Curitiba,Urbana,7º Ano,Noturno,13,6,5.2,0
+ALU0194,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,9º Ano,Matutino,14,6.8,6.9,6
+ALU0195,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,2ª EM,Noturno,17,4.7,5.8,6
+ALU0196,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,8º Ano,Matutino,13,5.6,5.4,2
+ALU0197,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,1ª EM,Matutino,15,6.9,6.8,6
+ALU0198,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,7º Ano,Noturno,12,6,5,11
+ALU0199,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,2ª EM,Matutino,16,7.2,9.3,5
+ALU0200,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,7º Ano,Matutino,12,3.9,7.1,2
+ALU0201,41900301,Colégio Estadual Primavera,Maringá,Urbana,1ª EM,Vespertino,15,6.6,8.4,16
+ALU0202,41900301,Colégio Estadual Primavera,Maringá,Urbana,3ª EM,Vespertino,17,5.7,5.4,8
+ALU0203,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,6º Ano,Vespertino,11,7.3,7,1
+ALU0204,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,1ª EM,Noturno,15,6.3,6.1,8
+ALU0205,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,7º Ano,Matutino,12,5.6,5.4,0
+ALU0206,41900301,Colégio Estadual Primavera,Maringá,Urbana,1ª EM,Vespertino,15,7.8,8.6,3
+ALU0207,41900101,Colégio Estadual Araucária,Curitiba,Urbana,2ª EM,Matutino,17,6.7,7.4,0
+ALU0208,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,7º Ano,Matutino,12,7.5,8.4,10
+ALU0209,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,7º Ano,Noturno,12,5.5,6.6,24
+ALU0210,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Matutino,14,4.7,5.5,20
+ALU0211,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,3ª EM,Vespertino,17,6.2,6.5,4
+ALU0212,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,8º Ano,Matutino,13,6.6,8.1,10
+ALU0213,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,1ª EM,Vespertino,15,6.1,6.7,7
+ALU0214,41900301,Colégio Estadual Primavera,Maringá,Urbana,3ª EM,Matutino,17,6.2,4.5,1
+ALU0215,41900301,Colégio Estadual Primavera,Maringá,Urbana,3ª EM,Matutino,18,6.1,6.2,4
+ALU0216,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,8º Ano,Matutino,14,5.2,7,8
+ALU0217,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,3ª EM,Vespertino,17,6.5,6.4,11
+ALU0218,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,2ª EM,Vespertino,16,6.6,7.8,4
+ALU0219,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,3ª EM,Vespertino,17,5.2,6.7,3
+ALU0220,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,9º Ano,Noturno,14,4.6,5.6,19
+ALU0221,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,7º Ano,Vespertino,12,5.5,6.9,11
+ALU0222,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,7º Ano,Matutino,12,NA,7.7,1
+ALU0223,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,1ª EM,Matutino,15,3.8,6.9,6
+ALU0224,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Matutino,15,5.9,6.1,7
+ALU0225,41900101,Colégio Estadual Araucária,Curitiba,Urbana,3ª EM,Vespertino,17,6.6,6.6,13
+ALU0226,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,7º Ano,Matutino,12,7,8.2,4
+ALU0227,41900101,Colégio Estadual Araucária,Curitiba,Urbana,2ª EM,Noturno,16,5.5,6.2,16
+ALU0228,41900101,Colégio Estadual Araucária,Curitiba,Urbana,7º Ano,Vespertino,12,8,6.3,2
+ALU0229,41900101,Colégio Estadual Araucária,Curitiba,Urbana,8º Ano,Matutino,13,4.4,6.4,12
+ALU0230,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,3ª EM,Matutino,18,9.1,6.8,4
+ALU0231,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,6º Ano,Matutino,11,5.9,7.3,10
+ALU0232,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,2ª EM,Matutino,17,5.1,4.5,5
+ALU0233,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,7º Ano,Vespertino,12,8.4,7.4,2
+ALU0234,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,6º Ano,Matutino,12,6.8,7.5,1
+ALU0235,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,9º Ano,Noturno,15,6.1,6.1,14
+ALU0236,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,2ª EM,Vespertino,16,4.4,5.1,7
+ALU0237,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,3ª EM,Vespertino,17,7.4,7.8,5
+ALU0238,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,1ª EM,Matutino,15,7.9,7.9,7
+ALU0239,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,3ª EM,Matutino,18,6.2,5.9,6
+ALU0240,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,6º Ano,Noturno,11,9.1,8.4,4
+ALU0241,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Matutino,14,4.3,5.1,10
+ALU0242,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,2ª EM,Matutino,16,5.1,6.1,8
+ALU0243,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,1ª EM,Vespertino,15,6.7,8.5,2
+ALU0244,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,2ª EM,Matutino,16,5.6,6.6,7
+ALU0245,41900101,Colégio Estadual Araucária,Curitiba,Urbana,8º Ano,Matutino,13,8.6,7.4,7
+ALU0246,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,9º Ano,Vespertino,14,6.9,7.6,7
+ALU0247,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,1ª EM,Matutino,15,7.1,7.2,7
+ALU0248,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,2ª EM,Noturno,16,6.4,6.6,9
+ALU0249,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,7º Ano,Vespertino,14,5.4,7,19
+ALU0250,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Matutino,15,6.3,7.6,2
+ALU0251,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,8º Ano,Matutino,13,7.7,7.1,3
+ALU0252,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,9º Ano,Matutino,14,6.1,6.8,9
+ALU0253,41900301,Colégio Estadual Primavera,Maringá,Urbana,6º Ano,Vespertino,11,4.6,7,26
+ALU0254,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,6º Ano,Matutino,11,7.1,9.7,7
+ALU0255,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,8º Ano,Matutino,14,6.8,8,2
+ALU0256,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,8º Ano,Matutino,13,6.1,6.1,6
+ALU0257,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,1ª EM,Vespertino,15,4.9,4.2,13
+ALU0258,41900301,Colégio Estadual Primavera,Maringá,Urbana,6º Ano,Matutino,11,5.4,6.2,3
+ALU0259,41900301,Colégio Estadual Primavera,Maringá,Urbana,6º Ano,Matutino,11,6.5,6.9,1
+ALU0260,41900101,Colégio Estadual Araucária,Curitiba,Urbana,3ª EM,Vespertino,17,7.6,7.4,10
+ALU0261,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,3ª EM,Vespertino,17,7.3,6.3,5
+ALU0262,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,3ª EM,Noturno,17,7.9,6,2
+ALU0263,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,6º Ano,Noturno,11,7,7.6,3
+ALU0264,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,8º Ano,Noturno,14,3.5,7.1,23
+ALU0265,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,6º Ano,Vespertino,11,5.1,6.6,7
+ALU0266,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,3ª EM,Noturno,17,7.4,6.3,10
+ALU0267,41900301,Colégio Estadual Primavera,Maringá,Urbana,1ª EM,Matutino,15,3,5.7,3
+ALU0268,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,1ª EM,Matutino,16,6.1,6.1,3
+ALU0269,41900101,Colégio Estadual Araucária,Curitiba,Urbana,9º Ano,Matutino,14,7.1,5.7,10
+ALU0270,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,6º Ano,Vespertino,11,7.4,6.9,0
+ALU0271,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,2ª EM,Vespertino,18,9.4,8.9,0
+ALU0272,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,6º Ano,Vespertino,11,6.1,5.5,4
+ALU0273,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Noturno,14,5.4,6,8
+ALU0274,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,3ª EM,Noturno,17,7.3,6.8,5
+ALU0275,41900301,Colégio Estadual Primavera,Maringá,Urbana,1ª EM,Vespertino,15,7.9,9.6,7
+ALU0276,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,1ª EM,Noturno,15,6.6,8.4,1
+ALU0277,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,9º Ano,Noturno,14,5.8,8.2,0
+ALU0278,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,8º Ano,Vespertino,13,7.4,6.9,3
+ALU0279,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,3ª EM,Vespertino,17,2.8,3.5,20
+ALU0280,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,3ª EM,Noturno,18,7.1,7.8,7
+ALU0281,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,6º Ano,Matutino,11,8.8,8,0
+ALU0282,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,6º Ano,Matutino,11,3.7,4.3,11
+ALU0283,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,9º Ano,Matutino,15,6.8,8.6,10
+ALU0284,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,2ª EM,Noturno,16,8.4,6.7,8
+ALU0285,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,7º Ano,Noturno,13,5.6,5.9,16
+ALU0286,41900301,Colégio Estadual Primavera,Maringá,Urbana,3ª EM,Matutino,17,6.9,6.9,11
+ALU0287,41900301,Colégio Estadual Primavera,Maringá,Urbana,8º Ano,Vespertino,13,4.9,6.1,9
+ALU0288,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Vespertino,16,7.5,8.9,2
+ALU0289,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,1ª EM,Vespertino,15,5.4,5.4,5
+ALU0290,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,3ª EM,Matutino,17,6.5,6.8,0
+ALU0291,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,6º Ano,Vespertino,12,7.3,8.2,3
+ALU0292,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,1ª EM,Vespertino,15,8.7,8.7,4
+ALU0293,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,1ª EM,Matutino,15,7.3,6.8,6
+ALU0294,41900101,Colégio Estadual Araucária,Curitiba,Urbana,7º Ano,Vespertino,12,3.8,4.9,8
+ALU0295,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,1ª EM,Matutino,16,7.6,8.2,0
+ALU0296,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,6º Ano,Matutino,11,7.1,7,10
+ALU0297,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,9º Ano,Matutino,15,8.9,8.5,5
+ALU0298,41900101,Colégio Estadual Araucária,Curitiba,Urbana,8º Ano,Noturno,13,6.3,8.2,1
+ALU0299,41900101,Colégio Estadual Araucária,Curitiba,Urbana,6º Ano,Matutino,11,9.3,8.5,0
+ALU0300,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,6º Ano,Noturno,11,5.5,6.3,16
+ALU0301,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,3ª EM,Matutino,17,5.2,7.6,10
+ALU0302,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,1ª EM,Noturno,15,6.1,6.7,1
+ALU0303,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,1ª EM,Vespertino,15,4.5,5.3,8
+ALU0304,41900101,Colégio Estadual Araucária,Curitiba,Urbana,2ª EM,Matutino,16,6.6,7.2,5
+ALU0305,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Matutino,17,5.4,5.7,11
+ALU0306,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,8º Ano,Vespertino,13,5,7.2,2
+ALU0307,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,7º Ano,Vespertino,12,6.3,5.9,22
+ALU0308,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,2ª EM,Matutino,16,4.6,5.9,16
+ALU0309,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,1ª EM,Vespertino,15,5.2,7.4,2
+ALU0310,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,9º Ano,Vespertino,14,8.3,8.8,0
+ALU0311,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,9º Ano,Matutino,14,4.5,5.2,11
+ALU0312,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,8º Ano,Matutino,13,5,5.9,8
+ALU0313,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,8º Ano,Matutino,13,5,5.6,4
+ALU0314,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,2ª EM,Vespertino,16,6.1,6.9,5
+ALU0315,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Vespertino,14,5.4,6.6,4
+ALU0316,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,2ª EM,Matutino,16,6.7,6.1,10
+ALU0317,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,3ª EM,Vespertino,17,7.3,6.9,4
+ALU0318,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,1ª EM,Matutino,15,6,6,2
+ALU0319,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,9º Ano,Matutino,14,4.2,6.2,7
+ALU0320,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,6º Ano,Vespertino,11,5.6,5.8,11
+ALU0321,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,8º Ano,Matutino,13,8.2,6.8,3
+ALU0322,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,2ª EM,Vespertino,16,7.3,7.8,2
+ALU0323,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Matutino,14,6.3,6.5,13
+ALU0324,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Vespertino,17,5.2,3.7,3
+ALU0325,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,9º Ano,Matutino,15,6.7,7,25
+ALU0326,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,3ª EM,Vespertino,18,6.9,7,4
+ALU0327,41900101,Colégio Estadual Araucária,Curitiba,Urbana,2ª EM,Vespertino,16,7.4,6.8,10
+ALU0328,41900101,Colégio Estadual Araucária,Curitiba,Urbana,9º Ano,Vespertino,14,7.7,7.4,16
+ALU0329,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,8º Ano,Matutino,14,10,7.6,2
+ALU0330,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,8º Ano,Matutino,14,7,6.2,1
+ALU0331,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,8º Ano,Vespertino,13,7.1,6,21
+ALU0332,41900101,Colégio Estadual Araucária,Curitiba,Urbana,8º Ano,Matutino,13,6,4.3,4
+ALU0333,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,7º Ano,Noturno,12,6.5,5.8,4
+ALU0334,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,6º Ano,Matutino,11,6.7,5.8,5
+ALU0335,41900101,Colégio Estadual Araucária,Curitiba,Urbana,1ª EM,Matutino,15,4.5,6.6,13
+ALU0336,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,9º Ano,Matutino,15,5.8,6.9,10
+ALU0337,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,3ª EM,Noturno,17,6.5,5.3,21
+ALU0338,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,7º Ano,Vespertino,12,8.4,8.4,4
+ALU0339,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Vespertino,14,5,6.3,1
+ALU0340,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,2ª EM,Vespertino,17,7.5,7.2,1
+ALU0341,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Noturno,14,5.2,5.8,2
+ALU0342,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,1ª EM,Noturno,15,5,7.5,12
+ALU0343,41900101,Colégio Estadual Araucária,Curitiba,Urbana,6º Ano,Matutino,11,6.2,7.5,2
+ALU0344,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,1ª EM,Matutino,15,7.2,6.6,10
+ALU0345,41900301,Colégio Estadual Primavera,Maringá,Urbana,7º Ano,Matutino,12,5.3,5.9,2
+ALU0346,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,1ª EM,Matutino,15,4.1,6.4,13
+ALU0347,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,1ª EM,Matutino,16,5,8.1,2
+ALU0348,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,1ª EM,Matutino,15,5.7,6.1,7
+ALU0349,41900301,Colégio Estadual Primavera,Maringá,Urbana,6º Ano,Vespertino,11,4.8,7.2,27
+ALU0350,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,6º Ano,Noturno,11,5.5,6,9
+ALU0351,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,7º Ano,Vespertino,12,5.7,5.9,2
+ALU0352,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,3ª EM,Matutino,17,6.9,8.1,3
+ALU0353,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,8º Ano,Vespertino,13,5.6,6.1,3
+ALU0354,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,2ª EM,Vespertino,17,3.8,5.9,12
+ALU0355,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,7º Ano,Vespertino,12,6.5,7.1,6
+ALU0356,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,6º Ano,Matutino,12,6.4,7.5,4
+ALU0357,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Matutino,14,9.1,8.4,2
+ALU0358,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Matutino,16,5.8,5.6,3
+ALU0359,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,6º Ano,Vespertino,11,6.6,7.4,11
+ALU0360,41900301,Colégio Estadual Primavera,Maringá,Urbana,8º Ano,Matutino,13,6.1,8,9
+ALU0361,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,1ª EM,Matutino,15,5.7,6.3,13
+ALU0362,41900101,Colégio Estadual Araucária,Curitiba,Urbana,8º Ano,Noturno,13,5.8,6.2,18
+ALU0363,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,1ª EM,Matutino,15,7,6.1,7
+ALU0364,41900402,Colégio Estadual do Campo Pinheiral,Ponta Grossa,Rural,1ª EM,Vespertino,15,5,5.2,19
+ALU0365,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,2ª EM,Matutino,16,4.3,6.4,3
+ALU0366,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Matutino,14,6.1,6,1
+ALU0367,41900101,Colégio Estadual Araucária,Curitiba,Urbana,3ª EM,Vespertino,17,7.6,6,3
+ALU0368,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,1ª EM,Matutino,15,4.6,7.5,10
+ALU0369,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,2ª EM,Matutino,16,6.7,6.9,8
+ALU0370,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,1ª EM,Vespertino,15,4.7,5.1,17
+ALU0371,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,7º Ano,Vespertino,13,5.9,6.9,11
+ALU0372,41900301,Colégio Estadual Primavera,Maringá,Urbana,8º Ano,Noturno,14,7.3,5.8,9
+ALU0373,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,3ª EM,Matutino,17,5.9,5.1,10
+ALU0374,41900101,Colégio Estadual Araucária,Curitiba,Urbana,6º Ano,Vespertino,12,6.6,9.4,6
+ALU0375,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,8º Ano,Noturno,13,5,5,18
+ALU0376,41900101,Colégio Estadual Araucária,Curitiba,Urbana,7º Ano,Matutino,12,4.6,7,22
+ALU0377,41900101,Colégio Estadual Araucária,Curitiba,Urbana,3ª EM,Matutino,17,5.3,7,5
+ALU0378,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,1ª EM,Noturno,15,4.3,5.5,12
+ALU0379,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,2ª EM,Noturno,16,4.5,7.5,9
+ALU0380,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,7º Ano,Matutino,12,5.3,4.9,6
+ALU0381,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Matutino,14,7.9,8.4,3
+ALU0382,41900101,Colégio Estadual Araucária,Curitiba,Urbana,7º Ano,Vespertino,12,7.6,7.9,1
+ALU0383,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,7º Ano,Noturno,12,6.9,7.5,5
+ALU0384,41900301,Colégio Estadual Primavera,Maringá,Urbana,3ª EM,Vespertino,17,7.5,6.9,6
+ALU0385,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,1ª EM,Vespertino,15,3.8,6,33
+ALU0386,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,8º Ano,Matutino,13,7.9,7,8
+ALU0387,41900301,Colégio Estadual Primavera,Maringá,Urbana,3ª EM,Matutino,17,7.7,8.3,4
+ALU0388,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,8º Ano,Matutino,14,6.9,6.3,1
+ALU0389,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,1ª EM,Vespertino,15,6.9,6.3,10
+ALU0390,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,3ª EM,Matutino,17,5.9,6.2,14
+ALU0391,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,3ª EM,Matutino,18,5.8,6.1,6
+ALU0392,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,6º Ano,Vespertino,11,7.9,6.4,1
+ALU0393,41900102,Colégio Estadual Gralha Azul,Curitiba,Urbana,7º Ano,Matutino,12,8.4,7.7,5
+ALU0394,41900301,Colégio Estadual Primavera,Maringá,Urbana,6º Ano,Matutino,11,5.5,7,1
+ALU0395,41900101,Colégio Estadual Araucária,Curitiba,Urbana,1ª EM,Noturno,15,5.7,6.4,16
+ALU0396,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,1ª EM,Vespertino,15,6.5,7.1,19
+ALU0397,41900301,Colégio Estadual Primavera,Maringá,Urbana,2ª EM,Matutino,16,7.9,6.5,1
+ALU0398,41900301,Colégio Estadual Primavera,Maringá,Urbana,9º Ano,Noturno,14,4.9,5.4,7
+ALU0399,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,9º Ano,Matutino,14,8.3,7,3
+ALU0400,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,9º Ano,Vespertino,14,6.1,6.3,0
+ALU0401,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,9º Ano,Matutino,14,6.5,6.8,2
+ALU0402,41900503,Colégio Estadual do Campo Serra Verde,Cascavel,Rural,9º Ano,Vespertino,14,5,5.4,1
+ALU0403,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,3ª EM,Vespertino,18,NA,6.6,5
+ALU0404,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,8º Ano,Matutino,14,3.4,6.3,16
+ALU0405,41900101,Colégio Estadual Araucária,Curitiba,Urbana,2ª EM,Matutino,17,6.9,6.8,4
+ALU0406,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,7º Ano,Matutino,12,6.9,6.6,7
+ALU0407,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Matutino,16,5.9,8.1,4
+ALU0408,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Noturno,14,6.5,4.7,4
+ALU0409,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,2ª EM,Matutino,16,4.9,4.5,8
+ALU0410,41900301,Colégio Estadual Primavera,Maringá,Urbana,3ª EM,Vespertino,17,5.8,7,11
+ALU0411,41900103,Colégio Estadual Jardim das Flores,Curitiba,Urbana,1ª EM,Matutino,15,5.7,6.4,7
+ALU0412,41900302,Colégio Estadual Nova Esperança,Maringá,Urbana,2ª EM,Matutino,17,6.8,6.5,3
+ALU0413,41900502,Colégio Estadual Oeste Paranaense,Cascavel,Urbana,9º Ano,Matutino,14,6.8,9,3
+ALU0414,41900101,Colégio Estadual Araucária,Curitiba,Urbana,7º Ano,Vespertino,12,4.1,6.3,10
+ALU0415,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,8º Ano,Matutino,13,6.5,8,3
+ALU0416,41900201,Colégio Estadual Ipê Amarelo,Londrina,Urbana,2ª EM,Matutino,16,5.8,6.4,15
+ALU0417,41900501,Colégio Estadual Horizonte,Cascavel,Urbana,7º Ano,Matutino,12,6,5.7,6
+ALU0418,41900301,Colégio Estadual Primavera,Maringá,Urbana,1ª EM,Vespertino,15,7.1,6.4,6
+ALU0419,41900401,Colégio Estadual Rio Tibagi,Ponta Grossa,Urbana,6º Ano,Vespertino,12,6.3,8.8,3
+ALU0420,41900202,Colégio Estadual do Campo Água Clara,Londrina,Rural,3ª EM,Vespertino,18,7.4,6.7,5

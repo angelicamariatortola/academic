@@ -1,0 +1,15 @@
+"cod_escola";"nome_escola";"municipio";"localizacao";"ano";"matriculas";"taxa_aprovacao";"taxa_abandono"
+"41900101";"Colégio Estadual Araucária";"Curitiba";"Urbana";2023;798;92,4;0,6
+"41900102";"Colégio Estadual Gralha Azul";"Curitiba";"Urbana";2023;949;83,3;4,1
+"41900103";"Colégio Estadual Jardim das Flores";"Curitiba";"Urbana";2023;1162;89,1;5,3
+"41900201";"Colégio Estadual Ipê Amarelo";"Londrina";"Urbana";2023;870;92,7;5,5
+"41900202";"Colégio Estadual do Campo Água Clara";"Londrina";"Rural";2023;354;78;3,9
+"41900301";"Colégio Estadual Primavera";"Maringá";"Urbana";2023;1272;78,4;2,7
+"41900302";"Colégio Estadual Nova Esperança";"Maringá";"Urbana";2023;1302;85,9;5,2
+"41900401";"Colégio Estadual Rio Tibagi";"Ponta Grossa";"Urbana";2023;1284;83,2;3
+"41900402";"Colégio Estadual do Campo Pinheiral";"Ponta Grossa";"Rural";2023;1033;81,2;2,8
+"41900501";"Colégio Estadual Horizonte";"Cascavel";"Urbana";2023;1335;95,5;2
+"41900502";"Colégio Estadual Oeste Paranaense";"Cascavel";"Urbana";2023;647;90,2;4,1
+"41900503";"Colégio Estadual do Campo Serra Verde";"Cascavel";"Rural";2023;1179;90,3;4,1
+"41900104";"Colégio Estadual Vila Guaíra";"Curitiba";"Urbana";2023;1299;79;0,8
+"41900303";"Colégio Estadual do Campo Vale Azul";"Maringá";"Rural";2023;659;95,4;4,6
