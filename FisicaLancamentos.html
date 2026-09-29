@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aplicativo de Tipos de Lançamento</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:#f0f4f8;color:#1a1a2e;min-height:100vh}
+h1.titulo-principal{font-family:'Chewy',cursive;font-size:2rem;color:#003366;text-align:center;padding:18px 0 6px;letter-spacing:1px}
+
+/* TABS */
+.tab-bar{display:flex;gap:0;background:#003366;overflow-x:auto;flex-wrap:wrap}
+.tab-btn{background:none;border:none;color:#aaccee;padding:12px 18px;cursor:pointer;font-size:14px;font-family:'Nunito',sans-serif;font-weight:600;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s}
+.tab-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.tab-btn.active{color:#fff;border-bottom:3px solid #5bc8f5;background:rgba(255,255,255,.12)}
+.tab-content{display:none;padding:24px 20px;max-width:1200px;margin:0 auto}
+.tab-content.active{display:block}
+
+/* HOME */
+.home-title{font-size:1.5rem;font-weight:700;color:#003366;margin-bottom:16px}
+.home-paragraph{line-height:1.8;font-size:15px;color:#333}
+.home-paragraph p{margin-bottom:12px}
+.custom-list{margin-left:24px;margin-top:8px}
+.custom-list li{margin-bottom:8px}
+
+/* BOXES */
+.box{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.10);margin-bottom:20px;overflow:hidden}
+.box-header{background:#003366;color:#fff;padding:12px 18px;font-size:16px;font-weight:700}
+.box-header.solid{background:#17375e}
+.box-body{padding:18px}
+
+/* REVISÃO */
+.rev-layout{display:flex;gap:20px;align-items:flex-start}
+.rev-menu{min-width:210px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.10);padding:16px;flex-shrink:0}
+.rev-menu-title{font-size:18px;font-weight:700;color:#003366;margin-bottom:14px;text-align:center}
+.rev-content{flex:1;min-width:0}
+.btn-acao{display:block;width:100%;margin-bottom:10px;background:#e8f0fe;border:none;border-radius:8px;padding:10px 14px;text-align:left;cursor:pointer;font-size:14px;font-weight:600;color:#003366;transition:background .2s}
+.btn-acao:hover,.btn-acao.active{background:#003366;color:#fff}
+
+/* DIAGNÓSTICO */
+.diag-layout{display:flex;gap:20px;align-items:flex-start}
+.diag-menu{min-width:220px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.10);padding:16px;flex-shrink:0}
+.diag-content{flex:1;min-width:0}
+
+/* LANCAMENTO - MAIN */
+.lanc-layout{display:flex;gap:20px;align-items:flex-start}
+.lanc-main{flex:1;min-width:0}
+.lanc-sidebar{width:300px;flex-shrink:0;background:#D1EEEE;border-radius:10px;padding:20px}
+.titulo-secundario{font-size:20px;color:#003366;font-weight:700;margin-bottom:12px}
+@media(max-width:768px){.rev-layout,.diag-layout,.lanc-layout{flex-direction:column}.rev-menu,.diag-menu,.lanc-sidebar{width:100%;min-width:0}}
+
+/* FORMS */
+label.lbl{font-size:14px;color:#003366;font-weight:600;display:block;margin-bottom:4px}
+select.inp,input.inp[type=number]{padding:8px 10px;border:1.5px solid #b0c4de;border-radius:7px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;background:#fff;width:100%;transition:border .2s}
+select.inp:focus,input.inp:focus{border-color:#003366}
+.row-inline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.row-inline label{white-space:nowrap;font-size:14px;color:#003366;font-weight:600}
+.row-inline select.inp,.row-inline input.inp{flex:1;min-width:0}
+.form-row{margin-bottom:14px}
+.aviso{color:#c0392b;font-size:12px;margin-top:3px}
+
+/* BOTÕES */
+.btn{padding:9px 18px;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-family:'Nunito',sans-serif;font-weight:700;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:#003366;color:#fff}
+.btn-primary:hover{background:#00509e}
+.btn-info{background:#17a2b8;color:#fff}
+.btn-info:hover{background:#117a8b}
+.btn-success{background:#28a745;color:#fff}
+.btn-success:hover{background:#1e7e34}
+.btn-warning{background:#ffc107;color:#212529}
+.btn-warning:hover{background:#d39e00}
+.btn-secondary{background:#6c757d;color:#fff}
+.btn-secondary:hover{background:#545b62}
+.btn-disabled{opacity:.55;cursor:not-allowed}
+
+/* INPUTS DIAGNÓSTICO */
+.quest-block{margin-bottom:20px;padding:14px;background:#f8f9fa;border-radius:8px;border-left:4px solid #003366}
+.quest-block .quest-text{font-size:14px;line-height:1.7;margin-bottom:8px}
+.quest-block input.inp[type=number]{max-width:200px}
+
+/* PONTUAÇÃO */
+.pontuacao-text{font-size:18px;font-weight:700;color:#28a745}
+.feedback-text{font-size:14px;color:#007bff;margin-top:6px}
+.status-table{width:100%;border-collapse:collapse;font-size:13px}
+.status-table th,.status-table td{border:1px solid #dee2e6;padding:5px 8px;text-align:center}
+.status-table th{background:#003366;color:#fff}
+.status-table tr:nth-child(even){background:#f0f4f8}
+
+/* CANVAS */
+.chart-container{position:relative;width:100%;height:380px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:12px;margin-top:16px}
+
+/* EQUAÇÃO BOX */
+.eq-box{background:#eaf4fb;border-left:4px solid #17a2b8;border-radius:6px;padding:14px;margin-top:10px;font-size:14px;line-height:2}
+.sol-box{background:#fff8e1;border-left:4px solid #ffc107;border-radius:6px;padding:14px;margin-top:10px;font-size:14px;line-height:2.2}
+
+/* RESPOSTA FEEDBACK */
+.feedback-ok{color:#28a745;font-weight:700;font-size:15px;margin-top:8px}
+.feedback-err{color:#e74c3c;font-weight:700;font-size:15px;margin-top:8px}
+
+/* VIDEOS */
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:8px}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+/* TABELA REVISAO */
+.rev-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.rev-table th{background:#003366;color:#fff;padding:8px 12px}
+.rev-table td{border:1px solid #dee2e6;padding:7px 12px}
+.rev-table tr:nth-child(even){background:#f0f4f8}
+
+/* ANGULOS IMG */
+.angulos-img{width:100%;max-width:320px;border-radius:8px;margin-top:8px;border:1px solid #ccc}
+
+/* HIDDEN */
+.hidden{display:none}
+
+/* LINKS */
+a.link-btn{display:inline-block;padding:8px 16px;background:#003366;color:#fff;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;margin:4px 4px 4px 0;transition:background .2s}
+a.link-btn:hover{background:#00509e}
+</style>
+</head>
+<body>
+
+<h1 class="titulo-principal">Aplicativo de Tipos de Lançamento</h1>
+
+<!-- TABS -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('home')">Início 🏠</button>
+  <button class="tab-btn" onclick="showTab('diag')">Teste Diagnóstico ✅</button>
+  <button class="tab-btn" onclick="showTab('rev')">Revisão 📖</button>
+  <button class="tab-btn" onclick="showTab('horiz')">Lançamento horizontal 🎯</button>
+  <button class="tab-btn" onclick="showTab('obli')">Lançamento Oblíquo 🚀</button>
+</div>
+
+<!-- ===== ABA INÍCIO ===== -->
+<div class="tab-content active" id="tab-home">
+  <div class="home-title">Bem-vindo ao Aplicativo de Tipos Lançamentos!</div>
+  <div class="home-paragraph">
+    <p>Este aplicativo interativo foi desenvolvido para auxiliar na compreensão dos conceitos fundamentais de movimento e dos diferentes tipos de lançamentos em Física.</p>
+    <p>Cada aba foi estruturada para proporcionar o melhor aproveitamento dos conteúdos:</p>
+    <ul class="custom-list">
+      <li><strong>Teste Diagnóstico</strong>: avalie seus conhecimentos iniciais e identifique os principais pontos que precisam de reforço.</li>
+      <li><strong>Revisão</strong>: revise os conceitos essenciais que sustentam o tema de Lançamento Horizontal, facilitando o entendimento dos tópicos mais complexos.</li>
+      <li><strong>Lançamento Horizontal</strong>: explore em detalhes esse tipo de movimento, com resolução de exercícios, visualização gráfica e conferência de respostas.</li>
+      <li><strong>Lançamento Oblíquo</strong>: aprofunde-se no movimento com componentes horizontal e vertical, ângulos notáveis e trajetória parabólica.</li>
+    </ul>
+    <p>Aproveite esta oportunidade para praticar, revisar e fortalecer seus conhecimentos de forma dinâmica e envolvente!</p>
+  </div>
+</div>
+
+<!-- ===== ABA DIAGNÓSTICO ===== -->
+<div class="tab-content" id="tab-diag">
+  <div class="row-inline form-row">
+    <label class="lbl" style="white-space:nowrap">Escolha o Conteúdo para o Teste:</label>
+    <select class="inp" id="tipo_teste" onchange="buildDiag()" style="max-width:320px">
+      <option value="horizontal">🎯 Lançamento Horizontal</option>
+      <option value="obliquo">🚀 Lançamento Oblíquo</option>
+    </select>
+  </div>
+
+  <div class="diag-layout">
+    <div class="diag-menu">
+      <div class="box-header" style="border-radius:8px 8px 0 0;margin-bottom:12px">Menu de Opções:</div>
+      <button class="btn btn-primary" style="width:100%;margin-bottom:10px" onclick="gerarTeste()">🔄 Gerar Novo Teste</button>
+      <button class="btn btn-success" id="btn-calcular" style="width:100%;margin-bottom:10px" onclick="calcularDiag()">✅ Calcular Pontuação</button>
+      <p style="font-size:13px;font-weight:600;color:#003366;margin-bottom:6px">📊 Seu Desempenho</p>
+      <div id="tabela-desempenho"></div>
+      <div id="pontuacao-text" class="pontuacao-text" style="margin-top:10px"></div>
+      <div id="feedback-text" class="feedback-text"></div>
+    </div>
+    <div class="diag-content" id="diag-questions"></div>
+  </div>
+</div>
+
+<!-- ===== ABA REVISÃO ===== -->
+<div class="tab-content" id="tab-rev">
+  <div class="rev-layout">
+    <div class="rev-menu">
+      <div class="rev-menu-title">Conteúdos de Revisão</div>
+      <button class="btn-acao active" id="btn-mat" onclick="setRev('matematica',this)">Matemática Básica 📚</button>
+      <button class="btn-acao" id="btn-mov" onclick="setRev('movimento',this)">Conceitos de Movimento 🚗</button>
+      <button class="btn-acao" id="btn-lanc" onclick="setRev('horizontal',this)">Lançamento Horizontal 🎯</button>
+      <button class="btn-acao" id="btn-obli" onclick="setRev('obliquo',this)">Lançamento Oblíquo 🚀</button>
+      <button class="btn-acao" id="btn-vid" onclick="setRev('video',this)">Vídeos de Revisão 📺</button>
+    </div>
+    <div class="rev-content" id="rev-content"></div>
+  </div>
+</div>
+
+<!-- ===== ABA LANÇAMENTO HORIZONTAL ===== -->
+<div class="tab-content" id="tab-horiz">
+  <div class="lanc-layout">
+    <div class="lanc-main">
+      <div class="form-row row-inline">
+        <label class="lbl">Qual o tipo de exercício?</label>
+        <select class="inp" id="tipoH" onchange="onTipoHChange()" style="max-width:200px">
+          <option value="">— Selecione —</option>
+          <option value="aberto">aberto</option>
+          <option value="fechado">fechado</option>
+        </select>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
+        <div class="form-row row-inline" style="flex:1;min-width:200px">
+          <label class="lbl">Problema de:</label>
+          <select class="inp" id="incognitaH" onchange="onIncognitaHChange()" style="max-width:200px">
+            <option value="">— Selecione —</option>
+            <option value="altura">altura</option>
+            <option value="alcance">alcance</option>
+            <option value="velocidade">velocidade</option>
+          </select>
+        </div>
+        <div id="exH-wrap"></div>
+      </div>
+
+      <div id="enunciadoH" style="margin:10px 0;font-size:17px;text-align:justify"></div>
+      <div id="SegH-wrap" class="form-row"></div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end">
+        <div id="parametrosH-wrap" style="flex:1;min-width:0"></div>
+        <div id="mostrarH-wrap"></div>
+      </div>
+      <div id="lancarH-wrap" style="margin:16px 0"></div>
+      <div class="chart-container" id="chartH-container" style="display:none">
+        <canvas id="chartH"></canvas>
+      </div>
+    </div>
+
+    <div class="lanc-sidebar">
+      <div class="titulo-secundario">Passo a Passo</div>
+      <div id="b1H-wrap"></div>
+      <div id="t_eqH-wrap"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:flex-end">
+        <div id="respostaH-wrap" style="flex:1;min-width:0"></div>
+        <div id="conf1H-wrap"></div>
+      </div>
+      <div id="r1H-wrap" style="margin-top:8px"></div>
+      <div style="margin-top:16px" id="b2H-wrap"></div>
+      <div id="t_solH-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABA LANÇAMENTO OBLÍQUO ===== -->
+<div class="tab-content" id="tab-obli">
+  <div class="lanc-layout">
+    <div class="lanc-main">
+      <div class="form-row row-inline">
+        <label class="lbl">Qual o tipo de exercício?</label>
+        <select class="inp" id="tipo" onchange="onTipoChange()" style="max-width:200px">
+          <option value="">— Selecione —</option>
+          <option value="aberto">aberto</option>
+          <option value="fechado">fechado</option>
+        </select>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
+        <div class="form-row row-inline" style="flex:1;min-width:200px">
+          <label class="lbl">Problema de:</label>
+          <select class="inp" id="incognita" onchange="onIncognitaChange()" style="max-width:220px">
+            <option value="">— Selecione —</option>
+            <option value="altura máxima">altura máxima</option>
+            <option value="alcance">alcance</option>
+            <option value="tempo total">tempo total</option>
+            <option value="velocidade">velocidade</option>
+          </select>
+        </div>
+        <div id="ex-wrap"></div>
+      </div>
+
+      <div id="enunciado" style="margin:10px 0;font-size:17px;text-align:justify"></div>
+      <div id="Seg-wrap" class="form-row"></div>
+      <div id="parametros-wrap" class="form-row"></div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:10px 0;align-items:center">
+        <div id="mostrar-wrap"></div>
+        <div id="lancar-wrap"></div>
+      </div>
+      <div class="chart-container" id="chartO-container" style="display:none">
+        <canvas id="chartO"></canvas>
+      </div>
+    </div>
+
+    <div class="lanc-sidebar">
+      <div class="titulo-secundario">Passo a Passo</div>
+      <div id="b-wrap"></div>
+      <div id="tab-angulos-wrap"></div>
+      <div id="t_eq-wrap"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:flex-end">
+        <div id="respostaOb-wrap" style="flex:1;min-width:0"></div>
+        <div id="conf1Ob-wrap"></div>
+      </div>
+      <div id="r1Ob-wrap" style="margin-top:8px"></div>
+      <div style="margin-top:16px" id="b2-wrap"></div>
+      <div id="t_sol-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// UTILITÁRIOS
+// ============================================================
+const g = 10;
+function rad(deg){return deg*Math.PI/180}
+function fmt(v,d=2){return parseFloat(v.toFixed(d))}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+
+function showTab(id){
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  const btns = document.querySelectorAll('.tab-btn');
+  const map={home:0,diag:1,rev:2,horiz:3,obli:4};
+  btns[map[id]].classList.add('active');
+}
+
+function mathRefresh(el){
+  if(window.MathJax && window.MathJax.typesetPromise) MathJax.typesetPromise([el]);
+}
+
+// ============================================================
+// DADOS DOS EXERCÍCIOS (lançamento horizontal)
+// ============================================================
+const dadosH = [
+  {pergunta:'alcance', enunciado:'Uma bola é lançada horizontalmente com velocidade de 20 m/s a partir de uma altura de 45 m. Qual é o alcance horizontal da bola? (Use g = 10 m/s²)', velocidade:20, alcance:60, altura:45, tempo:3},
+  {pergunta:'alcance', enunciado:'Um projétil é lançado horizontalmente de um penhasco de 80 m de altura com velocidade de 15 m/s. Qual é o alcance horizontal? (Use g = 10 m/s²)', velocidade:15, alcance:60, altura:80, tempo:4},
+  {pergunta:'altura', enunciado:'Um objeto é lançado horizontalmente com velocidade de 10 m/s. Após 2 segundos, qual é a altura que ele caiu? (Use g = 10 m/s²)', velocidade:10, alcance:20, altura:20, tempo:2},
+  {pergunta:'altura', enunciado:'Uma pedra é atirada horizontalmente de uma ponte com velocidade de 12 m/s. Após percorrer 36 m horizontalmente, qual foi a altura da queda? (Use g = 10 m/s²)', velocidade:12, alcance:36, altura:45, tempo:3},
+  {pergunta:'velocidade', enunciado:'Um objeto lançado horizontalmente de uma altura de 20 m percorre 40 m horizontalmente antes de atingir o chão. Qual foi a velocidade inicial? (Use g = 10 m/s²)', velocidade:20, alcance:40, altura:20, tempo:2},
+  {pergunta:'velocidade', enunciado:'Uma bola caiu de uma altura de 45 m e atingiu o chão a 60 m horizontalmente do ponto de lançamento. Qual foi a velocidade de lançamento? (Use g = 10 m/s²)', velocidade:20, alcance:60, altura:45, tempo:3},
+];
+
+// Dados Lançamento Oblíquo
+const dadosO = [
+  {pergunta:'alcance', enunciado:'Um projétil é lançado com velocidade inicial de 20 m/s a um ângulo de 30° com a horizontal. Qual é o alcance horizontal? (Use g = 10 m/s²)', velocidade:20, angulo:30, alcance:34.64, 'altura inicial':0, 'altura max':5},
+  {pergunta:'alcance', enunciado:'Uma bola é lançada com velocidade de 25 m/s a 45°. Determine o alcance. (Use g = 10 m/s²)', velocidade:25, angulo:45, alcance:62.5, 'altura inicial':0, 'altura max':15.625},
+  {pergunta:'altura max', enunciado:'Um projétil é lançado com velocidade de 30 m/s a 60°. Qual é a altura máxima atingida? (Use g = 10 m/s²)', velocidade:30, angulo:60, alcance:77.94, 'altura inicial':0, 'altura max':33.75},
+  {pergunta:'altura max', enunciado:'Uma bola é lançada a 20 m/s com ângulo de 45°. Qual é a altura máxima? (Use g = 10 m/s²)', velocidade:20, angulo:45, alcance:40, 'altura inicial':0, 'altura max':10},
+  {pergunta:'tempo total', enunciado:'Um projétil é lançado com velocidade de 40 m/s a 30°. Quanto tempo ele fica no ar? (Use g = 10 m/s²)', velocidade:40, angulo:30, alcance:138.56, 'altura inicial':0, 'altura max':20},
+  {pergunta:'tempo total', enunciado:'Uma pedra é atirada a 25 m/s com ângulo de 60°. Qual o tempo total de voo? (Use g = 10 m/s²)', velocidade:25, angulo:60, alcance:54.13, 'altura inicial':0, 'altura max':23.44},
+  {pergunta:'vel', enunciado:'Um objeto lançado a 45° atinge uma altura máxima de 20 m. Qual foi a velocidade inicial? (Use g = 10 m/s²)', velocidade:20, angulo:45, alcance:80, 'altura inicial':0, 'altura max':20},
+  {pergunta:'vel', enunciado:'Um projétil lançado a 30° tem alcance de 60 m. Qual a velocidade inicial? (Use g = 10 m/s²)', velocidade:26.46, angulo:30, alcance:60, 'altura inicial':0, 'altura max':8.75},
+];
+
+// ============================================================
+// ABA REVISÃO
+// ============================================================
+function setRev(tipo, btn){
+  document.querySelectorAll('.btn-acao').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRev(tipo);
+}
+
+function renderRev(tipo){
+  const c = document.getElementById('rev-content');
+  if(tipo==='matematica'){
+    c.innerHTML = `
+    <h2 style="color:#003366;margin-bottom:16px">📚 Matemática Básica</h2>
+    <div class="box"><div class="box-header solid">📌 Equação do 1º Grau</div><div class="box-body">
+      <p><strong>Forma geral:</strong> \\(ax + b = 0\\) onde \\(a \\neq 0\\).</p>
+      <p style="margin-top:8px"><strong>Resolução:</strong> \\(x = -\\dfrac{b}{a}\\)</p>
+      <p style="margin-top:8px"><strong>🔹 Exemplo:</strong> Se \\(2x - 6 = 0\\), então \\(x = \\dfrac{6}{2} = 3\\).</p>
+    </div></div>
+    <div class="box"><div class="box-header solid">📌 Equação do 2º Grau</div><div class="box-body">
+      <p><strong>Forma geral:</strong> \\(ax^2 + bx + c = 0\\), com \\(a \\neq 0\\).</p>
+      <p style="margin-top:8px"><strong>Fórmula de Bhaskara:</strong> \\(x = \\dfrac{-b \\pm \\sqrt{\\Delta}}{2a}\\) onde \\(\\Delta = b^2 - 4ac\\)</p>
+      <p style="margin-top:8px"><strong>🔹 Exemplo:</strong> Resolva \\(x^2 - 5x + 6 = 0\\):</p>
+      <ul style="margin-left:20px;margin-top:4px;font-size:14px;line-height:1.9">
+        <li>\\(\\Delta = 25 - 24 = 1\\)</li>
+        <li>\\(x = \\dfrac{5 \\pm 1}{2}\\) → \\(x_1 = 3\\), \\(x_2 = 2\\)</li>
+      </ul>
+    </div></div>
+    <div class="box"><div class="box-header solid">📌 Trigonometria Básica</div><div class="box-body">
+      <p>Em um triângulo retângulo:</p>
+      <p style="margin-top:8px">\\(\\sin(\\theta) = \\dfrac{\\text{cateto oposto}}{\\text{hipotenusa}}\\)</p>
+      <p>\\(\\cos(\\theta) = \\dfrac{\\text{cateto adjacente}}{\\text{hipotenusa}}\\)</p>
+      <p>\\(\\tan(\\theta) = \\dfrac{\\text{cateto oposto}}{\\text{cateto adjacente}}\\)</p>
+    </div></div>
+    <div class="box"><div class="box-header solid">📌 Sistema de Equações</div><div class="box-body">
+      <p><strong>Forma geral:</strong> \\(\\begin{cases} a_1 x + b_1 y = c_1 \\\\ a_2 x + b_2 y = c_2 \\end{cases}\\)</p>
+      <p style="margin-top:8px"><strong>🔹 Exemplo:</strong> \\(\\begin{cases} x + y = 5 \\\\ 2x - y = 1 \\end{cases}\\) → Solução: \\(x=2, y=3\\).</p>
+    </div></div>
+    <div class="box"><div class="box-header solid">📌 Mais Informações</div><div class="box-body">
+      <p style="margin-bottom:8px">Para mais informações consulte:</p>
+      <a class="link-btn" href="https://brasilescola.uol.com.br/matematica/equacao-do-1-grau.htm" target="_blank">🔗 Equação do 1º Grau – Brasil Escola</a>
+      <a class="link-btn" href="https://mundoeducacao.uol.com.br/matematica/equacao-2-grau.htm" target="_blank">🔗 Equação do 2º Grau – Mundo Educação</a>
+      <a class="link-btn" href="https://www.todamateria.com.br/trigonometria/" target="_blank">🔗 Trigonometria – Toda Matéria</a>
+    </div></div>`;
+  } else if(tipo==='movimento'){
+    c.innerHTML = `
+    <h2 style="color:#003366;margin-bottom:16px">🚗 Conceitos de Movimento</h2>
+    <div class="box"><div class="box-header solid">🔎 Cinemática</div><div class="box-body">
+      <p>A Cinemática estuda o movimento dos corpos sem considerar as causas. Analisa posição, velocidade e aceleração.</p>
+      <ul style="margin-left:20px;margin-top:8px;line-height:2;font-size:14px">
+        <li><strong>Posição:</strong> onde o corpo está em um determinado instante.</li>
+        <li><strong>Velocidade:</strong> o quão rápido e em qual direção o corpo se desloca.</li>
+        <li><strong>Aceleração:</strong> variação da velocidade ao longo do tempo.</li>
+      </ul>
+      <a class="link-btn" href="https://www.todamateria.com.br/cinematica/" target="_blank" style="margin-top:12px;display:inline-block">🔗 Acessar Site</a>
+    </div></div>
+    <div class="box"><div class="box-header solid">🚗 ➡️➡️➡️ Movimento Uniforme (MU)</div><div class="box-body">
+      <ul style="margin-left:20px;font-size:14px;line-height:2">
+        <li>Velocidade <strong>constante.</strong></li>
+        <li>Aceleração <strong>zero.</strong></li>
+        <li>O gráfico de <strong>posição × tempo</strong> é uma <strong>reta</strong> inclinada.</li>
+      </ul>
+      <p style="margin-top:8px"><strong>Exemplo:</strong> um carro a 60 km/h sem acelerar nem frear.</p>
+      <a class="link-btn" href="https://www.todamateria.com.br/movimento-uniforme/" target="_blank" style="margin-top:10px;display:inline-block">🔗 Acessar Site</a>
+    </div></div>
+    <div class="box"><div class="box-header solid">🚗 ⏩⏩⏩ Movimento Uniformemente Variado (MUV)</div><div class="box-body">
+      <ul style="margin-left:20px;font-size:14px;line-height:2">
+        <li>Velocidade <strong>varia</strong> ao longo do tempo.</li>
+        <li>Aceleração <strong>constante.</strong></li>
+        <li>O gráfico de <strong>posição × tempo</strong> é uma <strong>parábola.</strong></li>
+      </ul>
+      <p style="margin-top:8px"><strong>Exemplo:</strong> um carro que acelera ou freia.</p>
+      <a class="link-btn" href="https://www.todamateria.com.br/movimento-uniformemente-variado/" target="_blank" style="margin-top:10px;display:inline-block">🔗 Acessar Site</a>
+    </div></div>
+    <div class="box"><div class="box-header solid">📐 Grandezas Vetoriais e Escalares</div><div class="box-body">
+      <ul style="margin-left:20px;font-size:14px;line-height:2">
+        <li><strong>Grandezas escalares:</strong> têm apenas valor numérico (ex: tempo, massa, temperatura).</li>
+        <li><strong>Grandezas vetoriais:</strong> têm módulo, direção e sentido (ex: velocidade e aceleração).</li>
+      </ul>
+      <a class="link-btn" href="https://www.todamateria.com.br/vetores/" target="_blank" style="margin-top:10px;display:inline-block">🔗 Trigonometria para decomposição vetorial</a>
+    </div></div>`;
+  } else if(tipo==='horizontal'){
+    c.innerHTML = `
+    <h2 style="color:#003366;margin-bottom:16px">🎯 Lançamento Horizontal</h2>
+    <div class="box"><div class="box-header solid">📌 Conceitos Básicos</div><div class="box-body">
+      <p>O lançamento horizontal é um movimento <strong>bidimensional</strong> que combina <strong>MU na horizontal</strong> com <strong>MUV na vertical.</strong></p>
+      <ul style="margin-left:20px;margin-top:10px;font-size:14px;line-height:2">
+        <li>Na direção <strong>horizontal</strong> → <strong>MU</strong>: velocidade constante.</li>
+        <li>Na direção <strong>vertical</strong> → <strong>MUV</strong>: aceleração gravitacional.</li>
+        <li>A trajetória forma uma curva <strong>parabólica.</strong></li>
+      </ul>
+      <p style="margin-top:10px"><strong>Exemplos:</strong> bola rolando de uma mesa; avião lançando suprimentos.</p>
+    </div></div>
+    <div class="box"><div class="box-header solid">💡 Resumo – Equações</div><div class="box-body">
+      <table class="rev-table">
+        <tr><th>Grandeza</th><th>Equação</th><th>Significado</th></tr>
+        <tr><td>Alcance horizontal</td><td>\\(x = v_0 \\cdot t\\)</td><td>MU horizontal</td></tr>
+        <tr><td>Queda vertical</td><td>\\(y = \\dfrac{g t^2}{2}\\)</td><td>MUV vertical</td></tr>
+        <tr><td>Tempo de queda</td><td>\\(t = \\sqrt{\\dfrac{2y}{g}}\\)</td><td>Da altura conhecida</td></tr>
+      </table>
+      <p style="margin-top:10px">O <strong>lançamento horizontal</strong> é a combinação de <strong>MU na horizontal</strong> e <strong>MUV na vertical!</strong> 🚀</p>
+    </div></div>
+    <div class="box"><div class="box-header solid">📌 Mais Informações</div><div class="box-body">
+      <a class="link-btn" href="https://www.todamateria.com.br/lancamento-horizontal/" target="_blank">🔗 Site Toda Matéria</a>
+      <a class="link-btn" href="https://mundoeducacao.uol.com.br/fisica/lancamento-horizontal.htm" target="_blank">🔗 Site Mundo Educação</a>
+    </div></div>`;
+  } else if(tipo==='obliquo'){
+    c.innerHTML = `
+    <h2 style="color:#003366;margin-bottom:16px">🚀 Lançamento Oblíquo</h2>
+    <div class="box"><div class="box-header solid">📌 Conceitos Básicos</div><div class="box-body">
+      <p>O lançamento oblíquo é um movimento <strong>bidimensional</strong>: combina <strong>MU na horizontal</strong> com <strong>MUV na vertical.</strong></p>
+      <ul style="margin-left:20px;margin-top:10px;font-size:14px;line-height:2.2">
+        <li>Horizontal → \\(v_x = v_0 \\cos(\\theta)\\) (constante)</li>
+        <li>Vertical → \\(v_y = v_0 \\sin(\\theta) - g \\cdot t\\) (varia)</li>
+        <li>No ponto mais alto: \\(v_y = 0\\)</li>
+      </ul>
+      <p style="margin-top:10px"><strong>Principais Equações:</strong></p>
+      <ul style="margin-left:20px;font-size:14px;line-height:2.2">
+        <li>Alcance: \\(s = \\dfrac{v_0^2 \\sin(2\\theta)}{g}\\)</li>
+        <li>Altura máxima: \\(H = \\dfrac{v_0^2 \\sin^2(\\theta)}{2g}\\)</li>
+        <li>Tempo total: \\(t_T = \\dfrac{2 v_0 \\sin(\\theta)}{g}\\)</li>
+      </ul>
+      <p style="margin-top:10px"><strong>Exemplos:</strong> jogador chutando uma bola de futebol; foguete de artifício.</p>
+    </div></div>
+    <div class="box"><div class="box-header solid">📌 Mais Informações</div><div class="box-body">
+      <a class="link-btn" href="https://www.todamateria.com.br/lancamento-obliquo/" target="_blank">🔗 Site Toda Matéria</a>
+      <a class="link-btn" href="https://mundoeducacao.uol.com.br/fisica/lancamento-obliquo.htm" target="_blank">🔗 Site Mundo Educação</a>
+    </div></div>`;
+  } else if(tipo==='video'){
+    c.innerHTML = `
+    <h2 style="color:#003366;margin-bottom:16px">📺 Vídeos de Revisão</h2>
+    <div class="box"><div class="box-header solid">📌 Equação do 1º e 2º Grau</div><div class="box-body">
+      <p style="margin-bottom:8px">Vídeo com conceitos básicos de equações:</p>
+      <div class="video-wrap"><iframe src="https://www.youtube.com/embed/tfm9kUrO5GI" allowfullscreen></iframe></div>
+    </div></div>
+    <div class="box"><div class="box-header solid">📌 Conceitos de Cinemática</div><div class="box-body">
+      <p style="margin-bottom:8px">Vídeo com conceitos básicos de Cinemática:</p>
+      <div class="video-wrap"><iframe src="https://www.youtube.com/embed/AnOKxNhpRPo" allowfullscreen></iframe></div>
+    </div></div>
+    <div class="box"><div class="box-header solid">📌 Lançamento Horizontal</div><div class="box-body">
+      <p style="margin-bottom:8px">Vídeo com conceitos de Lançamento Horizontal:</p>
+      <div class="video-wrap"><iframe src="https://www.youtube.com/embed/JZ7xNle8-X0" allowfullscreen></iframe></div>
+    </div></div>
+    <div class="box"><div class="box-header solid">📌 Lançamento Oblíquo</div><div class="box-body">
+      <p style="margin-bottom:8px">Vídeo com conceitos de Lançamento Oblíquo:</p>
+      <div class="video-wrap"><iframe src="https://www.youtube.com/embed/G1gPxc3T0C8" allowfullscreen></iframe></div>
+    </div></div>`;
+  }
+  mathRefresh(c);
+}
+renderRev('matematica');
+
+// ============================================================
+// DIAGNÓSTICO
+// ============================================================
+let diagVals = null;
+
+function rnd(a,b){return Math.floor(Math.random()*(b-a+1))+a}
+function rndArr(arr){return arr[Math.floor(Math.random()*arr.length)]}
+
+function gerarVals(){
+  return {
+    comuns:{g:10, altura:rnd(10,50), tempo:rnd(2,8), v_horizontal:rnd(5,25), alcance:rnd(50,200)},
+    horizontal:{
+      v0_horiz:rnd(80,180), distancia:rnd(10,25)*100, v_ciclista:rnd(5,15),
+      d_inicial:rnd(20,200), v_carro:rnd(10,30), t1:rnd(2,10), t2:rnd(1,6),
+      coef1:rnd(2,20), coef2:rnd(2,20), coef3:rnd(2,20)
+    },
+    obliquo:{
+      v0_obliq:rnd(10,30), angulo:rndArr([15,30,45,60]),
+      v0y:rnd(5,20), coef1:rnd(2,5), coef2:rnd(10,30), tempo_voo:rnd(3,8)
+    }
+  };
+}
+
+function gerarTeste(){
+  diagVals = gerarVals();
+  buildDiag();
+  document.getElementById('btn-calcular').classList.remove('btn-disabled');
+  document.getElementById('btn-calcular').disabled = false;
+  document.getElementById('pontuacao-text').textContent = '';
+  document.getElementById('feedback-text').textContent = '';
+  document.getElementById('tabela-desempenho').innerHTML = '';
+}
+
+function buildDiag(){
+  if(!diagVals) diagVals = gerarVals();
+  const tipo = document.getElementById('tipo_teste').value;
+  const c = document.getElementById('diag-questions');
+  const q = diagVals;
+  if(tipo==='horizontal'){
+    c.innerHTML = `
+    <div style="font-size:22px;font-weight:700;color:#003366;margin-bottom:16px">🎯 Teste de Lançamento Horizontal</div>
+    <div class="box"><div class="box-header solid">📚 Matemática Básica</div><div class="box-body">
+      ${questH(1,1,`Um veículo se desloca a velocidade constante de \\(${q.horizontal.v0_horiz}\\) km/h. Qual é a velocidade em m/s?`)}
+      ${questH(2,1,`Considere \\(x = v_0 t\\). Se \\(x = ${q.horizontal.distancia}\\) e \\(t = ${q.horizontal.t1}\\), qual é \\(v_0\\)?`)}
+      ${questH(3,2,`Qual é o valor de \\(x\\): \\(${q.horizontal.coef1}x + ${q.horizontal.coef2} = ${q.horizontal.coef3}\\)?`)}
+      ${questH(4,3,`Considere \\(t = \\sqrt{\\dfrac{2h}{g}}\\). Se \\(t = ${q.comuns.tempo}\\) e \\(g = ${q.comuns.g}\\), qual é \\(h\\)?`)}
+    </div></div>
+    <div class="box"><div class="box-header solid">🚗 Conceitos de Movimento</div><div class="box-body">
+      ${questH(5,1,`Um carro percorre \\(${q.horizontal.distancia}\\) m em \\(${q.horizontal.t2}\\) minutos. Qual a velocidade média em m/s?`)}
+      ${questH(6,2,`Um veículo a \\(${q.horizontal.v0_horiz}\\) km/h desvia atenção por \\(${q.horizontal.t1}\\) s. Qual a distância percorrida nesses \\(${q.horizontal.t1}\\) s?`)}
+      ${questH(7,2,`Um veículo freia de \\(${q.horizontal.v0_horiz}\\) m/s até parar em \\(${q.horizontal.t2}\\) s. Qual foi a desaceleração?`)}
+      ${questH(8,3,`Um ciclista a \\(${q.horizontal.v_ciclista}\\) m/s está a \\(${q.horizontal.d_inicial}\\) m de um posto. Um carro parte do posto a \\(${q.horizontal.v_carro}\\) m/s. Em que instante o carro alcança o ciclista?`)}
+    </div></div>
+    <div class="box"><div class="box-header solid">🎯 Lançamento Horizontal</div><div class="box-body">
+      ${questH(9,1,`Pedras saem com velocidade \\(${q.horizontal.v0_horiz}\\) m/s e levam \\(${q.comuns.tempo}\\) s até o vagão. Qual o deslocamento vertical? (\\(g=${q.comuns.g}\\) m/s²)`)}
+      ${questH(10,2,`Uma pedra é lançada horizontalmente de \\(${q.comuns.altura}\\) m com \\(${q.horizontal.v0_horiz}\\) m/s. Qual o tempo até atingir o chão? (\\(g=${q.comuns.g}\\) m/s²)`)}
+      ${questH(11,3,`Uma bola é lançada horizontalmente de \\(${q.comuns.altura}\\) m com \\(${q.horizontal.v0_horiz}\\) m/s. Qual é o alcance? (\\(g=${q.comuns.g}\\) m/s²)`)}
+      ${questH(12,3,`Uma flecha lançada de \\(${q.comuns.altura}\\) m com alcance de \\(${q.comuns.alcance}\\) m. Qual a velocidade inicial? (\\(g=${q.comuns.g}\\) m/s²)`)}
+    </div></div>
+    <div class="box"><div class="box-header solid">📜 Formulário Auxiliar</div><div class="box-body">
+      <div style="display:flex;gap:20px;flex-wrap:wrap;font-size:14px;line-height:2.4">
+        <div><ul style="margin-left:16px">
+          <li>\\(v_m = \\dfrac{\\Delta S}{\\Delta t}\\)</li>
+          <li>\\(S = S_0 + v t\\)</li>
+          <li>\\(v_f = v_0 + at\\)</li>
+        </ul></div>
+        <div><p>Lançamento Horizontal:</p><ul style="margin-left:16px">
+          <li>\\(x = v_0 t\\)</li>
+          <li>\\(y = \\dfrac{1}{2} g t^2\\)</li>
+        </ul></div>
+      </div>
+    </div></div>`;
+  } else {
+    c.innerHTML = `
+    <div style="font-size:22px;font-weight:700;color:#003366;margin-bottom:16px">🚀 Teste de Lançamento Oblíquo</div>
+    <div class="box"><div class="box-header solid">📚 Matemática Básica</div><div class="box-body">
+      ${questH(1,1,`Converta \\(${fmt(q.obliquo.v0_obliq*3.6,1)}\\) km/h para m/s.`)}
+      ${questH(2,1,`Resolva: \\(${q.obliquo.coef1}x + ${q.obliquo.coef2} = 0\\).`)}
+      ${questH(3,2,`Se \\(t=${q.comuns.tempo}\\) s, calcule \\(h\\) usando \\(h = ${q.obliquo.v0y}t - \\tfrac{1}{2}(${q.comuns.g})t^2\\).`)}
+      ${questH(4,3,`Resolva \\(-${q.obliquo.coef1}t^2 + ${q.obliquo.coef2}t = 0\\) com \\(t \\neq 0\\).`)}
+    </div></div>
+    <div class="box"><div class="box-header solid">🚗 Conceitos de Movimento</div><div class="box-body">
+      ${questH(5,1,`Um projétil lançado com \\(v_0 = ${q.obliquo.v0_obliq}\\) m/s a \\(${q.obliquo.angulo}°\\). Calcule \\(v_{0x}\\).`)}
+      ${questH(6,2,`Componente vertical \\(v_{0y} = ${q.obliquo.v0y}\\) m/s. Qual o tempo para atingir a altura máxima? (\\(g=10\\))`)}
+      ${questH(7,2,`Projétil com \\(v_0 = ${q.obliquo.v0_obliq}\\) m/s a \\(\\theta = ${q.obliquo.angulo}°\\). Qual é \\(v_{0y}\\)?`)}
+      ${questH(8,3,`Projétil com \\(v_{0x} = ${fmt(q.obliquo.v0_obliq*Math.cos(rad(q.obliquo.angulo)),2)}\\) m/s e \\(v_y = ${fmt(q.obliquo.v0y+q.comuns.g*q.obliquo.tempo_voo,2)}\\) m/s ao atingir o solo. Calcule a velocidade resultante.`)}
+    </div></div>
+    <div class="box"><div class="box-header solid">🚀 Lançamento Oblíquo</div><div class="box-body">
+      ${questH(9,1,`Projétil lançado a \\(${q.obliquo.v0_obliq}\\) m/s com \\(${q.obliquo.angulo}°\\). Qual a <strong>altura máxima</strong>? (\\(g=10\\))`)}
+      ${questH(10,2,`Bola chutada a \\(${q.obliquo.v0_obliq}\\) m/s com \\(${q.obliquo.angulo}°\\). Qual a <strong>distância horizontal</strong>? (\\(g=10\\))`)}
+      ${questH(11,3,`Granada lançada a \\(${q.obliquo.v0_obliq}\\) m/s com \\(${q.obliquo.angulo}°\\). Qual o <strong>tempo total de voo</strong>? (\\(g=${q.comuns.g}\\))`)}
+      ${questH(12,3,`Catapulta deve atingir altura máxima de \\(${q.comuns.altura}\\) m com ângulo \\(${q.obliquo.angulo}°\\). Qual a <strong>velocidade inicial mínima</strong>? (\\(g=${q.comuns.g}\\))`)}
+    </div></div>
+    <div class="box"><div class="box-header solid">📜 Formulário Auxiliar</div><div class="box-body">
+      <div style="display:flex;gap:20px;flex-wrap:wrap;font-size:14px;line-height:2.4">
+        <div><ul style="margin-left:16px">
+          <li>\\(v_m = \\dfrac{\\Delta S}{\\Delta t}\\)</li>
+          <li>\\(H = \\dfrac{v_0^2 \\sin^2(\\theta)}{2g}\\)</li>
+          <li>\\(t_T = \\dfrac{2v_0 \\sin(\\theta)}{g}\\)</li>
+        </ul></div>
+        <div><p>Lançamento Oblíquo:</p><ul style="margin-left:16px">
+          <li>\\(x = v_0 \\cos(\\theta) t\\)</li>
+          <li>\\(y = v_0 \\sin(\\theta) t - \\tfrac{1}{2}gt^2\\)</li>
+          <li>\\(s = \\dfrac{v_0^2 \\sin(2\\theta)}{g}\\)</li>
+        </ul></div>
+      </div>
+    </div></div>`;
+  }
+  mathRefresh(c);
+}
+
+function questH(n,pts,txt){
+  return `<div class="quest-block">
+    <div class="quest-text"><strong>${n}) (${pts} ponto${pts>1?'s':''})</strong> ${txt}</div>
+    <input class="inp" type="number" step="any" id="resp${n}" placeholder="Digite sua resposta" style="max-width:220px">
+  </div>`;
+}
+
+function calcularDiag(){
+  if(!diagVals){alert('Gere um teste primeiro!');return}
+  const q = diagVals;
+  const tipo = document.getElementById('tipo_teste').value;
+  let respostas, pesos;
+  if(tipo==='horizontal'){
+    respostas=[
+      fmt(q.horizontal.v0_horiz/3.6),
+      fmt(q.horizontal.distancia/q.horizontal.t1),
+      fmt((q.horizontal.coef3-q.horizontal.coef2)/q.horizontal.coef1),
+      fmt((q.comuns.g*(q.comuns.tempo**2))/2),
+      fmt(q.horizontal.distancia/(q.horizontal.t2*60)),
+      fmt((q.horizontal.v0_horiz/3.6)*q.horizontal.t1),
+      fmt(-q.horizontal.v0_horiz/q.horizontal.t2),
+      fmt(q.horizontal.d_inicial/(q.horizontal.v_carro-q.horizontal.v_ciclista)),
+      fmt((q.comuns.g*(q.comuns.tempo**2))/2),
+      fmt(Math.sqrt(2*q.comuns.altura/q.comuns.g)),
+      fmt(q.horizontal.v0_horiz*Math.sqrt(2*q.comuns.altura/q.comuns.g)),
+      fmt(q.comuns.alcance/Math.sqrt(2*q.comuns.altura/q.comuns.g))
+    ];
+    pesos=[1,1,2,3,1,2,2,3,1,2,3,3];
+  } else {
+    const a=rad(q.obliquo.angulo),v=q.obliquo.v0_obliq;
+    respostas=[
+      fmt(v),
+      fmt(-q.obliquo.coef2/q.obliquo.coef1),
+      fmt(q.obliquo.v0y*q.comuns.tempo-0.5*q.comuns.g*(q.comuns.tempo**2)),
+      fmt(q.obliquo.coef2/q.obliquo.coef1),
+      fmt(v*Math.cos(a)),
+      fmt(q.obliquo.v0y/q.comuns.g),
+      fmt(v*Math.sin(a)),
+      fmt(Math.sqrt((v*Math.cos(a))**2+(q.obliquo.v0y+q.comuns.g*q.obliquo.tempo_voo)**2)),
+      fmt((v**2*(Math.sin(a))**2)/(2*q.comuns.g)),
+      fmt((v**2*Math.sin(2*a))/q.comuns.g),
+      fmt(2*v*Math.sin(a)/q.comuns.g),
+      fmt(Math.sqrt(2*q.comuns.g*q.comuns.altura)/Math.sin(a))
+    ];
+    pesos=[1,1,2,3,1,2,2,3,1,2,3,3];
+  }
+  let pontos=0;
+  const margem=0.10;
+  const status=[];
+  for(let i=0;i<12;i++){
+    const resp=parseFloat(document.getElementById('resp'+(i+1))?.value);
+    const correta=respostas[i];
+    let ok=false;
+    if(!isNaN(resp) && Math.abs(resp-correta)<=margem*Math.abs(correta)) ok=true;
+    if(ok) pontos+=pesos[i];
+    status.push({n:i+1,correta,ok});
+  }
+  // Tabela
+  let tbl='<table class="status-table"><tr><th>Questão</th><th>Resposta Correta</th><th>Status</th></tr>';
+  status.forEach(s=>{tbl+=`<tr><td>${s.n})</td><td>${s.correta}</td><td>${s.ok?'✅ Correta':'❌ Errada'}</td></tr>`});
+  tbl+='</table>';
+  document.getElementById('tabela-desempenho').innerHTML=tbl;
+  document.getElementById('pontuacao-text').textContent=`⭐ Pontuação final: ${pontos} / 24`;
+  const fb=document.getElementById('feedback-text');
+  if(pontos===24) fb.textContent='🥇 Parabéns! Você acertou todas!';
+  else if(pontos>=12) fb.textContent='🥈 Bom desempenho! Revise pequenos erros.';
+  else fb.textContent='🚀 Continue praticando! Estude a teoria e tente novamente.';
+  document.getElementById('btn-calcular').classList.add('btn-disabled');
+  document.getElementById('btn-calcular').disabled=true;
+}
+
+// ============================================================
+// LANÇAMENTO HORIZONTAL – Estado
+// ============================================================
+let chartHObj=null;
+let animHTimer=null;
+let equacaoHVis=false;
+let solucaoHVis=false;
+
+function getValH(id){return parseFloat(document.getElementById(id)?.value)||0}
+
+function clearChartH(){
+  if(chartHObj){chartHObj.destroy();chartHObj=null}
+  if(animHTimer){clearInterval(animHTimer);animHTimer=null}
+  document.getElementById('chartH-container').style.display='none';
+}
+
+function onTipoHChange(){
+  clearChartH();
+  document.getElementById('exH-wrap').innerHTML='';
+  document.getElementById('enunciadoH').innerHTML='';
+  document.getElementById('SegH-wrap').innerHTML='';
+  document.getElementById('parametrosH-wrap').innerHTML='';
+  document.getElementById('mostrarH-wrap').innerHTML='';
+  document.getElementById('lancarH-wrap').innerHTML='';
+  document.getElementById('b1H-wrap').innerHTML='';
+  document.getElementById('t_eqH-wrap').innerHTML='';
+  document.getElementById('respostaH-wrap').innerHTML='';
+  document.getElementById('conf1H-wrap').innerHTML='';
+  document.getElementById('r1H-wrap').innerHTML='';
+  document.getElementById('b2H-wrap').innerHTML='';
+  document.getElementById('t_solH-wrap').innerHTML='';
+  equacaoHVis=false; solucaoHVis=false;
+  onIncognitaHChange();
+}
+
+function onIncognitaHChange(){
+  clearChartH();
+  equacaoHVis=false; solucaoHVis=false;
+  const tipo=document.getElementById('tipoH').value;
+  const inc=document.getElementById('incognitaH').value;
+  document.getElementById('enunciadoH').innerHTML='';
+  document.getElementById('SegH-wrap').innerHTML='';
+  document.getElementById('parametrosH-wrap').innerHTML='';
+  document.getElementById('mostrarH-wrap').innerHTML='';
+  document.getElementById('lancarH-wrap').innerHTML='';
+  document.getElementById('b1H-wrap').innerHTML='';
+  document.getElementById('t_eqH-wrap').innerHTML='';
+  document.getElementById('respostaH-wrap').innerHTML='';
+  document.getElementById('conf1H-wrap').innerHTML='';
+  document.getElementById('r1H-wrap').innerHTML='';
+  document.getElementById('b2H-wrap').innerHTML='';
+  document.getElementById('t_solH-wrap').innerHTML='';
+
+  if(!tipo||!inc) return;
+
+  // Exercício seletor (tipo fechado)
+  if(tipo==='fechado'){
+    const filtrados=dadosH.filter(d=>d.pergunta===inc);
+    let opts='';
+    filtrados.forEach((_,i)=>opts+=`<option value="${i}">Exercício ${i+1}</option>`);
+    document.getElementById('exH-wrap').innerHTML=`
+      <div class="row-inline"><label class="lbl">Exercício:</label>
+      <select class="inp" id="nexH" onchange="onExHChange()" style="max-width:120px">${opts}</select></div>`;
+    onExHChange();
+  } else {
+    document.getElementById('exH-wrap').innerHTML='';
+    renderParamsH(null);
+  }
+
+  // Equação button
+  if(inc){
+    document.getElementById('b1H-wrap').innerHTML=`<button class="btn btn-secondary" onclick="toggleEqH()">📚 Equação</button>`;
+  }
+}
+
+function onExHChange(){
+  const inc=document.getElementById('incognitaH').value;
+  const filtrados=dadosH.filter(d=>d.pergunta===inc);
+  const idx=parseInt(document.getElementById('nexH')?.value)||0;
+  const ex=filtrados[idx];
+  if(!ex) return;
+  document.getElementById('enunciadoH').textContent=ex.enunciado;
+  renderParamsH(ex);
+  // botão preencher
+  document.getElementById('mostrarH-wrap').innerHTML=`<button class="btn btn-warning" onclick="preencherH()">📌 Preencher dados</button>`;
+  // limpa
+  document.getElementById('r1H-wrap').innerHTML='';
+  document.getElementById('b2H-wrap').innerHTML='';
+  document.getElementById('t_solH-wrap').innerHTML='';
+  document.getElementById('respostaH-wrap').innerHTML='';
+  document.getElementById('conf1H-wrap').innerHTML='';
+  clearChartH();
+  equacaoHVis=false;solucaoHVis=false;
+  document.getElementById('t_eqH-wrap').innerHTML='';
+}
+
+function renderParamsH(ex){
+  const inc=document.getElementById('incognitaH').value;
+  let html='';
+  if(inc==='velocidade'){
+    html=`<div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="form-row" style="flex:1;min-width:120px">
+        <label class="lbl">O alcance (m) é:</label>
+        <input class="inp" type="number" step="any" id="alcanceH" value="0" oninput="onParamsHChange()">
+        <div class="aviso" id="aviso-alH"></div>
+      </div>
+      <div class="form-row" style="flex:1;min-width:120px">
+        <label class="lbl">A altura inicial (m) é:</label>
+        <input class="inp" type="number" step="any" id="alturaH" value="0" oninput="onParamsHChange()">
+        <div class="aviso" id="aviso-aaH"></div>
+      </div>
+    </div>`;
+  } else if(inc==='alcance'){
+    html=`<div class="form-row row-inline" style="margin-bottom:8px">
+      <label class="lbl">Quais variáveis usará no cálculo?</label>
+      <select class="inp" id="sH" onchange="onSHChange()" style="max-width:240px">
+        <option value="">— Selecione —</option>
+        <option value="velocidade e tempo">velocidade e tempo</option>
+        <option value="velocidade e altura">velocidade e altura</option>
+      </select>
+    </div><div id="params-alc-wrap"></div>`;
+  } else if(inc==='altura'){
+    html=`<div class="form-row row-inline" style="margin-bottom:8px">
+      <label class="lbl">Quais variáveis usará no cálculo?</label>
+      <select class="inp" id="sH" onchange="onSHChange()" style="max-width:240px">
+        <option value="">— Selecione —</option>
+        <option value="velocidade e tempo">velocidade e tempo</option>
+        <option value="velocidade e alcance">velocidade e alcance</option>
+      </select>
+    </div><div id="params-alc-wrap"></div>`;
+  }
+  document.getElementById('parametrosH-wrap').innerHTML=html;
+  if(ex && inc==='velocidade'){
+    // se fechado com dados
+  }
+}
+
+function onSHChange(){
+  const sH=document.getElementById('sH')?.value;
+  const inc=document.getElementById('incognitaH').value;
+  let html='';
+  if(!sH) {document.getElementById('params-alc-wrap').innerHTML='';return}
+  if(sH==='velocidade e tempo'){
+    html=`<div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="form-row" style="flex:1"><label class="lbl">A velocidade (m/s) é:</label>
+      <input class="inp" type="number" step="any" id="vH" value="0" oninput="onParamsHChange()">
+      <div class="aviso" id="aviso-vH"></div></div>
+      <div class="form-row" style="flex:1"><label class="lbl">O tempo total (s) é:</label>
+      <input class="inp" type="number" step="any" id="tempoH" value="0" oninput="onParamsHChange()">
+      <div class="aviso" id="aviso-tH"></div></div>
+    </div>`;
+  } else if(sH==='velocidade e altura'){
+    html=`<div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="form-row" style="flex:1"><label class="lbl">A velocidade (m/s) é:</label>
+      <input class="inp" type="number" step="any" id="vH" value="0" oninput="onParamsHChange()">
+      <div class="aviso" id="aviso-vH"></div></div>
+      <div class="form-row" style="flex:1"><label class="lbl">A altura inicial (m) é:</label>
+      <input class="inp" type="number" step="any" id="alturaH" value="0" oninput="onParamsHChange()">
+      <div class="aviso" id="aviso-aaH"></div></div>
+    </div>`;
+  } else if(sH==='velocidade e alcance'){
+    html=`<div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="form-row" style="flex:1"><label class="lbl">A velocidade (m/s) é:</label>
+      <input class="inp" type="number" step="any" id="vH" value="0" oninput="onParamsHChange()">
+      <div class="aviso" id="aviso-vH"></div></div>
+      <div class="form-row" style="flex:1"><label class="lbl">O alcance (m) é:</label>
+      <input class="inp" type="number" step="any" id="alcanceH" value="0" oninput="onParamsHChange()">
+      <div class="aviso" id="aviso-alH"></div></div>
+    </div>`;
+  }
+  document.getElementById('params-alc-wrap').innerHTML=html;
+  onParamsHChange();
+}
+
+function preencherH(){
+  const inc=document.getElementById('incognitaH').value;
+  const filtrados=dadosH.filter(d=>d.pergunta===inc);
+  const idx=parseInt(document.getElementById('nexH')?.value)||0;
+  const ex=filtrados[idx];
+  if(!ex) return;
+  if(document.getElementById('alturaH')) document.getElementById('alturaH').value=ex.altura;
+  if(document.getElementById('vH')) document.getElementById('vH').value=ex.velocidade;
+  if(document.getElementById('alcanceH')) document.getElementById('alcanceH').value=ex.alcance;
+  if(document.getElementById('tempoH')) document.getElementById('tempoH').value=ex.tempo;
+  onParamsHChange();
+}
+
+function calcTH(){
+  const inc=document.getElementById('incognitaH').value;
+  const sH=document.getElementById('sH')?.value;
+  const vH=getValH('vH'),alturaH=getValH('alturaH'),alcanceH=getValH('alcanceH'),tempoH=getValH('tempoH');
+  if(inc==='altura'){
+    if(sH==='velocidade e tempo') return tempoH;
+    else return alcanceH/vH;
+  } else if(inc==='alcance'){
+    if(sH==='velocidade e tempo') return tempoH;
+    else return Math.sqrt(2*alturaH/g);
+  } else if(inc==='velocidade'){
+    return Math.sqrt(alturaH*2/g);
+  }
+  return 0;
+}
+
+function calcAtH(){
+  const inc=document.getElementById('incognitaH').value;
+  const sH=document.getElementById('sH')?.value;
+  const alturaH=getValH('alturaH'),alcanceH=getValH('alcanceH');
+  const t=calcTH();
+  if(inc==='altura'){
+    return t**2*g/2;
+  } else if(inc==='alcance'){
+    if(sH==='velocidade e tempo') return t**2*g/2;
+    else return alturaH;
+  } else {
+    return alturaH;
+  }
+}
+function calcAlH(){const vH=getValH('vH');return vH*calcTH()}
+function calcVelH(){const alcanceH=getValH('alcanceH'),alturaH=getValH('alturaH');return alcanceH/Math.sqrt(alturaH*2/g)}
+function calcRespostaH(){
+  const inc=document.getElementById('incognitaH').value;
+  if(inc==='altura') return fmt(calcAtH(),1);
+  if(inc==='alcance') return fmt(calcAlH(),1);
+  if(inc==='velocidade') return fmt(calcVelH(),1);
+  return 0;
+}
+
+function onParamsHChange(){
+  // mostrar botão lançar se condições ok
+  const inc=document.getElementById('incognitaH').value;
+  const sH=document.getElementById('sH')?.value;
+  const vH=getValH('vH'),alturaH=getValH('alturaH'),alcanceH=getValH('alcanceH'),tempoH=getValH('tempoH');
+  let ok=false;
+  if(inc==='velocidade' && alcanceH>0 && alturaH>0) ok=true;
+  if(inc==='alcance'){
+    if(sH==='velocidade e tempo' && vH>0 && tempoH>0) ok=true;
+    if(sH==='velocidade e altura' && vH>0 && alturaH>0) ok=true;
+  }
+  if(inc==='altura'){
+    if(sH==='velocidade e tempo' && vH>0 && tempoH>0) ok=true;
+    if(sH==='velocidade e alcance' && vH>0 && alcanceH>0) ok=true;
+  }
+  document.getElementById('lancarH-wrap').innerHTML=ok?`<button class="btn btn-info" onclick="lancarH()">🚀 Lançar!</button>`:'';
+  // campo resposta
+  if(ok && !document.getElementById('respostaH-wrap').querySelector('input')){
+    document.getElementById('respostaH-wrap').innerHTML=`<label class="lbl">Resposta:</label>
+    <input class="inp" type="number" step="any" id="resp1H" style="max-width:160px">`;
+    document.getElementById('conf1H-wrap').innerHTML=`<div style="margin-top:22px">
+    <button class="btn btn-primary" onclick="conferirH()">📌 Conferir Resposta</button></div>`;
+    // botão equação
+    if(!document.getElementById('b2H-wrap').querySelector('button')){
+      document.getElementById('b2H-wrap').innerHTML=`<button class="btn btn-warning" onclick="toggleSolH()">🔎 Conferir Cálculo</button>`;
+    }
+  }
+}
+
+function conferirH(){
+  const resp=parseFloat(document.getElementById('resp1H')?.value);
+  const corr=calcRespostaH();
+  const ok=Math.abs(resp-corr)<=0.15*Math.abs(corr);
+  document.getElementById('r1H-wrap').innerHTML=ok?
+    `<div class="feedback-ok">Parabéns! Continue assim.😊</div>`:
+    `<div class="feedback-err">Continue praticando! Revise a teoria e tente novamente.🌟</div>`;
+}
+
+function toggleEqH(){
+  equacaoHVis=!equacaoHVis;
+  if(!equacaoHVis){document.getElementById('t_eqH-wrap').innerHTML='';return}
+  const inc=document.getElementById('incognitaH').value;
+  const sH=document.getElementById('sH')?.value;
+  let html='<div class="eq-box">';
+  if(inc==='altura'){
+    if(sH==='velocidade e tempo'){
+      html+=`<p>\\(y = \\dfrac{g \\times t^2}{2}\\)</p><p>y - altura &nbsp; g - gravidade &nbsp; t - tempo</p>`;
+    } else {
+      html+=`<p>\\(t = \\dfrac{x}{v}\\)</p><p>\\(y = \\dfrac{g \\times t^2}{2}\\)</p>`;
+    }
+  } else if(inc==='alcance'){
+    if(sH==='velocidade e tempo'){
+      html+=`<p>\\(x = v_0 \\times t\\)</p><p>x - alcance &nbsp; v₀ - velocidade &nbsp; t - tempo</p>`;
+    } else {
+      html+=`<p>\\(t = \\sqrt{\\dfrac{2y}{g}}\\)</p><p>\\(x = v_0 \\times t\\)</p>`;
+    }
+  } else if(inc==='velocidade'){
+    html+=`<p>\\(t = \\sqrt{\\dfrac{2y}{g}}\\)</p><p>\\(v_0 = \\dfrac{x}{t}\\)</p>`;
+  }
+  html+='</div>';
+  document.getElementById('t_eqH-wrap').innerHTML=html;
+  mathRefresh(document.getElementById('t_eqH-wrap'));
+}
+
+function toggleSolH(){
+  solucaoHVis=!solucaoHVis;
+  if(!solucaoHVis){document.getElementById('t_solH-wrap').innerHTML='';return}
+  const inc=document.getElementById('incognitaH').value;
+  const sH=document.getElementById('sH')?.value;
+  const vH=getValH('vH'),alturaH=getValH('alturaH'),alcanceH=getValH('alcanceH'),tempoH=getValH('tempoH');
+  const t=calcTH();
+  let html='<div class="sol-box">';
+  if(inc==='altura'){
+    if(sH==='velocidade e tempo'){
+      html+=`<p>\\(y = \\dfrac{${g} \\times ${tempoH}^2}{2}\\)</p>
+        <p>\\(y = \\dfrac{${g} \\times ${tempoH**2}}{2}\\)</p>
+        <p>\\(y = \\dfrac{${g*tempoH**2}}{2}\\)</p>
+        <p>\\(y = ${fmt(calcAtH(),1)} \\text{ m}\\)</p>`;
+    } else {
+      html+=`<p>\\(t = \\dfrac{${alcanceH}}{${vH}} = ${fmt(t,2)} \\text{ s}\\)</p>
+        <p>\\(y = \\dfrac{${g} \\times ${fmt(t,2)}^2}{2}\\)</p>
+        <p>\\(y = ${fmt(calcAtH(),1)} \\text{ m}\\)</p>`;
+    }
+  } else if(inc==='alcance'){
+    if(sH==='velocidade e tempo'){
+      html+=`<p>\\(x = ${vH} \\times ${tempoH}\\)</p>
+        <p>\\(x = ${fmt(calcAlH(),1)} \\text{ m}\\)</p>`;
+    } else {
+      html+=`<p>\\(t = \\sqrt{\\dfrac{2 \\times ${alturaH}}{${g}}} = ${fmt(t,2)} \\text{ s}\\)</p>
+        <p>\\(x = ${vH} \\times ${fmt(t,2)} = ${fmt(calcAlH(),1)} \\text{ m}\\)</p>`;
+    }
+  } else if(inc==='velocidade'){
+    html+=`<p>\\(t = \\sqrt{\\dfrac{2 \\times ${alturaH}}{${g}}} = ${fmt(t,2)} \\text{ s}\\)</p>
+      <p>\\(v = \\dfrac{${alcanceH}}{${fmt(t,2)}} = ${fmt(calcVelH(),1)} \\text{ m/s}\\)</p>`;
+  }
+  html+='</div>';
+  document.getElementById('t_solH-wrap').innerHTML=html;
+  mathRefresh(document.getElementById('t_solH-wrap'));
+}
+
+function lancarH(){
+  clearChartH();
+  const t=calcTH();
+  const altH=calcAtH();
+  const velH=getValH('vH')||calcVelH();
+  const n=60;
+  const ts=Array.from({length:n+1},(_,i)=>i*t/n);
+  const xs=ts.map(ti=>velH*ti);
+  const ys=ts.map(ti=>altH-(g*ti**2)/2);
+  document.getElementById('chartH-container').style.display='block';
+  const ctx=document.getElementById('chartH').getContext('2d');
+  chartHObj=new Chart(ctx,{
+    type:'scatter',
+    data:{datasets:[{label:'Trajetória Horizontal',data:[],backgroundColor:'#003366',pointRadius:3}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,animation:false,
+      scales:{
+        x:{title:{display:true,text:'Posição Horizontal (m)'},min:0,max:Math.max(...xs)*1.1},
+        y:{title:{display:true,text:'Posição Vertical (m)'},min:0,max:altH*1.2}
+      },
+      plugins:{legend:{display:false}}
+    }
+  });
+  let i=0;
+  animHTimer=setInterval(()=>{
+    if(i>n){clearInterval(animHTimer);return}
+    chartHObj.data.datasets[0].data.push({x:xs[i],y:ys[i]});
+    chartHObj.update('none');
+    i++;
+  },30);
+}
+
+// ============================================================
+// LANÇAMENTO OBLÍQUO – Estado
+// ============================================================
+let chartOObj=null;
+let animOTimer=null;
+let equacaoOVis=false;
+let solucaoOVis=false;
+let tabelaAngulosVis=false;
+
+function getValO(id){return parseFloat(document.getElementById(id)?.value)||0}
+
+function clearChartO(){
+  if(chartOObj){chartOObj.destroy();chartOObj=null}
+  if(animOTimer){clearInterval(animOTimer);animOTimer=null}
+  document.getElementById('chartO-container').style.display='none';
+}
+
+function onTipoChange(){
+  clearChartO();
+  document.getElementById('ex-wrap').innerHTML='';
+  document.getElementById('enunciado').innerHTML='';
+  document.getElementById('Seg-wrap').innerHTML='';
+  document.getElementById('parametros-wrap').innerHTML='';
+  document.getElementById('mostrar-wrap').innerHTML='';
+  document.getElementById('lancar-wrap').innerHTML='';
+  document.getElementById('b-wrap').innerHTML='';
+  document.getElementById('tab-angulos-wrap').innerHTML='';
+  document.getElementById('t_eq-wrap').innerHTML='';
+  document.getElementById('respostaOb-wrap').innerHTML='';
+  document.getElementById('conf1Ob-wrap').innerHTML='';
+  document.getElementById('r1Ob-wrap').innerHTML='';
+  document.getElementById('b2-wrap').innerHTML='';
+  document.getElementById('t_sol-wrap').innerHTML='';
+  equacaoOVis=false;solucaoOVis=false;tabelaAngulosVis=false;
+  onIncognitaChange();
+}
+
+function onIncognitaChange(){
+  clearChartO();equacaoOVis=false;solucaoOVis=false;tabelaAngulosVis=false;
+  const tipo=document.getElementById('tipo')?.value;
+  const inc=document.getElementById('incognita')?.value;
+  document.getElementById('enunciado').innerHTML='';
+  document.getElementById('Seg-wrap').innerHTML='';
+  document.getElementById('parametros-wrap').innerHTML='';
+  document.getElementById('mostrar-wrap').innerHTML='';
+  document.getElementById('lancar-wrap').innerHTML='';
+  document.getElementById('t_eq-wrap').innerHTML='';
+  document.getElementById('respostaOb-wrap').innerHTML='';
+  document.getElementById('conf1Ob-wrap').innerHTML='';
+  document.getElementById('r1Ob-wrap').innerHTML='';
+  document.getElementById('b2-wrap').innerHTML='';
+  document.getElementById('t_sol-wrap').innerHTML='';
+  if(!tipo||!inc) return;
+
+  // botão equação e ângulos
+  if(inc){
+    document.getElementById('b-wrap').innerHTML=`
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-secondary" onclick="toggleEqO()">📚 Equação</button>
+        <button class="btn btn-secondary" onclick="toggleAngulosO()">Ângulos Notáveis</button>
+      </div>`;
+  }
+
+  // Exercício seletor (tipo fechado)
+  if(tipo==='fechado'){
+    const filtrados=dadosO.filter(d=>d.pergunta===(inc==='altura máxima'?'altura max':inc==='tempo total'?'tempo total':inc==='velocidade'?'vel':inc));
+    let opts='';filtrados.forEach((_,i)=>opts+=`<option value="${i}">Exercício ${i+1}</option>`);
+    document.getElementById('ex-wrap').innerHTML=`<div class="row-inline"><label class="lbl">Exercício:</label>
+    <select class="inp" id="nex" onchange="onExOChange()" style="max-width:120px">${opts}</select></div>`;
+    onExOChange();
+  } else {
+    document.getElementById('ex-wrap').innerHTML='';
+    renderParamsO(null);
+  }
+
+  // Seg: variáveis do cálculo para velocidade
+  if(inc==='velocidade'){
+    document.getElementById('Seg-wrap').innerHTML=`<div class="form-row row-inline">
+      <label class="lbl">Quais variáveis usará no cálculo?</label>
+      <select class="inp" id="sv" onchange="onSvChange()" style="max-width:240px">
+        <option value="">— Selecione —</option>
+        <option value="ângulo e altura">ângulo e altura</option>
+        <option value="ângulo e alcance">ângulo e alcance</option>
+      </select></div><div id="params-vel-alt-wrap"></div>`;
+  }
+}
+
+function onExOChange(){
+  const inc=document.getElementById('incognita').value;
+  const perg=inc==='altura máxima'?'altura max':inc==='tempo total'?'tempo total':inc==='velocidade'?'vel':inc;
+  const filtrados=dadosO.filter(d=>d.pergunta===perg);
+  const idx=parseInt(document.getElementById('nex')?.value)||0;
+  const ex=filtrados[idx];
+  if(!ex) return;
+  document.getElementById('enunciado').textContent=ex.enunciado;
+  renderParamsO(ex);
+  document.getElementById('mostrar-wrap').innerHTML=`<button class="btn btn-warning" onclick="preencherO()">📌 Preencher dados</button>`;
+  document.getElementById('r1Ob-wrap').innerHTML='';
+  document.getElementById('t_sol-wrap').innerHTML='';
+  clearChartO();equacaoOVis=false;solucaoOVis=false;
+  document.getElementById('t_eq-wrap').innerHTML='';
+}
+
+function renderParamsO(ex){
+  const inc=document.getElementById('incognita').value;
+  if(!inc) return;
+  let html='';
+  if(inc==='velocidade'){
+    // O select sv já está no Seg-wrap, inputs adicionados por onSvChange
+  } else {
+    html=`<div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="form-row" style="flex:1;min-width:100px"><label class="lbl">O ângulo é:</label>
+      <input class="inp" type="number" step="1" id="theta" min="1" max="89" value="0" oninput="onParamsOChange()">
+      <div class="aviso" id="aviso-t"></div></div>
+      <div class="form-row" style="flex:1;min-width:100px"><label class="lbl">A velocidade (m/s) é:</label>
+      <input class="inp" type="number" step="any" id="v" value="0" oninput="onParamsOChange()">
+      <div class="aviso" id="aviso-v"></div></div>
+      <div class="form-row" style="flex:1;min-width:100px"><label class="lbl">A altura inicial (m) é:</label>
+      <input class="inp" type="number" step="any" id="alturaO" value="0" oninput="onParamsOChange()">
+      <div class="aviso" id="aviso-alt"></div></div>
+    </div>`;
+  }
+  document.getElementById('parametros-wrap').innerHTML=html;
+}
+
+function onSvChange(){
+  const sv=document.getElementById('sv')?.value;
+  const wrap=document.getElementById('params-vel-alt-wrap');
+  if(!sv){wrap.innerHTML='';return}
+  if(sv==='ângulo e altura'){
+    wrap.innerHTML=`<div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="form-row" style="flex:1"><label class="lbl">O ângulo é:</label>
+      <input class="inp" type="number" step="1" id="theta" min="1" max="89" value="0" oninput="onParamsOChange()"></div>
+      <div class="form-row" style="flex:1"><label class="lbl">A altura máxima (m) é:</label>
+      <input class="inp" type="number" step="any" id="altO" value="0" oninput="onParamsOChange()"></div>
+      <div class="form-row" style="flex:1"><label class="lbl">A altura inicial (m) é:</label>
+      <input class="inp" type="number" step="any" id="alturaO" value="0" oninput="onParamsOChange()"></div>
+    </div>`;
+  } else if(sv==='ângulo e alcance'){
+    wrap.innerHTML=`<div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="form-row" style="flex:1"><label class="lbl">O ângulo é:</label>
+      <input class="inp" type="number" step="1" id="theta" min="1" max="89" value="0" oninput="onParamsOChange()"></div>
+      <div class="form-row" style="flex:1"><label class="lbl">O alcance (m) é:</label>
+      <input class="inp" type="number" step="any" id="sO" value="0" oninput="onParamsOChange()"></div>
+      <div class="form-row" style="flex:1"><label class="lbl">A altura inicial (m) é:</label>
+      <input class="inp" type="number" step="any" id="alturaO" value="0" oninput="onParamsOChange()"></div>
+    </div>`;
+  }
+}
+
+function preencherO(){
+  const inc=document.getElementById('incognita').value;
+  const perg=inc==='altura máxima'?'altura max':inc==='tempo total'?'tempo total':inc==='velocidade'?'vel':inc;
+  const filtrados=dadosO.filter(d=>d.pergunta===perg);
+  const idx=parseInt(document.getElementById('nex')?.value)||0;
+  const ex=filtrados[idx];
+  if(!ex) return;
+  if(document.getElementById('theta')) document.getElementById('theta').value=ex.angulo;
+  if(document.getElementById('v')) document.getElementById('v').value=ex.velocidade;
+  if(document.getElementById('alturaO')) document.getElementById('alturaO').value=ex['altura inicial'];
+  if(document.getElementById('altO')) document.getElementById('altO').value=ex['altura max'];
+  if(document.getElementById('sO')) document.getElementById('sO').value=ex.alcance;
+  onParamsOChange();
+}
+
+function calcVelO(){
+  const sv=document.getElementById('sv')?.value;
+  const theta=getValO('theta'),altO=getValO('altO'),sO=getValO('sO'),alturaO=getValO('alturaO');
+  const a=rad(theta);
+  if(sv==='ângulo e altura'){
+    const h=altO-alturaO;
+    return Math.sqrt(h*2*g/(Math.sin(a)**2));
+  } else if(sv==='ângulo e alcance'){
+    return Math.sqrt(sO*g/Math.sin(2*a));
+  }
+  return 0;
+}
+
+function getVelO(){
+  const inc=document.getElementById('incognita').value;
+  if(inc==='velocidade') return calcVelO();
+  return getValO('v');
+}
+
+function calcAltMax(){
+  const v=getVelO(),theta=getValO('theta'),alturaO=getValO('alturaO');
+  const a=rad(theta);
+  return alturaO+(v**2*(Math.sin(a))**2)/(2*g);
+}
+function calcDistMax(){
+  const v=getVelO(),theta=getValO('theta');
+  const a=rad(theta);
+  return v**2*Math.sin(2*a)/g;
+}
+function calcTSubida(){return getVelO()*Math.sin(rad(getValO('theta')))/g}
+function calcTt(){
+  const alturaO=getValO('alturaO');
+  const ts=calcTSubida();
+  if(alturaO===0) return 2*ts;
+  return ts+Math.sqrt(2*g*calcAltMax())/g;
+}
+
+function calcRespostaO(){
+  const inc=document.getElementById('incognita').value;
+  if(inc==='altura máxima') return fmt(calcAltMax(),1);
+  if(inc==='alcance') return fmt(calcDistMax(),1);
+  if(inc==='tempo total') return fmt(calcTt(),1);
+  if(inc==='velocidade') return fmt(calcVelO(),1);
+  return 0;
+}
+
+function onParamsOChange(){
+  const inc=document.getElementById('incognita').value;
+  const sv=document.getElementById('sv')?.value;
+  const theta=getValO('theta'),v=getValO('v'),alturaO=getValO('alturaO');
+  const altO=getValO('altO'),sO=getValO('sO');
+  let ok=false;
+  if(inc==='velocidade'){
+    if(sv==='ângulo e altura' && theta>0 && altO>0) ok=true;
+    if(sv==='ângulo e alcance' && theta>0 && sO>0) ok=true;
+  } else {
+    if(theta>0 && v>0) ok=true;
+  }
+  document.getElementById('lancar-wrap').innerHTML=ok?`<button class="btn btn-info" onclick="lancarO()">🚀 Lançar!</button>`:'';
+  document.getElementById('mostrar-wrap').innerHTML=(document.getElementById('tipo')?.value==='fechado'&&document.getElementById('nex'))?
+    document.getElementById('mostrar-wrap').innerHTML:'';
+  if(ok){
+    if(!document.getElementById('respostaOb-wrap').querySelector('input')){
+      document.getElementById('respostaOb-wrap').innerHTML=`<label class="lbl">Resposta:</label>
+      <input class="inp" type="number" step="any" id="resp1Ob" style="max-width:160px">`;
+      document.getElementById('conf1Ob-wrap').innerHTML=`<div style="margin-top:22px">
+      <button class="btn btn-primary" onclick="conferirO()">📌 Conferir Resposta</button></div>`;
+      document.getElementById('b2-wrap').innerHTML=`<button class="btn btn-warning" onclick="toggleSolO()">🔎 Conferir Cálculo</button>`;
+    }
+  }
+}
+
+function conferirO(){
+  const resp=parseFloat(document.getElementById('resp1Ob')?.value);
+  const corr=calcRespostaO();
+  const ok=Math.abs(resp-corr)<=0.15*Math.abs(corr);
+  document.getElementById('r1Ob-wrap').innerHTML=ok?
+    `<div class="feedback-ok">Parabéns! Continue assim.😊</div>`:
+    `<div class="feedback-err">Continue praticando! Revise a teoria e tente novamente.🌟</div>`;
+}
+
+function toggleEqO(){
+  equacaoOVis=!equacaoOVis;
+  if(!equacaoOVis){document.getElementById('t_eq-wrap').innerHTML='';return}
+  const inc=document.getElementById('incognita').value;
+  const sv=document.getElementById('sv')?.value;
+  const alturaO=getValO('alturaO');
+  let html='<div class="eq-box">';
+  if(inc==='altura máxima'){
+    html+=alturaO>0?
+      `<p>\\(H = h + \\dfrac{v_0^2 \\cdot \\sin(\\theta)^2}{2g}\\)</p><p>h - altura inicial &nbsp; H - altura máxima</p>`:
+      `<p>\\(H = \\dfrac{v_0^2 \\cdot \\sin(\\theta)^2}{2g}\\)</p><p>H - altura máxima &nbsp; v₀ - velocidade inicial</p>`;
+  } else if(inc==='alcance'){
+    html+=`<p>\\(s = \\dfrac{v_0^2 \\cdot \\sin(2\\theta)}{g}\\)</p><p>s - alcance &nbsp; v₀ - velocidade &nbsp; θ - ângulo</p>`;
+  } else if(inc==='tempo total'){
+    html+=alturaO>0?
+      `<p>\\(t_T = \\dfrac{v_0 \\sin(\\theta) + \\sqrt{2g \\cdot H}}{g}\\)</p>`:
+      `<p>\\(t_T = \\dfrac{2v_0 \\sin(\\theta)}{g}\\)</p>`;
+  } else if(inc==='velocidade'){
+    if(sv==='ângulo e altura'){
+      html+=`<p>\\(v_0 = \\sqrt{\\dfrac{H \\times 2g}{\\sin(\\theta)^2}}\\)</p>`;
+    } else {
+      html+=`<p>\\(v_0 = \\sqrt{\\dfrac{s \\times g}{\\sin(2\\theta)}}\\)</p>`;
+    }
+  }
+  html+='</div>';
+  document.getElementById('t_eq-wrap').innerHTML=html;
+  mathRefresh(document.getElementById('t_eq-wrap'));
+}
+
+function toggleAngulosO(){
+  tabelaAngulosVis=!tabelaAngulosVis;
+  if(!tabelaAngulosVis){document.getElementById('tab-angulos-wrap').innerHTML='';return}
+  document.getElementById('tab-angulos-wrap').innerHTML=`
+  <div style="margin-top:8px;margin-bottom:8px">
+  <table class="rev-table" style="font-size:13px">
+    <tr><th>Ângulo</th><th>sen</th><th>cos</th><th>tan</th></tr>
+    <tr><td>0°</td><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>30°</td><td>1/2</td><td>√3/2</td><td>√3/3</td></tr>
+    <tr><td>45°</td><td>√2/2</td><td>√2/2</td><td>1</td></tr>
+    <tr><td>60°</td><td>√3/2</td><td>1/2</td><td>√3</td></tr>
+    <tr><td>90°</td><td>1</td><td>0</td><td>—</td></tr>
+  </table></div>`;
+}
+
+function toggleSolO(){
+  solucaoOVis=!solucaoOVis;
+  if(!solucaoOVis){document.getElementById('t_sol-wrap').innerHTML='';return}
+  const inc=document.getElementById('incognita').value;
+  const sv=document.getElementById('sv')?.value;
+  const v=getVelO(),theta=getValO('theta'),alturaO=getValO('alturaO');
+  const altO=getValO('altO'),sO=getValO('sO');
+  const a=rad(theta);
+  let html='<div class="sol-box">';
+  if(inc==='altura máxima'){
+    const hmax=calcAltMax();
+    if(alturaO===0){
+      html+=`<p>\\(H = \\dfrac{${v}^2 \\times \\sin(${theta}°)^2}{2 \\times ${g}}\\)</p>
+        <p>\\(H = \\dfrac{${fmt(v**2)} \\times ${fmt(Math.sin(a)**2,4)}}{${2*g}}\\)</p>
+        <p>\\(H = ${fmt(hmax,1)} \\text{ m}\\)</p>`;
+    } else {
+      html+=`<p>\\(H = ${alturaO} + \\dfrac{${v}^2 \\times \\sin(${theta}°)^2}{2 \\times ${g}}\\)</p>
+        <p>\\(H = ${fmt(hmax,1)} \\text{ m}\\)</p>`;
+    }
+  } else if(inc==='alcance'){
+    const d=calcDistMax();
+    html+=`<p>\\(s = \\dfrac{${v}^2 \\times \\sin(2 \\times ${theta}°)}{${g}}\\)</p>
+      <p>\\(s = \\dfrac{${fmt(v**2)} \\times ${fmt(Math.sin(2*a),4)}}{${g}}\\)</p>
+      <p>\\(s = ${fmt(d,1)} \\text{ m}\\)</p>`;
+  } else if(inc==='tempo total'){
+    const tt=calcTt();
+    if(alturaO===0){
+      html+=`<p>\\(t_T = \\dfrac{2 \\times ${v} \\times \\sin(${theta}°)}{${g}}\\)</p>
+        <p>\\(t_T = \\dfrac{${fmt(2*v*Math.sin(a),2)}}{${g}}\\)</p>
+        <p>\\(t_T = ${fmt(tt,1)} \\text{ s}\\)</p>`;
+    } else {
+      html+=`<p>\\(t_T = \\dfrac{${v} \\times \\sin(${theta}°) + \\sqrt{2 \\times ${g} \\times ${fmt(calcAltMax(),1)}}}{${g}}\\)</p>
+        <p>\\(t_T = ${fmt(tt,1)} \\text{ s}\\)</p>`;
+    }
+  } else if(inc==='velocidade'){
+    const vo=calcVelO();
+    if(sv==='ângulo e altura'){
+      html+=`<p>\\(v_0 = \\sqrt{\\dfrac{${altO} \\times 2 \\times ${g}}{\\sin(${theta}°)^2}}\\)</p>
+        <p>\\(v_0 = \\sqrt{${fmt((altO)*2*g/((Math.sin(a)**2)),2)}}\\)</p>
+        <p>\\(v_0 = ${fmt(vo,1)} \\text{ m/s}\\)</p>`;
+    } else {
+      html+=`<p>\\(v_0 = \\sqrt{\\dfrac{${sO} \\times ${g}}{\\sin(2 \\times ${theta}°)}}\\)</p>
+        <p>\\(v_0 = \\sqrt{${fmt(sO*g/Math.sin(2*a),2)}}\\)</p>
+        <p>\\(v_0 = ${fmt(vo,1)} \\text{ m/s}\\)</p>`;
+    }
+  }
+  html+='</div>';
+  document.getElementById('t_sol-wrap').innerHTML=html;
+  mathRefresh(document.getElementById('t_sol-wrap'));
+}
+
+function lancarO(){
+  clearChartO();
+  const v=getVelO();
+  const theta=getValO('theta');
+  const alturaO=getValO('alturaO');
+  if(v<=0||theta<=0) return;
+  const a=rad(theta);
+  const tt=calcTt();
+  const n=80;
+  const ts=Array.from({length:n+1},(_,i)=>i*tt/n);
+  const xs=ts.map(ti=>v*Math.cos(a)*ti);
+  const ys=ts.map(ti=>alturaO+v*Math.sin(a)*ti-0.5*g*ti**2);
+  const limX=Math.max(...xs)*1.1;
+  const limY=Math.max(...ys)*1.3;
+  // vetor inicial
+  const escala=0.4;
+  const xEnd=v*Math.cos(a)*escala;
+  const yEnd=alturaO+v*Math.sin(a)*escala;
+  document.getElementById('chartO-container').style.display='block';
+  const ctx=document.getElementById('chartO').getContext('2d');
+  chartOObj=new Chart(ctx,{
+    type:'scatter',
+    data:{datasets:[
+      {label:'Trajetória',data:[],backgroundColor:'#003366',pointRadius:3},
+      {label:'Vetor',data:[{x:0,y:alturaO},{x:xEnd,y:yEnd}],borderColor:'red',backgroundColor:'red',showLine:true,pointRadius:[0,6],borderWidth:2,type:'line'}
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,animation:false,
+      scales:{
+        x:{title:{display:true,text:'Posição Horizontal (m)'},min:0,max:limX},
+        y:{title:{display:true,text:'Posição Vertical (m)'},min:0,max:limY}
+      },
+      plugins:{legend:{display:false}}
+    }
+  });
+  let i=0;
+  animOTimer=setInterval(()=>{
+    if(i>n){clearInterval(animOTimer);return}
+    if(ys[i]>=0) chartOObj.data.datasets[0].data.push({x:xs[i],y:ys[i]});
+    chartOObj.update('none');
+    i++;
+  },30);
+}
+
+// Inicializa
+buildDiag();
+</script>
+</body>
+</html>

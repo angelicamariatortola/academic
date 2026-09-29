@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor de R</title>
+<!-- Ativa o isolamento de origem (necessário para o botão Parar) em
+     servidores estáticos como o GitHub Pages. Recarrega a página uma vez. -->
+<script src="coi-serviceworker.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.css">
+<link rel="stylesheet" href="editor.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/r/r.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/edit/matchbrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/comment/comment.min.js"></script>
+<script type="module" src="app.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <h1>Editor de R</h1>
+  <span id="status" class="status carregando" role="status">Carregando o R…</span>
+</header>
+
+<main class="area">
+
+  <!-- Coluna esquerda: editor em cima, console embaixo (como no RStudio) -->
+  <div class="coluna" id="coluna-esq">
+
+  <section class="painel painel-editor" id="painel-editor" aria-label="Editor de código">
+    <div class="barra">
+      <button id="btn-executar" class="primario" title="Executa a linha do cursor ou o trecho selecionado (Ctrl+Enter)">▶ Executar</button>
+      <button id="btn-executar-tudo" title="Executa o script inteiro (Ctrl+Shift+Enter)">Executar tudo</button>
+      <button id="btn-parar" title="Interrompe a execução (Esc)" disabled>■ Parar</button>
+      <span class="espaco"></span>
+      <button id="btn-novo" title="Limpa o editor para começar um script do zero">Novo</button>
+      <select id="sel-exemplos" aria-label="Carregar um exemplo">
+        <option value="">Exemplos…</option>
+      </select>
+      <button id="btn-abrir" title="Abre um script .R do seu computador">Abrir</button>
+      <button id="btn-salvar" title="Baixa o script como arquivo .R">Salvar</button>
+      <button id="btn-compartilhar" title="Copia um link com este código">Compartilhar</button>
+      <input type="file" id="arq-script" accept=".R,.r,.txt" hidden>
+    </div>
+    <div id="editor" class="editor"></div>
+  </section>
+
+  <div class="divisoria horizontal" data-divide="coluna-esq" role="separator"
+       aria-orientation="horizontal" title="Arraste para mudar o tamanho"></div>
+
+  <section class="painel painel-console" id="painel-console" aria-label="Console">
+    <div class="barra">
+      <strong>Console</strong>
+      <span class="espaco"></span>
+      <button id="btn-limpar" title="Limpa o console (Ctrl+L)">Limpar</button>
+    </div>
+    <div id="area-console" class="console">
+      <div id="console" role="log" aria-live="polite"></div>
+      <div class="linha-comando">
+        <pre class="prompt" id="prompt" aria-hidden="true">&gt;</pre>
+        <textarea id="entrada" rows="1" autocomplete="off" autocapitalize="off"
+                  spellcheck="false" aria-label="Comando do R"></textarea>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <div class="divisoria vertical" data-divide="area" role="separator"
+       aria-orientation="vertical" title="Arraste para mudar o tamanho"></div>
+
+  <!-- Coluna direita: Environment/History em cima, Files/Plots/Packages/Help embaixo -->
+  <div class="coluna" id="coluna-dir">
+
+  <section class="painel painel-ambiente" id="painel-ambiente">
+    <div class="abas" role="tablist">
+      <button role="tab" data-aba="objetos" aria-selected="true" title="Objetos criados na sessão">Environment</button>
+      <button role="tab" data-aba="historico" aria-selected="false" title="Comandos já executados">History</button>
+    </div>
+
+    <div id="aba-objetos" class="aba" role="tabpanel">
+      <div class="barra fina">
+        <span>Objetos criados na sessão</span>
+        <span class="espaco"></span>
+        <button id="btn-obj-limpar" title="Remove todos os objetos (rm(list = ls()))">Remover todos</button>
+      </div>
+      <div class="rolagem">
+        <table class="tabela">
+          <thead><tr><th>Nome</th><th>Classe</th><th>Valor</th></tr></thead>
+          <tbody id="lista-objetos"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="aba-historico" class="aba" role="tabpanel" hidden>
+      <div class="barra fina">
+        <span>Clique em um comando para levá-lo ao console</span>
+        <span class="espaco"></span>
+        <button id="btn-hist-limpar" title="Apaga o histórico">Limpar</button>
+      </div>
+      <div class="rolagem">
+        <ol id="lista-historico" class="historico"></ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="divisoria horizontal" data-divide="coluna-dir" role="separator"
+       aria-orientation="horizontal" title="Arraste para mudar o tamanho"></div>
+
+  <section class="painel painel-abas" id="painel-abas">
+    <div class="abas" role="tablist">
+      <button role="tab" data-aba="arquivos" aria-selected="false" title="Arquivos da pasta de trabalho">Files</button>
+      <button role="tab" data-aba="graficos" aria-selected="true" title="Gráficos criados">Plots</button>
+      <button role="tab" data-aba="pacotes" aria-selected="false" title="Pacotes instalados">Packages</button>
+      <button role="tab" data-aba="ajuda" aria-selected="false" title="Documentação e ajuda do editor">Help</button>
+    </div>
+
+    <div id="aba-arquivos" class="aba" role="tabpanel" hidden>
+      <div class="barra fina">
+        <span>Pasta de trabalho do R</span>
+        <span class="espaco"></span>
+        <button id="btn-enviar" title="Envia arquivos do seu computador para o R">Enviar arquivo</button>
+        <input type="file" id="arq-dados" multiple hidden>
+      </div>
+      <div class="rolagem">
+        <table class="tabela">
+          <thead><tr><th>Arquivo</th><th class="num">Tamanho</th><th></th></tr></thead>
+          <tbody id="lista-arquivos"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="aba-graficos" class="aba" role="tabpanel">
+      <div class="barra fina">
+        <button id="btn-graf-anterior" title="Gráfico anterior" disabled>◀</button>
+        <span id="graf-contador">Nenhum gráfico</span>
+        <button id="btn-graf-proximo" title="Próximo gráfico" disabled>▶</button>
+        <span class="espaco"></span>
+        <button id="btn-graf-baixar" disabled>Baixar PNG</button>
+        <button id="btn-graf-limpar" disabled>Limpar</button>
+      </div>
+      <div id="graficos" class="graficos">
+        <p class="vazio">Os gráficos criados com <code>plot()</code>, <code>hist()</code>,
+        <code>ggplot()</code> etc. aparecem aqui.</p>
+      </div>
+    </div>
+
+    <div id="aba-pacotes" class="aba" role="tabpanel" hidden>
+      <div class="barra fina">
+        <span>Marque para carregar com <code>library()</code></span>
+        <span class="espaco"></span>
+        <button id="btn-pac-instalar" title="Instala um pacote com install.packages()">Instalar…</button>
+      </div>
+      <div class="rolagem">
+        <table class="tabela">
+          <thead><tr><th></th><th>Pacote</th><th>Versão</th></tr></thead>
+          <tbody id="lista-pacotes"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="aba-ajuda" class="aba" role="tabpanel" hidden>
+      <div class="barra fina">
+        <button id="btn-ajuda-inicio" title="Como usar o editor">⌂ Início</button>
+        <span id="ajuda-titulo" class="ajuda-titulo">Como usar o editor</span>
+        <span class="espaco"></span>
+        <a id="ajuda-externa" href="#" target="_blank" rel="noopener" hidden>abrir no rdrr.io</a>
+      </div>
+      <iframe id="ajuda-doc" class="ajuda-doc" title="Documentação do R" hidden></iframe>
+      <div id="ajuda-inicio" class="ajuda">
+      <h2>Como usar</h2>
+      <ul>
+        <li>Escreva o código no editor e aperte <kbd>Ctrl</kbd>+<kbd>Enter</kbd> para
+          executar a linha do cursor (ou o trecho selecionado). Um comando que ocupa
+          várias linhas é executado inteiro.</li>
+        <li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> executa o script todo.</li>
+        <li>O botão <strong>Novo</strong> limpa o editor para começar do zero; em
+          <strong>Exemplos…</strong> há códigos prontos para testar.</li>
+        <li><kbd>Alt</kbd>+<kbd>-</kbd> insere <code>&lt;-</code>;
+          <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd> comenta ou descomenta linhas.</li>
+        <li>No <strong>Console</strong> dá para digitar comandos depois do
+          <code>&gt;</code> e apertar <kbd>Enter</kbd>, como no RStudio. Se o comando
+          estiver incompleto, aparece <code>+</code> para continuar na linha de baixo.
+          <kbd>↑</kbd> <kbd>↓</kbd> recuperam os comandos anteriores, <kbd>Tab</kbd>
+          completa nomes, <kbd>Shift</kbd>+<kbd>Enter</kbd> quebra a linha e
+          <kbd>Esc</kbd> apaga o comando.</li>
+        <li>As divisórias entre os painéis podem ser arrastadas para mudar o tamanho de
+          cada um.</li>
+      </ul>
+      <h2>Os painéis</h2>
+      <ul>
+        <li><strong>Environment</strong>: objetos criados na sessão.
+          <strong>History</strong>: comandos já executados.</li>
+        <li><strong>Files</strong>: arquivos da pasta de trabalho, para enviar e baixar.
+          <strong>Plots</strong>: gráficos. <strong>Packages</strong>: pacotes
+          instalados. <strong>Help</strong>: esta ajuda e a documentação do R.</li>
+      </ul>
+      <h2>Documentação do R</h2>
+      <p><code>?mean</code> ou <code>help(mean)</code> mostram aqui a documentação da
+        função (em inglês). Os links para outras funções abrem nesta mesma aba.</p>
+      <h2>Dados de exemplo</h2>
+      <p>Alguns arquivos de dados de exemplo já estão na pasta de trabalho, por exemplo
+        <code>read.csv("data/processed/alunos_2023_limpo.csv")</code>. Veja a lista na
+        aba <strong>Files</strong>, onde também dá para enviar seus próprios arquivos
+        e baixar os que o R criar (com <code>write.csv()</code>, por exemplo).</p>
+      <h2>Pacotes</h2>
+      <p>Instale com <code>install.packages("dplyr")</code> e carregue com
+        <code>library(dplyr)</code>, como no RStudio (se esquecer o
+        <code>install.packages()</code>, o <code>library()</code> instala sozinho). A instalação
+        precisa ser repetida sempre que a página é aberta. A maioria dos pacotes do CRAN funciona; os que
+        dependem de programas externos (como <code>odbc</code> ou <code>rJava</code>)
+        não funcionam.</p>
+      <h2>Bom saber</h2>
+      <ul>
+        <li>O R roda <strong>no seu navegador</strong>: nenhum código ou arquivo é enviado
+          para um servidor.</li>
+        <li>O script fica salvo neste navegador. Os objetos, pacotes e arquivos enviados
+          <strong>se perdem ao recarregar a página</strong>.</li>
+        <li>O primeiro carregamento baixa cerca de 30 MB; depois fica mais rápido.</li>
+      </ul>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+</main>
+
+<div id="aviso" class="aviso" role="alert" hidden></div>
+
+</body>
+</html>

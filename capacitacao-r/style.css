@@ -1,0 +1,263 @@
+/* ========================================
+   SEED-PR | Curso de R — Estilo Visual
+   ======================================== */
+
+:root {
+  --seed-azul:    #003d7a;
+  --seed-verde:   #007a3d;
+  --seed-cinza:   #f5f5f5;
+  --seed-borda:   #dee2e6;
+  --codigo-bg:    #f8f9fa;
+}
+
+/* Texto justificado. A hifenização
+   automática, em português (lang: pt-BR), evita espaços grandes entre as
+   palavras. Títulos, tabelas e código continuam alinhados à esquerda. */
+#quarto-document-content p,
+#quarto-document-content li,
+#quarto-document-content dd,
+#quarto-document-content blockquote {
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Títulos */
+h1, h2, h3 {
+  color: var(--seed-azul);
+}
+
+h2 {
+  border-bottom: 2px solid var(--seed-verde);
+  padding-bottom: 4px;
+}
+
+/* Código inline */
+:not(pre) > code {
+  background: var(--codigo-bg);
+  color: #c0392b;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+
+/* Blocos de código */
+pre {
+  background: var(--codigo-bg) !important;
+  border: 1px solid var(--seed-borda);
+  border-radius: 6px;
+}
+
+/* Tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.92em;
+}
+
+th {
+  background: var(--seed-azul);
+  color: white;
+  padding: 8px 12px;
+}
+
+td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--seed-borda);
+}
+
+tr:nth-child(even) { background: var(--seed-cinza); }
+
+
+/* Exercícios interativos (webexercises) com a paleta Okabe-Ito */
+:root {
+  --correct:         #0072B2;
+  --correct_alpha:   #cfe6f5;
+  --incorrect:       #D55E00;
+  --incorrect_alpha: #f9dcc8;
+  --highlight:       #0072B2;
+}
+
+.webex-solution button {
+  color: white;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+/* "Verifique seu entendimento" usa callout-important: cores em azul */
+div.callout-important.callout {
+  border-left-color: #0072B2 !important;
+}
+div.callout-important.callout-titled .callout-header {
+  background-color: #e7f2fa !important;
+}
+
+/* "Exercícios" usa callout-caution: cores em roxo */
+div.callout-caution.callout {
+  border-left-color: #6a1b9a !important;
+}
+div.callout-caution.callout-titled .callout-header {
+  background-color: #f3e5f5 !important;
+}
+
+/* Exercícios "Pratique": destaque maior que os demais blocos */
+.pratique {
+  border: 2px solid #7c3aed;
+  border-radius: 8px;
+  background: #faf7ff;
+  padding: 14px 18px 4px 18px;
+  margin: 26px 0;
+}
+
+.pratique::before {
+  content: "✏️ Pratique";
+  display: inline-block;
+  background: #7c3aed;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.9em;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.pratique .exercise-cell {
+  margin-bottom: 6px;
+}
+
+/* Caixa do gabarito protegido por senha */
+.gabarito-caixa {
+  border: 2px dashed #0072B2;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin: 20px 0;
+  background: #f5faff;
+}
+
+.gabarito-linha {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.gabarito-caixa input[type="password"] {
+  padding: 6px 10px;
+  border: 1px solid #94a3b8;
+  border-radius: 4px;
+  min-width: 220px;
+}
+
+.gabarito-aviso {
+  color: #b45309;
+  margin: 10px 0 0 0;
+  min-height: 1.2em;
+}
+
+#gabarito-conteudo {
+  margin-top: 16px;
+  border-top: 1px solid #cbd5e1;
+  padding-top: 10px;
+}
+
+/* Menu lateral: título numa linha; abaixo, o botão do Editor de R */
+.sidebar-header .sidebar-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.sidebar-header .sidebar-title > a {
+  font-size: 1.15rem;
+  text-wrap: balance;   /* se não couber numa linha, quebra em duas equilibradas */
+}
+.sidebar-tools-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin: 0 !important;
+}
+.sidebar-tools-main a.quarto-navigation-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  text-decoration: none;
+  opacity: 1 !important;
+}
+.sidebar-tools-main a.quarto-navigation-tool[aria-label="Editor de R"] {
+  padding: 0.2rem 0.75rem !important;
+  border-radius: 999px;
+  background: var(--seed-azul);
+  color: #fff !important;
+  font-weight: 600;
+}
+.sidebar-tools-main a.quarto-navigation-tool[aria-label="Editor de R"] i {
+  color: #fff !important;
+}
+.sidebar-tools-main a.quarto-navigation-tool[aria-label="Editor de R"]::after {
+  content: "Editor de R";
+}
+.sidebar-tools-main a.quarto-navigation-tool[aria-label="Editor de R"]:hover {
+  background: #2780e3;
+}
+
+
+/* Figura 1.1 interativa: painéis do RStudio clicáveis */
+.paineis-rstudio {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.4rem 1.6rem;
+  max-width: 640px;
+  margin: 0.5rem auto 0.3rem;
+}
+.painel-quadro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  min-height: 6.5rem;
+  padding: 0.6rem;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  background: var(--cor);
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.painel-quadro.claro { color: #1f2937; }
+.painel-quadro strong { font-size: 0.95rem; }
+.painel-quadro span { font-size: 0.8rem; }
+.painel-quadro:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); }
+.painel-quadro[aria-pressed="true"] { border-color: #1f2937; box-shadow: 0 0 0 3px #fff inset; }
+.painel-seta {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  color: #374151;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.seta-ctrl { left: 25%; top: 50%; }
+.seta-ambiente { left: 50%; top: 60%; font-size: 1.2rem; }
+.seta-arquivos { left: 50%; top: 78%; font-size: 1.2rem; }
+.paineis-instrucao { text-align: center !important; font-size: 0.85rem; color: #6b7280; }
+
+/* Texto de cada painel: destaque ao clicar na figura */
+.painel-texto {
+  border-left: 4px solid transparent;
+  padding: 0.1rem 0 0.1rem 0.8rem;
+  margin-left: -0.8rem;
+  border-radius: 4px;
+  transition: background 0.3s, opacity 0.3s;
+}
+.painel-texto.destacado {
+  border-left-color: var(--cor);
+  background: color-mix(in srgb, var(--cor) 12%, transparent);
+}
+.painel-texto.esmaecido { opacity: 0.45; }
