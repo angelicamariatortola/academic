@@ -7,6 +7,8 @@
 # dar cor a cada tipo de linha:
 #   \036  linha de código ecoada no console ("> ...")
 #   \035E erro   \035W aviso   \035M mensagem
+#   \035A ajuda de uma função ("tópico<TAB>arquivo1<TAB>arquivo2..."),
+#         que o app.js mostra na aba Help
 # ============================================================
 
 local({
@@ -154,6 +156,68 @@ local({
               NROW(x), " linhas.)")
     }
     invisible(x)
+  }
+
+  # ?mean e help(mean): em vez de abrir a aba Help do RStudio (que o R não
+  # consegue fazer no navegador), avisa o app.js, que mostra a documentação
+  # na aba Help do editor.
+  mostrar_ajuda <- function(x, ...) {
+    caminhos <- as.character(x)
+    if (length(caminhos) == 0) {
+      emitir("\035M", paste0("Nenhuma ajuda encontrada para \"", attr(x, "topic"),
+                             "\". Confira o nome ou carregue o pacote com library()."))
+    } else {
+      emitir("\035A", paste(c(attr(x, "topic"), caminhos), collapse = "\t"))
+    }
+    invisible(x)
+  }
+  registerS3method("print", "help_files_with_topic", mostrar_ajuda,
+                   envir = asNamespace("utils"))
+
+  # Página HTML da documentação guardada em um arquivo de ajuda do R. Os
+  # links para outras funções ficam como "../../pacote/help/topico.html",
+  # que o app.js transforma em navegação dentro da aba Help.
+  ferramentas$.editor_html_ajuda <- function(caminho) {
+    pacote <- basename(dirname(dirname(caminho)))
+    arquivo <- tempfile(fileext = ".html")
+    links <- tools::findHTMLlinks(system.file(package = pacote), level = 0:1)
+    tools::Rd2HTML(utils:::.getHelpFile(caminho), out = arquivo,
+                   package = pacote, Links = links)
+    paste(readLines(arquivo, encoding = "UTF-8", warn = FALSE), collapse = "\n")
+  }
+
+  # Arquivos de ajuda de um tópico (usado pelos links dentro da aba Help)
+  ferramentas$.editor_caminhos_ajuda <- function(topico, pacote = NULL) {
+    as.character(utils::help((topico), package = (pacote), try.all.packages = is.null(pacote)))
+  }
+
+  # Console: o comando digitado está completo? "ok", "incompleto" ou "erro"
+  ferramentas$.editor_completo <- function(codigo) {
+    tryCatch({
+      parse(text = codigo, keep.source = FALSE)
+      "ok"
+    }, error = function(e) {
+      if (grepl("end of input|INCOMPLETE_STRING|fim de entrada", conditionMessage(e))) "incompleto" else "erro"
+    })
+  }
+
+  # Autocompletar (tecla Tab): devolve o trecho que está sendo digitado,
+  # seguido das opções encontradas
+  ferramentas$.editor_completar <- function(linha) {
+    utils:::.assignLinebuffer(linha)
+    utils:::.assignEnd(nchar(linha))
+    token <- utils:::.guessTokenFromLine()
+    utils:::.completeToken()
+    c(token, utils:::.retrieveCompletions())
+  }
+
+  # Aba Packages: "nome<TAB>versão<TAB>carregado" para cada pacote instalado
+  ferramentas$.editor_pacotes <- function() {
+    ip <- utils::installed.packages()
+    ip <- ip[!duplicated(ip[, "Package"]), , drop = FALSE]
+    ip <- ip[order(tolower(ip[, "Package"])), , drop = FALSE]
+    carregados <- sub("^package:", "", grep("^package:", search(), value = TRUE))
+    paste(ip[, "Package"], ip[, "Version"], ip[, "Package"] %in% carregados, sep = "\t")
   }
 
   attach(ferramentas, name = "ferramentas:editor", warn.conflicts = FALSE)

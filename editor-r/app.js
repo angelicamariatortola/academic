@@ -130,7 +130,7 @@ aprovados <- subset(alunos, nota_mat >= 6 & nota_por >= 6)
 nrow(aprovados)
 
 write.csv(aprovados, "aprovados.csv", row.names = FALSE)
-# Baixe o arquivo pela aba "Arquivos", ao lado.
+# Baixe o arquivo pela aba "Files", ao lado.
 `,
   },
 ];
@@ -144,7 +144,7 @@ const DICAS = [
   [/there is no package called [‘'"]([^’'"]+)[’'"]/,
     (m) => `O pacote <code>${esc(m[1])}</code> não está instalado nesta sessão. Rode <code>install.packages("${esc(m[1])}")</code> e depois o <code>library()</code> de novo.`],
   [/cannot open file '([^']+)'|cannot open the connection|does not exist/,
-    () => 'O arquivo não foi encontrado. Veja os nomes disponíveis na aba <strong>Arquivos</strong>: os dados de exemplo ficam em <code>data/raw/</code> e <code>data/processed/</code>.'],
+    () => 'O arquivo não foi encontrado. Veja os nomes disponíveis na aba <strong>Files</strong>: os dados de exemplo ficam em <code>data/raw/</code> e <code>data/processed/</code>.'],
   [/unexpected end of input|INCOMPLETE_STRING/,
     () => 'Parece que faltou fechar um parêntese, colchete, chave ou aspas.'],
   [/unexpected (symbol|numeric constant|string constant)/,
@@ -212,7 +212,8 @@ function status(texto, classe) {
 
 // ---------- Console ----------
 
-const con = $('console');
+const con = $('console');            // linhas de saída
+const areaConsole = $('area-console'); // saída + linha de comando (rola junto)
 
 function escrever(texto, classe) {
   const el = document.createElement('div');
@@ -220,14 +221,14 @@ function escrever(texto, classe) {
   el.textContent = texto;
   con.append(el);
   while (con.childElementCount > LIMITE_LINHAS_CONSOLE) con.firstElementChild.remove();
-  con.scrollTop = con.scrollHeight;
+  areaConsole.scrollTop = areaConsole.scrollHeight;
   return el;
 }
 
 function escreverHtml(html, classe) {
   const el = escrever('', classe);
   el.innerHTML = html;
-  con.scrollTop = con.scrollHeight;
+  areaConsole.scrollTop = areaConsole.scrollHeight;
   return el;
 }
 
@@ -255,11 +256,16 @@ function tamanhoGrafico() {
   };
 }
 
-// Linhas marcadas pelo runner.R: \x1e = código ecoado; \x1dE/W/M = erro/aviso/mensagem
+// Linhas marcadas pelo runner.R: \x1e = código ecoado; \x1dE/W/M = erro/aviso/mensagem;
+// \x1dA = pedido de ajuda (tópico e arquivos), aberto na aba Help depois da execução
 let textoProblemas = '';
+let ajudaPendente = null;
 function processarLinha(tipo, linha) {
   if (linha.startsWith('\x1e')) {
     escrever(linha.slice(1), 'entrada');
+  } else if (linha.startsWith('\x1dA')) {
+    const [topico, ...caminhos] = linha.slice(2).split('\t');
+    ajudaPendente = { topico, caminhos };
   } else if (linha.startsWith('\x1d')) {
     const classe = { E: 'erro', W: 'aviso', M: 'mensagem' }[linha[1]] ?? 'mensagem';
     escrever(linha.slice(2), classe);
@@ -297,6 +303,7 @@ function enfileirar(tarefa) {
 
 function definirOcupado(valor) {
   ocupado = valor;
+  areaConsole.classList.toggle('ocupado', valor);
   $('btn-parar').disabled = !(valor && isolado);
   if (valor) status('Executando…', 'executando');
   else status(versaoR, 'pronto');
@@ -304,6 +311,7 @@ function definirOcupado(valor) {
 
 async function executar(codigo) {
   if (!codigo.trim()) return;
+  registrarHistorico(codigo);
   definirOcupado(true);
   textoProblemas = '';
   const shelter = await new webR.Shelter();
@@ -324,6 +332,11 @@ async function executar(codigo) {
     definirOcupado(false);
   }
   mostrarDica();
+  if (ajudaPendente) {
+    const { topico, caminhos } = ajudaPendente;
+    ajudaPendente = null;
+    await mostrarAjuda(topico, caminhos);
+  }
   await atualizarPaineis();
 }
 
@@ -491,6 +504,7 @@ async function atualizarPaineis() {
   try {
     await atualizarObjetos();
     await atualizarArquivos();
+    await atualizarPacotes();
   } catch (e) {
     console.error(e);
   }
@@ -542,7 +556,8 @@ async function enviarArquivos(arquivos) {
 // ---------- Abas ----------
 
 function mostrarAba(nome) {
-  document.querySelectorAll('.abas [role="tab"]').forEach((b) => {
+  const grupo = document.querySelector(`.abas [data-aba="${nome}"]`).closest('.abas');
+  grupo.querySelectorAll('[role="tab"]').forEach((b) => {
     const ativa = b.dataset.aba === nome;
     b.setAttribute('aria-selected', String(ativa));
     $(`aba-${b.dataset.aba}`).hidden = !ativa;
@@ -645,26 +660,317 @@ $('btn-compartilhar').addEventListener('click', async () => {
   }
 });
 
-// Linha de comando abaixo do console, com histórico nas setas
+// ---------- Console: linha de comando, como no RStudio ----------
+// Enter executa (ou, se o comando estiver incompleto, abre uma linha "+");
+// Shift+Enter quebra a linha; ↑/↓ percorrem o histórico; Tab completa; Esc apaga.
+
 const entrada = $('entrada');
-const historico = [];
+const prompt = $('prompt');
+const historico = [];          // comandos digitados no console (setas ↑/↓)
 let posHistorico = 0;
-entrada.addEventListener('keydown', (ev) => {
-  if (ev.key === 'Enter') {
-    const cmd = entrada.value;
-    if (!cmd.trim()) return;
-    historico.push(cmd);
-    posHistorico = historico.length;
-    entrada.value = '';
-    enfileirar(() => executar(cmd));
-  } else if (ev.key === 'ArrowUp' && posHistorico > 0) {
-    entrada.value = historico[--posHistorico];
-    ev.preventDefault();
-  } else if (ev.key === 'ArrowDown') {
-    posHistorico = Math.min(posHistorico + 1, historico.length);
-    entrada.value = historico[posHistorico] ?? '';
-    ev.preventDefault();
+let navegando = false;         // o texto veio do histórico e ainda não foi editado
+
+function ajustarEntrada() {
+  const n = entrada.value.split('\n').length;
+  entrada.rows = n;
+  prompt.textContent = ['>', ...Array(n - 1).fill('+')].join('\n');
+  areaConsole.scrollTop = areaConsole.scrollHeight;
+}
+
+function definirEntrada(texto) {
+  entrada.value = texto;
+  ajustarEntrada();
+  entrada.focus();
+  entrada.setSelectionRange(texto.length, texto.length);
+}
+
+async function enviarDoConsole() {
+  const cmd = entrada.value;
+  if (!cmd.trim()) {
+    escrever('>', 'entrada');
+    return;
   }
+  enfileirar(async () => {
+    await webR.objs.globalEnv.bind('.editor_cmd', cmd);
+    const situacao = await webR.evalRString(
+      'local({ c <- .editor_cmd; rm(.editor_cmd, envir = globalenv()); .editor_completo(c) })',
+    );
+    if (situacao === 'incompleto') {
+      definirEntrada(`${cmd}\n`);   // continua na linha de baixo, com "+"
+      return;
+    }
+    if (historico[historico.length - 1] !== cmd) historico.push(cmd);
+    posHistorico = historico.length;
+    definirEntrada('');
+    await executar(cmd);
+  });
+}
+
+// Tab: completa o nome que está sendo digitado, usando o próprio R
+async function completar() {
+  const pos = entrada.selectionStart;
+  const antes = entrada.value.slice(0, pos);
+  const linha = antes.slice(antes.lastIndexOf('\n') + 1);
+  if (!linha.trim()) return;
+  enfileirar(async () => {
+    await webR.objs.globalEnv.bind('.editor_linha', linha);
+    const [token, ...opcoes] = await webR.evalRRaw(
+      'local({ l <- .editor_linha; rm(.editor_linha, envir = globalenv()); .editor_completar(l) })',
+      'string[]',
+    );
+    if (opcoes.length === 0) return;
+    // Parte comum a todas as opções (se houver só uma, é ela inteira)
+    let comum = opcoes[0];
+    for (const o of opcoes) while (!o.startsWith(comum)) comum = comum.slice(0, -1);
+    if (comum.length > token.length) {
+      const novo = entrada.value.slice(0, pos - token.length) + comum + entrada.value.slice(pos);
+      entrada.value = novo;
+      const cursor = pos - token.length + comum.length;
+      entrada.setSelectionRange(cursor, cursor);
+      ajustarEntrada();
+    }
+    if (opcoes.length > 1) {
+      const lista = opcoes.slice(0, 60).join('   ') + (opcoes.length > 60 ? '   …' : '');
+      escrever(lista, 'opcoes');
+    }
+  });
+}
+
+entrada.addEventListener('input', () => {
+  navegando = false;
+  ajustarEntrada();
+});
+entrada.addEventListener('keydown', (ev) => {
+  const antes = entrada.value.slice(0, entrada.selectionStart);
+  const depois = entrada.value.slice(entrada.selectionEnd);
+  if (ev.key === 'Enter' && !ev.shiftKey) {
+    ev.preventDefault();
+    enviarDoConsole();
+  } else if (ev.key === 'Tab') {
+    ev.preventDefault();
+    completar();
+  } else if (ev.key === 'Escape' && !ocupado) {
+    ev.preventDefault();
+    definirEntrada('');
+  } else if (ev.key === 'ArrowUp' && (navegando || !antes.includes('\n')) && posHistorico > 0) {
+    ev.preventDefault();
+    definirEntrada(historico[--posHistorico]);
+    navegando = true;
+  } else if (ev.key === 'ArrowDown' && (navegando || !depois.includes('\n')) && posHistorico < historico.length) {
+    ev.preventDefault();
+    posHistorico++;
+    definirEntrada(historico[posHistorico] ?? '');
+    navegando = true;
+  }
+});
+
+// Clicar no console leva o cursor para a linha de comando (sem atrapalhar
+// quem está selecionando texto para copiar ou clicando em um link)
+areaConsole.addEventListener('click', (ev) => {
+  if (ev.target.closest('a, button') || String(window.getSelection())) return;
+  entrada.focus();
+});
+
+// ---------- History: tudo o que foi executado (editor e console) ----------
+
+const listaHistorico = $('lista-historico');
+
+function registrarHistorico(codigo) {
+  const linhas = codigo.split('\n').filter((l) => l.trim() && !l.trim().startsWith('#'));
+  for (const l of linhas) {
+    const li = document.createElement('li');
+    li.textContent = l;
+    li.title = 'Clique para levar ao console';
+    listaHistorico.append(li);
+  }
+  while (listaHistorico.childElementCount > 500) listaHistorico.firstElementChild.remove();
+  listaHistorico.parentElement.scrollTop = listaHistorico.parentElement.scrollHeight;
+}
+
+listaHistorico.addEventListener('click', (ev) => {
+  const li = ev.target.closest('li');
+  if (li) definirEntrada(li.textContent);
+});
+$('btn-hist-limpar').addEventListener('click', () => listaHistorico.replaceChildren());
+
+// ---------- Packages ----------
+
+async function atualizarPacotes() {
+  const linhas = await webR.evalRRaw('.editor_pacotes()', 'string[]');
+  $('lista-pacotes').replaceChildren(...linhas.map((l) => {
+    const [nome, versao, carregado] = l.split('\t');
+    const tr = document.createElement('tr');
+    tr.classList.toggle('carregado', carregado === 'TRUE');
+    tr.innerHTML = `<td><input type="checkbox" aria-label="Carregar ${esc(nome)}"
+      ${carregado === 'TRUE' ? 'checked' : ''}></td><td>${esc(nome)}</td><td>${esc(versao)}</td>`;
+    // Como no RStudio: marcar/desmarcar escreve o comando no console e o executa
+    tr.querySelector('input').addEventListener('change', (ev) => {
+      const cmd = ev.target.checked
+        ? `library(${nome})`
+        : `detach("package:${nome}", unload = TRUE)`;
+      enfileirar(() => executar(cmd));
+    });
+    return tr;
+  }));
+}
+
+$('btn-pac-instalar').addEventListener('click', () => {
+  const nome = window.prompt('Nome do pacote a instalar (por exemplo, dplyr):')?.trim();
+  if (!nome) return;
+  if (!/^[A-Za-z][A-Za-z0-9.]*$/.test(nome)) {
+    aviso('Nome de pacote inválido.');
+    return;
+  }
+  enfileirar(() => executar(`install.packages("${nome}")`));
+});
+
+// ---------- Help: documentação do R dentro da aba ----------
+
+const PACOTES_DO_R = ['base', 'compiler', 'datasets', 'graphics', 'grDevices', 'grid', 'methods',
+  'parallel', 'splines', 'stats', 'stats4', 'tcltk', 'tools', 'utils'];
+
+function enderecoRdrr(caminho) {
+  const partes = caminho.split('/');
+  const arquivo = partes.pop();
+  const pacote = partes[partes.length - 2];
+  return PACOTES_DO_R.includes(pacote)
+    ? `https://rdrr.io/r/${pacote}/${arquivo}.html`
+    : `https://rdrr.io/cran/${pacote}/man/${arquivo}.html`;
+}
+
+const ESTILO_AJUDA = `<style>
+  body { font-family: system-ui, sans-serif; font-size: 14px; line-height: 1.5; color: #1f2328;
+         margin: 0.8rem 1rem; }
+  h2 { font-size: 1.2rem; margin-top: 0.2rem; } h3 { font-size: 1rem; margin: 1.1rem 0 0.3rem; }
+  pre, code { font-family: ui-monospace, "DejaVu Sans Mono", Menlo, Consolas, monospace; font-size: 0.9em; }
+  pre { background: #f6f8fa; padding: 0.5rem 0.7rem; border-radius: 6px; overflow: auto; }
+  table { border-collapse: collapse; } td { vertical-align: top; padding: 0.15rem 0.6rem 0.15rem 0; }
+  a { color: #1a5fb4; } img, .katex-display { max-width: 100%; }
+  table[width] { width: auto; } hr { display: none; }
+</style>`;
+
+function mostrarInicioAjuda() {
+  $('ajuda-doc').hidden = true;
+  $('ajuda-inicio').hidden = false;
+  $('ajuda-externa').hidden = true;
+  $('ajuda-titulo').textContent = 'Como usar o editor';
+}
+
+async function mostrarAjuda(topico, caminhos) {
+  mostrarAba('ajuda');
+  if (caminhos.length > 1) {
+    // O mesmo nome existe em mais de um pacote (como filter, no dplyr e no stats)
+    const itens = caminhos.map((c) => {
+      const pacote = c.split('/').slice(-3)[0];
+      return `<li><a href="#" data-caminho="${esc(c)}">${esc(topico)} {${esc(pacote)}}</a></li>`;
+    }).join('');
+    exibirDocumento(`<h2>Ajuda para “${esc(topico)}”</h2><p>Encontrada em mais de um pacote:</p>
+      <ul>${itens}</ul>`, `Ajuda para ${topico}`, null);
+    return;
+  }
+  const caminho = caminhos[0];
+  try {
+    await webR.objs.globalEnv.bind('.editor_caminho', caminho);
+    const html = await webR.evalRString(
+      'local({ c <- .editor_caminho; rm(.editor_caminho, envir = globalenv()); .editor_html_ajuda(c) })',
+    );
+    const titulo = (html.match(/<title>R: ([^<]*)<\/title>/) ?? [])[1] ?? topico;
+    exibirDocumento(html, `${topico} {${caminho.split('/').slice(-3)[0]}}: ${titulo}`, caminho);
+  } catch (e) {
+    console.error(e);
+    const url = enderecoRdrr(caminho);
+    exibirDocumento(`<p>Não foi possível mostrar a documentação aqui.
+      <a href="${esc(url)}" target="_blank" rel="noopener">Abrir no rdrr.io</a>.</p>`, topico, caminho);
+  }
+}
+
+function exibirDocumento(html, titulo, caminho) {
+  const doc = $('ajuda-doc');
+  $('ajuda-inicio').hidden = true;
+  doc.hidden = false;
+  $('ajuda-titulo').textContent = titulo;
+  const externa = $('ajuda-externa');
+  externa.hidden = !caminho;
+  if (caminho) externa.href = enderecoRdrr(caminho);
+  // O documento fica isolado num iframe; os links são tratados aqui
+  doc.srcdoc = html.includes('<head>') ? html.replace('<head>', `<head>${ESTILO_AJUDA}`)
+    : `<!doctype html><html><head><meta charset="utf-8">${ESTILO_AJUDA}</head><body>${html}</body></html>`;
+  doc.onload = () => {
+    doc.contentDocument?.addEventListener('click', (ev) => {
+      const a = ev.target.closest('a');
+      if (!a) return;
+      const href = a.getAttribute('href') ?? '';
+      if (a.dataset.caminho) {                        // escolha entre pacotes
+        ev.preventDefault();
+        enfileirar(() => mostrarAjuda(a.textContent.split(' {')[0], [a.dataset.caminho]));
+        return;
+      }
+      const m = href.match(/^\.\.\/\.\.\/([^/]+)\/(?:help|html)\/([^/#?]+?)(?:\.html)?(?:#.*)?$/);
+      if (m) {                                        // link para outra função do R
+        ev.preventDefault();
+        enfileirar(() => abrirTopico(decodeURIComponent(m[2]), m[1]));
+      } else if (/^https?:/.test(href)) {
+        ev.preventDefault();
+        window.open(href, '_blank', 'noopener');
+      } else if (!href.startsWith('#')) {
+        ev.preventDefault();                          // links internos sem destino aqui
+      }
+    });
+  };
+}
+
+async function abrirTopico(topico, pacote) {
+  await webR.objs.globalEnv.bind('.editor_topico', topico);
+  await webR.objs.globalEnv.bind('.editor_pacote', pacote);
+  const caminhos = await webR.evalRRaw(
+    `local({ t <- .editor_topico; p <- .editor_pacote; rm(.editor_topico, .editor_pacote, envir = globalenv())
+             r <- .editor_caminhos_ajuda(t, p); if (!length(r)) r <- .editor_caminhos_ajuda(t); r })`,
+    'string[]',
+  );
+  if (caminhos.length) await mostrarAjuda(topico, caminhos);
+}
+
+$('btn-ajuda-inicio').addEventListener('click', mostrarInicioAjuda);
+
+// ---------- Divisórias arrastáveis entre os painéis ----------
+
+const area = document.querySelector('.area');
+const CHAVE_TAMANHOS = 'editor-r-seed:tamanhos';
+try {
+  const salvos = JSON.parse(lerStorage(CHAVE_TAMANHOS) ?? '{}');
+  for (const [prop, valor] of Object.entries(salvos)) area.style.setProperty(prop, valor);
+} catch { /* tamanhos salvos inválidos: usa o padrão */ }
+
+document.querySelectorAll('.divisoria').forEach((div) => {
+  div.addEventListener('pointerdown', (ev) => {
+    ev.preventDefault();
+    const vertical = div.classList.contains('vertical');
+    const alvo = vertical ? area : $(div.dataset.divide);
+    const prop = vertical ? '--col-esq' : (div.dataset.divide === 'coluna-esq' ? '--lin-esq' : '--lin-dir');
+    const caixa = alvo.getBoundingClientRect();
+    div.setPointerCapture(ev.pointerId);
+    div.classList.add('arrastando');
+    document.body.classList.add('arrastando');
+    const mover = (e) => {
+      const frac = vertical ? (e.clientX - caixa.left) / caixa.width : (e.clientY - caixa.top) / caixa.height;
+      area.style.setProperty(prop, `${Math.round(Math.min(0.85, Math.max(0.15, frac)) * 1000) / 10}%`);
+      editor.refresh();
+    };
+    const soltar = () => {
+      div.removeEventListener('pointermove', mover);
+      div.classList.remove('arrastando');
+      document.body.classList.remove('arrastando');
+      const tamanhos = {};
+      for (const p of ['--col-esq', '--lin-esq', '--lin-dir']) {
+        const v = area.style.getPropertyValue(p);
+        if (v) tamanhos[p] = v;
+      }
+      gravarStorage(CHAVE_TAMANHOS, JSON.stringify(tamanhos));
+      if (graficos.length) mostrarGrafico(graficoAtual);
+    };
+    div.addEventListener('pointermove', mover);
+    div.addEventListener('pointerup', soltar, { once: true });
+  });
 });
 
 document.addEventListener('keydown', (ev) => {
@@ -714,16 +1020,13 @@ async function iniciar() {
     webR = r;
     lerSaidas();
     await webR.evalRVoid(await (await fetch('runner.R')).text());
-    const nDados = await carregarDadosExemplo();
+    await carregarDadosExemplo();
     versaoR = await webR.evalRString('R.version.string');
     mostrarSaidaAvulsa = true;
 
     limparConsole();
     escreverHtml(`<strong>${esc(versaoR)}</strong> pronto. Coloque o cursor em uma linha do editor e aperte
-      <kbd>Ctrl</kbd>+<kbd>Enter</kbd>.`, 'sistema');
-    if (nDados > 0) {
-      escreverHtml(`Há ${nDados} arquivos de dados de exemplo na pasta <code>data/</code> (veja a aba Arquivos).`, 'sistema');
-    }
+      <kbd>Ctrl</kbd>+<kbd>Enter</kbd>, ou digite um comando aqui no console.`, 'sistema');
     if (!isolado) {
       escreverHtml('Modo compatível: o botão Parar não está disponível. Se um código travar, recarregue a página.', 'sistema');
     }

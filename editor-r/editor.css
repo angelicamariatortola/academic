@@ -62,17 +62,26 @@ body {
 .status.pronto::before { color: #7ee2a8; }
 .status.falha::before { color: #ffb4a8; }
 
-/* ---------- Layout ---------- */
+/* ---------- Layout (como no RStudio) ----------
+   Duas colunas; em cada uma, dois painéis. Os tamanhos ficam em variáveis
+   (--col-esq, --lin-esq, --lin-dir) que as divisórias alteram ao arrastar. */
 
 .area {
   flex: 1;
   min-height: 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 0.5rem;
+  display: flex;
   padding: 0.5rem;
+  --col-esq: 50%;
+  --lin-esq: 55%;
+  --lin-dir: 45%;
 }
+.coluna { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+#coluna-esq { flex: 0 0 var(--col-esq); }
+#coluna-dir { flex: 1 1 0; }
+#painel-editor { flex: 0 0 var(--lin-esq); }
+#painel-console { flex: 1 1 0; }
+#painel-ambiente { flex: 0 0 var(--lin-dir); }
+#painel-abas { flex: 1 1 0; }
 
 .painel {
   display: flex;
@@ -84,20 +93,23 @@ body {
   overflow: hidden;
 }
 
-.painel-editor { grid-row: 1 / 3; }
+.divisoria { flex: 0 0 0.5rem; }
+.divisoria.vertical { cursor: col-resize; }
+.divisoria.horizontal { cursor: row-resize; }
+.divisoria:hover, .divisoria.arrastando { background: #ddf4ff; border-radius: 3px; }
+body.arrastando { user-select: none; }
+body.arrastando iframe { pointer-events: none; }
 
 @media (max-width: 900px) {
   html, body { height: auto; }
-  .area {
-    flex: none;
-    display: flex;
-    flex-direction: column;
-    padding-inline: 1rem;
-  }
-  .painel { flex-shrink: 0; }
-  .painel-editor { height: 55vh; }
-  .painel-console { height: 45vh; }
-  .painel-abas { height: 70vh; }
+  .area { flex: none; flex-direction: column; padding-inline: 1rem; }
+  .coluna { display: contents; }
+  .divisoria { display: none; }
+  .painel { flex: none !important; margin-bottom: 0.5rem; }
+  #painel-editor { height: 55vh; }
+  #painel-console { height: 45vh; }
+  #painel-ambiente { height: 40vh; }
+  #painel-abas { height: 70vh; }
   .status { max-width: 45vw; }
 }
 
@@ -156,6 +168,7 @@ button.pequeno { padding: 0.1rem 0.45rem; font-size: 0.8rem; }
   flex: 1;
   min-height: 0;
   overflow: auto;
+  cursor: text;
   padding: 0.5rem 0.75rem;
   font-family: var(--mono);
   font-size: 13px;
@@ -163,7 +176,7 @@ button.pequeno { padding: 0.1rem 0.45rem; font-size: 0.8rem; }
   white-space: pre;
   tab-size: 4;
 }
-.console > div { min-height: 1.45em; }
+#console > div { min-height: 1.45em; }
 .console .entrada { color: var(--entrada); }
 .console .saida { color: var(--texto); }
 .console .mensagem { color: var(--texto-suave); white-space: pre-wrap; }
@@ -191,26 +204,32 @@ button.pequeno { padding: 0.1rem 0.45rem; font-size: 0.8rem; }
   font-style: italic;
 }
 
-.linha-comando {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.75rem;
-  border-top: 1px solid var(--borda);
-  font-family: var(--mono);
-  font-size: 13px;
+/* Linha de comando no fim do console: ">" na 1ª linha, "+" nas seguintes */
+.linha-comando { display: flex; align-items: flex-start; gap: 0.5ch; }
+.linha-comando .prompt {
+  margin: 0;
+  font: inherit;
+  color: var(--entrada);
+  font-weight: 700;
+  user-select: none;
 }
-.linha-comando .prompt { color: var(--entrada); font-weight: 700; }
-.linha-comando input {
+.linha-comando textarea {
   flex: 1;
   min-width: 0;
   border: none;
+  resize: none;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
   font: inherit;
-  padding: 0.2rem 0;
+  line-height: inherit;
+  color: var(--entrada);
   background: transparent;
-  color: var(--texto);
+  white-space: pre;
 }
-.linha-comando input:focus-visible { outline: none; }
+.linha-comando textarea:focus-visible { outline: none; }
+.console.ocupado .linha-comando { opacity: 0.45; }
+.console .opcoes { color: var(--texto-suave); white-space: pre-wrap; }
 
 /* ---------- Abas ---------- */
 
@@ -269,7 +288,7 @@ button.pequeno { padding: 0.1rem 0.45rem; font-size: 0.8rem; }
 .tabela .num { text-align: right; white-space: nowrap; }
 .tabela td.acoes { text-align: right; white-space: nowrap; }
 
-.ajuda { overflow: auto; padding: 0.25rem 1rem 1rem; line-height: 1.55; }
+.ajuda { flex: 1; min-height: 0; overflow: auto; padding: 0.25rem 1rem 1rem; line-height: 1.55; }
 .ajuda h2 { font-size: 1rem; margin: 1rem 0 0.3rem; }
 .ajuda ul { padding-left: 1.2rem; margin: 0.3rem 0; }
 .ajuda li { margin-bottom: 0.3rem; }
@@ -306,3 +325,22 @@ code { font-family: var(--mono); font-size: 0.9em; }
   font-size: 0.8rem;
   padding: 0.2rem 0.4rem;
 }
+
+/* ---------- History, Packages e Help ---------- */
+
+.historico { list-style: none; margin: 0; padding: 0; font-family: var(--mono); font-size: 0.82rem; }
+.historico li {
+  padding: 0.2rem 0.6rem;
+  border-bottom: 1px solid var(--fundo);
+  white-space: pre-wrap;
+  word-break: break-all;
+  cursor: pointer;
+}
+.historico li:hover { background: #ddf4ff; }
+
+.tabela input[type="checkbox"] { margin: 0; cursor: pointer; }
+.tabela tr.carregado td:nth-child(2) { font-weight: 600; }
+
+.ajuda-titulo { font-weight: 600; color: var(--texto); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ajuda-doc { flex: 1; min-height: 0; width: 100%; border: none; background: #fff; }
+
