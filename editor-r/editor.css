@@ -46,9 +46,6 @@ body {
 
 .topo h1 { font-size: 1.1rem; margin: 0; font-weight: 600; }
 
-.voltar { color: #fff; text-decoration: none; opacity: 0.9; }
-.voltar:hover { opacity: 1; text-decoration: underline; }
-
 .status {
   margin-left: auto;
   font-size: 0.85rem;
