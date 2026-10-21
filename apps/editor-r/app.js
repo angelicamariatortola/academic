@@ -27,13 +27,13 @@ const CODIGO_INICIAL = `# Bem-vindo ao Editor de R!
 
 # Exemplo com os dados da pasta data/
 
-${LER_ALUNOS}
-head(alunos)
+base <- read.csv("data/raw/alunos_2023.csv", fileEncoding = "UTF-8")
 
-mean(alunos$nota_mat, na.rm = TRUE)   # na.rm = TRUE ignora as notas em branco (NA)
+dim(base)   # número de linhas e de colunas
+head(base[, c("escola", "serie", "turno", "nota_mat")])
 
-boxplot(nota_mat ~ turno, data = alunos, col = "#56B4E9",
-        xlab = NULL, ylab = "Nota de Matemática")
+summary(base$nota_mat)   # o valor 99 é um código de ausência, não uma nota
+table(base$turno)        # há grafias diferentes para o mesmo turno
 `;
 
 const EXEMPLOS = [

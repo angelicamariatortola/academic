@@ -174,6 +174,26 @@ local({
   registerS3method("print", "help_files_with_topic", mostrar_ajuda,
                    envir = asNamespace("utils"))
 
+  # ??"termo" e help.search(): o R mostraria o resultado num paginador
+  # (file.show), que não existe no navegador. Listamos no console.
+  mostrar_busca <- function(x, ...) {
+    achados <- x$matches
+    achados <- achados[!duplicated(achados[, c("Topic", "Package")]), , drop = FALSE]
+    if (NROW(achados) == 0) {
+      emitir("\035M", paste0("Nada encontrado para \"", x$pattern,
+                             "\". Tente outro termo, em inglês."))
+    } else {
+      cat("Ajuda encontrada para \"", x$pattern, "\":\n\n", sep = "")
+      cat(paste0("  ", format(paste0(achados$Package, "::", achados$Topic)),
+                 "  ", achados$Title), sep = "\n")
+      cat("\nPara abrir a ajuda de uma delas, use ?, por exemplo: ?",
+          achados$Topic[1], "\n", sep = "")
+    }
+    invisible(x)
+  }
+  registerS3method("print", "hsearch", mostrar_busca,
+                   envir = asNamespace("utils"))
+
   # Página HTML da documentação guardada em um arquivo de ajuda do R. Os
   # links para outras funções ficam como "../../pacote/help/topico.html",
   # que o app.js transforma em navegação dentro da aba Help.
