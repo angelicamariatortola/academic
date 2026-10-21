@@ -36,6 +36,29 @@ summary(base$nota_mat)   # o valor 99 é um código de ausência, não uma nota
 table(base$turno)        # há grafias diferentes para o mesmo turno
 `;
 
+// Códigos iniciais de versões anteriores. Quem ainda tem um deles salvo, sem
+// alterações, passa a ver o código inicial atual.
+const EXEMPLO_ANTIGO = `${LER_ALUNOS}
+head(alunos)
+
+mean(alunos$nota_mat, na.rm = TRUE)   # na.rm = TRUE ignora as notas em branco (NA)
+
+boxplot(nota_mat ~ turno, data = alunos, col = "#56B4E9",
+        xlab = NULL, ylab = "Nota de Matemática")`;
+const CODIGOS_INICIAIS_ANTIGOS = [
+  `# Bem-vindo ao Editor de R!
+# Coloque o cursor em uma linha e aperte Ctrl+Enter para executá-la.
+# Para começar do zero, clique em "Novo".
+
+# Exemplo com os dados da pasta data/
+
+${EXEMPLO_ANTIGO}`,
+  `# Bem-vindo ao Editor de R do curso!
+# Coloque o cursor em uma linha e aperte Ctrl+Enter para executá-la.
+
+${EXEMPLO_ANTIGO}`,
+];
+
 const EXEMPLOS = [
   {
     titulo: 'Primeiros passos',
@@ -166,6 +189,9 @@ function lerStorage(chave) {
 }
 function gravarStorage(chave, valor) {
   try { localStorage.setItem(chave, valor); } catch { /* armazenamento indisponível */ }
+}
+function removerStorage(chave) {
+  try { localStorage.removeItem(chave); } catch { /* armazenamento indisponível */ }
 }
 
 function baixar(blob, nome) {
@@ -575,7 +601,9 @@ function codigoInicial() {
       return codigo;
     } catch { /* link inválido: ignora */ }
   }
-  return lerStorage(CHAVE_CODIGO) ?? CODIGO_INICIAL;
+  const salvo = lerStorage(CHAVE_CODIGO);
+  if (salvo === null || CODIGOS_INICIAIS_ANTIGOS.includes(salvo.trim())) return CODIGO_INICIAL;
+  return salvo;
 }
 
 const editor = CodeMirror($('editor'), {
@@ -602,7 +630,12 @@ const editor = CodeMirror($('editor'), {
 let timerSalvar;
 editor.on('change', () => {
   clearTimeout(timerSalvar);
-  timerSalvar = setTimeout(() => gravarStorage(CHAVE_CODIGO, editor.getValue()), 400);
+  // O código inicial não é salvo, para que uma versão nova dele apareça sozinha
+  timerSalvar = setTimeout(() => {
+    const codigo = editor.getValue();
+    if (codigo.trim() === CODIGO_INICIAL.trim()) removerStorage(CHAVE_CODIGO);
+    else gravarStorage(CHAVE_CODIGO, codigo);
+  }, 400);
 });
 
 // ---------- Ligações da interface ----------
