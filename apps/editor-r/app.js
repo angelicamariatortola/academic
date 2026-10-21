@@ -76,12 +76,12 @@ notas[notas >= 7]
   },
   {
     titulo: 'Ler os dados dos alunos',
-    codigo: `${LER_ALUNOS}
+    codigo: `base <- read.csv("data/raw/alunos_2023.csv", fileEncoding = "UTF-8")
 
-head(alunos)      # primeiras linhas
-str(alunos)       # tipo de cada coluna
-summary(alunos)   # resumo de cada coluna
-table(alunos$turno)
+head(base[, c("escola", "serie", "turno", "nota_mat")])   # primeiras linhas
+str(base)       # tipo de cada coluna
+summary(base)   # resumo de cada coluna
+table(base$turno)
 `,
   },
   {
