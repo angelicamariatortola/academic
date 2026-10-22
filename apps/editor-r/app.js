@@ -86,11 +86,28 @@ table(base$turno)
   },
   {
     titulo: 'CSV com ponto e vírgula (Censo)',
-    codigo: `# Padrão brasileiro: separador ";" e vírgula decimal -> read.csv2()
-censo <- read.csv2("data/raw/censo_escolar_pr.csv", fileEncoding = "latin1")
+    codigo: `install.packages("readr")   # uma vez por sessão (demora alguns segundos)
+library(readr)
 
-head(censo)
+# Padrão brasileiro: separador ";" e vírgula decimal -> read_csv2()
+censo <- read_csv2(
+  "data/raw/censo_escolar_pr.csv",
+  locale = locale(encoding = "latin1"),
+  col_types = cols(cod_escola = col_character())
+)
+
+censo
 mean(censo$taxa_aprovacao)
+`,
+  },
+  {
+    titulo: 'Ler arquivo de texto (notas)',
+    codigo: `install.packages("readr")   # uma vez por sessão (demora alguns segundos)
+library(readr)
+
+# Colunas separadas por tabulação ("\\t") -> read_delim()
+notas <- read_delim("data/raw/notas.txt", delim = "\\t")
+notas
 `,
   },
   {
@@ -109,10 +126,11 @@ plot(alunos$nota_mat, alunos$nota_por, pch = 19,
   },
   {
     titulo: 'Resumos com dplyr',
-    codigo: `install.packages("dplyr")   # uma vez por sessão (demora alguns segundos)
+    codigo: `install.packages(c("readr", "dplyr"))   # uma vez por sessão (demora alguns segundos)
+library(readr)
 library(dplyr)
 
-${LER_ALUNOS}
+alunos <- read_csv("data/processed/alunos_2023_limpo.csv")
 
 alunos |>
   group_by(turno) |>
@@ -141,18 +159,29 @@ ggplot(alunos, aes(x = nota_mat, y = nota_por, color = turno)) +
     codigo: `install.packages("readxl")   # uma vez por sessão
 library(readxl)
 
-matriculas <- read_excel("data/raw/matriculas.xlsx")
-matriculas
+excel_sheets("data/raw/matriculas.xlsx")   # planilhas do arquivo
+
+# A planilha é indicada pelo nome ou pela posição
+mat_fund <- read_excel("data/raw/matriculas.xlsx", sheet = "Fundamental")
+mat_em   <- read_excel("data/raw/matriculas.xlsx", sheet = 2)
+
+mat_fund
 `,
   },
   {
     titulo: 'Salvar um arquivo e baixar',
-    codigo: `${LER_ALUNOS}
+    codigo: `install.packages(c("readr", "dplyr"))   # uma vez por sessão (demora alguns segundos)
+library(readr)
+library(dplyr)
 
-aprovados <- subset(alunos, nota_mat >= 6 & nota_por >= 6)
+alunos <- read_csv("data/processed/alunos_2023_limpo.csv")
+
+aprovados <- alunos |>
+  filter(nota_mat >= 6, nota_por >= 6)
 nrow(aprovados)
 
-write.csv(aprovados, "aprovados.csv", row.names = FALSE)
+# Ponto e vírgula e vírgula decimal, para abrir no Excel em português
+write_excel_csv2(aprovados, "aprovados.csv")
 # Baixe o arquivo pela aba "Files", ao lado.
 `,
   },
