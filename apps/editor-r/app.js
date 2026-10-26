@@ -61,6 +61,7 @@ ${EXEMPLO_ANTIGO}`,
 
 const EXEMPLOS = [
   {
+    grupo: 'Curso de Capacitação — Módulo 1',
     titulo: 'Primeiros passos',
     codigo: `# O R como calculadora
 2 + 3
@@ -75,6 +76,7 @@ notas[notas >= 7]
 `,
   },
   {
+    grupo: 'Curso de Capacitação — Módulo 1',
     titulo: 'Ler os dados dos alunos',
     codigo: `base <- read.csv("data/raw/alunos_2023.csv", fileEncoding = "UTF-8")
 
@@ -85,6 +87,7 @@ table(base$turno)
 `,
   },
   {
+    grupo: 'Curso de Capacitação — Módulo 2',
     titulo: 'CSV com ponto e vírgula (Censo)',
     codigo: `install.packages("readr")   # uma vez por sessão (demora alguns segundos)
 library(readr)
@@ -101,6 +104,7 @@ mean(censo$taxa_aprovacao)
 `,
   },
   {
+    grupo: 'Curso de Capacitação — Módulo 2',
     titulo: 'Ler arquivo de texto (notas)',
     codigo: `install.packages("readr")   # uma vez por sessão (demora alguns segundos)
 library(readr)
@@ -111,20 +115,22 @@ notas
 `,
   },
   {
-    titulo: 'Gráficos com o R base',
-    codigo: `${LER_ALUNOS}
+    grupo: 'Curso de Capacitação — Módulo 2',
+    titulo: 'Ler planilha do Excel',
+    codigo: `install.packages("readxl")   # uma vez por sessão
+library(readxl)
 
-hist(alunos$nota_mat, main = "Notas de Matemática",
-     xlab = "Nota", ylab = "Alunos", col = "#56B4E9")
+excel_sheets("data/raw/matriculas.xlsx")   # planilhas do arquivo
 
-boxplot(nota_mat ~ turno, data = alunos, col = "#E69F00",
-        xlab = NULL, ylab = "Nota de Matemática")
+# A planilha é indicada pelo nome ou pela posição
+mat_fund <- read_excel("data/raw/matriculas.xlsx", sheet = "Fundamental")
+mat_em   <- read_excel("data/raw/matriculas.xlsx", sheet = 2)
 
-plot(alunos$nota_mat, alunos$nota_por, pch = 19,
-     xlab = "Matemática", ylab = "Português")
+mat_fund
 `,
   },
   {
+    grupo: 'Curso de Capacitação — Módulo 2',
     titulo: 'Resumos com dplyr',
     codigo: `install.packages(c("readr", "dplyr"))   # uma vez por sessão (demora alguns segundos)
 library(readr)
@@ -142,33 +148,7 @@ alunos |>
 `,
   },
   {
-    titulo: 'Gráfico com ggplot2',
-    codigo: `install.packages("ggplot2")   # uma vez por sessão (demora alguns segundos)
-library(ggplot2)
-
-${LER_ALUNOS}
-
-ggplot(alunos, aes(x = nota_mat, y = nota_por, color = turno)) +
-  geom_point(alpha = 0.6) +
-  labs(x = "Matemática", y = "Português", color = "Turno") +
-  theme_minimal()
-`,
-  },
-  {
-    titulo: 'Ler planilha do Excel',
-    codigo: `install.packages("readxl")   # uma vez por sessão
-library(readxl)
-
-excel_sheets("data/raw/matriculas.xlsx")   # planilhas do arquivo
-
-# A planilha é indicada pelo nome ou pela posição
-mat_fund <- read_excel("data/raw/matriculas.xlsx", sheet = "Fundamental")
-mat_em   <- read_excel("data/raw/matriculas.xlsx", sheet = 2)
-
-mat_fund
-`,
-  },
-  {
+    grupo: 'Curso de Capacitação — Módulo 2',
     titulo: 'Salvar um arquivo e baixar',
     codigo: `install.packages(c("readr", "dplyr"))   # uma vez por sessão (demora alguns segundos)
 library(readr)
@@ -675,7 +655,16 @@ $('btn-parar').addEventListener('click', parar);
 $('btn-limpar').addEventListener('click', limparConsole);
 
 const selExemplos = $('sel-exemplos');
-EXEMPLOS.forEach((ex, i) => selExemplos.add(new Option(ex.titulo, String(i))));
+// Um <optgroup> por grupo, na ordem em que os grupos aparecem em EXEMPLOS
+const gruposExemplos = new Map();
+EXEMPLOS.forEach((ex, i) => {
+  if (!gruposExemplos.has(ex.grupo)) {
+    const og = Object.assign(document.createElement('optgroup'), { label: ex.grupo });
+    selExemplos.append(og);
+    gruposExemplos.set(ex.grupo, og);
+  }
+  gruposExemplos.get(ex.grupo).append(new Option(ex.titulo, String(i)));
+});
 // Pede confirmação antes de descartar um código que não seja o inicial nem um exemplo
 function podeSubstituir(pergunta) {
   const atual = editor.getValue().trim();
