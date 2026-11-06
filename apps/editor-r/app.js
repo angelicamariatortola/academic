@@ -631,6 +631,8 @@ const editor = CodeMirror($('editor'), {
     'Shift-Ctrl-C': 'toggleComment',
     'Shift-Cmd-C': 'toggleComment',
     'Alt--': (cm) => cm.replaceSelection(' <- '),
+    'Shift-Ctrl-M': (cm) => cm.replaceSelection(' |> '),
+    'Shift-Cmd-M': (cm) => cm.replaceSelection(' |> '),
     Tab: (cm) => (cm.somethingSelected() ? cm.indentSelection('add') : cm.replaceSelection('  ')),
     'Shift-Tab': (cm) => cm.indentSelection('subtract'),
   },
@@ -713,7 +715,8 @@ $('btn-compartilhar').addEventListener('click', async () => {
 
 // ---------- Console: linha de comando, como no RStudio ----------
 // Enter executa (ou, se o comando estiver incompleto, abre uma linha "+");
-// Shift+Enter quebra a linha; ↑/↓ percorrem o histórico; Tab completa; Esc apaga.
+// Shift+Enter quebra a linha; ↑/↓ percorrem o histórico; Tab completa; Esc apaga;
+// Alt+- insere <- e Ctrl+Shift+M insere |>, como no editor.
 
 const entrada = $('entrada');
 const prompt = $('prompt');
@@ -787,6 +790,13 @@ async function completar() {
   });
 }
 
+// Insere um texto no lugar do cursor (ou da seleção) da linha de comando
+function inserirNaEntrada(texto) {
+  entrada.setRangeText(texto, entrada.selectionStart, entrada.selectionEnd, 'end');
+  navegando = false;
+  ajustarEntrada();
+}
+
 entrada.addEventListener('input', () => {
   navegando = false;
   ajustarEntrada();
@@ -800,6 +810,12 @@ entrada.addEventListener('keydown', (ev) => {
   } else if (ev.key === 'Tab') {
     ev.preventDefault();
     completar();
+  } else if (ev.altKey && ev.key === '-') {
+    ev.preventDefault();
+    inserirNaEntrada(' <- ');
+  } else if ((ev.ctrlKey || ev.metaKey) && ev.shiftKey && ev.key.toLowerCase() === 'm') {
+    ev.preventDefault();
+    inserirNaEntrada(' |> ');
   } else if (ev.key === 'Escape' && !ocupado) {
     ev.preventDefault();
     definirEntrada('');
